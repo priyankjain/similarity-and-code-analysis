@@ -28,7 +28,7 @@ for content in os.listdir(os.getcwd()):
                     # If js file containing angular, jquery or bootstrap, delete
                     filename_lc = filename.lower()
                     if filename_lc.endswith(".js") and ("jquery" in filename_lc or "bootstrap" in filename_lc \
-                    or "angular" in filename_lc):
+                    or "angular" in filename_lc or "map.js" in filename_lc or "tutorial.js" in filename_lc):
                         print("Deleting {0} from {1}".format(filename, dirpath))
                         os.remove(os.path.join(dirpath, filename))
                         print("Deleted {0} from {1}".format(filename, dirpath))
@@ -36,3 +36,5 @@ for content in os.listdir(os.getcwd()):
                     print("Moving {0} from {1} to {2}".format(filename, dirpath, content))
                     os.rename(os.path.join(dirpath, filename), os.path.join(content, filename))
                     print("Moved {0} from {1} to {2}".format(filename, dirpath, content))        
+
+call(["perl", "../moss.pl", "-d", "*/*.js", "*/*.html"])

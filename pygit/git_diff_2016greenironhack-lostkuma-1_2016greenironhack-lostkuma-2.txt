@@ -1,0 +1,586 @@
+diff --git a/2016greenironhack-lostkuma-1/README.md b/2016greenironhack-lostkuma-2/README.md
+index 1040459..433da14 100644
+--- a/2016greenironhack-lostkuma-1/README.md
++++ b/2016greenironhack-lostkuma-2/README.md
+@@ -1,7 +1,7 @@
+-**Find My Veggies** v1.0.0 - 2016-03-26  
+-Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)  
++**Find My Veggies** v1.0.0 - 2016-04-01  
++* **Problem:** Due to the Google free api plan problem, only maximum to 1000 quote can be requested in 24hr, so when querying date for store details, only about 9 store details can be requested.
+ 
+-This is a Web App to help people find fresh and cheap vegetables for Indiana.  
++This is a Web App to help people find fresh and cheap vegetables for Lafayette area.  
+ 
+ The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
+ Those features will include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
+@@ -11,36 +11,48 @@ Those features will include but not limited to: freshness, price, open hours, di
+ Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
+ (More datasets will be added later. Existing datasets maybe modified later.)  
+ 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
+-	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
++	  Normals Daily Data for Indiana from 3/24/2015 to 3/24/2016  
+ 	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
+-	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)  
+-	  Disaster Declaration summary data for Indiana from 2004 to 2014  
+-	  Columns used: Incident type, Declared county area, Begin date, End date  
+-All datasets used are from data.gov  
++	* Seasonal vegetable chart (http://www.cuesa.org/eat-seasonally/charts/vegetables)  
++	  Vegetable names and in season months
++	* Google Store Details data gotten from query (https://maps.googleapis.com/maps/)  
++	  geometry location, place_id, place name, place address, place phone number, place website, place rating, place price level, place open hours
++	
+ 	
+ * Map View
+-	* The initialized Map is located at Indianapolis since it is the capital of Indiana  
+-	* Major locations sell vegetables will be marked on the map with name tags displayed on top  
+-	* Market name will shown when mouse is moved to a tag  
+-	* Upon clicking on a tag, information for the location will be shown on the side bar of the webpage. Information contains the features discussed above for a market  
+-	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the webpage
++	* The initialized Map is located at West lafayette and Lafayette area
++	* Major locations sell vegetables are marked with markers on the map
++	* Click on marker
++		* info window with store names, locations, and view in google map links displayed
++		* side menu displays detailed information for the store
++		* display the driving route for the store
++		* estimated driving time will be added in the next update, and possibily traveling method selections too
++		* geolocation features for automatically detect browser location will be added in the next update
++	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the side menu
+ 	
+ * Data Visualization
+-	* Radar chart will be used for data visualization  
+-	* A comparison button will be displayed on the information window. By clicking it, a pop up window that allows the comparison of  three markets will be displayed. Sortable bar graph is used for the comparison for three markets  
+-	* By clicking on some features (i.e. price) will display the actualy price range on the chart
++	* Radar chart for single store's features
++	* side menu tab 1 - basic info
++		* store name, phone, website, ratings, open hour for today is displayed
++		* radar chart for detailed features (data needs to be calculated and linked later)
++	* side menu tab 2 - compare stores
++		* compare three stores information with radar chart or bar graph will be added in the next update
++		* features of the stores are displayed for choices
++	* side menu tab 3 - seasonal vegetable chart
++		* seasonal vegetables for this month are displayed
++		* click on names and display pictures function will be added in the next update
+ 
+ * Interation Form:
+-	* Information output: The weblink of the markets will be provided, and freshness rating will be displayed for each market
+-	* Operation option: Filters based on features will affect the change of tags on the map, and search on market names will only result to the tags of a certain set of markets (e.g. search "Walmart" will only display tags for Walmart)
+-	* Information input: Allow area selection by inputing a county/city name on top left texting box on the map
+-	* Interaction with map: By clicking the comparison button on the information window, a pop up window that allows the comparison of  three markets will be displayed. The market in selection will be automatically added and other two markets can be added to comparison by dragging the tags on the map  
+-	* Interaction with data visualization: Checkboxes that enable/disable features will be available above the radar chart, which will affect the chart  
++	* Information output: store links and link to google maps, google map place details output for each store
++	* Operation option: switch between tabs, turn on/off features, current date and time displayed on top right and will disappear if browser window gets small. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top.
++	* Information input: turn on/off features for comparison of stores
++	* Interaction with map: click on markers, info window displays and side menu changes for specific store, geolocation will be added later 
++	* Interaction with data visualization: Checkboxes that enable/disable features for comparison which will change the data displayed
+ 
+ **Content**  
+ * README.txt  --This file.  
+ * index.html  --Web page for the App  
+-* style.css  --CSS style file with template from Bootstrap  
++* css  --A directory contains all css files
+ * js  --A directory contains all the javescript files  
+ * image  --A directory contains all images used in the website  
+   
+diff --git a/2016greenironhack-lostkuma-1/css/style.css b/2016greenironhack-lostkuma-2/css/style.css
+index e608bbf..5cddfa8 100644
+--- a/2016greenironhack-lostkuma-1/css/style.css
++++ b/2016greenironhack-lostkuma-2/css/style.css
+@@ -1,37 +1,108 @@
+-/* fixed navbar */
+-html {
+-	height: 100%;
++body {
+     width: 100%;
++    height: 100%;
++    background-image: url("../image/background.jpg");
++    background-position: 0px 50px;
++    background-attachment: fixed;
++    background-size: 100% 100%;
+ }
+ 
+-body {
+-  padding-top: 30px;
+-  padding-bottom: 10px;
++html {
++    width: 100%;
+     height: 100%;
+ }
+ 
++@media screen and (max-width: 768px) {
++	.navbar-icon {
++		display: none;
++	}
++	#current-date{
++		display: none;
++	}
++}
++
++.navbar-icon {
++	position: relative;
++	float: left;
++	overflow: hidden;
++	max-height: 50px;
++	max-width: 50px;
++}
++
+ #map{
+ 	position: absolute;
+-    height: 100%;
++    height: 95%;
+     width: 70%;
+     left: 10px;
++    overflow: hidden;
++    margin-bottom: 10px;
+ }
+ 
+-#side-menu{
++.side-menu{
+ 	position: absolute;
+-  left: 70%;
+-  height: 100%;
++	left: 70.3%;
++	height: 95%;
+ 	width: 30%;
++	padding: 5px 13px;
++	overflow: hidden;
++	margin-bottom: 10px;
+ }
+ 
+ #menu-cover {
+ 	position: absolute;
+-  top: 0%;
+-  left: 15px;
+-  right: 5%;
+-  padding: 10% 10% 10%;
+-  height: 98%;
+-  width: 92%;
+-  background-color: #e6ffb3;
+-  font-size: 18px;
+-  border-radius: 15px;
++	padding: 15px 25px 15px;
++	width: 93%;
++	height: 91%;
++	background-color: #eee;
++	font-size: 14px;
++	overflow: scroll;
++	text-align: center;
++	border-bottom-right-radius: 10px;
++	border-bottom-left-radius: 10px;
++}
++
++
++
++.multi {
++	column-count:2;
++	-moz-column-count:2;
++	-webkit-column-count: 2;
++}
++
++#current-date {
++	position: absolute;
++	font-size: 16px;
++	margin-top: 12px;
++	margin-right: 50px;
++	right: 20px;
++	color: white;
++}
++
++.side-menu li {
++	border-style: ridge;
++	border-width: 1px;
++	border-top-right-radius: 10px;
++	border-top-left-radius: 10px;
++	background-color: #dbdbdb;
++}
++
++.intro-section h1, h3 {
++	text-shadow: 2.5px 1.5px #f6f6f6;
++}
++
++.basic-info {
++	line-height: 70%;
++}
++
++.radar-chart {
++	padding-top: 30px;
++	visibility: hidden;
++}
++
++#radar-chart {
++	position: relative;
++	top: 10px;
++	left: -53px;
++}
++
++
+diff --git a/2016greenironhack-lostkuma-1/index.html b/2016greenironhack-lostkuma-2/index.html
+index 1af01f1..00058ad 100644
+--- a/2016greenironhack-lostkuma-1/index.html
++++ b/2016greenironhack-lostkuma-2/index.html
+@@ -4,54 +4,137 @@
+ 	<meta charset="utf-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+-		<title>FindMyVeggies</title>
++
++    <script src="http://d3js.org/d3.v3.min.js"></script>
++    <script src="js/radarChart.js"></script>
++
+ 	<link href="css/style.css" rel="stylesheet">
+-		<link href="css/bootstrap.css" rel="stylesheet">
+-		<script src="js/map.js" type="text/javascript"></script>
++	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
++	<link href="css/scrolling-nav.css" rel="stylesheet">
++
++	<title>FindMyVeggies</title>
+     <link rel="shortcut icon" href="image/icon.png" />
+ </head>
+ 
+-	<body>
+-	    <nav class="navbar navbar-inverse navbar-fixed-top">
++<!-- scrolling navigation bar -->
++<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
++
++    <!-- Navigation -->
++    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+-	        <div class="navbar-header">
+-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
++            <div class="navbar-header page-scroll">
++                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+-	          <a class="navbar-brand" href="#">Find My Veggies page outline</a>
++                <img src="image/icon.png" class="navbar-icon"/>
++                <a class="navbar-brand page-scroll" href="#page-top">Find My Veggies</a>
+             </div>
+-	        <div id="navbar" class="navbar-collapse collapse">
+-	          <form class="navbar-form navbar-right">
+-	          </form>
++            <!-- Collect the nav links, forms, and other content for toggling -->
++            <div class="collapse navbar-collapse navbar-ex1-collapse">
++                <ul class="nav navbar-nav">
++                   	<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
++                    <li class="hidden">
++                        <a class="page-scroll" href="#page-top"></a>
++                    </li>
++                    <li>
++                        <a class="page-scroll" href="#app">The App</a>
++                    </li>
++                </ul>
++                <p id="current-date"></p>
+             </div><!-- /.navbar-collapse -->
+-	      </div>
++        </div><!-- /.container -->
+     </nav>
+ 
+-	    <!-- Main jumbotron for a primary marketing message or call to action -->
+-	    <div class="jumbotron">
++    <!-- Intro section -->
++    <section id="intro" class="intro-section">
+         <div class="container">
+-	        <p>This is a Web App to help people find fresh and cheap vegetables for Indiana. The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables. </p>
++            <div class="row">
++                <div class="col-lg-12">
++                    <h1>Find My Veggies</h1>
++                    <h3>Don't know where to find fresher and cheaper veggies?<br>
++                    This app will tell you grocery stores near you and more!</h3>
++                    <a class="btn btn-primary btn-lg page-scroll" href="#app">Try it now</a>
++                </div>
+             </div>
+         </div>
++    </section>    
+ 
++    <!-- The app section -->
++    <section id="app" class="about-section">
+         <div class="container">
+-		    <div id="map">
++        	<!-- map -->
++		    <div id="map"></div>
++		    <!-- side menu -->
++			<div class="side-menu">
++				<!-- side menu tabs -->
++				<ul class="nav nav-tabs nav-justified" id="customize-tag">
++			    	<li class="active"><a data-toggle="tab" href="#basic">Basic Information</a></li>
++			    	<li><a data-toggle="tab" href="#comparison">Compare Stores</a></li>
++			    	<li><a data-toggle="tab" href="#veggie-chart">Seasonal Veggies</a></li>
++			  	</ul>
++			  	<!-- side menu tab contents-->
++			  	<div class="tab-content">
++			 		<!-- tab content for basic -->
++				   	<div id="basic" class="tab-pane fade in active">
++				      	<div id="menu-cover">
++				      		<h4 id="store-name">Click on map to display store info</h4>
++				      		<div class="basic-info">
++				      			<p id="store-phone"></p>
++					      		<p><a id="store-website"></a></p>
++					      		<p id="open-hour-today"></p>
++					      		<p id="store-rating"></p>
+ 					      	</div>
+-
+-			<div id="side-menu">
++					      	<div class="radar-chart">
++					      		<p>View of store information</p>
++					      		<p>(Need to be edited)</p>
++								<div id="radar-chart"></div>
++							</div>						
++						</div>
++				    </div>
++				    <!-- tab content for comparison-->
++				    <div id="comparison" class="tab-pane fade">
++						<div id="menu-cover">
++							<p>"comparison of three stores will be showed here"</p>
++							<p>Select up to three stores for comparison</p>
++							<p>Add/delete features to be compared</p>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">price</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">ratings</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">frenshness</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">parking</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">open hour</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">service</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">distance</label>
++						</div>
++				    </div>
++				    <!-- tab content for veggie-chart -->
++				    <div id="veggie-chart" class="tab-pane fade">
+ 				    	<div id="menu-cover">
+-				<p>
+-				side menu goes here
+-				</p>
++				    		<h4>In season Veggies of this month</h4>
++				    		<div class=multi>
++				    		<p id="seasonal-veggies"></p>
+ 				    		</div>
+ 				    	</div>
+ 				    </div>
++			  	</div><!-- tab-contents -->
++			</div><!-- side-menu-->
++		</div><!-- /.container -->
++    </section>
++
++	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
++  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
++
++  		<script src="js/jquery.easing.min.js"></script>
++    	<script src="js/scrolling-nav.js"></script>
++
++		<script src="js/map.js" type="text/javascript"></script>
++		<script src="js/veggies.js" type="text/javascript"></script>
++		<script src="js/main.js" type="text/javascript"></script>
++    	<script src="js/drawChart.js" type="text/javascript"></script>
+ 
+-	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&callback=initMap"
+-	    async defer></script>
++		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&libraries=places&callback=initMap" async defer></script>
+ 
+ 	</body>
+ </html>	    
+\ No newline at end of file
+diff --git a/2016greenironhack-lostkuma-1/js/map.js b/2016greenironhack-lostkuma-2/js/map.js
+index d93a5ec..53e309d 100644
+--- a/2016greenironhack-lostkuma-1/js/map.js
++++ b/2016greenironhack-lostkuma-2/js/map.js
+@@ -1,18 +1,189 @@
+ //init the google map in the webpage         
++var map, service, pos, infowindow, directionsDisplay, directionsService;
++var store_info_list = new Array;
++
++
+ function initMap() {
+-    var map,
+-        marker;
++    // set a center
++    pos = {lat: 40.43, lng: -86.9};
++    var center = {lat: 40.425, lng: -86.90};
+ 
+     //create the google map
+-    map = new google.maps.Map(document.getElementById('map'), {
+-        center: {lat: 39.768597, lng: -86.162682},
+-        zoom: 8
++    map = new google.maps.Map(document.getElementById("map"), {
++        center: center,
++        zoom: 13
+     });
+ 
+-    //create a marker at the centre
+-    marker = new google.maps.Marker({
+-        position: {lat: 39.768597, lng: -86.162682},
++    // set up info window
++    infowindow = new google.maps.InfoWindow();
++
++    // set up direction display and service
++    directionsDisplay = new google.maps.DirectionsRenderer;
++    directionsService = new google.maps.DirectionsService;
++    directionsDisplay.setMap(map);
++
++    // request a nearby search service
++    service = new google.maps.places.PlacesService(map);
++    service.nearbySearch({
++        location: pos,
++        radius: 3500,
++        type: 'grocery_or_supermarket'
++    }, callback);
++}
++
++
++function callback(results, status) {
++    if (status === google.maps.places.PlacesServiceStatus.OK) {
++        for (var i = 0; i < results.length; i++) {
++            var place_id = results[i].place_id;
++                getPlaceDetails(place_id);
++        }
++    }
++}
++
++
++function createMarkerAndDetailedInfo(place, store_info) {
++    var placeLoc = place.geometry.location;
++    var marker = new google.maps.Marker({
+         map: map,
+-        title: 'Indianapolis'
++        position: place.geometry.location
++    });
++    // clikc marker trigger event
++    google.maps.event.addListener(marker, 'click', function() {  
++        // add place name, if open now, place address, open in map to info window
++        google_map_link = '<a target="_blank" href=' + store_info["map_url"] + '>View on Google Maps</a>'
++        infowindow.setContent('<div><strong>' + store_info["name"] + '  ' + '(Open now: ' 
++            + store_info["if_open_now"] + ')</strong><br>' + store_info["address"] + '<br>' + google_map_link);
++        infowindow.open(map, this);
++        // replace with store name and detailed info in side menu 
++        setSideMenu(store_info);
++        // get the route from current position to marker
++        calculateAndDisplayRoute(directionsService, directionsDisplay, place);
++        // display radar chart
++        $(document).ready(function() {
++            $(".radar-chart").css('visibility','visible');
++        });
+     });
+-};
+\ No newline at end of file
++}
++
++
++function getPlaceDetails(place_id) {
++    service.getDetails({
++        placeId: place_id
++    }, function(place, status) {
++        if (status === google.maps.places.PlacesServiceStatus.OK) {
++            var store_info = {
++                place_id: place.place_id, 
++                name: place.name, 
++                address: place.formatted_address, 
++                map_url: place.url, 
++                phone: "?", 
++                website: "?",
++                rating: "?",
++                price: "?",
++                open_hour: "?",
++                if_open_now: "?"
++            }  
++            if (place.hasOwnProperty("formatted_phone_number")) {
++                store_info["phone"] = place.formatted_phone_number;
++            } 
++            if (place.hasOwnProperty("website")) {
++                store_info["website"] = place.website;
++            } 
++            if (place.hasOwnProperty("rating")) {
++                store_info["rating"] = place.rating;
++                store_info["user_ratings_total"] = place.user_ratings_total;
++            } 
++            if (place.hasOwnProperty("price_level")) {
++                store_info["price"] = place.price_level;
++            }
++            if (place.hasOwnProperty("opening_hours")) {
++                store_info["open_hour"] = place.opening_hours.weekday_text;
++                if(place.opening_hours.open_now == true) {
++                    store_info["if_open_now"] = 'Yes'
++                } else {
++                    store_info["if_open_now"] = 'No'
++                }
++            }
++            // store_info_list.push(store_info);
++            // creat marker and set click on marker event 
++            // set info window and side menu content for store requested detail
++             createMarkerAndDetailedInfo(place, store_info);
++        } else {
++        console.log('Place details request failed due to ' + status);
++        }
++    });
++}
++
++
++function calculateAndDisplayRoute(directionsService, directionsDisplay, place, selectedMode) {
++    var purdue = {lat: 40.424814, lng: -86.913691};
++    directionsService.route({
++        origin: purdue,
++        destination: place.geometry.location,
++        travelMode: google.maps.TravelMode.DRIVING
++    }, function(response, status) {
++    if (status == google.maps.DirectionsStatus.OK) {
++        directionsDisplay.setDirections(response);
++    } else {
++        console.log('Directions request failed due to ' + status);
++    }
++  });
++}
++
++
++function setSideMenu(store_info) {
++    // store name
++    document.getElementById("store-name").innerHTML = store_info["name"];
++    // store tel
++    if (store_info["phone"] != "?") {
++        document.getElementById("store-phone").innerHTML = store_info["phone"];
++    } else {
++        document.getElementById("store-phone").innerHTML = "phone number: N/A";        
++    }
++    // store site
++    if (store_info["website"] != "?") {
++        document.getElementById("store-website").innerHTML = store_info["website"];
++        document.getElementById("store-website").href = store_info["website"]
++        document.getElementById("store-website").target = "_blank";
++    } else {
++        document.getElementById("store-website").innerHTML = "";
++        document.getElementById("store-website").href = "";
++        ;
++    }
++    // store today open hours
++    var today = new Date();
++    var day_of_week = today.getDay() - 1;
++    if (day_of_week == -1) {
++        day_of_week = 6;
++    }
++    if (store_info["open_hour"] != "?") {
++        document.getElementById("open-hour-today").innerHTML = store_info["open_hour"][day_of_week];
++    } else {
++        document.getElementById("open-hour-today").innerHTML = "open hour: N/A";
++    }
++    // store rating
++    if (store_info["rating"] != "?") {
++        var stars = parseFloat(store_info["rating"]);
++        var img = storeRating(stars);
++        document.getElementById("store-rating").innerHTML = "Rating:  <img src=" + img + ">";
++    } else {
++        document.getElementById("store-rating").innerHTML = "rating: N/A";   
++    }
++}
++
++// need to fix call order
++function storeRating(stars) {
++    var img;
++    if (stars == 5) {
++        img = "image/5-star.png"
++    } else {
++        for (i = 0; i < 5; i += 0.5) {
++            if (i <= stars && stars < (i + 0.5)) {
++                img = "image/" + i + "-star.png"
++            }
++        }
++    }
++    return img;
++}
++

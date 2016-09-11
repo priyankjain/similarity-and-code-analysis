@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/radarChart.js"></script>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href="css/scrolling-nav.css" rel="stylesheet">
+
+	<title>FindMyVeggies</title>
+    <link rel="shortcut icon" href="image/icon.png" />
+</head>
+
+<!-- scrolling navigation bar -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="image/icon.png" class="navbar-icon"/>
+                <a class="navbar-brand page-scroll" href="#page-top">Find My Veggies</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                   	<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#app">The App</a>
+                    </li>
+                </ul>
+                <p id="current-date"></p>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+    <!-- Intro section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Find My Veggies</h1>
+                    <h3>Don't know where to find fresher and cheaper veggies?<br>
+                    This app will tell you grocery stores near you and more!</h3>
+                    <a class="btn btn-primary btn-lg page-scroll" href="#app">Try it now</a>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <!-- The app section -->
+    <section id="app" class="about-section">
+        <div class="container">
+        	<!-- map -->
+		    <div id="map"></div>
+		    <!-- side menu -->
+			<div class="side-menu">
+				<!-- side menu tabs -->
+				<ul class="nav nav-tabs nav-justified" id="customize-tag">
+			    	<li class="active"><a data-toggle="tab" href="#basic">Basic Information</a></li>
+			    	<li><a data-toggle="tab" href="#comparison">Compare Stores</a></li>
+			    	<li><a data-toggle="tab" href="#veggie-chart">Seasonal Veggies</a></li>
+			  	</ul>
+			  	<!-- side menu tab contents-->
+			  	<div class="tab-content">
+			 		<!-- tab content for basic -->
+				   	<div id="basic" class="tab-pane fade in active">
+				      	<div id="menu-cover">
+				      		<h4 id="store-name">Click on map to display store info</h4>
+				      		<div class="basic-info">
+				      			<p id="store-phone"></p>
+					      		<p><a id="store-website"></a></p>
+					      		<p id="open-hour-today"></p>
+					      		<p id="store-rating"></p>
+					      	</div>
+					      	<div class="radar-chart">
+					      		<p>View of store information</p>
+					      		<p>(Need to be edited)</p>
+								<div id="radar-chart"></div>
+							</div>						
+						</div>
+				    </div>
+				    <!-- tab content for comparison-->
+				    <div id="comparison" class="tab-pane fade">
+						<div id="menu-cover">
+							<p>"comparison of three stores will be showed here"</p>
+							<p>Select up to three stores for comparison</p>
+							<p>Add/delete features to be compared</p>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">price</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">ratings</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">frenshness</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">parking</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">open hour</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">service</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">distance</label>
+						</div>
+				    </div>
+				    <!-- tab content for veggie-chart -->
+				    <div id="veggie-chart" class="tab-pane fade">
+				    	<div id="menu-cover">
+				    		<h4>In season Veggies of this month</h4>
+				    		<div class=multi>
+				    		<p id="seasonal-veggies"></p>
+				    		</div>
+				    	</div>
+				    </div>
+			  	</div><!-- tab-contents -->
+			</div><!-- side-menu-->
+		</div><!-- /.container -->
+    </section>
+
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  		<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/scrolling-nav.js"></script>
+
+		<script src="js/map.js" type="text/javascript"></script>
+		<script src="js/veggies.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+    	<script src="js/drawChart.js" type="text/javascript"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&libraries=places&callback=initMap" async defer></script>
+
+	</body>
+</html>	    
