@@ -1,0 +1,199 @@
+         <script language="javascript" type="text/javascript" src="js/walmart_api.js"></script>
+         
+         <!-- Table API -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"></link>
+        <script>
+        $(document).ready(function() {
+            $('#tabular').DataTable();
+        } );
+        </script>
+        
+        
+        <!--// Rating plugin-specific resources //-->
+
+		<script src='js/jquery.rating.pack.js' type="text/javascript"></script>
+        <script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
+ 		<script src='jquery.rating.js' type="text/javascript" language="javascript"></script>
+        <link href='css/jquery.rating.css' type="text/css" rel="stylesheet"/>
+        
+        <!-- start rating -->
+        
+        <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+   		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   	 	<link rel="stylesheet" href="css/star-rating.css" media="all" rel="stylesheet" type="text/css"/>
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    	<script src="js/star-rating.js" type="text/javascript"></script>
+              
+ 	</head>
+	
+     <body>
+     <!-- begin template -->
+     <div class="navbar navbar-custom navbar-fixed-top">
+             <li><a href="#"></a></li>
+             <li><a href="#"></a></li>
+             <li><a href="wheather.html">Weather Details</a></li> 
+             <li><a href="discussion.html">Discussion Forum</a></li> 
+             <li><a href="recipe.html" class="wrapper-dropdown-1">Recipe of the Day</a></li>
+             <li>&nbsp;</li>
+           </ul> 
+     <div class="container-fluid" id="main">
+       <div class="row">
+         <div class="col-xs-8" id="left">
+        <br> <br> <br> 
+         <!-- Title bar -->
+            <div class="panel panel-default">
+             <div class="panel-heading"><a href="">Weather Details on Gauge Meters: West Lafayette, IN (via Yahoo API)</a></div>
+         
+         <!-- Title bar -->
+            <div class="panel panel-default">
+            <div class="panel-heading"><a href="">Enter ZipCode and find Fresh Vegetables in your Area! (via USDA Farmers Market API)</a></div>
+           </div> 
+   		<!-- Start search bar -->  
+           <div>
+             		</div><!--
+     				--><div id="c2">
+             		  <label for="textfield"><strong>Zip Code:</strong></label>
+                      <input id="textZip" type="text" name="zip" placeholder="Enter your zip code" autofocus>
+             		</div><!--
+     				--><div id="c3">
+             		  <input type="submit" name="submit2" class="wrapper-dropdown-3" id="submit2" value="Find">
+           		</div>
+           	</form>
+           </div>
+          
+            <hr>
+           <div class="container">
+               
+               <div class="tab-content">
+                 <div id="home" class="tab-pane fade in active">
+                   <br>
+                  
+                   <div id="vegdetail">
+  				  </div>						
+                 </div>
+                 <div id="menu1" class="tab-pane fade">
+                   <!-- Add Rating -->
+                  
+					<form>
+                        <input id="input-21e" value="2" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                        
+                    </form>
+                    
+					<script>
+                        document.getElementById("input-21e").style.display = "none";
+						jQuery(document).ready(function () {
+                            $("#input-21f").rating({
+                                starCaptions: function(val) {
+                                    if (val < 3) {
+                                        return val;
+                                    } else {
+                                        return 'high';
+                                    }
+                                },
+                                starCaptionClasses: function(val) {
+                                    if (val < 3) {
+                                        return 'label label-danger';
+                                    } else {
+                                        return 'label label-success';
+                                    }
+                                },
+                                hoverOnClear: false
+                            });
+                            
+                            $('#rating-input').rating({
+                                  min: 0,
+                                  max: 5,
+                                  step: 1,
+                                  size: 'lg',
+                                  showClear: false
+                               });
+                               
+                            $('#btn-rating-input').on('click', function() {
+                                $('#rating-input').rating('refresh', {
+                                    showClear:true, 
+                                    disabled: !$('#rating-input').attr('disabled')
+                                });
+                            });
+                            
+                            
+                            $('.btn-danger').on('click', function() {
+                                $("#kartik").rating('destroy');
+                            });
+                            
+                            $('.btn-success').on('click', function() {
+                                $("#kartik").rating('create');
+                            });
+                            
+                            $('#rating-input').on('rating.change', function() {
+                                alert($('#rating-input').val());
+                            });
+                            
+                            
+                            $('.rb-rating').rating({'showCaption':true, 'stars':'3', 'min':'0', 'max':'3', 'step':'1', 'size':'xs', 'starCaptions': {0:'status:nix', 1:'status:wackelt', 2:'status:geht', 3:'status:laeuft'}});
+                        });
+                    </script>
+
+                  
+                  <!-- End Rating -->
+                   <div class="radarChart"></div>
+ 					<script src="js/radarChart.js"></script>	
+                     <script>
+                 <h3>Price Comparison</h3>
+                  <!-- <div id="price_comparison"> -->
+                   
+                <table id="tabular" class="display" cellspacing="3" width="50%">
+                     <thead>
+                         <tr>
+                            <th><b>##</b></th>
+                            <th><b>Vegetables</b></th>
+                            <th><b>Walmart ($ per lbs)</b></th>
+                            <th><b>Meijer($ per lbs)</b></th>
+                            <hr>
+                         </tr>
+                     </thead>
+                    
+                     <tfoot>
+                         <tr>
+                            <th><b>##</b></th>
+                            <th><b>Vegetables</b></th>
+                            <th><b>Walmart ($ per lbs)</b></th>
+                            <th><b>Meijer($ per lbs)</b></th>
+                         </tr>
+                     </tfoot>
+                    
+                     <tbody>
+                         <tr>
+                            <td>1</td>
+                             <td>Potato</td>
+                            <td>2.2</td>
+                             <td>3</td>
+                         </tr>
+                            <td>2</td>
+                             <td>Bell Pepper</td>
+                            <td>3.2</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                             <td>3</td>
+                            <td>Onion</td>
+                            <td>2.8</td>
+                            <td>3.2</td>
+                         </tr>
+                      
+                         <tr>
+                            <td>Tomato</td>
+                            <td>2.6</td>
+                            <td>2.9</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             id: "g2",
+             value: x1,
+             min: -50,
+            max: 100,
+             title: "Wind Chill",
+             label: "F",
+ 			labelFontColor: "blue"

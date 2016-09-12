@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 ##############################################################
-#Author: Priyank Jain
-#Description: Move all js/html/htm files to the root folder
+# Author: Priyank Jain
+# Email: jain206@purdue.edu
+# Description: Move all js/html/htm files to the root folder
+# then calculate cross-similarity using MOSS
 ##############################################################
 import os
 import config	

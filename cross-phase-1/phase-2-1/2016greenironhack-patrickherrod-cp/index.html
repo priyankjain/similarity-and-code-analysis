@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="Pat Herrod" content="">
+    <link rel="icon" href="site_includes/fav.jpeg">
+
+    <title>Pro Compare</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="site_includes/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="site_includes/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="site_includes/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="site_includes/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="site_includes/carousel.css" rel="stylesheet">
+    <script language="javascript" type="text/javascript" src="site_includes/jquery-2.1.1.min.js"></script>
+    <script src="site_includes/bootstrap.min.js"></script>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Pro Compare</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+		<!--
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+		-->
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div id="page" style="position: relative; top: 600px; background-color: #fff">
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>About</h2>
+          <p>This page is a source of information for smart customers to compare local produce.  Information about prices, distance, and freshness can be found here.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>User Input</h2>
+          <p>Users can help provide information by inputing prices they find while visiting local vendors.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <h2>Contact</h2>
+          <p>For feedback, updates, corrections, or just to say hi!  A responsible individual can be reached at pherrod [at] purdue [dot] edu.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div id="mapText"class="col-md-5" style="height: 510px">
+          <h2 class="featurette-heading">Map of local produce.<span class="text-muted">	Compare produce prices.</span></h2>
+          <p class="lead">Please select your produce type, then your localy, Indiana grown item from the dropdown list!</p>
+	<div class="btn-group" data-toggle="buttons">
+           <label class="btn btn-primary active">
+             <input type="radio" name="food" id="option1" value="fruits" autocomplete="off" checked>Fruits
+           </label>
+           <label class="btn btn-primary">
+             <input type="radio" name="food" id="option2" value="veggies" autocomplete="off">Vegetables
+           </label>
+         </div>
+	 <select id="selector" class="form-control"></select>
+        </div>
+
+        <div class="col-md-7">
+          <div id="map-anchor" style="height: 10px"></div>
+	  <div id="map-holder">
+	    <div id="map"></div>
+	  </div>
+	</div>
+      </div>
+<!--
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+-->
+      <div class="row featurette">
+        <div class="col-md-5">
+          <h2 class="featurette-heading">User Input. <span class="text-muted">Please help!</span></h2>
+          <p class="lead">Select the local market below and input either a new product, or edit an existing item.</p>
+        <form>
+	<div class="form-group">
+	  <label for="marketInput">Market</label>
+	    <input type="text" class="form-control" id="marketInput">
+	    <select class="form-control">
+	      <option>test
+	    </select>
+	</div>
+	<div class="form-group">
+	  <label for="itemInput">Item</label>
+	    <input type="text" class="form-control" id="itemInput">
+	</div>
+	<div class="checkbox">
+	  <label>
+	    <input type="checkbox"> Check me out
+	  </label>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	</div>
+        <div class="col-md-7">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+    </div>
+       <script id="source" language="javascript" type="text/javascript">
+           $("input[name=food]:radio").change(function () {
+             $('#selector').html("");
+             $.ajax({                                      
+              url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+              type: 'post',
+              datatype: "json",
+              data : {"column":"*",
+                  "table": $('input:radio[name=food]:checked').val()},
+              success: function(data)          //on recieve of reply
+              {
+                var id;
+                var fname;
+                for (x = 0; x < data.length; x++) {
+                  fname = data[x]['food_name'];
+                  $('#selector').append($('<option />').val(data[x]['food_name']).text(data[x]['food_name']));
+                }
+                $('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+              }
+            });
+         });
+         $(function()
+         {
+           $('#div1').html("test: " + $('input:radio[name=food]:checked').val());
+           $.ajax({                                      
+             url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+             type: 'post',
+             datatype: "json",
+             data : {"column":"*",
+                 "table": $('input:radio[name=food]:checked').val()},
+             success: function(data)          //on recieve of reply
+             {
+               var id;
+               var fname;
+               for (x = 0; x < data.length; x++) {
+                 fname = data[x]['food_name'];
+                 $('#selector').append($('<option />').val(data[x]['food_name']).text(data[x]['food_name']));
+               }
+               $('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+             }
+           });
+ 
+         });
+    
+    </script>
+    <script type="text/javascript">
+      $('.carousel').carousel({
+        interval: 10000
+      });
+    </script>
+    <script>
+       function initMap() {
+         var map = new google.maps.Map(document.getElementById('map'), {
+           center: {lat: 40.425399, lng: -86.905450},
+           zoom: 13,
+	   mapTypeControl: false,
+	   streetViewControl: false,
+	   zoomControl: false,
+	   draggable: true,
+	   scrollwheel: true,
+         });
+         var marker = new google.maps.Marker({
+	   position: {lat: 40.438766, lng: -86.928241},
+	   map: map,
+	   title:"Hello World!"
+	});
+       }
+
+     function sticky_relocate() {
+         var window_top = $(window).scrollTop();
+         var div_top = $('#map-anchor').offset().top;
+         if (window_top > div_top) {
+             $('#map-holder').addClass('stick');
+         } else {
+             $('#map-holder').removeClass('stick');
+         }
+     }
+ 
+     $(function () {
+         $(window).scroll(sticky_relocate);
+         sticky_relocate();
+     });
+
+     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5wLhnIZX1forTvrYIw3NXrG6yyt0uHSE&callback=initMap"
+     async defer></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="site_includes/jquery-2.1.1.min.js"><\/script>')</script>
+    <script src="site_includes/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="site_includes/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="site_includes/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

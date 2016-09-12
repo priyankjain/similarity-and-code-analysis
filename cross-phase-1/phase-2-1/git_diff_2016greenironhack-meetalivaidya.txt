@@ -1,0 +1,179 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/README.md
+index 4d36eb1..3310f52 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/README.md
+@@ -1,2 +1,6 @@
+ # 2016greenironhack-meetalivaidya
+ The solution will provide an interface where people can search for neaby Farmers Markets, stands etc and their schedule. It will also show the available products, suggest fresh produce to buy and provide location and directions for a particular farmers market. The interface needs to be interactive in order to increase usage of the website and encourage people to buy seasonal & fresh products from farmers markets. Farmers Markets Directory and Geographic Data provided by US Department of Agriculture & weather data provided by National weather service is used for this project.
++keywords: farmers markets, location, fresh produce, seasonal produce.
++Links to Datasets-
++http://weather.noaa.gov/
++https://catalog.data.gov/dataset/farmers-markets-geographic-data
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/css/custom.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/css/custom.css
+index 69d2120..ab9c7b5 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/css/custom.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/css/custom.css
+@@ -153,3 +153,19 @@ hr.small {
+     margin: 5px 5px 0 0;
+ }
+ 
++
++
++
++
++
++/* Map */
++
++.map {
++    height: 500px;
++}
++
++@media(max-width:768px) {
++    .map {
++        height: 75%;
++    }
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/index.html
+index 065d8f7..595e9c2 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-meetalivaidya/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/index.html
+@@ -19,6 +19,16 @@
+     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     
+     
++    <!-- jQuery -->
++    <script src="js/jquery.js"></script>
++
++    <!-- Bootstrap Core JavaScript -->
++    <script src="js/bootstrap.min.js"></script>
++    
++    
++
++    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyD8pwca_OWypNj0CIBc7KrfvKVe7viRZ8g&callback=initMap"
++    async defer></script>
+ 
+ </head>
+ <body>
+@@ -54,29 +64,107 @@
+             <h1>Eat Fresh, Stay Healthy</h1>
+             <h3>Get access to Fresh local produce at Farmers Markets &amp; Stands</h3>
+             <br>
+-            <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
++            <a href="#map" class="btn btn-dark btn-lg">Find Out More</a>
+         </div>
+     </header>
+     
+-    
+-    
+-    
+-   <!-- 
+-    <div class="jumbotron">
++    <!-- Info About Weather -->
++    <section id="about" class="about">
+         <div class="container">
+-         <h1>Hello, world!</h1>
+-      <p>...</p>
+-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
++            <div class="row">
++                <div class="col-lg-12 text-center">
++                    <h2 id ="isdayclear"></h2>
++                    <p class="lead">Find out Farmer's markets near you.</p>
++                </div>
+             </div>
++            <!-- /.row -->
+         </div>
+-    -->
++        <!-- /.container -->
++    </section>
+     
+     
+-    <!-- jQuery -->
+-    <script src="js/jquery.js"></script>
++    <div id="map" class="map"></div>
++<script>
++var map;
++var myLatLng = {lat: 40.418702, lng: -86.892306};
++/*var marker = new google.maps.Marker({
++    position: myLatLng,
++    map: map,
++    title: 'DOWNTOWN MARKET'
++  });
++*/
++ var farmersmarkets = {
++  type: 'FeatureCollection',
++  features: [{
++    type: 'Feature',
++    geometry: {type: 'Point', coordinates: [40.418702, -86.892306]}, //Static for now, will be obtained from dataset 
++    properties: {name: 'DOWNTOWN MARKET'}
++  }]
++};
++        
++      function initMap() {
++        map = new google.maps.Map(document.getElementById('map'), {
++          center: {lat: 40.4259, lng: -86.9081},
++          zoom: 13
++        });
++          
++          var myLatLng = {lat: 40.418702, lng: -86.892306};
++          
++          var marker = new google.maps.Marker({
++    position: myLatLng,
++    map: map,
++    title: 'DOWNTOWN MARKET'
++  }); 
++          
++           //map.data.addGeoJson(cities);
++      }
++        
++       
++
++</script>
++    
++
++<script>
++var today = new Date();
++var dd = today.getDate();
++var mm = today.getMonth()+1; //January is 0!
++var yyyy = today.getFullYear()-1; //data not available for recent dates
++
++if(dd<10) {
++    dd='0'+dd
++} 
++
++if(mm<10) {
++    mm='0'+mm
++} 
++
++today = yyyy+'-'+mm+'-'+dd;
++    //console.log(today);
++  
++var xmlhttp = new XMLHttpRequest();
++//var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/datasets/";
++var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate="+today+"&enddate="+today ; 
++var token = "MVBSOBYURjJUHjDAtDxQUMwPXrwpinxd";    
++    
++xmlhttp.onreadystatechange = function() {
++    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
++        var myArr = (JSON.parse(xmlhttp.responseText)).results;
++        //console.log(myArr);
++        myFunction(myArr);
++    }
++};
++xmlhttp.open("GET", url, true);
++xmlhttp.setRequestHeader("token", token);
++//xmlhttp.setRequestParams();
++xmlhttp.send();
++
++function myFunction(arr) {
++    var out = "Its a clear day!";
++    if (arr[2].value ==0);
++    document.getElementById("isdayclear").innerHTML = out;
++}   
++</script>
+ 
+-    <!-- Bootstrap Core JavaScript -->
+-    <script src="js/bootstrap.min.js"></script>
+ 
+     <!-- Custom Theme JavaScript -->
+     <script>

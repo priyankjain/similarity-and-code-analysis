@@ -1,0 +1,108 @@
+	background-color: #f9f9f9;
+	width: auto;
+ }
+ 
+#menu{
+	background-color: #474747;
+ 	position: absolute;
+	width: 240px;
+ 	height: 100%;
+	top: 0px;
+	display: inline;
+ }
+ 
+ #input{
+ 	height: 50%;
+ }
+ 
+
+#headLine {
+	height: 60px;
+	color: #DDDDDD;
+	background-color: #FFFFFF;
+	width: 100%;
+	left: 240px;
+	position: fixed;
+
+}
+#logo {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 24px;
+	color: #DBDBDB;
+	font-style: normal;
+	text-align: center;
+ }
+ 
+@media screen{
+#info {
+	height: 20px;
+	left: 240px;
+	top: 0px;
+	display: inline-block;
+ 	position: absolute;
+	-webkit-box-shadow: 0px 0px #646464;
+	box-shadow: 0px 0px #646464;
+}
+
+#map{
+	height: 100%;
+	width: 100%;
+}
+
+#logo {
+	margin-top: 15px;
+	color: #F3F3F3;
+	font-family: cabin;
+	font-style: normal;
+	font-weight: 400;
+}
+
+#logoIcon {
+}
+.navi {
+	color: #FBFBFB;
+	margin-top: 160px;
+	text-align: center;
+	font-size: large;
+	font-family: andika;
+	font-style: normal;
+	font-weight: 400;
+	height: 55px;
+	padding-top: 8px;
+	     -webkit-transition: background-color 0.2s;
+        -moz-transition:    background-color 0.2s;
+        -ms-transition:     background-color 0.2s;
+        -o-transition:      background-color 0.2s;
+        transition:         background-color 0.2s;
+}
+#index {
+}
+#indexIcon {
+	font-family: andika;
+	font-style: normal;
+	font-weight: 400;
+	width: auto;
+}
+#mapIcon {
+	margin-top: 0.1px;
+
+}
+
+    .navi:hover {
+		background-color: #363636;
+    }
+#content {
+	position: fixed;
+	top: 60px;
+	height: 100%;
+	width: 100%;
+ }
+ 
+
+
+
+
+
+
+
+}

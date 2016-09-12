@@ -1,0 +1,51 @@
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+  padding-bottom: 80px;
+   color: #5a5a5a;
+ }
+ 
+ #page {
+   padding-top: 40px;
+ }
+#title {
+  height: 700px;
+  padding-top: 300px;
+  text-align: center;
+  vertical-align: middle;
+ }
+ 
+#title > h2 {
+  display: inline;
+  margin-bottom: 5px;
+  font-family: 42px/1.1 "Raleway", sans-serif;
+  font-size: 57px;
+  color: #ffffff;
+  background-color: rgba(136, 136, 136, 0.4);
+ }
+ 
+ /* MARKETING CONTENT
+   letter-spacing: -1px;
+ }
+ 
+#outer-map-holder {
+  width: 100%;
+   height: 500px;
+ }
+  width: 100%;
+ }
+ 
+#map {
+  height: 500px;
+  width: 100%;
+}
+ #map-holder.stick {
+     position: fixed;
+     top: 10px;
+ -------------------------------------------------- */
+ 
+ @media (min-width: 768px) {
+
+   /* Navbar positioning foo */
+   .navbar-wrapper {
+     margin-top: 20px;

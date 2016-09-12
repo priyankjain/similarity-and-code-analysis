@@ -1,0 +1,640 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/README.md
+index 09452e0..0216e78 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/README.md
+@@ -18,8 +18,8 @@ With Cheapest, you can find the store that offers "Best" vegetable. The definiti
+ 	5. [N] [describe] Any other cover on the map (for example, cloud cover to show the weather effect)
+ 
+  * Data Visualization:
+-	1. [N] [describe] Use Graph? What is the type? (bar chart, pie chart, radar chart ...)
+-	2. [N] [List] Any interaction available on the graph? List them (enable click on numbers, drag on lines, change time/variables ...)
++	1. [Y] [describe] Used d3.js bubble chart to generalize the information about stores around Lafayette.
++	2. [Y] [List] Look at different kinds of information by clicking on different bubbles.
+ 	
+  * Interaction Form:
+ 	1. [N] [List] Any information output? list them. (text field, text area, label, plain HTML ...)
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble-bubble.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble-bubble.js
+new file mode 100644
+index 0000000..18119b0
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble-bubble.js
+@@ -0,0 +1,96 @@
++$(document).ready(function () {
++  var bubbleChart = new d3.svg.BubbleChart({
++    supportResponsive: true,
++    //container: => use @default
++    size: 600,
++    //viewBoxSize: => use @default
++    innerRadius: 600 / 3.5,
++    //outerRadius: => use @default
++    radiusMin: 50,
++    //radiusMax: use @default
++    //intersectDelta: use @default
++    //intersectInc: use @default
++    //circleColor: use @default
++    data: {
++      items: [
++        //{text: "Java", count: "236"},
++        {text: "Store", count: "19"},
++        {text: "Close to you", count: "3"},
++        {text: "Open now", count: "13"},
++        {text: "Five Stars", count: "3"},
++        {text: "Vegetable", count: "170"},
++        {text: "Fruit", count: "302"},
++        //{text: "Pascal", count: "10"},
++       // {text: "Something", count: "170"},
++      ],
++      eval: function (item) {return item.count;},
++      classed: function (item) {return item.text.split(" ").join("");}
++    },
++    plugins: [
++      // {
++        // name: "central-click",
++      //   options: {
++      //     text: "(See more detail!!!)",
++      //     style: {
++      //       "font-size": "12px",
++      //       "font-style": "italic",
++      //       "font-family": "Source Sans Pro, sans-serif",
++      //       //"font-weight": "700",
++      //       "text-anchor": "middle",
++      //       "fill": "white"
++      //     },
++      //     attr: {dy: "65px"},
++      //     //centralClick: function() {
++      //       //alert("Here is more details!!");
++      //     //}
++      //   }
++      // },
++      {
++        name: "lines",
++        options: {
++          format: [
++            {// Line #0
++              textField: "count",
++              classed: {count: true},
++              style: {
++                "font-size": "28px",
++                "font-family": "Source Sans Pro, sans-serif",
++                "text-anchor": "middle",
++                fill: "white"
++              },
++              attr: {
++                dy: "0px",
++                x: function (d) {return d.cx;},
++                y: function (d) {return d.cy;}
++              }
++            },
++            {// Line #1
++              textField: "text",
++              classed: {text: true},
++              style: {
++                "font-size": "14px",
++                "font-family": "Source Sans Pro, sans-serif",
++                "text-anchor": "middle",
++                fill: "white"
++              },
++              attr: {
++                dy: "20px",
++                x: function (d) {return d.cx;},
++                y: function (d) {return d.cy;}
++              }
++            }
++          ],
++          centralFormat: [
++            {// Line #0
++              style: {"font-size": "50px"},
++              attr: {}
++            },
++            {// Line #1
++              style: {"font-size": "30px"},
++              attr: {dy: "40px"}
++            }
++          ]
++        }
++      }]
++  });
++});
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble.js
+new file mode 100644
+index 0000000..9e3a59e
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/bubble.js
+@@ -0,0 +1,96 @@
++$(document).ready(function () {
++  var bubbleChart = new d3.svg.BubbleChart({
++    supportResponsive: true,
++    //container: => use @default
++    size: 600,
++    //viewBoxSize: => use @default
++    innerRadius: 600 / 3.5,
++    //outerRadius: => use @default
++    radiusMin: 50,
++    //radiusMax: use @default
++    //intersectDelta: use @default
++    //intersectInc: use @default
++    //circleColor: use @default
++    data: {
++      items: [
++        {text: "Java", count: "236"},
++        {text: ".Net", count: "382"},
++        {text: "Php", count: "170"},
++        {text: "Ruby", count: "123"},
++        {text: "D", count: "12"},
++        {text: "Python", count: "170"},
++        {text: "C/C++", count: "382"},
++        {text: "Pascal", count: "10"},
++        {text: "Something", count: "170"},
++      ],
++      eval: function (item) {return item.count;},
++      classed: function (item) {return item.text.split(" ").join("");}
++    },
++    plugins: [
++      {
++        name: "central-click",
++        options: {
++          text: "(See more detail!!!)",
++          style: {
++            "font-size": "12px",
++            "font-style": "italic",
++            "font-family": "Source Sans Pro, sans-serif",
++            "font-weight": "700",
++            "text-anchor": "middle",
++            "fill": "white"
++          },
++          attr: {dy: "65px"},
++          centralClick: function() {
++            alert("Here is more details!!");
++          }
++        }
++      },
++      {
++        name: "lines",
++        options: {
++          format: [
++            {// Line #0
++              textField: "count",
++              classed: {count: true},
++              style: {
++                "font-size": "28px",
++                "font-family": "Source Sans Pro, sans-serif",
++                "text-anchor": "middle",
++                fill: "white"
++              },
++              attr: {
++                dy: "0px",
++                x: function (d) {return d.cx;},
++                y: function (d) {return d.cy;}
++              }
++            },
++            {// Line #1
++              textField: "text",
++              classed: {text: true},
++              style: {
++                "font-size": "14px",
++                "font-family": "Source Sans Pro, sans-serif",
++                "text-anchor": "middle",
++                fill: "white"
++              },
++              attr: {
++                dy: "20px",
++                x: function (d) {return d.cx;},
++                y: function (d) {return d.cy;}
++              }
++            }
++          ],
++          centralFormat: [
++            {// Line #0
++              style: {"font-size": "50px"},
++              attr: {}
++            },
++            {// Line #1
++              style: {"font-size": "30px"},
++              attr: {dy: "40px"}
++            }
++          ]
++        }
++      }]
++  });
++});
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/central-click.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/central-click.js
+new file mode 100644
+index 0000000..f411d40
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/central-click.js
+@@ -0,0 +1,46 @@
++/**
++ * central-click.js
++ */
++d3.svg.BubbleChart.define("central-click", function (options) {
++  var self = this;
++
++  self.setup = (function (node) {
++    var original = self.setup;
++    return function (node) {
++      var fn = original.apply(this, arguments);
++      self.event.on("click", function(node) {
++        if (node.selectAll("text.central-click")[0].length === 1) {
++          alert("Hello there!fdfdfdfdf");
++        }
++      });
++      return fn;
++    };
++  })();
++
++  self.reset = (function (node) {
++    var original = self.reset;
++    return function (node) {
++      var fn = original.apply(this, arguments);
++      node.select("text.central-click").remove();
++      return fn;
++    };
++  })();
++
++  self.moveToCentral = (function (node) {
++    var original = self.moveToCentral;
++    return function (node) {
++      var fn = original.apply(this, arguments);
++      var transition = self.getTransition().centralNode;
++      transition.each("end", function() {
++        node.append("text").classed({"central-click": true})
++          .attr(options.attr)
++          .style(options.style)
++          .attr("x", function (d) {return d.cx;})
++          .attr("y", function (d) {return d.cy;})
++          .text(options.text)
++          .style("opacity", 0).transition().duration(self.getOptions().transitDuration / 2).style("opacity", "0.8");
++      });
++      return fn;
++    };
++  })();
++});
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/style.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/css/style.css
+index 79c8bb2..53dc7f2 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/style.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/css/style.css
+@@ -1,8 +1,10 @@
+ html, body {
+-	height: 100%;
+-	margin: 0;
+ 	background-color: #f9f9f9;
+-	width: auto;
++	color: #9e9e9e;
++	font-size: 13px;
++	font-family: Calibri, "Segoe UI";
++	font-style: normal;
++	font-weight: 400;
+ }
+ 
+ 
+@@ -12,7 +14,6 @@ html, body {
+ 	width: 240px;
+ 	height: 100%;
+ 	top: 0px;
+-	display: inline;
+ }
+ 
+ #input{
+@@ -36,8 +37,9 @@ html, body {
+ 	color: #DDDDDD;
+ 	background-color: #FFFFFF;
+ 	width: 100%;
+-	left: 240px;
+ 	position: fixed;
++	z-index: 1;
++	visibility: visible;
+ 
+ }
+ #logo {
+@@ -51,17 +53,18 @@ html, body {
+ @media screen{
+ #info {
+ 	height: 20px;
+-	left: 240px;
++	left: 250px;
+ 	top: 0px;
+-	display: inline-block;
+ 	position: absolute;
+ 	-webkit-box-shadow: 0px 0px #646464;
+ 	box-shadow: 0px 0px #646464;
++	z-index: 0;
+ }
+ 
+ #map{
+ 	height: 100%;
+-	width: 100%;
++	position: fixed;
++	left: 0%;
+ }
+ 
+ #logo {
+@@ -113,11 +116,51 @@ html, body {
+ 	width: 100%;
+ }
+ 
++#storeList {
+ 	
++}
+ 
++.bubbleChart {
++	height: 350px;
++	margin-left: 350px;
++	width: 350px;
++	position: absolute;
++	margin-top: 280px;
++}
+ 
++#contentHeadLine {
++	margin-left: 10px;
++	position: absolute;
++}
+ 
++.shorticon:before {
++	content:"\f01f";
++}
++.card {
++	height: 330px;
++	width: 290px;
++	-webkit-box-shadow: 1px 1px 1px 1px #B8B8B8;
++	box-shadow: 1px 1px 1px 1px #B8B8B8;
++	margin-top: 7px;
++	position: absolute;
++	left: 1000px;
++	font-size: xx-large;
++
++}
++#card1 {
++	position: absolute;
++	margin-left: 7px;
++	left: 7px;
++}
+ 
+ 
+ 
+ }
++#card2 {
++	left: 320px;
++	position: absolute;
++}
++#card3 {
++	position: absolute;
++	left: 627px;
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/getMarket.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/getMarket.js
+index c597bea..cc39552 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/getMarket.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/getMarket.js
+@@ -1,30 +1,136 @@
+-function getResults(zip) {
+-    // or
+-    // function getResults(lat, lng) {
+-    $.ajax({
+-        type: "GET",
+-        contentType: "application/json; charset=utf-8",
+-        // submit a get request to the restful service zipSearch or locSearch.
+-        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+-        // or
+-        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
+-        dataType: 'jsonp',
+-        jsonpCallback: 'searchResultsHandler'
+-    });
++
++
++function getResults(map, zip) {
++    var xmlhttp = new XMLHttpRequest();
++    var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip;
++    xmlhttp.open("GET", url, true);
++    xmlhttp.send();
++
++    xmlhttp.onreadystatechange = function() {
++        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
++            var myArr = xmlhttp.responseText;
++            var text = JSON.parse(myArr);
++            
++			 //get markets number
++		var markets_num = text.results.length;
++
++		//process markets data to market objects
++		var i = 0;
++		for (i; i < markets_num; i++){
++			var num = i + 1,
++				marketId = text.results[i].id,
++				marketNameDistance = text.results[i].marketname,
++				nameIndex = text.results[i].marketname.indexOf(" "),
++				marketName = text.results[i].marketname.substring(nameIndex),
++				marketDistance = text.results[i].marketname.substring(0, nameIndex);
++		
++				//mark markets on the map
++	        	getMarketDetails(marketId, marketName, num, marketDistance, map);	
++		}
++
++
++        }
++    };
++}
++
++function getMarketDetails(id, name, num, distance, map) {
++	var xmlhttp = new XMLHttpRequest();
++	var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id;
++	xmlhttp.open("GET", url, true);
++	xmlhttp.send();
++	xmlhttp.onreadystatechange = function() {
++	    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
++	        var myArr = xmlhttp.responseText;
++	        var text = JSON.parse(myArr);
++
++	        //get google link in order to retrieve lat and lig
++	        var latlngstring = text.marketdetails.GoogleLink;
++
++	        //get lat from google link
++	        var lat = get_lat(latlngstring);
++
++	        //get lng from google link
++	        var lng = get_lng(latlngstring);
++
++	        //create market object
++	        var market = {
++	        	id:num,
++	        	distance:distance,
++	        	address:text.marketdetails.Address,
++	        	googlelink:text.marketdetails.GoogleLink,
++	        	products:text.marketdetails.Products,
++	        	schedule:getSchedule(text.marketdetails.Schedule),
++	        	name:name,
++	        	location:{
++	        		lat:parseFloat(lat),
++	        		lng:parseFloat(lng),
++	        	},
++	        };
++			
++			setMarker(market.location, map, market, market.id);
++		}
++	};
+ }
+-//iterate through the JSON result object.
+-function searchResultsHandler(searchResults) {
+-    for (var key in searchresults) {
+-        alert(key);
+-        var results = searchresults[key];
+-        for (var i = 0; i < results.length; i++) {
+-            var result = results[i];
+-            for (var key in result) {
+-                //only do an alert on the first search result
+-                if (i == 0) {
+-                    alert(result[key]);
++
++//retrieve lat from googlelink in market details
++function get_lat(string){
++	var index_1 = string.indexOf("q=") + 2;
++	var index_2 = string.indexOf("%2C%20");
++
++	var lat = string.substring(index_1, index_2);
++
++	return lat;
+ }
++
++//retrieve lng from googlelink in market details
++function get_lng(string){
++	var index_1 = string.indexOf("%2C%20") + 6;
++	var index_2 = string.indexOf("%20(");
++
++	var lng = string.substring(index_1, index_2);
++
++	return lng;
+ }
++
++function getSchedule(raw_schedule){
++	var schedule;
++
++	var index = raw_schedule.indexOf(";");
++
++	schedule = raw_schedule.substring(0, index);
++
++	return schedule;
+ }
++
++function setMarker(latlng, map, market, id){
++	var marker, count;
++	
++	
++	if (id < 10) {
++		count = '0' + id.toString();
+ 	}
++	else {
++		count = id.toString();
++	}
++
++	marker = new google.maps.Marker({
++		position:latlng,
++		map: map,
++		icon: 'http://google-maps-icons.googlecode.com/files/green'+ count + '.png'
++	});
++
++	var infowindow = new google.maps.InfoWindow({
++	    content: market.name
++ 	});
++
++	marker.addListener('click', function() {
++		//if another window is open, close it
++        if(infowindow) {
++            infowindow.close();
++        }
++	    //show_market_details(market);
++	    infowindow.open(map, marker);
++  	});
++
++	return marker;
+ }
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/index.html
+index 106d7fe..bf52a03 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/index.html
+@@ -1,3 +1,4 @@
++<!DOCTYPE html>
+ <html>
+   <head>
+ 	<meta charset="UTF-8">
+@@ -6,7 +7,6 @@
+ 
+ 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+ 	<script src="javascript/map.js" type="text/javascript"></script>	
+-    <script src="javascript/getMarket.js" type="text/javascript">getResults(47906)</script>
+ 	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+   <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/andika:n4:default;cabin:n4:default.js" type="text/javascript"></script>
+   <script type="text/javascript">
+@@ -18,14 +18,19 @@
+ </script>
+ </head>
+   <body>
+-  <script src="javascript/getMarket.js" type="text/javascript">getResults(47906)</script>
+ <div id="info">
+   <div id="headLine">&nbsp;</div>
+-  <div id="content">&nbsp;</div>
++  <div id="content">
++    <div class="card" id="card1">19 <br> stores<br> around<br> you <br></div>
++    <div class="card" id="card2">Best Fruit for summer<br> Apple</div>
++    <div class="card" id="card3">Do you know.. <br> <a href="https://en.wikipedia.org/wiki/Banana">banana</a></div>
++
++    <div class="card" id="card4">Weather today</div>
++  </div>
+ </div>
+ <div id="menu">
+ <div id="logo"><img src="css/c.jpg" width="21" height="21" id="logoIcon">  CHEAPEST</div>
+-  <div class="navi" id="indexIcon">Index</div>
++  <a href="index.html"><div class="navi" id="indexIcon">Index</div></a>
+   <a href="map.html"><div class="navi" id="mapIcon">Map</div></a>
+ </div>
+   	<script async defer
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/map.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/map.html
+index 9992341..3ed1f5e 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/map.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-huayifang/map.html
+@@ -3,12 +3,43 @@
+ <head>
+ <meta charset="utf-8">
+ <title>map</title>
++  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
++
++  <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
++  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
++  <script src="javascript/bubble/bubble.js"></script>
++
++
++  <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/andika:n4:default;cabin:n4:default.js" type="text/javascript"></script>
++	<script src="javascript/getMarket.js" type="text/javascript"></script>	
+    	<script src="javascript/map.js" type="text/javascript"></script>	
+ <link href="css/style.css" rel="stylesheet" type="text/css">
+ </head>
+ 
+ <body>
+-<div id="map"></div>
++<div id="info">
++  <div id="headLine"></div>
++  <div>
++    <div id="content">
++      <div id="storeList"></div>
++      <div class="bubbleChart"></div>
++      <div id="map" style="left: 1080px; position: fixed; -webkit-box-shadow: 3px 3px 4px 3px #C4C4C4; box-shadow: 3px 3px 4px 3px #C4C4C4; border-radius: 3px; margin-top: 15px; margin-bottom: 10px; margin-right: 7px; margin-left: 0px; width: 565px; height: 900px;"></div>
++    </div>
++  </div>
++</div>
++<div id="menu">
++<div id="logo"><img src="css/c.jpg" width="21" height="21" id="logoIcon">  CHEAPEST</div>
++  <a href="index.html"><div class="navi" id="indexIcon">Index</div></a>
++  <a href="map.html"><div class="navi" id="mapIcon">Map</div></a>
++</div>
+   	<script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqhZ6hHcWDXbjajiHWtb5wGfYLdSaWDyo&callback=initMap">
+     </script>

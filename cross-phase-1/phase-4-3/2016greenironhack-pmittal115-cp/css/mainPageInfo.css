@@ -1,0 +1,83 @@
+html
+
+body { 
+height: 100%; 
+margin: 12; 
+padding: 0; 
+background-image: url("background.jpeg");
+background-repeat: no-repeat;
+background-position: bottom;
+/*-webkit-background-size: 1400px 1400px;*/
+}
+
+/* use "#" for ids and use "." for classes
+usually an id in unique in one html page*/
+#header {
+    background-color:#E0E0E0 ;
+    text-align:center;
+    padding:20px;
+}
+
+h1 {
+    color: black;
+    font-style: impact;
+    font-size: 333%;
+}
+
+h3 {
+    
+	align:center;
+	color: red;
+    font-size: 200%;
+}
+
+/*#text{
+	font-size: 120%;
+	color:black;
+}
+*/
+img { 
+	align:center;
+    width:65%;
+    height:20%;
+}
+
+
+#sec1{
+	position: absolute;
+	left: 50%;
+	top:25%;
+}
+
+#sec2{
+	position: absolute;
+	left: 30%;
+	top: 25%;
+}
+
+/*#sec3{
+	position: absolute;
+	left: 27%;
+	top: 38%;
+}
+
+#sec4{
+	position: absolute;
+	left: 36%;
+	top: 75%;
+}
+
+#sec5{
+	position: absolute;
+	left: 51%;
+	top: 43%;
+
+}
+
+#sec6{
+	position: absolute;
+	left: 19%;
+	top: 93%;
+
+}
+*/

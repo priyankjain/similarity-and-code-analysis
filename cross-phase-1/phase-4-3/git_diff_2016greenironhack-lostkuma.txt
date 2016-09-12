@@ -1,0 +1,2559 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/AsterChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/AsterChart.js
+new file mode 100644
+index 0000000..45de3a5
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/AsterChart.js
+@@ -0,0 +1,212 @@
++
++function makeChartData() {
++
++  var data = [];
++    if (price_value != null) {
++      var price_value_inverse = 1 - price_value;
++      data.push({"id": "Pri", "order": 1, "score": price_value_inverse, "weight": 1, "color": "#E1514B", "label": "Price"});
++    }
++    if (rating_value != null) {
++      data.push({"id": "Rat", "order": 1, "score": rating_value, "weight": 1, "color": "#FEC574", "label": "Rating"});
++    }
++    if (service_value != null) {
++      data.push({"id": "Ser", "order": 1, "score": service_value, "weight": 1, "color": "#FAE38C", "label": "Service"});
++    }
++    if (final_freshness != null) {
++      freshness_value = 0.2 * rating_value + 0.2 * openhour_value + 0.6 * final_freshness;
++      data.push({"id": "Fre", "order": 1, "score": freshness_value, "weight": 1, "color": "#C7E89E", "label": "Freshness"});
++    }
++    if (openhour_value != null) {
++      data.push({"id": "OpH", "order": 1, "score": openhour_value, "weight": 1, "color": "#4D9DB4", "label": "Open Hour"});
++    } 
++    if (distance_value != null) {
++      distance_value = 1 - distance_value;
++      data.push({"id": "Dis", "order": 1, "score": distance_value, "weight": 1, "color": "#5E4EA1", "label": "Distance"});
++    }
++    return data;
++}
++
++
++function AsterChart(data) {
++  var chart_id = "#aster-chart";
++
++  var width = 300,
++      height = 300,
++      radius = Math.min(width, height) / 2,
++      innerRadius = 0.25 * radius,
++      levels = 4;
++
++  var pie = d3.layout.pie()
++      .sort(null)
++      .value(function(d) { return d.width; });
++
++  var tip = d3.tip()
++    .attr('class', 'd3-tip')
++    .offset([0, 0])
++    .html(function(d) {
++      return d.data.label + ": <span style='color:orangered'>" + Math.round(d.data.score * 100) 
++      						+ "pt" + "</span>";
++    });
++
++  var arc = d3.svg.arc()
++    .innerRadius(innerRadius)
++    .outerRadius(function (d) { 
++      return (radius - innerRadius) * (d.data.score) + innerRadius;
++    });
++
++  var outlineArc = d3.svg.arc()
++    .innerRadius(innerRadius)
++    .outerRadius(radius);
++
++  d3.select(chart_id).select("svg").remove();
++
++  var svgout = d3.select(chart_id).append("svg")
++    .attr("width", width + 180)
++    .attr("height", height);
++
++  var svg = svgout
++    .append("g")
++    .attr("transform", "translate(" + radius + "," + height / 2 + ")");
++
++  var filter = svgout.append('defs').append('filter').attr('id','glow'),
++	feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
++	feMerge = filter.append('feMerge'),
++	feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
++	feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
++
++  svg.call(tip);
++
++  data.forEach(function(d) {
++    d.id     =  d.id;
++    d.order  = +d.order;
++    d.color  =  d.color;
++    d.weight = +d.weight;
++    d.score  = +d.score;
++    d.width  = +d.weight;
++    d.label  =  d.label;
++  });
++    
++	//Wrapper for the grid & axes
++  var axisGrid = svg.append("g").attr("class", "axisWrapper");
++
++	//Draw the background circles
++  axisGrid.selectAll(".levels")
++      .data(d3.range(1,(levels+1)).reverse())
++    .enter()
++	  .append("circle")
++	  .attr("class", "gridCircle")
++	  .attr("r", function(d, i){return radius/levels*d;})
++	  .style("fill", "#CDCDCD")
++	  .style("stroke", "#CDCDCD")
++	  .style("fill-opacity", 0.1)
++	  .style("filter" , "url(#glow)");
++
++  var outerPath = svg.selectAll(".outlineArc")
++      .data(pie(data))
++    .enter().append("path")
++      .attr("fill", "#CDCDCD")
++      .attr("stroke", "none")
++      .attr("class", "outlineArc")
++      .style("fill-opacity", 0.1)
++      .style("filter" , "url(#glow)")
++      .attr("d", outlineArc);  
++
++  var path = svg.selectAll(".solidArc")
++      .data(pie(data))
++    .enter().append("path")
++      .attr("fill", function(d) { return d.data.color; })
++      .attr("class", "solidArc")
++      .attr("stroke", "none")
++      .style("fill-opacity", 0.95)
++      .style("filter" , "url(#glow)")
++      .attr("d", arc)
++      .on('mouseover', tip.show)
++      .on('mouseout', tip.hide);
++
++
++  // calculate the weighted mean score
++  var score = 
++    data.reduce(function(a, b) {
++//      console.log('a:' + a + ', b.score: ' + b.score + ', b.weight: ' + b.weight);
++      return a + (b.score * b.weight); 
++    }, 0) / 
++    data.reduce(function(a, b) { 
++      return a + b.weight; 
++    }, 0);
++
++
++  svg.append("svg:text")
++    .attr("class", "aster-score")
++    .attr("text-anchor", "middle") // text-align: right
++    .text("Overall");
++
++  svg.append("svg:text")
++    .attr("class", "aster-score")
++    .attr("dy", "1em")
++    .attr("text-anchor", "middle") // text-align: right
++    .text(Math.round(score * 100) + "pt");
++
++
++  var range = [];
++  var domain = [];
++    for (var i = 0; i < data.length; i++) {
++      var color_i = data[i].color;
++      range.push(color_i);
++      var score_i = Math.round(data[i].score * 100);
++      var label_i = data[i].label;
++      var text_i = label_i + ": " + score_i + "pt";
++      domain.push(text_i);
++    }
++
++  var fill = d3.scale.ordinal()
++      .domain(domain)
++      .range(range);
++
++  var legend = svgout.selectAll(".legend")
++      .data(fill.domain())
++    .enter().append("g")
++      .attr("class", "legend")
++      .attr("transform", function(d, i) { return "translate(" + (width - 20) + "," + i * 20 + ")"; });
++
++      // draw legend colored rectangles
++      legend.append("rect")
++      .attr("width", 18)
++      .attr("height", 18)
++      .attr("x", 40)
++      .attr("y", 160)
++      .style("filter" , "url(#glow)")
++      .style("fill", function(d) { return fill(d); });
++
++      // draw legend text
++      legend.append("text")
++      .attr("y", 169)
++      .attr("dx", 72)
++      .attr("dy", ".35em")
++      .style("text-anchor", "left")
++      .text(function(d) { return d;})
++
++  function wrap(text, width) {
++    text.each(function() {
++      var text = d3.select(this),
++          words = text.text().split(/\s+/).reverse(),
++          word,
++          line = [],
++          lineNumber = 0,
++          lineHeight = 1.1, // ems
++          y = text.attr("y"),
++          dy = parseFloat(text.attr("dy")),
++          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
++      while (word = words.pop()) {
++        line.push(word);
++        tspan.text(line.join(" "));
++        if (tspan.node().getComputedTextLength() > width) {
++          line.pop();
++          tspan.text(line.join(" "));
++          line = [word];
++          tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
++        }
++      }
++    });
++  }
++
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/Gauge.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/Gauge.js
+new file mode 100644
+index 0000000..f94af34
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/Gauge.js
+@@ -0,0 +1,161 @@
++var gauge = function(container, configuration, end_color) {
++	var that = {};
++	var config = {
++		size						: 200,
++		clipWidth					: 200,
++		clipHeight					: 110,
++		ringInset					: 20,
++		ringWidth					: 20,
++		
++		pointerWidth				: 10,
++		pointerTailLength			: 5,
++		pointerHeadLengthPercent	: 0.8,
++		
++		minValue					: 0,
++		maxValue					: 10,
++		
++		minAngle					: -90,
++		maxAngle					: 90,
++		
++		transitionMs				: 2000,
++		
++		majorTicks					: 6,
++		labelFormat					: d3.format(',g'),
++		labelInset					: 10,
++		
++		arcColorFn					: d3.interpolateHsl(d3.rgb('#e8e2ca'), d3.rgb(end_color))
++	};
++	var range = undefined;
++	var r = undefined;
++	var pointerHeadLength = undefined;
++	
++	var svg = undefined;
++	var arc = undefined;
++	var scale = undefined;
++	var ticks = undefined;
++	var tickData = undefined;
++	var pointer = undefined;
++	var value = 0;
++
++	var donut = d3.layout.pie();
++	
++	function deg2rad(deg) {
++		return deg * Math.PI / 180;
++	}
++	
++	function newAngle(d) {
++		var ratio = scale(d);
++		var newAngle = config.minAngle + (ratio * range);
++		return newAngle;
++	}
++	
++	function configure(configuration) {
++		var prop = undefined;
++		for ( prop in configuration ) {
++			config[prop] = configuration[prop];
++		}
++		
++		range = config.maxAngle - config.minAngle;
++		r = config.size / 2;
++		pointerHeadLength = Math.round(r * config.pointerHeadLengthPercent);
++
++		// a linear scale that maps domain values to a percent from 0..1
++		scale = d3.scale.linear()
++			.range([0,1])
++			.domain([config.minValue, config.maxValue]);
++			
++		ticks = scale.ticks(config.majorTicks);
++		tickData = d3.range(config.majorTicks).map(function() {return 1/config.majorTicks;});
++		
++		arc = d3.svg.arc()
++			.innerRadius(r - config.ringWidth - config.ringInset)
++			.outerRadius(r - config.ringInset)
++			.startAngle(function(d, i) {
++				var ratio = d * i;
++				return deg2rad(config.minAngle + (ratio * range));
++			})
++			.endAngle(function(d, i) {
++				var ratio = d * (i+1);
++				return deg2rad(config.minAngle + (ratio * range));
++			});
++	}
++	that.configure = configure;
++	
++	function centerTranslation() {
++		return 'translate('+r +','+ r +')';
++	}
++	
++	function isRendered() {
++		return (svg !== undefined);
++	}
++	that.isRendered = isRendered;
++	
++	function render(newValue) {
++		svg = d3.select(container)
++			.append('svg:svg')
++				.attr('class', 'gauge')
++				.attr('width', config.clipWidth)
++				.attr('height', config.clipHeight);
++		
++		var centerTx = centerTranslation();
++		
++		var arcs = svg.append('g')
++				.attr('class', 'arc')
++				.attr('transform', centerTx);
++		
++		arcs.selectAll('path')
++				.data(tickData)
++			.enter().append('path')
++				.attr('fill', function(d, i) {
++					return config.arcColorFn(d * i);
++				})
++				.attr('d', arc);
++		
++		var lg = svg.append('g')
++				.attr('class', 'label')
++				.attr('transform', centerTx);
++		lg.selectAll('text')
++				.data(ticks)
++			.enter().append('text')
++				.attr('transform', function(d) {
++					var ratio = scale(d);
++					var newAngle = config.minAngle + (ratio * range);
++					return 'rotate(' +newAngle +') translate(0,' +(config.labelInset - r) +')';
++				})
++				.text(config.labelFormat);
++
++		var lineData = [ [config.pointerWidth / 2, 0], 
++						[0, -pointerHeadLength],
++						[-(config.pointerWidth / 2), 0],
++						[0, config.pointerTailLength],
++						[config.pointerWidth / 2, 0] ];
++		var pointerLine = d3.svg.line().interpolate('monotone');
++		var pg = svg.append('g').data([lineData])
++				.attr('class', 'pointer')
++				.attr('transform', centerTx);
++				
++		pointer = pg.append('path')
++			.attr('d', pointerLine/*function(d) { return pointerLine(d) +'Z';}*/ )
++			.attr('transform', 'rotate(' +config.minAngle +')');
++			
++		update(newValue === undefined ? 0 : newValue);
++	}
++	that.render = render;
++	
++	function update(newValue, newConfiguration) {
++		if ( newConfiguration  !== undefined) {
++			configure(newConfiguration);
++		}
++		var ratio = scale(newValue);
++		var newAngle = config.minAngle + (ratio * range);
++		pointer.transition()
++			.duration(config.transitionMs)
++			.ease('elastic')
++			.attr('transform', 'rotate(' +newAngle +')');
++	}
++	that.update = update;
++
++	configure(configuration);
++	
++	return that;
++};
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/README.md
+index c0ac886..1134ade 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/README.md
+@@ -1,4 +1,4 @@
+-**Find My Veggies** v1.1.0 - 2016-04-07  
++**Find My Veggies** v1.2.0 - 2016-04-14   
+ 
+ * **Note for chrome users! Firefox and Safari can skip this**  
+ 	**The page needs to be ran on a local server or real server!**  
+@@ -69,28 +69,40 @@ Those features include but not limited to: freshness, price, open hours, distanc
+ 	* Nearby stores will be displayed after centering with drop pin
+ 	* Click on marker
+ 		* Info window displays store name, address, link to google map  
+-		* Side menu displays detailed information  
+-		* Side menu has button "Get Direction", click on button  
++		* Side menu tab basic information displays detailed information  
++		* Tabs are initialized at Weather, if tabs not at "Basic" or "Compare" when click on markers, it will automatically switch to "Basic" tab  
++		* Side menu "Basic" has button "Get Direction", click on button  
+ 			* displays driving route  
+ 			* info window displays distance and travel time  
+ 	
+ * Data Visualization  
+-	* Radar chart for single store's features
+-	* side menu tab 1 - basic info
++	* Current traffic condition directly displayed on map  
++	* Day and night weather displayed with numbers on images  
++	* Wind speed and direction, humidity displayed with gauges  
++	* Aster chart with labels for single store's features  
++	* Stacked to grouped Bar Graph for three stores comparison  
++	* side menu tab 1 - Current weather  
++		* show today's day and night temperature  
++		* show today's wind speed and direction, and humidity  
++	* side menu tab 2 - Basic info
+ 		* name, phone, website, today's open hour and rating if the store have them  
+-		* radar chart for detailed features  
+-	* side menu tab 2 - compare stores (need further edition)  
+-		* compare three stores information with radar chart  
+-		* features of the stores are displayed for choices  
+-	* side menu tab 3 - seasonal vegetable chart  
++		* aster chart with overall points and labels for detailed features  
++		* hover over aster chart colors show info window with points  
++	* side menu tab 3 - Compare stores  
++		* compare recent added three stores information with bar chart with labels  
++		* reset button to reset the compared data  
++		* can choose grouped data or stacked data for better comparison   
++	* side menu tab 4 - Seasonal vegetable chart  
+ 		* seasonal vegetables for this month are displayed  
++	* side menu tab 5 - Store directory  
++		* The list of search results of stores  
+ 
+ * Interation Form:  
+-	* Information output: store links and link to google maps, google map place details output for each store. Store directory on the third page    
+-	* Operation option: switch between tabs, turn on/off features, current date, time and weather displayed on top right and will disappear if browser window gets small. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top  
+-	* Information input: click to get direction, turn on/off features for comparison of stores  
+-	* Interaction with map: click on markers, info window displays, get directions  
+-	* Interaction with data visualization: Store directory link to website, checkboxes enable/disable features for comparison which will change the data displayed  
++	* Information output: store links and link to google maps, google map place details output, directions, distance, and travel time for each store. Store directory tab to show detailed information    
++	* Operation option: switch between different tabs, change store compare display methods. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top, and can scroll back up to home with full pages  
++	* Information input: choose which stores information to be displayed and directly out of the map  
++	* Interaction with map: turn on/off traffic layers, click on markers, info window displays, get directions  
++	* Interaction with data visualization: Hover over the aster chart, detailed info window will display, store directory link to website, change display methods of the bar chart to show either grouped data or stacked data   
+ 
+ **Content**  
+ * README.txt  --This file.  
+@@ -98,17 +110,17 @@ Those features include but not limited to: freshness, price, open hours, distanc
+ * image  --A directory contains all images used in the website  
+ * css  --A directory contains all css files  
+ * js  --A directory contains all the javescript files  
++	* Asterchart.js --Function to draw aster chart  
++	* barGraph.js --Function to draw bar graph  
++	* Gauge.js --Function to draw the gauges  
+ 	* datasheet.js --Processed data. Everything is scaled to a 1 to 10 scale  
+-	* drawChartBI.js --Script for radar chart on basic info tab  
+-	* drawChartCS.js --Script for radar chart on compare stores tab  
+ 	* main.js --Script for functions other than map  
+ 	* map.js --Script for Google map and related functions  
+-	* radarChart.js --Radar chart initializing  
+ 	* decisiontree.js --Decision tree in javascript
+ 	* veggies.js --Constants for monthly vegetables  
+ 	* bootstrap.min.js --Bootstrap  
+ 	* jquery.easing.min.js --Multiple easing option script for scrolling effect  
+-	* scrolling-nav.js --Scrolling effect of the page  
++	* jquery.fullPage.js --For the page scrolling effect  
+ * data_processing --A directory with all data and data processing scripts used  
+ 	* decisiontree.py --Python file for process decisiontree using weather data  
+ 	* processdata.py --Python file for processing and scaling raw data  
+@@ -123,7 +135,7 @@ Those features include but not limited to: freshness, price, open hours, distanc
+ The project only uses HTML/CSS/Javascript. Python was used for data training and transforming, however, the results are printed out and pasted to a javascrpt file to be able to access easier for javascript further calculation.  
+ 
+ **Test**  
+-The App is test in Chrome, Firefox and Safari. The Geolocation function which request the browser's location has to be ran on a local/real server on Chrome to be able to functioning since Chrome seems to block something.  
++The App is test in Chrome, Firefox and Safari. The Geolocation function which request the browser's location has to be ran on a local/real server on Chrome to be able to functioning since Chrome seems to block something. The hover on aster chart function doesn't seem to work on firefox, and firefox does something weird with drawing the chart with d3.  
+ 
+ **Additional information**  
+ The decision tree prediction method might not be super well defined, and the dataset for training is probably not big enough for getting a super good result sometimes. Opendata sets data processing, especially the weather data, need to be well understood and defined if to be used in practical application development.  
+@@ -134,6 +146,10 @@ The goal of this project, finding fresh and cheap vegetables, is actually very v
+ 
+ **^ Please ignore all my random imaginations and complains unless you also go after the reasonings behind things like a mad scientist...**  
+ 
++**Some ideas about the opendata set and goal for this project:**  
++So during the process of looking up open datasets online, I found that most of the datasets, at least for those related to agricalture, ecosystem, climate, ocean, business, and consumer are at the state level, some datasets of more specific information will mostly stop at the county level. So in order to make better use of these datasets online, the goal of this kind of project will be better if adjusted to the state level but not too locally defined.... For example, there are very detailed datasets for natrual disasters about on what day and time a disaters happened at a certain location, and we can get very detailed climate, ecosystem, and ocean data. So known the method of prediction (such as machine learning algorithms), one can combine these very detailed information and train a claasifier to predict the likelihood of future disasters. Furthermore, if the algorithm is well-defined, it is not impossible to predict the likelihood of future disasters on a specific date and location <-- However this requires large amount of accurate data.  
++So one thing about the goal of the project in the future requires the person who defines the problem space to know more about open datasets, and think what can be actually done with the Climate Data Online sets alone with other datasets out there.  
++
+ I will thank my boyfriend Jason Macnak, a former Purdue graduate and a software engineer at Google, for all the mental supports during this project, as well as teaching me all the basics of programming languages patiently for the past couple months...  
+ 
+ **Contact**  
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/barGraph.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/barGraph.js
+new file mode 100644
+index 0000000..91839db
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/barGraph.js
+@@ -0,0 +1,275 @@
++var name_click = [],
++    price_click = [],
++    rating_click = [],
++    open_hour_click = [],
++    service_click = [];
++
++function setBarData(store_info_click) {
++  name_click = [],
++  price_click = [],
++  rating_click = [],
++  open_hour_click = [],
++  service_click = [];
++
++  var name_single,
++      price_single,
++      rating_single,
++      openhour_single,
++      service_single,
++      freshness_single;
++
++  var num = store_info_click.length;
++  for (i = 0; i < num; i++) {
++    name_single = store_info_click[i]["index"] + ". " + store_info_click[i]["name"];
++    name_click.push(name_single);
++
++    if (store_info_click[i]["price"] == "?") {
++        price_single = 0.5;
++    } else {
++        price_single = 1 - store_info_click[i]["price"] * 2 / 10;
++    }
++    price_click.push(price_single);
++    
++    if (store_info_click[i]["rating"] == "?") {
++        rating_single = 0.5;
++    } else {
++        rating_single = store_info_click[i]["rating"] * 2 / 10;
++    }   
++    rating_click.push(rating_single);
++
++    if (store_info_click[i]["open_hour_detail"] == "?") {
++        openhour_single = 0.5;
++    } else {
++        if (store_info_click[i]["open_hour_detail"].length == 1) {
++            openhour_single = 1;
++        } else {
++            var total_hour = 0;
++            var day_num = store_info_click[i]["open_hour_detail"].length;
++            for (j = 0; j < day_num; j++) {
++                var close_hour = store_info_click[i]["open_hour_detail"][j]["close"]["hours"];
++                if (close_hour == 0) {
++                    close_hour = 24;
++                }
++                var open_hour = store_info_click[i]["open_hour_detail"][j]["open"]["hours"];
++                var open_period = close_hour - open_hour;
++                total_hour += open_period;
++            openhour_single = total_hour / 168;
++            }
++        }
++    }
++    open_hour_click.push(openhour_single);
++
++    service_single = 0.2 * price_single + 0.8 * rating_single;   
++    service_click.push(service_single);
++  }
++}
++
++
++function makeBarData() {
++  var bar_data = [["#E1514B"], ["#FEC574"], ["#FAE38C"], ["#C7E89E"], ["#4D9DB4"]];
++  for (i = 0; i < store_info_click.length; i++) {
++    if (name_click != null) {
++      if (price_click != null) {
++        bar_data[0].push({x:name_click[i], y:price_click[i]});
++      }
++      if (rating_click != null) {
++        bar_data[1].push({x:name_click[i], y:rating_click[i]});
++      }
++      if (service_click != null) {
++        bar_data[2].push({x:name_click[i], y:service_click[i]});
++      }
++      if (open_hour_click != null) {
++        bar_data[4].push({x:name_click[i], y:open_hour_click[i]});
++      } 
++      if (final_freshness != null) {
++        freshness_single = 0.2 * rating_click[i] + 0.2 * open_hour_click[i] + 0.6 * final_freshness;
++        bar_data[3].push({x:name_click[i], y:freshness_single});
++      }
++    }
++  }
++  return bar_data;
++}
++
++/*var test = [
++  ["#E1514B", {x:"store1", y:0.1}, {x:"store2", y:0.2}, {x:"store3", y:0.24}],
++  ["#FEC574", {x:"store1", y:0.3}, {x:"store2", y:0.22}, {x:"store3", y:0.33}],
++  ["#FAE38C", {x:"store1", y:0.2}, {x:"store2", y:0.211}, {x:"store3", y:0.3}],
++  ["#C7E89E", {x:"store1", y:0.11}, {x:"store2", y:0.31}, {x:"store3", y:0.5}],
++  ["#4D9DB4", {x:"store1", y:0.244}, {x:"store2", y:0.4}, {x:"store3", y:0.1}],    
++  ]
++*/
++
++
++function barGraph(data) {
++  $("#bar-stacked").prop("checked", true);
++  
++  var color = [];
++  for (i = 0; i < data.length; i++) {
++    color.push(data[i][0])
++    data[i].shift();
++  }
++
++  var legends = name_click;
++
++  var id = "#bar-graph-compare";
++
++  d3.select(id).select("svg").remove();
++
++  var n = 5, // number of layers
++      m = 3, // number of samples per layer
++      stack = d3.layout.stack(),
++      layers = stack(data),
++      yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
++      yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
++
++  var margin = {top: 40, right: 10, bottom: 20, left: 10},
++      width = 400 - margin.left - margin.right,
++      height = 300 - margin.top - margin.bottom;
++
++  var x = d3.scale.ordinal()
++      .domain(legends)
++      .rangeRoundBands([0, width], .15);
++
++  var y = d3.scale.linear()
++      .domain([0, yStackMax])
++      .range([height, 0]);
++
++  var xAxis = d3.svg.axis()
++      .scale(x)
++      .tickSize(0)
++      .tickPadding(6)
++      .orient("bottom");
++
++  var svgout = svg = d3.select(id).append("svg")
++      .attr("width", width + margin.left + margin.right + 100)
++      .attr("height", height + margin.top + margin.bottom + 30);
++
++  var svg = svgout
++    .append("g")
++      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
++
++  var filter = svg.append('defs').append('filter').attr('id','glow'),
++  feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
++  feMerge = filter.append('feMerge'),
++  feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
++  feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
++
++  var layer = svg.selectAll(".layer")
++      .data(layers)
++    .enter().append("g")
++      .attr("class", "layer")
++      .style("filter" , "url(#glow)")
++      .style("fill", function(d, i){return color[i]; })
++      .style("fill-opacity", 0.8)
++
++  var rect = layer.selectAll("rect")
++      .data(function(d) { return d; })
++    .enter().append("rect")
++      .attr("x", function(d) { return x(d.x); })
++      .attr("y", height)
++      .attr("width", x.rangeBand())
++      .attr("height", 0);
++
++  rect.transition()
++      .delay(function(d, i) { return i * 10; })
++      .attr("y", function(d) { return y(d.y0 + d.y); })
++      .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); });
++
++  svg.append("g")
++      .attr("class", "x axis")
++      .attr("transform", "translate(0," + height + ")")
++      .call(xAxis)
++    .selectAll(".tick text")
++      .call(wrap, x.rangeBand());
++  
++  d3.selectAll("input").on("change", change);
++
++  var timeout = setTimeout(function() {
++    d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
++  }, 1000);
++
++  function change() {
++    clearTimeout(timeout);
++    if (this.value === "grouped") transitionGrouped();
++    else transitionStacked();
++  }
++
++  function transitionGrouped() {
++    y.domain([0, yGroupMax]);
++
++    rect.transition()
++        .duration(500)
++        .delay(function(d, i) { return i * 10; })
++        .attr("x", function(d, i, j) { return x(d.x) + x.rangeBand() / n * j; })
++        .attr("width", x.rangeBand() / n)
++      .transition()
++        .attr("y", function(d) { return y(d.y); })
++        .attr("height", function(d) { return height - y(d.y); });
++  }
++
++  function transitionStacked() {
++    y.domain([0, yStackMax]);
++
++    rect.transition()
++        .duration(500)
++        .delay(function(d, i) { return i * 10; })
++        .attr("y", function(d) { return y(d.y0 + d.y); })
++        .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
++      .transition()
++        .attr("x", function(d) { return x(d.x); })
++        .attr("width", x.rangeBand());
++  }
++
++  var labels = ["Price", "Rating", "Service", "Freshness", "Open Hour"]
++  var fill = d3.scale.ordinal()
++      .domain(labels)
++      .range(color);
++
++  var legend = svgout.selectAll(".legend")
++      .data(fill.domain())
++    .enter().append("g")
++      .attr("class", "legend")
++      .attr("transform", function(d, i) { return "translate(" + (width - 20) + "," + i * 20 + ")"; });
++
++      // draw legend colored rectangles
++      legend.append("rect")
++      .attr("width", 18)
++      .attr("height", 18)
++      .attr("x", 40)
++      .attr("y", 10)
++      .style("filter" , "url(#glow)")
++      .style("fill", function(d) { return fill(d); });
++
++      // draw legend text
++      legend.append("text")
++      .attr("y", 19)
++      .attr("dx", 62)
++      .attr("dy", ".35em")
++      .style("text-anchor", "left")
++      .text(function(d) { return d;})
++
++  function wrap(text, width) {
++    text.each(function() {
++      var text = d3.select(this),
++          words = text.text().split(/\s+/).reverse(),
++          word,
++          line = [],
++          lineNumber = 0,
++          lineHeight = 1.1, // ems
++          y = text.attr("y"),
++          dy = parseFloat(text.attr("dy")),
++          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
++      while (word = words.pop()) {
++        line.push(word);
++        tspan.text(line.join(" "));
++        if (tspan.node().getComputedTextLength() > width) {
++          line.pop();
++          tspan.text(line.join(" "));
++          line = [word];
++          tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
++        }
++      }
++    });
++  }
++
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/css/scrolling-nav.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/css/scrolling-nav.css
+deleted file mode 100644
+index 86586d0..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/css/scrolling-nav.css
++++ /dev/null
+@@ -1,37 +0,0 @@
+-/*!
+- * Start Bootstrap - Scrolling Nav HTML Template (http://startbootstrap.com)
+- * Code licensed under the Apache License v2.0.
+- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+- */
+-
+-@media(min-width:767px) {
+-    .navbar {
+-        padding: 20px 0;
+-        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+-        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+-        transition: background .5s ease-in-out,padding .5s ease-in-out;
+-    }
+-
+-    .top-nav-collapse {
+-        padding: 0;
+-    }
+-}
+-
+-.intro-section {
+-    height: 100%;
+-    padding-top: 25%;
+-    padding-bottom: 50%;
+-    text-align: center;
+-}
+-
+-.about-section {
+-    height: 100%;
+-    padding-top: 54px;
+-}
+-
+-.store-section {
+-    height: 100%;
+-    padding-top: 10%;
+-    padding-bottom: 10%;
+-    text-align: center;
+-}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/css/style.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/css/style.css
+index 8f7f35f..3299100 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/css/style.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/css/style.css
+@@ -12,7 +12,56 @@ html {
+     height: 100%;
+ }
+ 
+-@media screen and (max-width: 778px) {
++@media(min-width:768px) {
++    .navbar {
++        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
++        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
++        transition: background .5s ease-in-out,padding .5s ease-in-out;
++    }
++    .multi {
++	column-count:3;
++	-moz-column-count:3;
++	-webkit-column-count: 3;
++	}
++	#menu-cover {
++	width: 94.7%;
++	height: 89%;
++	overflow: scroll;
++	}
++	.intro-section {
++    	padding-top: 24%;
++    }
++    #temp-day-sm {
++    	display: none;
++    }
++    #temp-night-sm {
++    	display: none;
++    }
++    #wind-speed-sm {
++    	display: none;
++    }
++    #humid-text-sm {
++    	display: none;
++    }
++    #temp-day {
++		position: absolute;
++		margin-right: 50%;
++		left: 24.5%;
++		top: 11%;
++		text-shadow: 2.5px 1.5px #f6f6f6;
++	}
++
++	#temp-night {
++		position: absolute;
++		margin-left: 50%;
++		right: 24.5%;
++		top: 11%;
++		color: white;
++		text-shadow: 2.5px 1.5px gray;
++	}
++}
++
++@media screen and (max-width: 767px) {
+ 	.navbar-icon {
+ 		display: none;
+ 	}
+@@ -22,27 +71,127 @@ html {
+ 	#weather-icon {
+ 		display: none;
+ 	}
++	#current-weather {
++		display: none;
++	}
++    .intro-section {
++    	padding-top: 33%;
++	    padding-left: 20%;
++	    padding-right: 20%;
++	}
++	#menu-cover {
++	width: 92%;
++	height: 77%;
++	}
++	#tab-veggies {
++		display: none;
++	}
++	#img-temp {
++		display: none
++	}
++	#temp-day {
++		display: none;
++	}
++	#temp-night {
++		display: none;
++	}
++	#wind-speed {
++		display: none;
++	}
++	#humid-text {
++		display: none;
++	}
++	#power-gauge1 {
++		display: none;
++	}
++	#power-gauge2 {
++		display: none;
++	}
++}
++
++@media screen and (max-width: 1000px) {
++	.multi {
++		column-count:2;
++		-moz-column-count:2;
++		-webkit-column-count: 2;
++	}
++	#tab-directory {
++		display: none;
++	}
++	.two-column {
++	column-count:1;
++	-moz-column-count:1;
++	-webkit-column-count: 1;
++	}
++}
++
++@media screen and (min-width: 1001px) {
++	.two-column {
++	column-count:2;
++	-moz-column-count:2;
++	-webkit-column-count: 2;
++	margin-top: 40px
++	}
++	#menu-cover {
++		width: 95%;
++		height: 89%;
++	}
++}
++
++@media screen and (min-width: 1200px) {
++	.intro-section {
++    	padding-top: 21%;
++    }
++    #menu-cover {
++		width: 96.8%;
++		height: 95%;
++		overflow: scroll;
++	}
++	#temp-day {
++		position: absolute;
++		margin-right: 50%;
++		left: 31.5%;
++		top: 11%;
++		text-shadow: 2.5px 1.5px #f6f6f6;
++	}
++
++	#temp-night {
++		position: absolute;
++		margin-left: 50%;
++		right: 31.5%;
++		top: 11%;
++		color: white;
++		text-shadow: 2.5px 1.5px gray;
++	}
+ }
+ 
+-@media screen and (max-width: 1100px) {
+ #current-date {
+ 	position: absolute;
+ 	font-size: 16px;
+ 	margin-top: 14px;
+-		margin-right: 60px;
+-		right: 0px;
++	margin-left: 51%;
++	margin-right: 40px;
++	right: 65px;
++	color: white;
++	text-align: right;
++}
++
++#current-weather {
++	position: absolute;
++	font-size: 16px;
++	margin-top: 14px;
++	right: 15px;
++	margin-right:30px;
+ 	color: white;
++	text-align: right;
+ }
++
+ #weather-icon {
+ 	position: absolute;
+ 	margin-top: 0px;
+-		margin-right: 10px;
++	margin-right: 5px;
+ 	right: 0px;
+ }
+-	#current-weather {
+-		display: none;
+-	}
+-}
+ 
+ .navbar-icon {
+ 	position: relative;
+@@ -52,124 +201,227 @@ html {
+ 	max-width: 50px;
+ }
+ 
++#myNavbar li.active{
++	color: #fff;
++}
++
+ #map{
+ 	position: absolute;
+-    height: 90%;
+-    width: 70%;
+-    left: 10px;
++    height: 88%;
++    width: 50.5%;
++    left: 15px;
+     overflow: hidden;
+     margin-bottom: 10px;
+     margin-top: 15px;
++    border-radius: 10px;
+ }
+ 
+ .side-menu{
+ 	position: absolute;
+-	left: 70.3%;
+-	height: 90%;
+-	width: 30%;
++	left: 51.8%;
++	height: 88.5%;
++	width: 48%;
+ 	padding: 5px 13px;
+ 	overflow: hidden;
+ 	margin-bottom: 10px;
+-	margin-top: 15px;
++	margin-top: 10px;
+ }
+ 
+ #menu-cover {
++	height: 90%;
+ 	position: absolute;
+ 	padding: 15px 25px 15px;
+-	width: 93%;
+-	height: 91%;
+ 	background-color: #eee;
+ 	font-size: 14px;
+ 	overflow: scroll;
+-	text-align: center;
++	text-align: left;
+ 	border-bottom-right-radius: 10px;
+ 	border-bottom-left-radius: 10px;
+ 	}
+ 
+-.multi {
+-	column-count:2;
+-	-moz-column-count:2;
+-	-webkit-column-count: 2;
++.side-menu li {
++	border-style: ridge;
++	border-width: 1px;
++	border-top-right-radius: 10px;
++	border-top-left-radius: 10px;
++	background-color: #dbdbdb;
+ }
+ 
+-@media screen and (min-width: 1100px) {
++#img-temp {
++	max-width: 100%;
++	max-height: 100%;
++	margin-bottom: 20px
++}
+ 
+-	#current-date {
+-		position: absolute;
+-		font-size: 16px;
+-		margin-top: 14px;
+-		margin-left: 51%;
+-		margin-right: 90px;
+-		right: 85px;
+-		color: white;
++.temp-daily {
++	text-align: center;
++	padding: 10px;
+ }
+ 
+-	#weather-icon {
+-		position: absolute;
+-		margin-top: 0px;
+-		margin-right: 5px;
+-		right: 10px;
++#temp-day-sm {
++	text-align: left;
+ }
+ 
+-	#current-weather {
+-		position: absolute;
+-		font-size: 16px;
+-		margin-top: 14px;
+-		right: 18px;
+-		margin-right:45px;
+-		color: white;
++#temp-night-sm {
++	text-align: left;
+ }
++
++#wind-speed-sm {
++	text-align: left;
+ }
+ 
+-.side-menu li {
+-	border-style: ridge;
+-	border-width: 1px;
+-	border-top-right-radius: 10px;
+-	border-top-left-radius: 10px;
+-	background-color: #dbdbdb;
++#humid-text-sm {
++	text-align: left;
+ }
+ 
+-.intro-section h1, h3 {
+-	text-shadow: 2.5px 1.5px #f6f6f6;
++#basic p {
++	margin: 0px;
+ }
+ 
+-.radar-chart {
+-	padding-top: 30px;
+-	visibility: hidden;
++.basic-info {
++	margin-bottom: 10px;
++}
++
++#store-image {
++	float: right;
++	margin-left: 5px;
++	margin-right: 10px;
++}
++
++.intro-section {
++    height: 100%;
++    padding-bottom: 30%;
++    text-align: center;
+ }
+ 
+-#radar-chart-bi {
++.about-section {
++    height: 100%;
++    padding-top: 54px;
++}
++
++.intro-section h1, h3 {
++	text-shadow: 2.5px 1.5px #f6f6f6;
++}
++
++.aster-chart {
+ 	position: relative;
+-	top: 10px;
+-	left: -53px;
++	padding-top: 20px;
++	text-align: center;
++	visibility: hidden;
+ }
+ 
+-#radar-chart-cs {
++#aster-chart {
+ 	position: relative;
+-	top: 10px;
+-	left: -53px;
++	top: 20px;
+ }
+ 
+ #get-direction {
+ 	visibility: hidden;
+ }
+ 
+-.store-section h1 {
+-	text-shadow: 2.5px 1.5px #f6f6f6;
++#store-directory {
++	margin-top: 20px;
+ }
+ 
+-.store-section th {
++#store-directory th {
+ 	text-align: center;
+ }
+ 
+-.store-section thead {
++#store-directory thead {
+ 	background-color: white;
++	opacity: 0.7;
++}
++
++
++.map-layer {
++	position: absolute;
++	float: left;
++	z-index: 1;
++	left: 120px;
++	margin-top: 23.5px;
++}
++
++.aster-score { 
++  line-height: 1;
++  font-weight: bold;
++  font-size: 120%;
++}
++
++.d3-tip {
++  line-height: 1;
++  font-weight: bold;
++  padding: 12px;
++  background: rgba(0, 0, 0, 0.8);
++  color: #fff;
++  border-radius: 2px;
++}
++
++/* Creates a small triangle extender for the tooltip */
++.d3-tip:after {
++  box-sizing: border-box;
++  display: inline;
++  font-size: 10px;
++  width: 100%;
++  line-height: 1;
++  color: rgba(0, 0, 0, 0.8);
++  content: "\25BC";
++  position: absolute;
++  text-align: center;
+ }
+ 
+-.store-section tbody {
+-	background-color: #ffffe6;
++/* Style northward tooltips differently */
++.d3-tip.n:after {
++  margin: -1px 0 0 0;
++  top: 100%;
++  left: 0;
++}
++
++.solidArc:hover {
++  fill: orangered;
+   opacity: 0.8;
+-	color: black;
+ }
+ 
++form {
++  position: relative;
++  left: 10px;
++  top: 20px;
++}
++
++.axis path,
++.axis line {
++  fill: none;
++  stroke: #000;
++  shape-rendering: crispEdges;
++}
++
++.bar-graph {
++	visibility: hidden;
++}
++
++#bar-graph-compare {
++	text-align: center;
++}
++
++#bar-reset {
++	margin-bottom: 50px;
++}
++
++#power-gauge g.arc {
++	fill: steelblue;
++}
++
++#power-gauge g.pointer {
++	fill: #e85116;
++	stroke: #b64011;
++}
++
++#power-gauge g.label text {
++	text-anchor: middle;
++	font-size: 14px;
++	font-weight: bold;
++	fill: #666;
++}
+ 
++#veggie-text-align {
++	text-align: center;
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/decisiontree.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/decisiontree.js
+index 60a3887..8e7a9b1 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/decisiontree.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/decisiontree.js
+@@ -1108,7 +1108,7 @@ function loadDecisionTree() {
+ //	+1 if   50 <= x < 200
+ // 	 0 if 		  x >= 200
+ 
+-// WIND (km) = 
++// WIND (km/h) = 
+ // 	+1 if       x < 25
+ //	 0 if 25 <= x < 50
+ //	-1 if       x >= 50
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChart.js
+deleted file mode 100644
+index 9dffe4c..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChart.js
++++ /dev/null
+@@ -1,78 +0,0 @@
+-var w = 270,
+-	h = 270;
+-
+-var colorscale = d3.scale.category10();
+-
+-var LegendOptions = []
+-
+-var d = [
+-	[
+-	{axis:"price", value:0.5},
+-	{axis:"rating", value:0.5},
+-	{axis:"freshness", value:0.5},
+-	{axis:"parking", value:0.6},
+-	{axis:"open hour", value:0.3},
+-	{axis:"distance", value:0.8},
+-	{axis:"service", value:0.3}
+-	]
+-];
+-
+-//Options for the Radar chart, other than default
+-var mycfg = {
+-  w: w,
+-  h: h,
+-  maxValue: 1.0,
+-  levels: 5,
+-  ExtraWidthX: 120
+-}
+-
+-//Call function to draw the Radar chart
+-//Will expect that data is in %'s
+-RadarChart.draw("#radar-chart", d, mycfg);
+-
+-//Initiate legend
+-var svg = d3.select('#body')
+-	.selectAll('svg')
+-	.append('svg')
+-	.attr("width", w)
+-	.attr("height", h)
+-
+-//Create the title for the legend
+-var text = svg.append("text")
+-	.attr("class", "title")
+-	.attr('transform', 'translate(90,0)') 
+-	.attr("x", w - 70)
+-	.attr("y", 10)
+-	.attr("font-size", "12px")
+-	.attr("fill", "#404040")
+-	.text("Store Info");
+-		
+-//Initiate Legend	
+-var legend = svg.append("g")
+-	.attr("class", "legend")
+-	.attr("height", 100)
+-	.attr("width", 200)
+-	.attr('transform', 'translate(90,20)') 
+-	;
+-	//Create colour squares
+-	legend.selectAll('rect')
+-	  .data(LegendOptions)
+-	  .enter()
+-	  .append("rect")
+-	  .attr("x", w - 65)
+-	  .attr("y", function(d, i){ return i * 20;})
+-	  .attr("width", 10)
+-	  .attr("height", 10)
+-	  .style("fill", function(d, i){ return colorscale(i);})
+-	  ;
+-	//Create text next to squares
+-	legend.selectAll('text')
+-	  .data(LegendOptions)
+-	  .enter()
+-	  .append("text")
+-	  .attr("x", w - 52)
+-	  .attr("y", function(d, i){ return i * 20 + 9;})
+-	  .attr("font-size", "11px")
+-	  .attr("fill", "#737373")
+-	  .text(function(d) { return d; })
+-	  ;
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartBI.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartBI.js
+deleted file mode 100644
+index 92573f2..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartBI.js
++++ /dev/null
+@@ -1,94 +0,0 @@
+-
+-function drawChart_Basic() {
+-	var chart1_data = [];
+-	if (price_value != null) {
+-		chart1_data.push({axis:"price", value: price_value});
+-	}
+-	if (rating_value != null) {
+-		chart1_data.push({axis:"rating", value: rating_value});
+-	}
+-	if (openhour_value != null) {
+-		chart1_data.push({axis:"open hour", value: openhour_value});
+-	}	
+-	if (distance_value != null) {
+-		chart1_data.push({axis:"distance", value: distance_value});
+-	}
+-	if (service_value != null) {
+-		chart1_data.push({axis:"service", value: service_value});
+-	}
+-	if (final_freshness != null) {
+-		freshness_value = 0.2 * rating_value + 0.2 * openhour_value + 0.6 * final_freshness;
+-		chart1_data.push({axis:"freshness", value: freshness_value});
+-	}
+-
+-	var chart_data = [
+-		chart1_data
+-	];
+-
+-	var colorscale = d3.scale.category10();
+-	var LegendOptions = [];
+-
+-	var w = 270,
+-		h = 270;
+-
+-	//Options for the Radar chart, other than default
+-	var mycfg = {
+-	  w: w,
+-	  h: h,
+-	  maxValue: 1.2,
+-	  levels: 5,
+-	  ExtraWidthX: 120
+-	}
+-
+-	//Call function to draw the Radar chart
+-	//Will expect that data is in %'s
+-	RadarChart.draw("#radar-chart-bi", chart_data, mycfg);
+-
+-	//Initiate legend
+-	var svg = d3.select('#body')
+-		.selectAll('svg')
+-		.append('svg')
+-		.attr("width", w)
+-		.attr("height", h)
+-
+-	//Create the title for the legend
+-	var text = svg.append("text")
+-		.attr("class", "title")
+-		.attr('transform', 'translate(90,0)') 
+-		.attr("x", w - 70)
+-		.attr("y", 10)
+-		.attr("font-size", "12px")
+-		.attr("fill", "#404040")
+-		.text("Store Info");
+-			
+-	//Initiate Legend	
+-	var legend = svg.append("g")
+-		.attr("class", "legend")
+-		.attr("height", 100)
+-		.attr("width", 200)
+-		.attr('transform', 'translate(90,20)') 
+-		;
+-		//Create colour squares
+-		legend.selectAll('rect')
+-		  .data(LegendOptions)
+-		  .enter()
+-		  .append("rect")
+-		  .attr("x", w - 65)
+-		  .attr("y", function(d, i){ return i * 20;})
+-		  .attr("width", 10)
+-		  .attr("height", 10)
+-		  .style("fill", function(d, i){ return colorscale(i);})
+-		  ;
+-		//Create text next to squares
+-		legend.selectAll('text')
+-		  .data(LegendOptions)
+-		  .enter()
+-		  .append("text")
+-		  .attr("x", w - 52)
+-		  .attr("y", function(d, i){ return i * 20 + 9;})
+-		  .attr("font-size", "11px")
+-		  .attr("fill", "#737373")
+-		  .text(function(d) { return d; })
+-		  ;
+-
+-}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartCS.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartCS.js
+deleted file mode 100644
+index 5709d65..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/drawChartCS.js
++++ /dev/null
+@@ -1,111 +0,0 @@
+-
+-function drawChart_Compare () {
+-
+-	var chart1_data = [];
+-	if (price_value != null) {
+-		chart1_data.push({axis:"price", value: price_value});
+-	}
+-	if (rating_value != null) {
+-		chart1_data.push({axis:"rating", value: rating_value});
+-	}
+-	if (openhour_value != null) {
+-		chart1_data.push({axis:"open hour", value: openhour_value});
+-	}	
+-	if (distance_value != null) {
+-		chart1_data.push({axis:"distance", value: distance_value});
+-	}
+-	if (service_value != null) {
+-		chart1_data.push({axis:"service", value: service_value});
+-	}
+-	if (final_freshness != null) {
+-		freshness_value = 0.2 * rating_value + 0.2 * openhour_value + 0.6 * final_freshness;
+-		chart1_data.push({axis:"freshness", value: freshness_value});
+-	}
+-
+-	var chart_data = [
+-		chart1_data,
+-		[
+-		{axis:"price", value:0.7},
+-		{axis:"rating", value:0.3},
+-		{axis:"freshness", value:0.6},
+-		{axis:"parking", value:0.5},
+-		{axis:"open hour", value:0.8},
+-		{axis:"distance", value:0.4},
+-		{axis:"service", value:0.5}
+-		], [
+-		{axis:"price", value:0.2},
+-		{axis:"rating", value:0.9},
+-		{axis:"freshness", value:0.6},
+-		{axis:"parking", value:0.4},
+-		{axis:"open hour", value:0.8},
+-		{axis:"distance", value:0.3},
+-		{axis:"service", value:0.5}
+-		]
+-	];
+-
+-	var colorscale = d3.scale.category10();
+-	var LegendOptions = [];
+-
+-	var w = 270,
+-		h = 270;
+-
+-	//Options for the Radar chart, other than default
+-	var mycfg = {
+-	  w: w,
+-	  h: h,
+-	  maxValue: 1.2,
+-	  levels: 5,
+-	  ExtraWidthX: 120
+-	}
+-
+-	//Call function to draw the Radar chart
+-	//Will expect that data is in %'s
+-	RadarChart.draw("#radar-chart-cs", chart_data, mycfg);
+-
+-	//Initiate legend
+-	var svg = d3.select('#body')
+-		.selectAll('svg')
+-		.append('svg')
+-		.attr("width", w)
+-		.attr("height", h)
+-
+-	//Create the title for the legend
+-	var text = svg.append("text")
+-		.attr("class", "title")
+-		.attr('transform', 'translate(90,0)') 
+-		.attr("x", w - 70)
+-		.attr("y", 10)
+-		.attr("font-size", "12px")
+-		.attr("fill", "#404040")
+-		.text("Store Info");
+-			
+-	//Initiate Legend	
+-	var legend = svg.append("g")
+-		.attr("class", "legend")
+-		.attr("height", 100)
+-		.attr("width", 200)
+-		.attr('transform', 'translate(90,20)') 
+-		;
+-		//Create colour squares
+-		legend.selectAll('rect')
+-		  .data(LegendOptions)
+-		  .enter()
+-		  .append("rect")
+-		  .attr("x", w - 65)
+-		  .attr("y", function(d, i){ return i * 20;})
+-		  .attr("width", 10)
+-		  .attr("height", 10)
+-		  .style("fill", function(d, i){ return colorscale(i);})
+-		  ;
+-		//Create text next to squares
+-		legend.selectAll('text')
+-		  .data(LegendOptions)
+-		  .enter()
+-		  .append("text")
+-		  .attr("x", w - 52)
+-		  .attr("y", function(d, i){ return i * 20 + 9;})
+-		  .attr("font-size", "11px")
+-		  .attr("fill", "#737373")
+-		  .text(function(d) { return d; })
+-		  ;
+-}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/not_available.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/not_available.png
+new file mode 100644
+index 0000000..8ac59c2
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/not_available.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/temp.jpg b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/temp.jpg
+new file mode 100644
+index 0000000..17b82c7
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/image/temp.jpg differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/index.html
+index 6fdd2cd..f430ed9 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/index.html
+@@ -5,46 +5,46 @@
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+-    <script src="http://d3js.org/d3.v3.min.js"></script>
+-    <script src="js/radarChart.js"></script>
+-
+   <link href="css/style.css" rel="stylesheet">
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+-	<link href="css/scrolling-nav.css" rel="stylesheet">
++
++  <script src="http://d3js.org/d3.v3.min.js"></script>
++  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
++
++  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
++  <script src="js/jquery.fullPage.js" type="text/javascript"></script>
++
++  <script type="text/javascript">
++	$(document).ready(function() {
++		$('#fullpage').fullpage({
++			anchors: ["intro-page", "app-page", "directory-page"],
++			loopBottom: true,
++		});
++	});  
++  </script>
++
+ 
+   <title>FindMyVeggies</title>
+   <link rel="shortcut icon" href="image/icon.png" />
+ </head>
+ 
+-<!-- scrolling navigation bar -->
+-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+-
++<body>
+   <!-- Navigation -->
+   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     <div class="container">
+-            <div class="navbar-header page-scroll">
+-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
++      <div class="navbar-header">
++        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <img src="image/icon.png" class="navbar-icon"/>
+-                <a class="navbar-brand page-scroll" href="#page-top">Find My Veggies</a>
++        <a class="navbar-brand" href="#intro-page">Find My Veggies</a>
+       </div>
+-            <!-- Collect the nav links, forms, and other content for toggling -->
+-            <div class="collapse navbar-collapse navbar-ex1-collapse">
++      <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav">
+-                   	<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+-                    <li class="hidden">
+-                        <a class="page-scroll" href="#page-top"></a>
+-                    </li>
+-                    <li>
+-                        <a class="page-scroll" href="#app">The App</a>
+-                    </li>
+-                    <li>
+-                        <a class="page-scroll" href="#store-directory">Store Directory</a>
+-                    </li>
++          <li><a href="#app-page">The App</a></li>
+         </ul>
+         <div class="nav-bar-current-info">
+           <img id="weather-icon">
+@@ -55,132 +55,158 @@
+     </div><!-- /.container -->
+   </nav>
+ 
++
++  <div id="fullpage">
+     <!-- Intro section -->
+-    <section id="intro" class="intro-section">
++	<div class="section">
++      <div class="intro-section">
+ 	    <div class="container">
+           <div class="row">
+             <div class="col-lg-12">
+               <h1>Find My Veggies</h1>
+               <h3>Don't know where to find fresher and cheaper veggies?<br>
+                 This app will tell you grocery stores near you and more!</h3>
+-                    <a class="btn btn-primary btn-lg page-scroll" href="#app">Try it now</a>
++              <a class="btn btn-primary btn-lg" href="#app-page">Try it now</a>
++            </div>
++          </div>
+ 	   	</div>
+ 	  </div>
+ 	</div>
+-    </section>   
+ 
+     <!-- The app section -->
+-    <section id="app" class="about-section">
++    <div class="section">
++	  <div class="about-section">
+     	<div class="container">
++          <!-- map layer -->
++   	      <div class="map-layer">
++    		<div class="form-control">
++        	  <label class="checkbox-inline">
++        		<input type="checkbox" id="layer-traffic">Traffic
++        	  </label>
++    		</div>
++          </div>
+           <!-- map -->
+ 		  <div id="map"></div>
+ 		  <!-- side menu -->
+ 		  <div class="side-menu">
+ 			<!-- side menu tabs -->
++			<div id="tabs">
+ 			  <ul class="nav nav-tabs nav-justified" id="customize-tag">
+-			    	<li class="active"><a data-toggle="tab" href="#basic"><strong>Basic Information</strong></a></li>
++			    <li class="active"><a data-toggle="tab" href="#weather"><strong>Current Weather</strong></a></li>
++		        <li><a data-toggle="tab" href="#basic"><strong>Basic Information</strong></a></li>
+ 		        <li><a data-toggle="tab" href="#comparison"><strong>Compare Stores</strong></a></li>
+-			    	<li><a data-toggle="tab" href="#veggie-chart"><strong>Seasonal Veggies</strong></a></li>
++		        <li id="tab-veggies"><a data-toggle="tab" href="#veggie-chart"><strong>Seasonal Veggies</strong></a></li>
++		       	<li id="tab-directory"><a data-toggle="tab" href="#directory"><strong>Store Directory</strong></a></li>
+ 			  </ul>
++			</div>
++			  
+ 			<!-- side menu tab contents-->
+ 			<div class="tab-content">
++
++			  <!--tab content for weather-->
++			  <div id="weather" class="tab-pane fade in active">
++			  	<div id="menu-cover">
++				  	<div class="temp-daily">
++				  	  <img src="image/temp.jpg" id="img-temp">
++				  	  <h1 id="temp-day"></h1>
++				  	  <h1 id="temp-night"></h1>
++				  	  <h4 id="temp-day-sm"></h4>
++				  	  <h4 id="temp-night-sm"></h4>
++				  	  <div class="two-column">
++					  	  <p id="wind-speed"></p>
++					  	  <h4 id="wind-speed-sm"></h4>
++					  	  <div id="power-gauge1"></div>
++					  	  <p id="humid-text"></p>
++					  	  <h4 id="humid-text-sm"></h4>
++					  	  <div id="power-gauge2"></div>
++					  </div>
++					</div>
++				</div>
++			  </div>
++			 	
+ 			  <!-- tab content for basic -->
+-				   	<div id="basic" class="tab-pane fade in active">
++			  <div id="basic" class="tab-pane fade">
+ 				<div id="menu-cover">
+-				      		<h4 id="store-name">Click on markers on map to see store information</h4>
++				  <img id="store-image">
++				  <h4 id="store-name">Click on markers to see store info</h4>
+ 				    <div class="basic-info">
+-				      			<p id="store-phone"></p>
+ 				      <p><a id="store-website"></a></p>
++				      <p id="store-phone"></p>
+ 			      	  <p id="open-hour-today"></p>
+ 			      	  <p id="store-rating"></p>
+-					      		<button class="btn btn-primary btn-sm" type="button" id="get-direction">Get Direction</button>
++			      	  <p><br></p>
++			      	  <button class="btn btn-primary btn-md" type="button" id="get-direction">Get Direction</button>
+ 					</div>
+-					      	<div class="radar-chart">
+-					      		<p>View of store information</p>
+-								<div id="radar-chart-bi"></div>
++					<div class="aster-chart">
++					  <p><strong>Store Evaluation Score</strong></p>
++					  <div id="aster-chart"></div>
+ 					</div>						
+ 				</div>
+ 			  </div>
++				
+ 			  <!-- tab content for comparison-->
+ 			  <div id="comparison" class="tab-pane fade">
+ 				<div id="menu-cover">
+-							<h4>Compare up to three stores</h4>
+-							<p>Click on marker to add a store</p>
+-							<div class="radar-chart">
+-					      		<p>(Need to be edited)</p>		
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">price</label>
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">ratings</label>
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">frenshness</label>
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">open hour</label>
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">service</label>
+-								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">distance</label>
+-								<p>Add/delete features for comparison</p>
+-								<div id="radar-chart-cs"></div>		
+-							</div>
+-						</div>
+-				    </div>
++				  <h4>Compare up to 3 recent clicked stores</h4>
++				  <p>(Click on markers to add stores)</p>
++				  <div class="bar-graph">
++				    <button class="btn btn-warning btn-md" type="button" id="bar-reset">Reset Compare</button>
++				  	<form>
++				   	  <label><input type="radio" name="mode" id="bar-grouped" value="grouped"> Grouped</label>
++  					  <label><input type="radio" name="mode" id="bar-stacked" value="stacked"> Stacked</label>
++  					</form>				  
++					<div id="bar-graph-compare"></div>		
++				  </div><!--bar graph-->
++				</div><!--menu cover-->
++			  </div><!--comparison-->
++
+ 		      <!-- tab content for veggie-chart -->
+ 		      <div id="veggie-chart" class="tab-pane fade">
+ 		      	<div id="menu-cover">
++		      	  <div id=veggie-text-align>
+ 		    		<h4>In season Veggies of this month</h4>
+ 		    		<div class=multi>
+ 		    		  <p id="seasonal-veggies"></p>
+ 		    		</div>
+ 		    	  </div>
+ 		      	</div>
+-			  	</div><!-- tab-contents -->
+-			</div><!-- side-menu-->
+-		</div><!-- /.container -->
+-    </section>
++		      </div><!--veggies chart-->
+ 
+-    <!-- Store Section -->
+-    <section id="store-directory" class="store-section">
+-        <div class="container">
+-            <h1>Stores near you</h1>          
+-			<table class="table table-hover">
++			  <!--tab content for directory-->
++			  <div id="directory" class="tab-pane fade">
++			  	<div id="menu-cover">
++			  	  <h4>Stores near you</h4>          
++				  <table class="table table-hover" id="store-directory">
+ 					<thead>
+ 					  <tr>
+-				    	<th>Store Name</th>
+-				    	<th>Location</th>
++				    	<th>Label</th>
++				    	<th>Name</th>
+ 				    	<th>Website</th>
+ 				      </tr>
+ 				    </thead>
+-			    <tbody id="store-directory">
+-			    	<tr>
+-				        <td>Walmart Supercenter</td>
+-				        <td>2801 Northwestern Ave, West Lafayette, IN 47906</td>
+-				        <td><a href="http://www.walmart.com/store/2339">http://www.walmart.com/store/2339</a></td>
+-			      	</tr>
+-			      	<tr>
+-				        <td>Pay Less Super Market</td>
+-				        <td>1032 Sagamore Pkwy W, West Lafayette, IN 47906</td>
+-				        <td><a href="http://www.pay-less.com">http://www.pay-less.com</a></td>
+-			      	</tr>
+-			      	<tr>
+-				        <td>Fresh City Market</td>
+-				        <td>720 Northwestern Ave, West Lafayette, IN 47906</td>
+-				        <td><a href="http://freshcitymarket.com">http://freshcitymarket.com</a></td>
+-			      	</tr>   
+-			    </tbody>
++				    <tbody id="add-store"></tbody>
+ 				  </table>
+-			<h4>(Need to be edited)</h4>
+ 			  	</div>
+-    </section>  
++			  </div>
+ 
+-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+-  		<script src="js/bootstrap.min.js"></script>
++			</div><!-- tab-contents -->
++		  </div><!-- side-menu-->
++		</div><!-- /.container -->
++	  </div><!--about section-->
++	</div><!--section-->
++  </div><!--fullpage-->
+ 
+-  		<script src="js/jquery.easing.min.js"></script>
+-    	<script src="js/scrolling-nav.js"></script>
++  <script src="js/bootstrap.min.js"></script>
++  <script src="js/jquery.easing.min.js" type="text/javascript"></script>
+ 
+   <script src="js/map.js" type="text/javascript"></script>
+   <script src="js/veggies.js" type="text/javascript"></script>		
+   <script src="js/datasheet.js" type="text/javascript"></script>
+   <script src="js/decisiontree.js" type="text/javascript"></script>
+   <script src="js/main.js" type="text/javascript"></script>
+-    	<script src="js/drawChartBI.js" type="text/javascript"></script>
+-    	<script src="js/drawChartCS.js" type="text/javascript"></script>
+-
++  <script src="js/AsterChart.js" type="text/javascript"></script>
++  <script src="js/barGraph.js" type="text/javascript"></script>
++  <script src="js/Gauge.js" type="text/javascript"></script>
+ 
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&libraries=places&callback=initMap" async defer></script>
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/main.js
+index d5456f4..c46bea7 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/main.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/main.js
+@@ -6,6 +6,8 @@ var current_weather_data = {};
+ var input;
+ var freshness_by_weather;
+ var final_freshness;
++var wind_mile, humid;
++var gauge1, config1;
+ 
+ function startTime() {
+ 	// setup clock
+@@ -53,11 +55,11 @@ return i;
+ 
+ function seasonalVeggies() {
+ 	// get list of seasonal veggies for this month
+-	var seasonal_veggies = []
++	var seasonal_veggies = [];
+ 	var veggies = VEGGIES;
+ 	for (var key in veggies) {
+ 		var seasons_of_veggie;
+-		seasons_of_veggie = veggies[key];
++		seasons_of_veggie = veggies[key][0];
+ 		for (var i = 0; i < seasons_of_veggie.length; i++) {
+ 			if (seasons_of_veggie[i] == month) {
+ 				seasonal_veggies.push(key.replace(/_/, " "));
+@@ -139,10 +141,30 @@ function extractFeatures(current_weather_data) {
+ 
+ 
+ function getWeatherDataCallback(result) {
++	console.log("current weather: ");
++	console.log(result);
+ 	// get current weather raw
+     var wind = result.list[0]["speed"];
++    var wind_deg = result.list[0]["deg"];
++    var wind_dirc = calculateWindDirectoin(wind_deg);
++    wind_mile = Math.floor(wind * 2.237);
++    document.getElementById("wind-speed").innerHTML = "<strong>Wind: " + wind_dirc + " " 
++    													+ wind_mile + "mile/hr</strong>";
++	document.getElementById("wind-speed-sm").innerHTML = "Wind: " + wind_dirc + " " 
++    													+ wind_mile + "mile/hr";
++
+     var tmax = result.list[0]["temp"]["max"];
+     var tmin = result.list[0]["temp"]["min"];
++    var tmorn = Math.floor(result.list[0]["temp"]["morn"] * 1.8 + 32);
++    var tnight = Math.floor(result.list[0]["temp"]["night"] * 1.8 + 32);
++    humid = result.list[0]["humidity"];
++    document.getElementById("humid-text").innerHTML = "<strong>Humidity: " + humid +"%</strong>";
++    document.getElementById("humid-text-sm").innerHTML = "Humidity: " + humid +"%";
++
++    document.getElementById("temp-day").innerHTML= tmorn + "&#8457";
++    document.getElementById("temp-night").innerHTML= tnight + "&#8457";
++    document.getElementById("temp-day-sm").innerHTML= "day: " + tmorn + "&#8457";
++    document.getElementById("temp-night-sm").innerHTML= "night: " + tnight + "&#8457";
+ 
+     var weather_condition = result.list[0]["weather"][0];
+     var weather_main = weather_condition["main"];
+@@ -161,7 +183,7 @@ function getWeatherDataCallback(result) {
+     icon_url = "http://openweathermap.org/img/w/" + weather_icon + ".png";
+ 
+     $("#weather-icon").attr("src", icon_url);
+-    document.getElementById("current-weather").innerHTML = weather_text;
++    document.getElementById("current-weather").innerHTML = weather_main;
+ 
+     current_weather_data = {
+     	"WIND": wind, 
+@@ -174,12 +196,11 @@ function getWeatherDataCallback(result) {
+ 
+     // extract features
+     input = extractFeatures(current_weather_data);
+-    console.log(input)
+     
+     // proceed to decision prediction when tree loaded and features extracted
+     $.when(input, setupTree).then(function() {
+ 		freshness_by_weather =  predict(input);
+-		console.log(freshness_by_weather)
++		console.log("prediction: " + freshness_by_weather);
+ 		
+ 		// import other extracted features data from datasheet
+ 		var freshness_by_farmersmarket = DATA_SHEET.FarmersMarket[0][month];
+@@ -198,6 +219,46 @@ function getWeatherDataCallback(result) {
+ 	});
+ }
+ 
++function calculateWindDirectoin(degree) {
++	var direction_list = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
++	var num = Math.floor((degree - 22.5) / 45 + 0.5);
++	var direction = direction_list[num];
++	return direction
++}
++
++function onDocumentReady1() {
++	var powerGauge = gauge('#power-gauge1', {
++		size: 200,
++		clipWidth: 200,
++		clipHeight: 130,
++		ringWidth: 40,
++		maxValue: 60,
++		transitionMs: 4000,
++	}, '#e60000');
++	powerGauge.render();
++	
++	function updateReadings() {
++		powerGauge.update(wind_mile);
++	}
++	updateReadings();
++}
++
++function onDocumentReady2() {
++	var powerGauge = gauge('#power-gauge2', {
++		size: 200,
++		clipWidth: 200,
++		clipHeight: 130,
++		ringWidth: 40,
++		maxValue: 100,
++		transitionMs: 4000,
++	}, '#178bca');
++	powerGauge.render();
++	
++	function updateReadings() {
++		powerGauge.update(humid);
++	}
++	updateReadings();
++}
+ 
+ // api request daily weather predict in great lafayette area
+ $.ajax({
+@@ -210,7 +271,34 @@ $.ajax({
+ // load decision tree
+ var setupTree = loadDecisionTree();
+ 
+-
+ startTime();
+ seasonalVeggies();
+ 
++// trafic layer on/off
++$(document).ready(function() {
++	$("#layer-traffic").prop("checked", true);
++	$("#layer-traffic").change(function() {
++		if ($("#layer-traffic").is(":checked")) {
++			trafficLayer.setMap(map);
++		} else {
++			trafficLayer.setMap(null);
++		}
++	});
++	$("#bar-reset").click(function() {
++		$(".bar-graph").css("visibility", "hidden")
++		var data = [];
++		name_click = [];
++		store_info_click = [];
++		barGraph(data);
++	});
++});
++
++if ( !window.isLoaded ) {
++	window.addEventListener("load", function() {
++		onDocumentReady1();
++		onDocumentReady2();
++	}, false);
++} else {
++	onDocumentReady1();
++	onDocumentReady2();
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/radarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/radarChart.js
+deleted file mode 100644
+index 8d85ed6..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/radarChart.js
++++ /dev/null
+@@ -1,221 +0,0 @@
+-//Practically all this code comes from https://github.com/alangrafu/radar-chart-d3
+-//I only made some additions and aesthetic adjustments to make the chart look better 
+-//(of course, that is only my point of view)
+-//Such as a better placement of the titles at each line end, 
+-//adding numbers that reflect what each circular level stands for
+-//Not placing the last level and slight differences in color
+-//
+-//For a bit of extra information check the blog about it:
+-//http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
+-
+-var RadarChart = {
+-  draw: function(id, d, options){
+-  var cfg = {
+-	 radius: 5,
+-	 w: 600,
+-	 h: 600,
+-	 factor: 1,
+-	 factorLegend: .85,
+-	 levels: 3,
+-	 maxValue: 0,
+-	 radians: 2 * Math.PI,
+-	 opacityArea: 0.5,
+-	 ToRight: 5,
+-	 TranslateX: 80,
+-	 TranslateY: 30,
+-	 ExtraWidthX: 100,
+-	 ExtraWidthY: 100,
+-	 color: d3.scale.category10()
+-	};
+-	
+-	if('undefined' !== typeof options){
+-	  for(var i in options){
+-		if('undefined' !== typeof options[i]){
+-		  cfg[i] = options[i];
+-		}
+-	  }
+-	}
+-	cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+-	var allAxis = (d[0].map(function(i, j){return i.axis}));
+-	var total = allAxis.length;
+-	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+-	var Format = d3.format('%');
+-	d3.select(id).select("svg").remove();
+-	
+-	var g = d3.select(id)
+-			.append("svg")
+-			.attr("width", cfg.w+cfg.ExtraWidthX)
+-			.attr("height", cfg.h+cfg.ExtraWidthY)
+-			.append("g")
+-			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+-			;
+-
+-	var tooltip;
+-	
+-	//Circular segments
+-	for(var j=0; j<cfg.levels-1; j++){
+-	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+-	  g.selectAll(".levels")
+-	   .data(allAxis)
+-	   .enter()
+-	   .append("svg:line")
+-	   .attr("x1", function(d, i){return levelFactor*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+-	   .attr("y1", function(d, i){return levelFactor*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+-	   .attr("x2", function(d, i){return levelFactor*(1-cfg.factor*Math.sin((i+1)*cfg.radians/total));})
+-	   .attr("y2", function(d, i){return levelFactor*(1-cfg.factor*Math.cos((i+1)*cfg.radians/total));})
+-	   .attr("class", "line")
+-	   .style("stroke", "grey")
+-	   .style("stroke-opacity", "0.75")
+-	   .style("stroke-width", "0.3px")
+-	   .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
+-	}
+-
+-	//Text indicating at what % each level is
+-	for(var j=0; j<cfg.levels; j++){
+-	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+-	  g.selectAll(".levels")
+-	   .data([1]) //dummy data
+-	   .enter()
+-	   .append("svg:text")
+-	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
+-	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
+-	   .attr("class", "legend")
+-	   .style("font-family", "sans-serif")
+-	   .style("font-size", "10px")
+-	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
+-	   .attr("fill", "#737373")
+-	   .text(Format((j+1)*cfg.maxValue/cfg.levels));
+-	}
+-	
+-	series = 0;
+-
+-	var axis = g.selectAll(".axis")
+-			.data(allAxis)
+-			.enter()
+-			.append("g")
+-			.attr("class", "axis");
+-
+-	axis.append("line")
+-		.attr("x1", cfg.w/2)
+-		.attr("y1", cfg.h/2)
+-		.attr("x2", function(d, i){return cfg.w/2*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+-		.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+-		.attr("class", "line")
+-		.style("stroke", "grey")
+-		.style("stroke-width", "1px");
+-
+-	axis.append("text")
+-		.attr("class", "legend")
+-		.text(function(d){return d})
+-		.style("font-family", "sans-serif")
+-		.style("font-size", "12px")
+-		.attr("text-anchor", "middle")
+-		.attr("dy", "1em")
+-		.attr("transform", function(d, i){return "translate(0, -10)"})
+-		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-30*Math.sin(i*cfg.radians/total);})
+-		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-18*Math.cos(i*cfg.radians/total);});
+-
+- 
+-	d.forEach(function(y, x){
+-	  dataValues = [];
+-	  g.selectAll(".nodes")
+-		.data(y, function(j, i){
+-		  dataValues.push([
+-			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+-			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+-		  ]);
+-		});
+-	  dataValues.push(dataValues[0]);
+-	  g.selectAll(".area")
+-					 .data([dataValues])
+-					 .enter()
+-					 .append("polygon")
+-					 .attr("class", "radar-chart-serie"+series)
+-					 .style("stroke-width", "2px")
+-					 .style("stroke", cfg.color(series))
+-					 .attr("points",function(d) {
+-						 var str="";
+-						 for(var pti=0;pti<d.length;pti++){
+-							 str=str+d[pti][0]+","+d[pti][1]+" ";
+-						 }
+-						 return str;
+-					  })
+-					 .style("fill", function(j, i){return cfg.color(series)})
+-					 .style("fill-opacity", cfg.opacityArea)
+-					 .on('mouseover', function (d){
+-										z = "polygon."+d3.select(this).attr("class");
+-										g.selectAll("polygon")
+-										 .transition(200)
+-										 .style("fill-opacity", 0.1); 
+-										g.selectAll(z)
+-										 .transition(200)
+-										 .style("fill-opacity", .7);
+-									  })
+-					 .on('mouseout', function(){
+-										g.selectAll("polygon")
+-										 .transition(200)
+-										 .style("fill-opacity", cfg.opacityArea);
+-					 });
+-	  series++;
+-	});
+-	series=0;
+-
+-
+-	d.forEach(function(y, x){
+-	  g.selectAll(".nodes")
+-		.data(y).enter()
+-		.append("svg:circle")
+-		.attr("class", "radar-chart-serie"+series)
+-		.attr('r', cfg.radius)
+-		.attr("alt", function(j){return Math.max(j.value, 0)})
+-		.attr("cx", function(j, i){
+-		  dataValues.push([
+-			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+-			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+-		]);
+-		return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+-		})
+-		.attr("cy", function(j, i){
+-		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+-		})
+-		.attr("data-id", function(j){return j.axis})
+-		.style("fill", cfg.color(series)).style("fill-opacity", .9)
+-		.on('mouseover', function (d){
+-					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+-					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+-					
+-					tooltip
+-						.attr('x', newX)
+-						.attr('y', newY)
+-						.text(Format(d.value))
+-						.transition(200)
+-						.style('opacity', 1);
+-						
+-					z = "polygon."+d3.select(this).attr("class");
+-					g.selectAll("polygon")
+-						.transition(200)
+-						.style("fill-opacity", 0.1); 
+-					g.selectAll(z)
+-						.transition(200)
+-						.style("fill-opacity", .7);
+-				  })
+-		.on('mouseout', function(){
+-					tooltip
+-						.transition(200)
+-						.style('opacity', 0);
+-					g.selectAll("polygon")
+-						.transition(200)
+-						.style("fill-opacity", cfg.opacityArea);
+-				  })
+-		.append("svg:title")
+-		.text(function(j){return Math.max(j.value, 0)});
+-
+-	  series++;
+-	});
+-	//Tooltip
+-	tooltip = g.append('text')
+-			   .style('opacity', 0)
+-			   .style('font-family', 'sans-serif')
+-			   .style('font-size', '13px');
+-  }
+-};
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/scrolling-nav.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/scrolling-nav.js
+deleted file mode 100644
+index f7324c4..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/scrolling-nav.js
++++ /dev/null
+@@ -1,19 +0,0 @@
+-//jQuery to collapse the navbar on scroll
+-$(window).scroll(function() {
+-    if ($(".navbar").offset().top > 50) {
+-        $(".navbar-fixed-top").addClass("top-nav-collapse");
+-    } else {
+-        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+-    }
+-});
+-
+-//jQuery for page scrolling feature - requires jQuery Easing plugin
+-$(function() {
+-    $('a.page-scroll').bind('click', function(event) {
+-        var $anchor = $(this);
+-        $('html, body').stop().animate({
+-            scrollTop: $($anchor.attr('href')).offset().top
+-        }, 1500, 'easeInOutExpo');
+-        event.preventDefault();
+-    });
+-});
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/veggies.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/veggies.js
+index bd2d00d..f08ef7e 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lostkuma/veggies.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lostkuma/veggies.js
+@@ -1,75 +1,144 @@
+ // seasonal veggie chart
+ 
+ window.VEGGIES = {
+-	Artichokes: [3, 4, 5, 6, 9, 10, 11, 12],
+-	Arugula: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Asparagus: [2, 3, 4, 5, 6],
+-	Beets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Bok_choy: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Broccoli: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Broccoli_rabe: [1, 2, 3, 4, 5, 6, 9, 10, 11, 12],
+-	Brussels_sprouts: [1, 2, 3, 4, 5, 9, 10, 11, 12],	
+-	Burdock: [7, 8, 9, 10, 11, 12],
+-	Cabbage: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Cactus_pads: [5, 6, 7, 8, 9, 10],
+-	Cardoons: [1, 2, 3, 4, 5, 6, 11, 12],
+-	Carrots: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Cauliflower: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Celeriac: [4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Celery: [4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Chard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Chicory: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Collard_greens: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],	
+-	Corn: [1, 2, 3, 4, 5, 11, 12],
+-	Cress: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Cucumbers: [6, 7, 8, 9, 10, 11],
+-	Dandelion_greens: [1, 2, 3, 4, 5],	
+-	Eggplant: [6, 7, 8, 9, 10],
+-	Endive: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Fava_beans: [3, 4, 5, 6, 7],
+-	Fava_greens: [1, 2, 3, 4, 5],
+-	Fennel: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Garlic: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Green_beans: [6, 7, 8, 9],
+-	Green_garlic: [2, 3, 4, 5, 6],
+-	Herbs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Horseradish: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+-	Kale: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Kohlrabi: [1, 2, 3, 4, 11, 12],
+-	Lambsquarters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],	
+-	Leeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Lettuce: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Mizuna: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Mushrooms: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Mustard_greens: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Nettles: [1, 2, 3, 4, 5, 6, 7],
+-	Okra: [6, 7, 8, 9, 10, 11],
+-	Onions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Orach: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Parsnips: [1, 2, 3, 4, 5, 10, 11, 12],
+-	Pea_shoots: [1, 2, 3, 4, 5],
+-	Peas: [4, 5, 6, 7, 8, 9, 10, 11],
+-	Chile_peppers: [7, 8, 9, 10, 11, 12],
+-	Sweet_Peppers: [5, 6, 7, 8, 9, 10, 11, 12],
+-	Potatoes: [6, 7, 8],
+-	Purslane: [4, 5, 6, 7, 8, 9, 10, 11],
+-	Radishes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Rutabagas: [1, 2, 3, 4, 10, 11, 12],
+-	Salsify: [9, 10, 11, 12],
+-	Scallions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Shallots: [5, 6, 7],
+-	Shelling_beans: [8, 9, 10],	
+-	Spinach: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Sprouts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Summer_squash: [6, 7, 8, 9, 10],	
+-	Winter_squash: [10, 11, 12],	
+-	Sunchokes: [1, 2, 3, 4, 9, 10, 11, 12],
+-	Sweet_potatoes: [9, 10, 11, 12],	
+-	Tatsoi: [1, 2, 3, 4, 10, 11, 12],
+-	Tomatillos: [6, 7, 8, 9, 10, 11],	
+-	Tomatoes: [6, 7, 8, 9, 10],
+-	Turnips: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+-	Yacon: [11, 12],
++	Artichokes: [[3, 4, 5, 6, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/artichokes.jpg?itok=Fjs5Yql3"],
++	Arugula: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/arugula_23.jpg?itok=Mlims1Dg"],
++	Asparagus: [[2, 3, 4, 5, 6],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/asparagus_green_purple.JPG?itok=YwfdVFvu"],
++	Beets: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/gold_beets.jpg?itok=PCu7q7Bk"],
++	Bok_choy: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Bok_Choy.JPG?itok=Ur1dYLoJ"],
++	Broccoli: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/broccoli.JPG?itok=XdfsaQRK"],
++	Broccoli_rabe: [[1, 2, 3, 4, 5, 6, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/rapini.jpg?itok=bK-4la2U"],
++	Brussels_sprouts: [[1, 2, 3, 4, 5, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/brussels_sprouts.JPG?itok=CdimINcj"],
++	Burdock: [[7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/burdock_14.jpg?itok=ouGWxWcj"],
++	Cabbage: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/cabbage.JPG?itok=x3i7br71"],
++	Cactus_pads: [[5, 6, 7, 8, 9, 10], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Cactus_pads.JPG?itok=KY8d7leC"],
++	Cardoons: [[1, 2, 3, 4, 5, 6, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/cardoons.jpg?itok=oljs1ODL"],
++	Carrots: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/carrots_colorful.jpg?itok=pSya9Fa-"],
++	Cauliflower: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/cauliflower.JPG?itok=ZVBweEwl"],
++	Celeriac: [[4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Celeriac.JPG?itok=uDnm5pQL"],
++	Celery: [[4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/celery2_5.jpg?itok=mPB7CLx8"],
++	Chard: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/chard_6.jpg?itok=ZYngD70T"],
++	Chicory: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/treviso_radicchio_0.jpg?itok=K7ixQrNm"],
++	Collard_greens: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/collards_0.jpg?itok=buC9miBO"],	
++	Corn: [[1, 2, 3, 4, 5, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/corn_6.jpg?itok=-Td3pHbc"],
++	Cress: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/cress_15.jpg?itok=zD305sJR"],
++	Cucumbers: [[6, 7, 8, 9, 10, 11], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/cucumbers_pickling_0.jpg?itok=bcvYf3Pe"],
++	Dandelion_greens: [[1, 2, 3, 4, 5],	
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/dandelion_greens_7.jpg?itok=JHd6jM8W"],
++	Eggplant: [[6, 7, 8, 9, 10], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/eggplant.JPG?itok=fkoxpNWp"],
++	Endive: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/frisee_lonely_mountain.jpg?itok=gYS6oBUL"],
++	Fava_beans: [[3, 4, 5, 6, 7], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/favas_cropped.jpg?itok=ujXBe5mZ"],
++	Fava_greens: [[1, 2, 3, 4, 5], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/fava_greens_14.jpg?itok=wNJA91a_"],
++	Fennel: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/fennel.JPG?itok=pFa3c0W5"],
++	Garlic: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Garlic.jpg?itok=OXXpb-hs"],
++	Green_beans: [[6, 7, 8, 9], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Green_beans.JPG?itok=l5y38BSs"],
++	Green_garlic: [[2, 3, 4, 5, 6],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Green_garlic.jpg?itok=-f4I3s0r"],
++	Herbs: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/herbs_display.jpg?itok=-Lxu5KEl"],
++	Horseradish: [[2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/horseradish.JPG?itok=KifHGTV8"],
++	Kale: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Kale.JPG?itok=HQt4BUoq"],
++	Kohlrabi: [[1, 2, 3, 4, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Kohlrabi.JPG?itok=9NbHyvyW"],
++	Lambsquarters: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/lambsquarters.JPG?itok=3tkwdhlt"],
++	Leeks: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/leeks_pile_15.jpg?itok=VnBzGkQq"],
++	Lettuce: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/lettuce.jpg?itok=na_swzDb"],
++	Mizuna: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Mizuna.JPG?itok=2H0QIxVp"],
++	Mushrooms: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Mushrooms.JPG?itok=hoePTRyC"],
++	Mustard_greens: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Mustard_greens.JPG?itok=INl5cFlX"],
++	Nettles: [[1, 2, 3, 4, 5, 6, 7],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/nettles_23.jpg?itok=ZSgYQCWd"],
++	Okra: [[6, 7, 8, 9, 10, 11], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/okra_lucero.JPG?itok=lhayJFL0"],
++	Onions: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Red_onions.jpg?itok=xpLGoskh"],
++	Orach: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/RedOrach_14.jpg?itok=lcTJlX9N"],
++	Parsnips: [[1, 2, 3, 4, 5, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/parsnips.jpg?itok=VesT735N"],
++	Pea_shoots: [[1, 2, 3, 4, 5],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/pea_shoots.jpg?itok=QsBlSfn8"],
++	Peas: [[4, 5, 6, 7, 8, 9, 10, 11], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/peas_english_iacopi_16.jpg?itok=D8EXX_uQ"],
++	Chile_peppers: [[7, 8, 9, 10, 11, 12],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/chiles_hot_tierra.JPG?itok=xYa2kL0N"],
++	Sweet_Peppers: [[5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/assorted_peppers.JPG?itok=ShQ1T3-p"],
++	Potatoes: [[6, 7, 8],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/potatoes_thomas.JPG?itok=WXRYR9S8"],
++	Purslane: [[4, 5, 6, 7, 8, 9, 10, 11],
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/purslane_0.JPG?itok=pAXwSNib"],
++	Radishes: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/radishes_multicolor.JPG?itok=e6m890Gh"],
++	Rutabagas: [[1, 2, 3, 4, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Rutabagas.jpg?itok=8jQMKwqW"],
++	Salsify: [[9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Salsify.JPG?itok=-BjWPE--"],
++	Scallions: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/scallions_0.jpg?itok=IXFhZw7Q"],
++	Shallots: [[5, 6, 7], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/shallots_14.jpg?itok=4hwbZM0V"],
++	Shelling_beans: [[8, 9, 10], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Shelling_Beans.JPG?itok=lxq2ev0M"],
++	Spinach: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/spinach_bordeaux_22.jpg?itok=D3JezlYs"],
++	Sprouts: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/sprouts_sunflower_14.jpg?itok=twlX-JRF"],
++	Summer_squash: [[6, 7, 8, 9, 10], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/squash_sunburst_14.jpg?itok=4ayBXDix"],
++	Winter_squash: [[10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/hard_squash_lonely_mountain.JPG?itok=SJ-Rq5s3"],
++	Sunchokes: [[1, 2, 3, 4, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/sunchokes.JPG?itok=hYTw8Rg5"],
++	Sweet_potatoes: [[9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Sweet_Potatoes.JPG?itok=zfHq8fIi"],
++	Tatsoi: [[1, 2, 3, 4, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/tatsoi.png?itok=khZpJCQF"],
++	Tomatillos: [[6, 7, 8, 9, 10, 11], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/Tomatillos.JPG?itok=Z11sOntc"],
++	Tomatoes: [[6, 7, 8, 9, 10], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/tomatoes_heirloom_lonely_mountain.JPG?itok=YR28CCRF"],
++	Turnips: [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], 
++		"http://www.cuesa.org/sites/default/files/styles/article_feature_image_600/public/turnips_tokyo.JPG?itok=RBgdvSXq"],
++	Yacon: [[11, 12], 
++		"http://www.foodpyramid.com/wp-content/uploads/2014/09/yacon-root.jpg"]
+ 
+ }
+ 

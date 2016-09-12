@@ -1,0 +1,9 @@
+Final Phase:
+ 
+The Viz is completed visualizing the twitter data. I was able to perform two complete pulls. The viz pulls the data by zip code and utilized the geocode package to decode the zips into lat and long coordinates and then pulls all the twitter data then writes it into a Sqlite db. Because of query limits the API could not be connected live as the geocode query was a parameter passed to the API and was not a data point outputted. The Keywords used to query twitter where “vegtables OR farmers market OR cheap food”. The number of queries within the given zip code was aggregated by count and then plotted on a map in the viz. 
+ 
+The other plot data from the food almanac was combined to create a composite metric on a county by county scale. It is currently filtered by state to just Indiana but can be altered using the filter feature on the side of the Viz.
+ 
+Finally the CDO is visualized by lafayette weather showing the average temperature trend (updated live) using a Tableau web connector.
+ 
+The viz is created using a Tableau Public JS view in order to be web based. 

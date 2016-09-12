@@ -1,0 +1,135 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/api.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/api.js
+new file mode 100644
+index 0000000..556c4e4
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/api.js
+@@ -0,0 +1,31 @@
++//request weather data
++function weather(){
++	//get weather condition from Yahoo Weather
++	var xmlhttp = new XMLHttpRequest();
++	var url = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%2012778445&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
++	xmlhttp.open("GET", url, true);
++	xmlhttp.send();
++
++	xmlhttp.onreadystatechange = function() {
++	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
++	        var myArr = xmlhttp.responseText;
++	        var text = JSON.parse(myArr);
++
++	        //retrieve condition for json
++	        var condition = text.query.results.channel.item.condition.text;
++
++	        //output weather
++	        output_weather(condition);
++	    }
++	};
++};
++
++
++
++
++function time(){
++	var now = new Date();
++	//create html object and add to html
++	var time_p = add_html_element("p", now);
++	document.getElementById("time").appendChild(time_p);
++};
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-prachitamane/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/index.html
+index c63b5b2..fa007e9 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-prachitamane/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/index.html
+@@ -20,13 +20,14 @@
+ 			  height:100%
+ 			}
+ 	</style>
+-
+   </head>
++
++
+   <body class="body" style="background-color:#f6f6f6" >
+   <div class="container-fluid" style="min-height:95%; ">
+   		<div class="row">
+ 			<div class="jumbotron">
+-				<!--img src="img/faces2.jpg" style="height: 300px; width: 800px; display: block; margin: 0 auto;"-->
++				<img src="img/faces2.jpg" style="height: 600px; width: 1700px; display: block; margin: 0 auto;">
+ 			    <h1>Nice N' Fresh</h1>
+ 			    <p>Find the best places to go shopping in West Lafayette!</p>
+   			</div>
+@@ -41,8 +42,8 @@
+   			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+   			  <ul class="nav nav-pills nav-stacked">
+   				<li><a href='/'>Home</a></li>
+-  				<li><a href='/blog/'>Blog</a></li>
+-  				<li><a href='/contact/'>Contact</a></li>
++  				<li><a href='/recipe.html'>Fresh Recipes</a></li>
++  				<li><a href='/contact.html'>Contact Us</a></li>
+   			  </ul>
+   			</div> <!--well bs-sidebar affix-->
+   		  </div> <!--col-sm-2-->
+@@ -50,6 +51,7 @@
+ 
+   <div class='container-fluid'>
+   			<br><br>
++  <div id="weather" class="text-right title-contain">Get weather</div>
+  <div id="map"></div>
+     <script>
+       function initMap() {
+@@ -58,6 +60,7 @@
+           center: {lat: 40.4050411, lng: -86.8932353},
+           zoom: 12
+         });
++        init();
+       }
+     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+@@ -67,21 +70,21 @@
+   		  </div>
+   		</div>
+   	</div>
+-<div id="weather" class="menu-line">sunny!</div>
++  	<div id="time" class="text-right title-contain"></div>
++
+  	 <!-- jQuery -->
+ 	    <script src="js/bootstrap.min.js"></script>
+ 
+ 	    <!-- Bootstrap Core JavaScript -->
+     <script src="js/bootstrap.min.js"></script>
++    <script src="js/api.js" type="text/javascript" ></script>
++    <script src="js/initialize.js" type="text/javascript" ></script>
+ 
+     <footer>
+ 	  		<div class="container-fluid" style='margin-left:15px'>
+ 	  			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
+ 	  		</div>
+ 	</footer>
+-	<a title="Real Time Analytics" href="http://clicky.com/100881512"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+-	<script src="//static.getclicky.com/js" type="text/javascript"></script>
+-	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
+-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript>
++
+  </body>
+ </html>
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/initialize.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/initialize.js
+new file mode 100644
+index 0000000..dbd7c53
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-prachitamane/initialize.js
+@@ -0,0 +1,14 @@
++function init(){
++	//process the weather
++	weather();
++	time();
++
++};
++
++function output_weather(condition){
++	//pass weather condition to html
++	var weather_text = "Today is " + condition + "!";
++	var weather_p = add_html_element("p", weather_text);
++	document.getElementById("weather").innerHTML = "";
++	document.getElementById("weather").appendChild(weather_p);
++};
+\ No newline at end of file

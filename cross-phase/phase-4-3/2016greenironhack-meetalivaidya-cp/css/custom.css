@@ -1,0 +1,111 @@
+     position: relative;
+     width: 100%;
+     height: 100%;
+    background: url(../img/blueberry.jpg) no-repeat center center fixed;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     background-size: cover;
+ }
+ 
+ /* Custom Button Styles */
+.btn{
+    border-radius: 0px; !important
+}
+.btn-navbar{
+    border-radius: 0px;
+    background-color:  rgba(0,0,0,0.4);
+}
+ 
+ .btn-dark {
+     border-radius: 0;
+     z-index: 1000;
+     position: fixed;
+     right: 0;
+    width: 330px;
+     height: 100%;
+    margin-right: -330px;
+     overflow-y: auto;
+     background: #222;
+     -webkit-transition: all 0.4s ease 0s;
+ .sidebar-nav {
+     position: absolute;
+     top: 0;
+    width: 330px;
+     margin: 0;
+     padding: 0;
+     list-style: none;
+ 
+ .sidebar-nav li a:hover {
+     text-decoration: none;
+    /*color: #fff;*/
+     background: rgba(255,255,255,0.2);
+ }
+ 
+ }
+ 
+ #sidebar-wrapper.active {
+    right: 330px;
+    width: 330px;
+     -webkit-transition: all 0.4s ease 0s;
+     -moz-transition: all 0.4s ease 0s;
+     -ms-transition: all 0.4s ease 0s;
+ }
+ 
+ .toggle {
+    margin: 5px 5px 5px 5px;
+ }
+ 
+ 
+ 
+ 
+/* Select Picker*/
+.selectpicker{
+    background: #222; !important
+    color: #222; 
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 0; !important
+    
+}
+
+.dropdown-menu.open{
+    /*width: 230px; !important*/
+
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
+    margin-right: 2px;
+}
+ 
+btn-group.bootstrap-select.show-tick{
+    width: auto;
+}
+ 
+ /* Map */
+ 
+ .map {
+    height: 800px;
+ }
+ 
+ @media(max-width:768px) {
+         height: 75%;
+     }
+ }
+
+
+
+
+
+/* BAR CHART */
+.axis {
+	  font: 10px sans-serif;
+	}
+
+.axis path,
+.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}

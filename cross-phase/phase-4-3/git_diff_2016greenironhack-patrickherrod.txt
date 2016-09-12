@@ -1,0 +1,1608 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/README.md
+index b61fb26..49eef36 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/README.md
+@@ -1,9 +1,9 @@
+ # 2016greenironhack-patrickherrod
+-Readme Introduction	v. 1.0
++Readme Introduction	v. 2.0
+ ```
+-1. Pro Compare
++1. Pro-Compare
+ 
+-2. Keywords: freshness, retail price, travel distance, user input
++2. Keywords: freshness, price, travel distane, user input, google maps, radar chart
+ 
+ 3. Datasets:
+ 	
+@@ -11,40 +11,65 @@ Readme Introduction	v. 1.0
+ 	Indiana (purdue): https://extension.purdue.edu/foodlink/foods.php?category=2&sort=asc
+ 	Illinois: https://www.agr.state.il.us/wherefreshis/whatsinseason.pdf
+ 	Ohio: https://ofbf.org/whats-in-season/
+-	Rather than web-scraping, dbInfo.sql contains data entries.
+-	These data sources provide the produce grown in the midwest climate region, and the months each item is "in season"
++	Given the difficulty with web-scraping javascript pages, this application queries a database
++	composed of manual entries. dbInfo.sql contains data tables and record information.
++	These data sources provide sets of produce grown in the midwest climate region,
++	and each item's seasonal months. This seasonal dataset is used as part of produce freshness calculations.
+ 
+-	Yes, Climate Data Online will be used by this application to help calculate produce freshness
++	Yes, Climate Data Online is used by this application to provide a 3 month history of temperature and rainfall
++	in the West Lafayette area. Temperature and rainfall are used as part of the produce freshness calculations
++
++	Found a dataset on data.gov listing all of the farmers marekts in the United States.  Given the scope of
++	this app, that set was narrowed to the west lafayette area.
+ 
+ 	The first data set is not a data.gov set, but the compiled data from each state government site.
+ 
+-4. Pro Comparator is an application for local produce customers to use immediately before or while shopping.
+-A user will have the ability to choose a product and get the freshness of the product grown regionally,
+-the price of the product at retail stores (Walmart, Meijer, Payless, etc.), and the travel distance to one
+-of the retail stores.  User's will use the app to decide if local produce in hand is fresh enough and cheap
+-in comparison to retail counterparts.
++4. Pro-Compare is an application for local produce customers to use immediately before or while shopping.
++A user will have the ability to select produce items and get their freshness scores, the price of the 
++product at a large vendor (Walmart), and the travel distance to markets and large vendors.  User's will
++use the app to aide produce comparisons between markets.
+ 
+ 	Map View:
+-	a. Map view will be of West Lafayette and Lafayette area.
+-	b. Y
+-	c. Y
+-	d. Y
++	a. Map view is of West Lafayette and Lafayette area.
++	b. Y, markers indicating market location
++	c. Y, labels for market names
++	d. Y, infowindow popup to show market details and item specific values
+ 	e. N
+ 
+ 	Data Visualization:
+-	a. Y, the application will use a three axis, radar graph: freshness, price, distance.
+-	b. Y, markers will be clickable to focus on one local market
++	a. Y, the application uses a three axis radar graph: freshness, cost, distance.
++	b. Y, markers are clickable to display market specific data.  The radar charts has blobs
++	      that are hoverable.  Mouseover will display the market each blob represents.
+ 	
+ 	Interaction Form:
+-	a. Y, there will be a drop down menu populated with the produce items compiled from the state governament site.
+-	b. Y, the user will first choose friuts or vegetables, then choose an item.
+-	c. N
+-	d. Y, users will be able to submit prices, for items, and even, new items into the database.
+-	e. N
++	a. Y, there is a drop down menu populated with the produce items compiled from the state governament site.
++	b. Y, the user will first choose friuts or vegetables, then choose an item. This allows shorter lists of items to choose from.
++	c. Y, the user can input new markets, new items, and item freshness ratings.
++	d. Y, when users select a different produce item, infowindows are updated with market and item specific details.  Users
++	      can drag the marker that represent their location to calculate distances from other locations. Marker infowindows
++	      and radar chart is automatically updated with new distances. Users can also click on the market names in the infowindow
++	      to be directed to the market webpage.
++	e. Y, users can influnce the radar chart by selecting different produce items, and by dragging the marker that represents
++	      their location. 
++
++5. To build this application, code just needs to be copied to web server.
++
++6. Tested with: Chrome, Safari, IE
+ 
+-5. To build this application, php will need to be installed (often a part of web server installations).  The code will just need to be copied.
++7. Known issues:
++	1.  When testing on Safari, the blob hover market names do not appear in a readable form.
++	2.  User input is not functional - only a representation.  More thought is needed to design
++	    a strategy to vet user supplied information, and how to handle that information.
++	3.  Local market data was provided by a random number generator to help portray the functionality.
++	    There are no online data sources available for local markets.
++	4.  Walmart data was not unique between the different locations. As a result, Walmart blobs highly overlap
++	    due to identical cost and fresh score data points.
++	5.  If a user sets their location farther than 10 miles the distance scale is skewed and radar chart is out of proportion.
+ 
+-6. Tested with: Chrome, Safari
++Future features:
++	1.  Added vendors, for example: Payless, Aldi, Meijer.
++	2.  Increased scope. Ability to use application in many locations - Chicago, Indianapolis, anywhere.
++	3.  A shopping list.  Users can mark an item, and that item's location, distance, price, and freshness score are saved.
++	    The list would provide an easier consolidated list of items, at the interest of the user.
+ 	 
+-7. NA 
+ ```
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/dbInfo.sql b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/dbInfo.sql
+index ba63495..3c833e0 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/dbInfo.sql
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/dbInfo.sql
+@@ -1,5 +1,3 @@
+-drop table produce;
+-
+ CREATE TABLE produce (
+ produce_id INT AUTO_INCREMENT,
+ produce_name VARCHAR(100) NOT NULL,
+@@ -165,7 +163,7 @@ insert into veggies (food_id, food_name, jan, feb, mar, apr, may, jun, jul, aug,
+ (34, 'eggplant', 'O', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'O', 'O', 'O'),
+ (35, 'garlic', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'S','S', 'S', 'O'),
+ (36, 'green peas', 'O', 'O', 'O', 'S', 'S', 'S', 'O', 'O', 'O', 'O', 'O', 'O'),
+-(37, 'herbs', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'O', 'Oh'),
++(37, 'herbs', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'O', 'O'),
+ (38, 'hot peppers', 'O', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'O', 'O', 'O'),
+ (39, 'kale', 'O', 'O', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'S', 'O', 'O'),
+ (40, 'kohlrabi', 'O', 'O', 'O', 'O', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S'),
+@@ -229,7 +227,70 @@ freshness float,
+ foreign key (produce_id) references produce(produce_id)
+ );
+ 
+-insert into historic_lafayette_farmers_market (produce_id, price, freshness) values ( 1, '2.00', '4.5');
++insert into historic_lafayette_farmers_market (produce_id, price, freshness) values
++(1,3.64,0.46),
++(2,4.00,3.73),
++(3,5.32,0.73),
++(4,3.00,3.61),
++(5,5.00,2.46),
++(6,1.45,1.63),
++(7,2.87,1.67),
++(8,4.10,2.15),
++(9,0.50,0.50),
++(10,2.10,3.91),
++(11,1.00,2.48),
++(12,3.13,1.09),
++(13,0.98,4.45),
++(14,6.87,1.07),
++(15,10.00,4.5),
++(16,7.54,3.95),
++(17,4.50,1.69),
++(18,2.90,2.44),
++(19,3.70,2.10),
++(20,8.00,1.18),
++(21,4.50,3.64),
++(22,6.35,2.35),
++(23,8.75,1.38),
++(24,5.30,1.64),
++(25,4.90,4.94),
++(26,6.34,3.05),
++(27,8.93,1.13),
++(28,2.68,3.31),
++(29,6.23,4.29),
++(30,4.63,4.77),
++(31,7.53,1.89),
++(32,4.49,4.89),
++(33,3.56,2.93),
++(34,5.00,4.62),
++(35,1.46,2.72),
++(36,5.67,3.05),
++(37,2.65,3.89),
++(38,8.54,2.48),
++(39,9.17,4.24),
++(40,7.00,2.82),
++(41,4.52,3.03),
++(42,2.11,3.07),
++(43,5.01,4.66),
++(44,4.23,1.03),
++(45,9.48,0.92),
++(46,1.12,4.82),
++(47,5.34,0.42),
++(48,6.31,2.82),
++(49,2.31,2.24),
++(50,0.98,2.32),
++(51,1.54,3.89),
++(52,6.30,0.51),
++(53,2.75,2.76),
++(54,5.34,3.14),
++(55,7.22,1.11),
++(56,3.54,4.31),
++(57,4.52,3.36),
++(58,1.43,0.69),
++(59,6.34,0.98),
++(60,3.23,1.06),
++(61,5.26,0.31),
++(62,0.98,3.26)
++;
+ 
+ select * from historic_lafayette_farmers_market;
+ 
+@@ -243,9 +304,211 @@ freshness float,
+ foreign key (produce_id) references produce(produce_id)
+ );
+ 
++insert into purdue_campus_farmers_market (produce_id, price, freshness) values
++(1,8.07,2.),
++(2,4.6,	3.5),
++(3,4.07,4.01),
++(4,8.65,0.78),
++(5,6.77,3.95),
++(6,6.55,2.78),
++(7,3.25,1.94),
++(8,1.61,0.57),
++(9,4.4,	2.84),
++(10,8.29,0.32),
++(11,2.56,4.54),
++(12,9.05,.28),
++(13,4.01,2.79),
++(14,6.27,3.24),
++(15,0.9,0.82),
++(16,8.26,2.99),
++(17,7.62,0.74),
++(18,8.15,2.64),
++(19,9.1,1.33),
++(20,5.92,1.61),
++(21,7.22,4.26),
++(22,2.68,2.33),
++(23,2.9,0.81),
++(24,2.07,1.34),
++(25,1.18,2.67),
++(26,9.1,4.02),
++(27,5.23,3.33),
++(28,6.19,2.95),
++(29,9.85,1.62),
++(30,3.72,1.68),
++(31,4.54,2.6),
++(32,3.73,1.72),
++(33,3.42,2.74),
++(34,0.81,0.64),
++(35,2.95,4.05),
++(36,9.55,3.1),
++(37,1.5,2.84),
++(38,2.53,3.71),
++(39,2.0,4.45),
++(40,8.53,4.48),
++(41,2.58,0.21),
++(42,1.56,.48),
++(43,3.93,1.94),
++(44,3.98,4.41),
++(45,3.99,3.26),
++(46,7.29,2.83),
++(47,6.71,4.29),
++(48,9.68,3.56),
++(49,9.49,3.53),
++(50,8.64,3.82),
++(51,8.9,1.41),
++(52,3.38,4.62),
++(53,8.21,3.11),
++(54,3.02,1.8),
++(55,2.82,2.68),
++(56,7.39,0.59),
++(57,7.63,0.75),
++(58,6.44,0.68),
++(59,8.35,2.89),
++(60,9.43,1.34),
++(61,7.44,1.68),
++(62,9.27,2.97)
++;
++
+ create table west_lafayette_farmers_market (
+ produce_id int not null primary key,
+ price float,
+ freshness float,
+ foreign key (produce_id) references produce(produce_id)
+ );
++
++insert into west_lafayette_farmers_market (produce_id, price, freshness) values
++(1,0.69,1.60),
++(2,4.94,1.62),
++(3,7.74,1.08),
++(4,3.02,4.28),
++(5,0.79,0.64),
++(6,5.95,2.45),
++(7,6.82,4.60),
++(8,7.89,0.51),
++(9,6.61,4.94),
++(10,8.49,2.19),
++(11,2.81,3.28),
++(12,3.65,0.23),
++(13,8.48,1.33),
++(14,4.59,4.18),
++(15,4.11,3.24),
++(16,7.90,3.43),
++(17,6.00,4.86),
++(18,6.20,4.66),
++(19,6.76,3.14),
++(20,5.22,2.38),
++(21,5.52,4.08),
++(22,7.64,1.39),
++(23,9.98,1.81),
++(24,9.15,3.01),
++(25,1.42,0.65),
++(26,0.76,4.46),
++(27,8.41,2.93),
++(28,3.24,4.00),
++(29,6.52,2.67),
++(30,5.55,3.87),
++(31,5.53,1.47),
++(32,9.07,2.39),
++(33,4.35,4.64),
++(34,2.18,2.56),
++(35,4.83,0.15),
++(36,7.03,3.42),
++(37,3.01,3.65),
++(38,7.41,0.93),
++(39,4.75,4.45),
++(40,0.94,1.12),
++(41,4.46,2.99),
++(42,5.15,4.71),
++(43,7.81,2.99),
++(44,9.29,3.05),
++(45,6.08,4.48),
++(46,9.97,2.13),
++(47,7.59,3.09),
++(48,6.94,4.37),
++(49,2.92,1.94),
++(50,7.27,1.30),
++(51,7.71,4.14),
++(52,4.04,2.53),
++(53,6.32,2.33),
++(54,7.53,2.19),
++(55,7.38,2.74),
++(56,4.00,4.08),
++(57,9.18,0.99),
++(58,2.89,0.12),
++(59,7.09,3.14),
++(60,6.23,1.70),
++(61,1.03,3.08),
++(62,0.86,4.89)
++;
++
++create table west_lafayette_walmart_supercenter (
++produce_id int not null primary key,
++price float,
++freshness float,
++foreign key (produce_id) references produce(produce_id)
++);
++
++insert into west_lafayette_walmart_supercenter (produce_id, price, freshness) values
++(1, 4.94, 2.0),
++(2, 2.98, 4.77),
++(3, 1.48, 0),
++(4, 4.86, 0),
++(5, 2.48, 2.8),
++(6, 0, 0),
++(7, 0, 0),
++(8, 0, 0),
++(9, 4.48, 0),
++(10, 0, 0),
++(11, 0, 0),
++(12, 0, 0),
++(13, 0, 0),
++(14, 0, 0),
++(15, 3.86, 4.44),
++(16, 2.28, 3.31),
++(17, 2.98, 4.55),
++(18, 6.98, 5.0),
++(19, 0, 0),
++(20, 0, 0),
++(21, 2.78, 4.26),
++(22, 0, 0),
++(23, 1.98, 0),
++(24, 2.24, 4.23),
++(25, 0, 0),
++(26, 0, 0),
++(27, 0.84, 4.32),
++(28, 2.97, 4.0),
++(29, 0, 0),
++(30, 0, 0),
++(31, 0, 0),
++(32, 0, 0),
++(33, 3.24, 0),
++(34, 0, 0),
++(35, 1.98, 5.0),
++(36, 0.68, 0),
++(37, 0, 0),
++(38, 0, 0),
++(39, 0.98, 4.66),
++(40, 0, 0),
++(41, 1.18, 3.39),
++(42, 0, 0),
++(43, 1.92, 0),
++(44, 2.17, 5.0),
++(45, 0, 0),
++(46, 0, 0),
++(47, 2.98, 5.0),
++(48, 2.48, 0),
++(49, 2.58, 4.42),
++(50, 2.77, 4.136),
++(51, 0, 0),
++(52, 0, 0),
++(53, 0, 0),
++(54, 0, 0),
++(55, 2.38, 3.76),
++(56, 0, 0),
++(57, 0.88, 0),
++(58, 2.98, 0),
++(59, 3.96, 0),
++(60, 0, 0),
++(61, 2.48, 3.0),
++(62, 1.98, 0)
++;
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/index.html
+index 97755cb..61db50d 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/index.html
+@@ -54,9 +54,9 @@
+             <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                 <li class="active"><a href="#">Home</a></li>
+-                <li><a href="#about">About</a></li>
++                <!--<li><a href="#about">About</a></li>
+                 <li><a href="#contact">Contact</a></li>
+-                <!--<li class="dropdown">
++                <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="#">Action</a></li>
+@@ -76,7 +76,8 @@
+       </div>
+ 
+       <div id="title">
+-        <h2>Welcome to Pro-Compare!</h2>
++        <h2>Welcome to Pro-Compare!</h2><br><br>	
++        <p>A source for smart customers to compare local produce.</p>
+       </div>
+ 
+     <!-- Marketing messaging and featurettes
+@@ -90,19 +91,24 @@
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/info-icon.jpeg" alt="Generic placeholder image" width="140" height="140">
+           <h2>About</h2>
+-          <p>This page is a source of information for smart customers to compare local produce.  Information about prices, distance, and freshness can be found here.</p>
++          <p>Pro-Compare is a tool for the local produce customer in the West Lafayette Area.
++	  This app provides a central location for produce data, and displays it in
++	  visually compelling way! Data from local markets AND large vendors is aggregated and organized for easy comparison.
++	  Users can take this tool and become more savvy produce customers.</p>  
+ 	<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/user-edit-icon.png" alt="Generic placeholder image" width="140" height="140">
+           <h2>User Input</h2>
+-          <p>Users can help provide information by inputing prices they find while visiting local vendors.</p>
++          <p>User can help provide information and keep data accurate. Inputing prices, freshness rating, and even new markets
++		can help data stay relevant and useful for other users.  Freshness ratings are added to calculations involving
++		produce season and climate data, prices are averaged, and new markets require validation prior to being displayed.</p>
+           <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/Mail-icon.png" alt="Generic placeholder image" width="140" height="140">
+           <h2>Contact</h2>
+-          <p>For feedback, updates, corrections, or just to say hi!  A responsible individual can be reached at pherrod [at] purdue [dot] edu.</p>
++          <p>For feedback, updates, corrections, or just to say hi! - The responsible party can be reached at pherrod [at] purdue [dot] edu.</p>
+           <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+       </div><!-- /.row -->
+@@ -118,11 +124,7 @@
+           <p class="lead">Select your local market (or click on the map), select produce type, then your produce item from the dropdown list!</p>
+ 	  <div class="form-group">
+             <label for="marketInput">Market</label>
+-            <select class="form-control selector2"></select>
+-          </div>
+-	  <div class="form-group">
+-             <label for="distanceInput">Distance</label>
+-             <input type="text" class="form-control" id="distance">
++            <select id="selector1" class="form-control selector2"></select>
+           </div>
+ 	  <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary active">
+@@ -132,8 +134,15 @@
+              <input type="radio" name="food" id="option2" value="veggies" autocomplete="off">Vegetables
+            </label>
+          </div>
+-	 <select id="selector" class="form-control"></select>
++	 <select id="selector5" class="form-control selector"></select>
++	<h2 class="featurette-heading" style="margin-top:60px">Charts!<span class="text-muted"> See the data.</span></h2>
++	<h3>Hover over blobs for market names, or click market icons on the map for specific values</h3> 
++	<p>(Prices "Not Listed" could not be found on the web and may not currently be available in stores.)</p> 
+ 	<div class="radarChart"></div>
++	<p>This is a radar chart!  This chart displays the distance to each market, the freshness of selected
++	 produce item (from the field above), and the cost of that item at each market! Distance and cost are inversely displayed
++	on this chart; higher cost score = a cheaper product, higher distance score = a closer market.
++	The largest blobs have the best scores! Freshness score is calculated on climate, season, and user feedback.</p>
+         </div>
+ 
+         <div id="map-column" class="col-md-7">
+@@ -143,7 +152,7 @@
+ 	      <div id="map"></div>
+ 	    </div>
+ 	  </div>
+-	  <p>This map is very dynamic! You can click on any icon to look at the distance to that market/store. (If you do not see any markers, please refresh the page!).
++	  <p>This map is very dynamic! You can click on any icon to look at the distance, price, or fresh scores. (If you do not see any markers, please refresh the page!).
+ 	  One marker represents you! The app attempts to automatically get your location, but if you prefer to manually set your place, you can drag and drop that marker.
+  	  You can also zoom!</p>
+ 	</div>
+@@ -171,15 +180,24 @@
+ 	<div class="form-group">
+ 	  <label for="marketInput">Market</label>
+ 	    <input type="text" class="form-control" id="marketInput" placeholder="New Market">
+-	    <select class="form-control selector2"></select>
++	    <select id="selector8" class="form-control selector2"></select>
+ 	</div>
+ 	<div class="form-group">
+ 	  <label for="itemInput">Item</label>
+-	    <input type="text" class="form-control" id="itemInput">
++	    <input type="text" class="form-control" id="itemInput" placeholder="New Item">
++	  <div class="btn-group" data-toggle="buttons">
++           <label class="btn btn-primary active">
++             <input type="radio" name="food2" id="option3" value="fruits" autocomplete="off" checked>Fruits
++           </label>
++           <label class="btn btn-primary">
++             <input type="radio" name="food2" id="option4" value="veggies" autocomplete="off">Vegetables
++           </label>
+          </div>
+-	<p>Please rate this item's freshness!</p>
++	 <select id="selector6" class="form-control selector"></select>
++	</div>
++	<p>Please rate this item's freshness! (1 Bad - 5 Fresh)</p>
+ 	<label class="radio-inline">
+-	  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1 *Not fresh
++	  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+ 	</label>
+ 	<label class="radio-inline">
+ 	  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+@@ -191,11 +209,11 @@
+ 	  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"> 4
+ 	</label>
+ 	<label class="radio-inline">
+-	  <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5"> 5 *Very Fresh!
++	  <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5"> 5
+ 	</label>
+ 	<div class="checkbox">
+ 	  <label>
+-	    <input type="checkbox"> Check me out
++	    <!--<input type="checkbox"> Check me out-->
+ 	  </label>
+ 	</div>
+ 	<button type="submit" class="btn btn-default">Submit</button>
+@@ -216,312 +234,12 @@
+       </footer>
+ 
+     </div><!-- /.container -->
+-       <script id="source" language="javascript" type="text/javascript">
+-
+-	/* Function to query database containg produce list, compiled from state.gov webstes of Indiana, Illinois, Ohio. 
+-	On successful response, the function populates the selection list, where users can select the produce item to
+-	investigate */
+-	$(function() {
+-		$('#div1').html("test: " + $('input:radio[name=food]:checked').val());
+-		$.ajax({                                      
+-	        	url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+-              		type: 'post',
+-              		datatype: "json",
+-              		data : {"column":"*",
+-                  		"table": $('input:radio[name=food]:checked').val(),
+-                  		"order_by" : "food_name"},
+-              		success: function(data) {          //on recieve of reply
+-                		var id;
+-               	 		var fname;
+-                		for (x = 0; x < data.length; x++) {
+-                  			fname = data[x]['food_name'];
+-                  			$('#selector').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
+-                		}
+-                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+-              		}
+-            	});
+-	});
+-
+-
+-	/* Listener funciton that queries a produce database.  This function is updates the selction list based on the button
+-	pressed by the user, either Fruits or Vegetables */
+-	$("input[name=food]:radio").change(function () {
+-        	$('#selector').html("");
+-             	$.ajax({                                      
+-              		url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+-              		type: 'post',
+-              		datatype: "json",
+-              		data : {"column":"*",
+-                  		"table": $('input:radio[name=food]:checked').val(),
+-                  		"order_by" : "food_name"},
+-              		success: function(data) {          //on recieve of reply
+-                		var id;
+-                		var fname;
+-                		for (x = 0; x < data.length; x++) {
+-                  			fname = data[x]['food_name'];
+-                  			$('#selector').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
+-                		}
+-                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+-              		}
+-            	});
+-	});
+-
+-	/* Function to query walmart's open api, and retrieve the walmart location in the west lafayette, lafayette area */
+-	/* INCOMPLETE */
+-	function getWalmarts() {
+-		$.get('http://api.walmartlabs.com/v1/stores?apiKey=e3a4mdbpmcawatrnh7zq8scw&format=json&zip=47906', function(data){ alert(data);}, 'json')
+-	}
+-	getWalmarts();
+-	
+-	/* POST function to query db server containing dataset of farmers markets in the West Lafayette area (A subset taken from Data.gov).
+-	callBack function called to handle to data response.*/
+-	$.post('http://herrod-champ.sensidev.com/api.php', {"column":"*","table":"local_markets"}, function(data){testCallback(data)}); 
+-
+-	/* Global variable to hold all market/store map markers */
+-	var markers = [];
+-
+-	/* callBack function to handle market query response data.  The function creates a google map marker
+-	for each market result, adds a custom icon, puts the marker on the map, adds marker to the global
+-	list of markers, and adds a click listener to each marker.
+-	@param: markets -- the market data result from previous market query */
+-	function testCallback(markets) {
+-	  var image = {
+-		url: "site_includes/marker2.png", 
+-		size: new google.maps.Size(25, 45),
+-		origin: new google.maps.Point(0,0),
+-		anchor: new google.maps.Point(13,45),
+-	  }; 
+-	  for (x = 0; x < markets.length; x++) {
+-	    $('.selector2').append($('<option />').val(markets[x]['table_name']).text(markets[x]['name']));
+-	    var marker = new google.maps.Marker({
+-	      position: {lat: Number(markets[x]['lat']), lng: Number(markets[x]['lng'])},
+-	      animation: google.maps.Animation.DROP,
+-	      map: map,
+-	      icon: image,
+-	      title: markets[x]['name']
+-	    });
+-	    marker.value = markets[x]['table_name'];
+-	    markers.push(marker);
+-	    marker.addListener('click', toggleBounce);
+-	  }
+-	};
+-
+-	/* Functoin to animate map markers.  Target market selector is updated with proper name,
+-	other marker animations are turned off, target marker is animated, and distance from user
+-	location to target market calculated.*/
+-	function toggleBounce() {
+-	  $('.selector2').val(this.value);
+-	  for (var i = 0; i < markers.length; i++) {
+-	    markers[i].setAnimation(null);
+-	  }
+-	  this.setAnimation(google.maps.Animation.BOUNCE);
+-	  calculateDistance(user_loc);
+-	};
+-
+-	/* Target market listener function.
+-	onChagne -- removes animations from all other markers, re-animates target market icon, and calculate distance to new, target market */
+-	$('.selector2').change(function() {
+-	  for (var i = 0; i < markers.length; i++) {
+-	    markers[i].setAnimation(null);
+-	    if (markers[i].value == this.value) {
+-	      markers[i].setAnimation(google.maps.Animation.BOUNCE)
+-	    }
+-	  }
+-	  calculateDistance(user_loc);
+-	});
+-	
+-	/* Target produce item listener function.
+-	onChange -- calls updateChartPrice*/
+-         $('#selector').change(function() {
+-           updateChartPrice(this.value);
+-         });
+-
+-	/* Function to dynamically update radar chart to reflect the price of the target product from the target market*/
+-	/* INCOMPLETE */
+-	function updateChartPrice(food_id) {
+-		$.post('http://herrod-champ.sensidev.com/api.php', {"column":"price, freshness","table": $('.selector2').val(), "where" : "produce_id = " + food_id}, function(data) {
+-			alert(data[0]['price']);
+-		});
+- 	};
+-
+-	/* Function to get the User's location*/
+-	getLocation();
+-	function getLocation() {
+-    		if (navigator.geolocation) {
+-   			navigator.geolocation.getCurrentPosition(showPosition, showError);
+-    		} else { 
+-        		alert('Geolocation is not supported by this browser.');
+-    		}
+-	};
+-
+-	/* Function to put a marker on google map, representing the user,
+-	registers a listener to calculate a distance everytime user marker is dragged-and-dropped.
+-	@param: position -- the geolocation position object returned from navigator*/
+-	function showPosition(position) {
+-    		var lat = position.coords.latitude; 
+-    		var lng = position.coords.longitude;
+-		user_loc = new google.maps.Marker({
+-                	position: {lat: Number(lat), lng: Number(lng)},
+-                	animation: google.maps.Animation.DROP,
+-                	map: map,
+-                	draggable: true,
+-			title: "You are here!"
+-                });
+-		calculateDistance(user_loc);
+-		user_loc.addListener('dragend', calculateDistance);
+-	};
+-
+-	/* Function to calculate a distance detween a location and a target.
+-	The target is one of the selected markets and "location" is the position
+-	of the user.
+-	@param: location -- user's location*/ 
+-	function calculateDistance(location) {
+-		var destination = $('.selector2').val();
+-		for (var i = 0; i < markers.length; i++) {
+-			if (markers[i].value == destination) {
+-				destination = markers[i].position;
+-				break;
+-			}
+-		}
+-		var origin = (this.position !== undefined) ? this.position : location.position;
+-		var service = new google.maps.DistanceMatrixService();
+-		service.getDistanceMatrix(
+-  		{
+-    		origins: [{lat: origin.lat(), lng: origin.lng()}],
+-    		destinations: [{lat: destination.lat(), lng: destination.lng()}],
+-    		travelMode: google.maps.TravelMode.DRIVING,
+-		unitSystem: google.maps.UnitSystem.IMPERIAL,
+-    		avoidHighways: false,
+-    		avoidTolls: false,
+-  		}, callback);
+-
+-		function callback(response, status) {
+-			if (status == google.maps.DistanceMatrixStatus.OK) {
+-   				var origins = response.originAddresses;
+-  				var destinations = response.destinationAddresses;
+-
+-    				for (var i = 0; i < origins.length; i++) {
+-      					var results = response.rows[i].elements;
+-      					for (var j = 0; j < results.length; j++) {
+-        					var element = results[j];
+-        					var distance = element.distance.text;
+-        					var duration = element.duration.text;
+-        					var from = origins[i];
+-        					var to = destinations[j];
+-						$('#distance').val(distance);
+-      					}
+-    				}
+-  			}
+-		}
+-	};
+-
+-	/* Function to show an error in the geolocationa cquisition process
+-	mainly used for testing */
+-	function showError(error) {
+-    		switch(error.code) {
+-        	  case error.PERMISSION_DENIED:
+-            		alert('User denied the request for Geolocation.');
+-            		break;
+-        	  case error.POSITION_UNAVAILABLE:
+-            		alert('Location information is unavailable.');
+-            		break;
+-        	  case error.TIMEOUT:
+-            		alert('The request to get user location timed out.');
+-            		break;
+-        	  case error.UNKNOWN_ERROR:
+-            		alert('An unknown error occurred.');
+-            		break;
+-    		}
+-	};
+-
+-	/* Function to initialize google map */
+-	function initMap() {
+-        	map = new google.maps.Map(document.getElementById('map'), {
+-           	center: {lat: 40.441577, lng: -86.908967},
+-           		zoom: 12,
+-	   		mapTypeControl: false,
+-	  		streetViewControl: false,
+-	   		zoomControl: true,
+-	   		draggable: true,
+-	   		scrollwheel: false,
+-         	});
+-	}
+-
+-	/* Code to detect the device used by the client, 
+-	   used for determining different site behaviors*/
+-	function detectmob() { 
+-       		if( navigator.userAgent.match(/Android/i)
+-         	 || navigator.userAgent.match(/webOS/i)
+-         	 || navigator.userAgent.match(/iPhone/i)
+-	 	 || navigator.userAgent.match(/iPad/i)
+-	 	 || navigator.userAgent.match(/iPod/i)
+-	 	 || navigator.userAgent.match(/BlackBerry/i)
+-	 	 || navigator.userAgent.match(/Windows Phone/i)
+-	 	) {
+-	  		return true;
+-		}  else {
+-    	  		return false;
+-  		}
+-	}
+-
+-	/* Function to allow map to stay put during scroll */
+-	function sticky_relocate() {
+-        	var window_top = $(window).scrollTop();
+-         	var div_top = $('#map-anchor').offset().top;
+-	 	if (window_top > div_top && !detectmob()) {
+-             		$('#map-holder').addClass('stick');
+-	     		$('#map-holder').width($('#map-column').width());
+-		} else {
+- 	        	$('#map-holder').removeClass('stick');
+-        	}
+-     	}
+-
+-	/* Scroll listener function */
+- 	$(function () {
+-        	$(window).scroll(sticky_relocate);
+-         	sticky_relocate();
+-	});
+-
+-	/* Radar Chart Code */
+-	var margin = {top: 60, right: 60, bottom: 60, left: 60},
+-		width = Math.min(457.5, window.innerWidth - 10) - margin.left - margin.right,
+-		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+-			
+-	var chartData = [
+-		[//iPhone
+-			{axis:"Freshness",value:0.8},
+-			{axis:"Cost",value:0.45},
+-			{axis:"Distance",value:0.29},
+-		],[//Samsung
+-			{axis:"Freshness",value:0.27},
+-			{axis:"Cost",value:0.9},
+-			{axis:"Distance",value:0.5},
+-		],[//Nokia Smartphone
+-			{axis:"Freshness",value:0.46},
+-			{axis:"Cost",value:0.10},
+-			{axis:"Distance",value:0.7},
+-		]
+-	];
+-
+-	var color = d3.scale.ordinal().range(["#EDC951","#CC333F","#00A0B0"]);
+-				
+-	var radarChartOptions = {
+-		  w: width,
+-		  h: height,
+-		  margin: margin,
+-		  maxValue: 1,
+-		  levels: 3,
+-		  roundStrokes: true,
+-		  color: color
+-		};
+-	//Call function to draw the Radar chart
+-	RadarChart(".radarChart", chartData, radarChartOptions);
+-     </script>
++    <script type="text/javascript" src="main.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5wLhnIZX1forTvrYIw3NXrG6yyt0uHSE&callback=initMap"></script>
+     <!-- Bootstrap core JavaScript
+     ================================================== -->
+     <!-- Placed at the end of the document so the pages load faster -->
+-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
++    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+     <script src="site_includes/assets/js/vendor/holder.min.js"></script>
+     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/main.js
+new file mode 100644
+index 0000000..92b36f4
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/main.js
+@@ -0,0 +1,656 @@
++	/* Global variable to hold all market/store map markers */
++	var Markets = [];
++	var Walmarts = [];
++	var markers = [];
++	var distances = [];
++	var scores = [];
++	var prices = [];
++	var WalmartPrices = [];
++	var infoWindows = [];
++	var Months = {
++		0:'jan',
++		1:'feb',
++		2:'mar',
++		3:'apr',
++		4:'may',
++		5:'jun',
++		6:'jul',
++		7:'aug',
++		8:'sep',
++		9:'oct',
++		10:'nov',
++		11:'dcm'
++	};
++
++	
++	/* Function to query database containg produce list, compiled from state.gov webstes of Indiana, Illinois, Ohio. 
++	On successful response, the function populates the selection list, where users can select the produce item to
++	investigate */
++	$(function() {
++		$('#div1').html("test: " + $('input:radio[name=food]:checked').val());
++		$.ajax({                                      
++	        	url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
++              		type: 'post',
++              		datatype: "json",
++              		data : {"column":"*",
++                  		"table": $('input:radio[name=food]:checked').val(),
++                  		"order_by" : "food_name"},
++              		success: function(data) {          //on recieve of reply
++                		var id;
++               	 		var fname;
++                		for (x = 0; x < data.length; x++) {
++                  			fname = data[x]['food_name'];
++                  			$('.selector').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
++                		}
++                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
++              		},
++			aysn:false
++            	});
++	});
++
++
++	/* Listener function that queries a produce database.  This function is updates the selction list based on the button
++	pressed by the user, either Fruits or Vegetables */
++	$("input[name=food]:radio").change(function () {
++        	$('#selector5').html("");
++		$.ajax({                                      
++              		url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
++              		type: 'post',
++              		datatype: "json",
++              		data : {"column":"*",
++                  		"table": $('input:radio[name=food]:checked').val(),
++                  		"order_by" : "food_name"},
++              		success: function(data) {          //on recieve of reply
++                		var id;
++                		var fname;
++                		for (x = 0; x < data.length; x++) {
++                  			fname = data[x]['food_name'];
++                  			$('#selector5').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
++                		}
++                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
++              		},
++			async:false
++            	});
++		itemListener.change();
++	});
++
++	/* Listener function to query database, when user changes from fruits to vegetables in the second item selection input*/	
++	$("input[name=food2]:radio").change(function () {
++        	$('#selector6').html("");
++		$.ajax({                                      
++              		url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
++              		type: 'post',
++              		datatype: "json",
++              		data : {"column":"*",
++                  		"table": $('input:radio[name=food2]:checked').val(),
++                  		"order_by" : "food_name"},
++              		success: function(data) {          //on recieve of reply
++                		var id;
++                		var fname;
++                		for (x = 0; x < data.length; x++) {
++                  			fname = data[x]['food_name'];
++                  			$('#selector6').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
++                		}
++                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
++              		},
++			async:false
++            	});
++	});
++	
++	/* POST function to query db server containing dataset of farmers markets in the West Lafayette area (A subset taken from Data.gov).
++	callBack function called to handle to data response.*/
++	function getMarkets() {
++		$.post('http://herrod-champ.sensidev.com/api.php', {"column":"*","table":"local_markets"}, function(data){Markets = data; placeMarkers();}); 
++	}
++	/* callBack function to handle market query response data.  The function creates a google map marker
++	for each market result, adds a custom icon, puts the marker on the map, adds marker to the global
++	list of markers, and adds a click listener to each marker. */
++	function placeMarkers() {
++	  var image = {
++		url: "site_includes/marker2.png", 
++		size: new google.maps.Size(25, 45),
++		origin: new google.maps.Point(0,0),
++		anchor: new google.maps.Point(13,45)
++	  }; 
++	  for (x = 0; x < Markets.length; x++) {
++	    $('.selector2').append($('<option />').val(Markets[x].table_name).text(Markets[x].name));
++	    var marker = new google.maps.Marker({
++	      position: {lat: Number(Markets[x].lat), lng: Number(Markets[x].lng)},
++	      animation: google.maps.Animation.DROP,
++	      map: map,
++	      icon: image,
++	      title: Markets[x].name
++	    });
++	    marker.value = Markets[x].table_name;
++	    Markets[x].marker = marker;
++	    markers.push(marker);
++		var infoWindow = new google.maps.InfoWindow({
++			content: ''
++		});
++		Markets[x].infoWindow = infoWindow;
++	  }
++	  getWalmarts();
++	};
++
++	/* Function to add info windows to each map marker.
++	@param marker - the marker to bind window to
++	@param map - the map container the marker
++	@param infowindow - window object to show above marker
++	@param desription - information to display in window */
++	function bindInfoWindow(marker, map, infowindow, description) {
++    		marker.addListener('click', function() {
++			closeAllInfoWindows();
++			var distance = 0;
++			var price = 0;
++			var freshscore = 0;
++			$('#selector1').val(this.value);
++			for (i = 0; i < Markets.length; i++) {
++				if (this.value == Markets[i].table_name) {
++					distance = Markets[i].distancetext;
++					price = Markets[i].price;
++					freshscore = Markets[i].freshscore;
++				}
++			}
++			for (i = 0; i < Walmarts.length; i++) {
++				if (this.title == Walmarts[i].marker.title) {
++					distance = Walmarts[i].distancetext;
++					price = (Walmarts[i].price == 0) ? "(Not listed)" : Walmarts[i].price;
++					freshscore = Walmarts[i].freshscore;
++				}
++			}
++        		infowindow.setContent(description + distance + '<br>Price: $' + price + '<br>Fresh Score: ' + freshscore + '</p></div>');
++        		infowindow.open(map, this);
++    		});
++	}
++
++	/* Closes any and all marker info windows */
++	function closeAllInfoWindows() {
++		for (i = 0; i < Markets.length; i++) {
++			Markets[i].infoWindow.close();
++		}
++		for (i = 0; i < Walmarts.length; i++) {
++			Walmarts[i].infoWindow.close();
++		}
++	}
++	/* Function to query walmart's open api, and retrieve the walmart location in the west lafayette, lafayette area */
++	function getWalmarts() {
++		$.get('http://herrod-champ.sensidev.com/walmart.php', function(data){
++			var patt = new RegExp('4790');
++			for (i = 0; i < data.length; i++) {
++				if (patt.test(data[i]['zip'])) {
++					Walmarts.push(data[i]);
++					//Markets.push(data[i]);
++					Walmarts[i].count = 1;
++					if (i > 0 && Walmarts[i-1]['name'] == Walmarts[i]['name']) {
++						Walmarts[i].count = Walmarts[i-1].count + 1;
++						Walmarts[i].name += " " + Walmarts[i].count;
++					}
++				}
++			}	
++			placeWalmarts();	
++		});
++	}
++
++	/* Places Warmart markers on map*/
++	function placeWalmarts() {
++           var image = {
++                 url: "site_includes/walmart-icon.png", 
++                 size: new google.maps.Size(30,30),
++                 origin: new google.maps.Point(0,0),
++                 anchor: new google.maps.Point(15,15),
++           }; 
++           for (x = 0; x < Walmarts.length; x++) {
++	     var table_name = (Walmarts[x].name).toLowerCase().replace(/ /g,"_");
++	     if (Walmarts[x].count > 1) {
++		table_name += "_" + Walmarts[x].count;
++	     }
++	     Walmarts[x].table_name = table_name;
++             $('.selector2').append($('<option />').val(table_name).text(Walmarts[x].name));
++	     var marker = new google.maps.Marker({
++               position: {lat: Number(Walmarts[x].coordinates[1]), lng: Number(Walmarts[x].coordinates[0])},
++               animation: google.maps.Animation.DROP,
++               map: map,
++               icon: image,
++               title: (Walmarts[x].count > 1) ? Walmarts[x].name+" "+Walmarts[x].count : Walmarts[x].name
++             });
++             marker.value = table_name;
++	     Walmarts[x].marker = marker;	//add Walmart locaiton/object to global array
++             markers.push(marker);
++		var infoWindow = new google.maps.InfoWindow({
++			content: ''
++		});
++		Walmarts[x].infoWindow = infoWindow;
++           }
++	   getLocation();	//fire location procedure
++         };
++
++	/* Target market listener function.
++	onChagne -- removes animations from all other markers, re-animates target market icon, and calculate distance to new, target market */
++	$('#selector1').change(function() {
++	  closeAllInfoWindows();
++	  for (i = 0; i < Markets.length; i++) {
++	    if (Markets[i].table_name == this.value) {
++	      google.maps.event.trigger(Markets[i].marker, 'click');
++	      break;
++	    }
++	  }
++	  for (i = 0; i < Walmarts.length; i++) {
++	    if (Walmarts[i].table_name == this.value) {
++	      google.maps.event.trigger(Walmarts[i].marker, 'click');
++	      break;
++	    }
++	  }
++	
++	});
++	
++	/* Target produce item listener function.
++	onChange -- calls updateChartPrice*/
++	var itemListener = $('#selector5').change(function() {
++		closeAllInfoWindows();
++         	updateAllPrices(this.value);
++		calcFreshness();
++		bindAllWindows();
++		constructChartData();
++		drawRadarChart();
++	});
++
++	/* Function to dynamically update radar chart to reflect the price of the target product from the target market*/
++	/* INCOMPLETE */
++	function updateAllPrices(food_id) {
++		for (i = 0; i < Markets.length; i++) {
++			$.ajax({
++				type: 'POST',
++				url: 'http://herrod-champ.sensidev.com/api.php',
++				data: {"column":"price","table": Markets[i].table_name, "where" : "produce_id = " + food_id},
++				success: function (data) {
++					Markets[i].price = data[0]['price'];
++					Markets[i].item = $('#selector5 option:selected').text();
++				},
++				async:false
++			});
++		}
++		for (i = 0; i < Walmarts.length; i++) {
++			$.ajax({
++				type: 'POST',
++				url: 'http://herrod-champ.sensidev.com/api.php',
++				data: {"column":"price","table": "walmart_supercenter", "where" : "produce_id = " + food_id},
++				success: function (data) {
++					Walmarts[i].price = data[0]['price'];
++					Walmarts[i].item = $('#selector5 option:selected').text();
++				},
++				async:false
++			});
++		}
++ 	};
++
++	/* Helper function to return a Market object given a table name*/
++	function returnMarketByTableName(val) {
++		for (i = 0; i < Markets.length; i++) {
++			if (Markets[i].table_name == val)
++				return Markets[i];
++		}
++	};
++
++	/* Function to get the User's location*/
++	function getLocation() {
++    		if (navigator.geolocation) {
++   			navigator.geolocation.getCurrentPosition(showPosition, showError);
++    		} else { 
++        		alert('Geolocation is not supported by this browser.');
++    		}
++	};
++
++	/* Function to put a marker on google map, representing the user,
++	registers a listener to calculate a distance everytime user marker is dragged-and-dropped.
++	@param: position -- the geolocation position object returned from navigator*/
++	var user_loc;
++	function showPosition(position) {
++    		var lat = position.coords.latitude; 
++    		var lng = position.coords.longitude;
++		user_loc = new google.maps.Marker({
++                	position: {lat: Number(lat), lng: Number(lng)},
++                	animation: google.maps.Animation.DROP,
++                	map: map,
++                	draggable: true,
++			title: "You are here!"
++                });
++		user_loc.addListener('dragend', calcAllDistances);
++		calcAllDistances();
++		updateAllPrices($('#selector5').val());
++		calcFreshness();
++	};
++
++	/* Function calulates the distances from the usesrs location to all listed markets */
++	function calcAllDistances() {
++		var origin = {lat:user_loc.position.lat(),lng:user_loc.position.lng()};
++		var destinations = [];
++		for (i = 0; i < Markets.length; i++) {
++			destinations.push(
++				new google.maps.LatLng(
++					Markets[i].marker.position.lat(), Markets[i].marker.position.lng()
++			));
++		}
++		for (i = 0; i < Walmarts.length; i++) {
++			destinations.push(
++				new google.maps.LatLng(
++					Walmarts[i].marker.position.lat(), Walmarts[i].marker.position.lng()
++			));
++		}
++		var service = new google.maps.DistanceMatrixService();
++		service.getDistanceMatrix( {
++			origins: [origin],
++			destinations: destinations,
++			travelMode: google.maps.TravelMode.DRIVING,
++			unitSystem: google.maps.UnitSystem.IMPERIAL,
++    			avoidHighways: false,
++    			avoidTolls: false,
++		}, callback2);
++		
++		function callback2(response, status) {
++			if (status == google.maps.DistanceMatrixStatus.OK) {
++   				var origins = response.originAddresses;
++  				var destinations = response.destinationAddresses;
++
++    				for (var i = 0; i < origins.length; i++) {
++      					var results = response.rows[i].elements;
++      					for (var j = 0; j < results.length; j++) {
++        					var element = results[j];
++        					var distance = element.distance;
++						if (j < Markets.length) {
++							Markets[j].distance = distance.value;
++							Markets[j].distancetext = distance.text;
++						} else {
++							Walmarts[j-Markets.length].distance = distance.value;
++							Walmarts[j-Markets.length].distancetext = distance.text;
++						}
++      					}
++    				}
++				closeAllInfoWindows();		//necessary update functions
++				bindAllWindows();
++				constructChartData();
++				drawRadarChart();
++  			}
++		}
++
++	};
++	
++	/* Function to update all marker info windows */
++	function bindAllWindows() {
++		for (i = 0; i < Markets.length; i++) {
++			bindInfoWindow(Markets[i].marker, map, Markets[i].infoWindow, '<div><h5><a href="' + Markets[i].webpage + '">' + Markets[i].name + 
++					'</a></h5><h6>' + (Markets[0].item).charAt(0).toUpperCase() + (Markets[0].item).slice(1) + 
++					'</h6><p class="lead"> Distance: ');
++		}
++		for (i = 0; i < Walmarts.length; i++) {
++			bindInfoWindow(Walmarts[i].marker, map, Walmarts[i].infoWindow, '<div><h5><a href="www.walmart.com"' + Walmarts[i].name + 
++					'</a></h5><h6>' + (Markets[0].item).charAt(0).toUpperCase() + (Markets[0].item).slice(1) +
++					 '</h6><p class="lead"> Distance: ');
++		}
++	}
++
++	/* Function that creates, standardizes, and updates data for the radar chart */
++	function constructChartData() {
++		chartData = [];
++		blobTitles = []
++		for (i = 0; i < Markets.length; i++) {
++			chartData.push([
++				{axis:"Freshness", value: Markets[i].freshscore/5},	//standardize scores on a scale of 5
++				{axis:"Cost",value: 1-Markets[i].price/10},		//invert and standardize price on scale of $10
++				{axis:"Distance",value: 1-(Markets[i].distance/16100)}	//invert and standardize distance on a scale of 10 miles 
++			]);
++			blobTitles.push(Markets[i].name);
++		}
++		for (i = 0; i < Walmarts.length; i++) {
++			chartData.push([
++				{axis:"Freshness", value: Walmarts[i].freshscore/5},
++				{axis:"Cost",value: 1-Walmarts[i].price/10},
++				{axis:"Distance",value: 1-(Walmarts[i].distance/16100)}
++			]);
++			blobTitles.push(Walmarts[i].name);
++		}
++	};
++
++	/*  Function to query Climate Data Online
++	  uses thresholds from: http://extension.cropsciences.illinois.edu/handbook/pdfs/chapter01.pdf
++	*/
++	function getClimateScore() {
++		var URL = 'http://www.ncdc.noaa.gov/cdo-web/api/v2/data?';
++		var DATASET = 'GHCNDMS';
++		var LOCATIONID = 'FIPS:18';
++		var STATION = 'GHCND:USC00129430';
++		var MEAN_TEMP = 'MNTM';
++		var TOT_PREC = 'TPCP';
++		var d = new Date();
++		var ENDDATE = '' + d.toISOString().substring(0,10);
++		d.setMonth(d.getMonth()-3)
++		d.setDate(1);
++		var STARTDATE = '' + d.toISOString().substring(0,10);
++		var prec_score = 0;
++		var temp_score = 0;
++		$.ajax({
++			type: "GET",
++			url: URL,
++			data: {	'datasetid':DATASET,
++				'locationid':LOCATIONID,
++				'startdate':STARTDATE,
++				'enddate':ENDDATE,
++				'stationid':STATION,
++				'datatypeid':TOT_PREC},
++			headers: {'token':'cFCGKLrkeIKQAwylahKidnJiptJugIKx'},
++			success: function (data) {
++				var total = 0;
++				for (i = 0; i < data.metadata.resultset.count; i++)
++					total += data.results[i].value;
++				var prec_diff = Math.abs(3048 - total)/10; 	// Using optimal value of 304.8mm/12in of precipitaion in 3-month period.
++				if (prec_diff <= 2.718281828459)
++					prec_score = 0;
++				else if (prec_diff >= 148.4131591)
++					prec_score = 5;
++				else
++					prec_score = Math.log(prec_diff); 	// Using natural log to put worst-score threshold at a difference of 148.4mm/5.84in per 3-months
++			},
++			dataType: 'json',
++			async:false
++		});
++
++		$.ajax({
++			type: "GET",
++			url: URL,
++			data: {	'datasetid':DATASET,
++				'locationid':LOCATIONID,
++				'startdate':STARTDATE,
++				'enddate':ENDDATE,
++				'stationid':STATION,
++				'datatypeid':MEAN_TEMP},
++			headers: {'token':'cFCGKLrkeIKQAwylahKidnJiptJugIKx'},
++			success: function (data) {
++				var total = 0;
++				for (i = 0; i < data.metadata.resultset.count; i++)
++					total += data.results[i].value;
++				var temp_diff = Math.abs(600 - total)/10;	//absolute value of the difference between optimal and previous temperatures
++				if (temp_diff <= 2)
++					temp_score = 5;
++				else if (temp_diff >= 32)
++					temp_score = 0;
++				else
++					temp_score = Math.log(score)/Math.log(2);	//calculate a temperature history score using log base 2
++			},
++			dataType: 'json',
++			async:false
++		});
++		return (temp_score+prec_score)/2;
++
++	}
++
++	/* Function to get and calculate a seasonal score for the selected food.
++	Seasnoal score is calculated by the proximity to the produce items seasonal harvest */
++	function getSeasonScore() {
++		var table = "fruits";
++		var food_id = $('#selector5').val();
++		if (food_id > 18)
++			table = "veggies";
++		var seasonScore = 0;
++		$.ajax({
++			type: 'POST',
++			url: 'http://herrod-champ.sensidev.com/api.php',
++			data: {"column":"*","table": table, "where" : "food_id = " + food_id},
++			success: function(data) {
++				var d = new Date();
++				var month = d.getMonth();
++				var scoreScale = "654321123456";	//string oriented to calculate scores based on the current time
++				for (i = 0; i < month; i++) {
++					scoreScale = scoreScale.charAt(11) + scoreScale.substr(0,11);
++				}
++				for (i = 0; i < 12; i++) {
++					if (data[0][Months[i]] == 'S') {
++						seasonScore += Number(scoreScale.charAt(i));
++					}
++				}
++			},
++			async:false
++		});
++		return seasonScore*5/42;
++	}
++
++	/* Retrieve user freshness ratings from database */
++	function getUserScore(table) {
++		var food_id = $('#selector5').val();
++		var userScore = 0;
++		$.ajax({
++			type: 'POST',
++			url: 'http://herrod-champ.sensidev.com/api.php',
++			data: {"column":"freshness","table": table, "where" : "produce_id = " + food_id},
++			success: function(data) {
++				userScore = Number(data[0].freshness);
++			},
++			async:false
++		});
++		return userScore;
++	}
++
++	/* Calculate the fresh score from the climate score, seasonal score, and user freshness rating. Scores are long floats
++	That are rounded and stores for each market */
++	function calcFreshness() {
++		var climateScore = getClimateScore();
++		var seasonScore = getSeasonScore();
++		for (i = 0; i < Markets.length; i++) {
++			var userScore = getUserScore(Markets[i].table_name);
++			Markets[i].freshscore = parseFloat(Math.round((climateScore + seasonScore + userScore)/3 * 10) / 10).toFixed(1);
++		}
++		var freshscore = (climateScore + seasonScore + getUserScore("walmart_supercenter"))/3;
++		for (i = 0; i < Walmarts.length; i++)
++			Walmarts[i].freshscore = parseFloat(Math.round(freshscore * 10) / 10).toFixed(1);
++	}
++
++	/* Function to log an error in the geolocation acquisition process
++	mainly used for testing */
++	function showError(error) {
++    		var position = {"coords":{"latitude": 40.435020, "longitude": -86.905733}};	// Default Marker Position when user location can not be aquired
++		showPosition(position)
++		switch(error.code) {
++        	  case error.PERMISSION_DENIED:
++            		console.log('User denied the request for Geolocation.');
++            		break;
++        	  case error.POSITION_UNAVAILABLE:
++            		console.log('Location information is unavailable.');
++            		break;
++        	  case error.TIMEOUT:
++            		console.log('The request to get user location timed out.');
++            		break;
++        	  case error.UNKNOWN_ERROR:
++            		console.log('An unknown error occurred.');
++            		break;
++    		}
++	};
++
++	/* Function to initialize google map */
++	function initMap() {
++        	map = new google.maps.Map(document.getElementById('map'), {
++           	center: {lat: 40.417117, lng: -86.888270},
++           		zoom: 12,
++	   		mapTypeControl: false,
++	  		streetViewControl: false,
++	   		zoomControl: true,
++	   		draggable: true,
++	   		scrollwheel: false,
++         	});
++	}
++
++	/* Code to detect the device used by the client, 
++	   used for determining different site behaviors*/
++	function detectmob() { 
++       		if( navigator.userAgent.match(/Android/i)
++         	 || navigator.userAgent.match(/webOS/i)
++         	 || navigator.userAgent.match(/iPhone/i)
++	 	 || navigator.userAgent.match(/iPad/i)
++	 	 || navigator.userAgent.match(/iPod/i)
++	 	 || navigator.userAgent.match(/BlackBerry/i)
++	 	 || navigator.userAgent.match(/Windows Phone/i)
++	 	) {
++	  		return true;
++		}  else {
++    	  		return false;
++  		}
++	}
++
++	/* Function to make map stick during scroll */
++	function sticky_relocate() {
++        	var window_top = $(window).scrollTop();
++         	var div_top = $('#map-anchor').offset().top;
++	 	if (window_top > div_top && !detectmob()) {
++             		$('#map-holder').addClass('stick');
++	     		$('#map-holder').width($('#map-column').width());
++		} else {
++ 	        	$('#map-holder').removeClass('stick');
++        	}
++     	}
++
++	/* Scroll listener function */
++ 	$(function () {
++        	$(window).scroll(sticky_relocate);
++         	sticky_relocate();
++	});
++
++	/* Radar Chart Code */
++	var margin = {top: 60, right: 60, bottom: 60, left: 60},
++		width = Math.min(457.5, window.innerWidth - 10) - margin.left - margin.right,
++		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
++			
++	var chartData = [
++		[//Historic Lafayette Farmers Market
++			{axis:"Freshness",value:0.8},
++			{axis:"Cost",value:0.45},
++			{axis:"Distance",value:0.29},
++		],[//Purdue Campus Farmers Market
++			{axis:"Freshness",value:0.27},
++			{axis:"Cost",value:0.9},
++			{axis:"Distance",value:0.5},
++		],[//West Lafayette Farmers Market
++			{axis:"Freshness",value:0.46},
++			{axis:"Cost",value:0.10},
++			{axis:"Distance",value:0.7},
++		]
++	];
++
++	// Colors for radar chart blobs
++	var color = d3.scale.ordinal().range(["#EDC951","#CC333F","#00A0B0","#E50076","#94E58B","#FFC3A0"]);
++				
++	// Radar Chart settings
++	var radarChartOptions = {
++		  w: width,
++		  h: height,
++		  margin: margin,
++		  maxValue: .5,
++		  levels: 3,
++		  roundStrokes: true,
++		  color: color
++		};
++	
++	// Call function to draw the Radar chart
++	function drawRadarChart() {
++		RadarChart(".radarChart", chartData, radarChartOptions, blobTitles);
++	}
++
++	$(document).ready(function (e) {
++		getMarkets();
++	});
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/radarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/radarChart.js
+index 118d8f8..a17f36f 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/radarChart.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/radarChart.js
+@@ -5,7 +5,7 @@
+ /////////// Inspired by the code of alangrafu ///////////
+ /////////////////////////////////////////////////////////
+ 	
+-function RadarChart(id, data, options) {
++function RadarChart(id, data, options, blobTitles) {
+ 	var cfg = {
+ 	 w: 600,				//Width of the circle
+ 	 h: 600,				//Height of the circle
+@@ -35,7 +35,7 @@ function RadarChart(id, data, options) {
+ 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
+ 		total = allAxis.length,					//The number of different axes
+ 		radius = Math.min(cfg.w/2, cfg.h/2), 	//Radius of the outermost circle
+-		Format = d3.format('%'),			 	//Percentage formatting
++		Format = d3.format('d'),			 	//Percentage formatting
+ 		angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
+ 	
+ 	//Scale for the radius
+@@ -146,6 +146,10 @@ function RadarChart(id, data, options) {
+ 		radarLine.interpolate("cardinal-closed");
+ 	}
+ 
++	var blobTitle = function(d) {
++		return blobTitles[d];
++	}
++				
+ 	//Create a wrapper for the blobs	
+ 	var blobWrapper = g.selectAll(".radarWrapper")
+ 		.data(data)
+@@ -168,12 +172,19 @@ function RadarChart(id, data, options) {
+ 			d3.select(this)
+ 				.transition().duration(200)
+ 				.style("fill-opacity", 0.7);
++			tooltip
++				.transition().duration(200)
++				.text(blobTitle(i))
++				.style("opacity", 1);	
+ 		})
+ 		.on('mouseout', function(){
+ 			//Bring back all blobs
+ 			d3.selectAll(".radarArea")
+ 				.transition().duration(200)
+ 				.style("fill-opacity", cfg.opacityArea);
++			
++			tooltip.transition().duration(200)
++				.style("opacity", 0);
+ 		});
+ 		
+ 	//Create the outlines	
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/site_includes/carousel.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/site_includes/carousel.css
+index a3f4659..974b62e 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/site_includes/carousel.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/site_includes/carousel.css
+@@ -56,6 +56,15 @@ body {
+   background-color: rgba(136, 136, 136, 0.4);
+ }
+ 
++#title > p {
++  display: inline;
++  margin-bottom: 5px;
++  font-family: 42px/1.1 "Raleway", sans-serif;
++  font-size: 25px;
++  color: #ffffff;
++  background-color: rgba(136, 136, 136, 0.4);
++}
++
+ /* MARKETING CONTENT
+ -------------------------------------------------- */
+ 
+@@ -107,6 +116,9 @@ body {
+ }
+ 
+ 
++.tooltip {
++    fill: #333333;
++}
+ /*
+ #mapText {
+   width:10%;
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/site_includes/walmart-icon.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/site_includes/walmart-icon.png
+index 3356332..b1cebad 100644
+Binary files a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-patrickherrod/site_includes/walmart-icon.png and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-patrickherrod/site_includes/walmart-icon.png differ

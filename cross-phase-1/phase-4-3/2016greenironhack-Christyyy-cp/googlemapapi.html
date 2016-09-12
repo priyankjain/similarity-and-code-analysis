@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+  
+  <title>Where is fresh vegetable ?</title>
+    
+    <p id="demo"> </p>
+    <script>
+    document.getElementById("demo").innerHTML = Date();
+
+</script>
+      <h1>Vegetables available this season</h1>
+    <style>
+      html, body {
+        height: 500px;
+        width: 500px
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 80%;
+        width: 70%
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+function initMap() {
+  var myLatLng = {lat: 40.4222238, lng: -86.9100436 };
+  var mark2 = {lat:40.41269 , lng: -86.83967};
+  var mark1 = {lat:40.46147 , lng: -86.91563};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: mark1,
+    map: map,
+    title: 'West Lafayette Farmers Market'
+  });
+
+  var marker2 = new google.maps.Marker({
+    position: mark2,
+    map: map,
+    title: 'Fresh Thyme Farmers Markets'
+  });
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgwf_kw1yUbh6ywFpjaX_FlQtV1Jzbm9w&signed_in=true&callback=initMap"></script>
+
+  <h2>Check pricelist by store</h2>
+  <p id="demo2"> </p>
+  <script type="text/javascript">
+    // var d ＝ new Date();
+    // var x = d.getMonth();
+    // var y = (1-x/12)*100;
+    document.getElementById("demo2").innerHTML = “your possibility of getting fresh vegetable is ” ;
+  </script>
+<button type="button" >Payless</button>
+<button type="button" >Walmart</button>
+<button type="button" >Meijer</button>
+<button type="button" >Farmers 1</button>
+<button type="button" >Farmers 2</button>
+<a href="http://catalog.data.gov/dataset/climate-data-online-cdo">Climate Data Online (CDO)</a>
+  </body>
+</html>

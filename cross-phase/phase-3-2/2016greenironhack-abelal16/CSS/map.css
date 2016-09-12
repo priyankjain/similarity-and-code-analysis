@@ -1,0 +1,29 @@
+html, body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+}
+
+#map {
+    position:relative;
+    width:70%;
+    height:100%;
+}
+
+.text-vertical-center {
+    position: absolute;
+    top: 1%;
+    left: 70%;
+    height: 100%;
+    width: 30%
+    border-radius: 11px;
+    box-shadow: none;
+    color: #34495e;
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.467;
+
+}
+
+
+

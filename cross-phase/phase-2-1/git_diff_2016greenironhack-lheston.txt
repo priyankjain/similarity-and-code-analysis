@@ -1,0 +1,69 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/Documentation.txt b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/Documentation.txt
+new file mode 100644
+index 0000000..0566a4e
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/Documentation.txt
+@@ -0,0 +1,3 @@
++Doc:
++
++Currently developed an initial tableau viz using the food almanac data set from Data.Gov. I am also currently on working on implementing the weather data set but do not plan on using it as much as other data sources. I am also developing a tool to crawl the twitterAPI in order to search every zipcode in indiana for specific results in order to determine where people are talking about fresh farm grown vegtables. I am starting the crawler later tonight and saving the data in a sqlite db, I was wondering if there was an instance I could also use for this project? The schema of the table is included as well.
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/TwitterAPI.py b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/TwitterAPI.py
+new file mode 100644
+index 0000000..f136ada
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/TwitterAPI.py
+@@ -0,0 +1,38 @@
++##twitter api code
++from TwitterAPI import TwitterAPI as tw
++import json
++import sys
++import pandas as pd
++import numpy as np
++
++##variables
++tweetCount = 0
++
++api = tw('7kXWkyNwmrDvwyy6THDxsRRS6', 'jUPVaJuNUyW2GKT3x1rwabwQJjpx2Tsr4NiiiDaUbSLTeZy8x8', '79074669-tlMikTK1RzGQukzlFBbV0kcVXJdMbPmUk4gPCsqVk', 'bQ4xHOXEd1o9ScDmn029nqemS8ZJSZU3ToO1aVyka2tjR')
++
++###r = api.request('statuses/filter', {'locations':'-91.94,35.14,-80.8,42.21', 'lang':'eng', 'q':['fresh','vegtables','farmers','market']})
++###r = api.request('statuses/filter', {'locations':'-91.94,35.14,-80.8,42.21', 'q':['fresh']})
++r = api.request('statuses/filter', {'geocode':'40.665137,-84.919308,1mi', 'q':['fresh']})
++for item in r:
++        #print item
++        tweetCount+=1
++
++        #convert to sring
++        tweet = json.dumps(item)
++
++        #parse
++        tweet = json.loads(tweet)
++
++        row = (
++			tweet['id'], #tweetID
++	        tweet['created_at'], #tweet time
++	        tweet['user']['id_str'], #tweet_author_id
++	        tweet['lang'], # tweet_language
++	        tweet['geo'], #tweet geo
++	        tweet['text'], #tweet text
++	        tweet['coordinates'] #coordinates
++        )
++        	
++        values = [(value.encode('utf8') if hasattr(value, 'encode') else value) for value in row]
++        #values = pd.dataframe(values)
++        print values
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/index.html
+new file mode 100644
+index 0000000..f7ea030
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lheston/index.html
+@@ -0,0 +1,8 @@
++<!DOCTYPE html>
++<html>
++<body>
++
++<script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1004px; height: 869px;'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CN&#47;CNIT559Project2&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='1004' height='869' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='CNIT559Project2&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;CN&#47;CNIT559Project2&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='showTabs' value='y' /></object></div>
++
++</body>
++</html>

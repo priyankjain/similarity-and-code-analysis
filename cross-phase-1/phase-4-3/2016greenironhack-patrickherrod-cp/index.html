@@ -1,0 +1,117 @@
+             <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                 <li class="active"><a href="#">Home</a></li>
+                <!--<li><a href="#about">About</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="#">Action</a></li>
+       </div>
+ 
+       <div id="title">
+        <h2>Welcome to Pro-Compare!</h2><br><br>	
+        <p>A source for smart customers to compare local produce.</p>
+       </div>
+ 
+     <!-- Marketing messaging and featurettes
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/info-icon.jpeg" alt="Generic placeholder image" width="140" height="140">
+           <h2>About</h2>
+          <p>Pro-Compare is a tool for the local produce customer in the West Lafayette Area.
+	  This app provides a central location for produce data, and displays it in
+	  visually compelling way! Data from local markets AND large vendors is aggregated and organized for easy comparison.
+	  Users can take this tool and become more savvy produce customers.</p>  
+ 	<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/user-edit-icon.png" alt="Generic placeholder image" width="140" height="140">
+           <h2>User Input</h2>
+          <p>User can help provide information and keep data accurate. Inputing prices, freshness rating, and even new markets
+		can help data stay relevant and useful for other users.  Freshness ratings are added to calculations involving
+		produce season and climate data, prices are averaged, and new markets require validation prior to being displayed.</p>
+           <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+         <div class="col-lg-4">
+           <img class="img-circle" src="site_includes/Mail-icon.png" alt="Generic placeholder image" width="140" height="140">
+           <h2>Contact</h2>
+          <p>For feedback, updates, corrections, or just to say hi! - The responsible party can be reached at pherrod [at] purdue [dot] edu.</p>
+           <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+         </div><!-- /.col-lg-4 -->
+       </div><!-- /.row -->
+           <p class="lead">Select your local market (or click on the map), select produce type, then your produce item from the dropdown list!</p>
+ 	  <div class="form-group">
+             <label for="marketInput">Market</label>
+            <select id="selector1" class="form-control selector2"></select>
+           </div>
+ 	  <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="food" id="option2" value="veggies" autocomplete="off">Vegetables
+            </label>
+          </div>
+	 <select id="selector5" class="form-control selector"></select>
+	<h2 class="featurette-heading" style="margin-top:60px">Charts!<span class="text-muted"> See the data.</span></h2>
+	<h3>Hover over blobs for market names, or click market icons on the map for specific values</h3> 
+	<p>(Prices "Not Listed" could not be found on the web and may not currently be available in stores.)</p> 
+ 	<div class="radarChart"></div>
+	<p>This is a radar chart!  This chart displays the distance to each market, the freshness of selected
+	 produce item (from the field above), and the cost of that item at each market! Distance and cost are inversely displayed
+	on this chart; higher cost score = a cheaper product, higher distance score = a closer market.
+	The largest blobs have the best scores! Freshness score is calculated on climate, season, and user feedback.</p>
+         </div>
+ 
+         <div id="map-column" class="col-md-7">
+ 	      <div id="map"></div>
+ 	    </div>
+ 	  </div>
+	  <p>This map is very dynamic! You can click on any icon to look at the distance, price, or fresh scores. (If you do not see any markers, please refresh the page!).
+ 	  One marker represents you! The app attempts to automatically get your location, but if you prefer to manually set your place, you can drag and drop that marker.
+  	  You can also zoom!</p>
+ 	</div>
+ 	<div class="form-group">
+ 	  <label for="marketInput">Market</label>
+ 	    <input type="text" class="form-control" id="marketInput" placeholder="New Market">
+	    <select id="selector8" class="form-control selector2"></select>
+ 	</div>
+ 	<div class="form-group">
+ 	  <label for="itemInput">Item</label>
+	    <input type="text" class="form-control" id="itemInput" placeholder="New Item">
+	  <div class="btn-group" data-toggle="buttons">
+           <label class="btn btn-primary active">
+             <input type="radio" name="food2" id="option3" value="fruits" autocomplete="off" checked>Fruits
+           </label>
+           <label class="btn btn-primary">
+             <input type="radio" name="food2" id="option4" value="veggies" autocomplete="off">Vegetables
+           </label>
+          </div>
+	 <select id="selector6" class="form-control selector"></select>
+	</div>
+	<p>Please rate this item's freshness! (1 Bad - 5 Fresh)</p>
+ 	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+ 	</label>
+ 	<label class="radio-inline">
+ 	  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+ 	  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"> 4
+ 	</label>
+ 	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5"> 5
+ 	</label>
+ 	<div class="checkbox">
+ 	  <label>
+	    <!--<input type="checkbox"> Check me out-->
+ 	  </label>
+ 	</div>
+ 	<button type="submit" class="btn btn-default">Submit</button>
+       </footer>
+ 
+     </div><!-- /.container -->
+    <script type="text/javascript" src="main.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5wLhnIZX1forTvrYIw3NXrG6yyt0uHSE&callback=initMap"></script>
+     <!-- Bootstrap core JavaScript
+     ================================================== -->
+     <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+     <script src="site_includes/assets/js/vendor/holder.min.js"></script>
+     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

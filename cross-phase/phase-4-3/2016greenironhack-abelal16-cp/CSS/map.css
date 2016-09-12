@@ -1,0 +1,19 @@
+html, body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0;
+        background: url(freshVeggies.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+#map { 
+	height: 50%;
+	width: 50%; 
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;

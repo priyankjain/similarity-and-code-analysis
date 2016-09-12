@@ -1,0 +1,20 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-sabrina-hsu/Farmers Market.jpg b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-sabrina-hsu/Farmers Market.jpg
+new file mode 100644
+index 0000000..38ce3c7
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-sabrina-hsu/Farmers Market.jpg differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sabrina-hsu/Project 2 Website.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-sabrina-hsu/Project 2 Website.html
+index 88c8a93..0ec8015 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sabrina-hsu/Project 2 Website.html	
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-sabrina-hsu/Project 2 Website.html	
+@@ -1,9 +1,10 @@
+ <!DOCTYPE html>
+ <html>
++<body background="Farmers Market.jpg">
+ <head>
+ <style>
+ 	#map {
+-		width: 500px;
++		width: 520px;
+ 		height: 400px;
+ 	}
+ </style>

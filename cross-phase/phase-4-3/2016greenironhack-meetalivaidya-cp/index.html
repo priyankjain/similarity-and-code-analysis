@@ -1,0 +1,145 @@
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+     <!-- Custom CSS -->
+     <link href="css/custom.css" rel="stylesheet">
+    
+     <!-- Font Awesome -->
+     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+         
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+ 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+ 
+    
+ </head>
+                 <a href="#top"  onclick = $("#menu-close").click(); >Search Nearby</a>
+             </li>
+             <li>
+                <div style="margin-top:40px; display:inline-block; position:relative; width: 265px;">
+                    <input id="zipcode_input" type="text" class="form-control" placeholder="Search by zipcode" style="border-radius: 0px;">
+                    <button type="button" class="btn btn-default" aria-label="search" style="border-radius: 0px; position:absolute; right:0; top:0;" href="#about" onclick="search_by_zipcode()">
+                        <span class="glyphicon  glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+             </li>
+             <li>
+                
+                 <a href="#about" onclick = $("#menu-close").click(); >Markets</a>
+                
+                <div style="float:left; width:330px">
+                <select class="selectpicker" data-live-search="true" data-actions-box="true" multiple style="border-radius: 0px;" data-header="Select a product">
+                    
+                    <option data-tokens="baked bakery bread cake">Baked goods</option>
+                    <option data-tokens="dairy cheese milk butter">Cheese and/or dairy products</option>
+                    <option data-tokens="egg">Eggs</option>
+                    <option data-tokens="fish sea seafood">Fish and/or seafood</option>
+                    <option data-tokens="veges vegetables fresh">Fresh vegetables</option>
+                    <option data-tokens="fresh fruits">Fresh fruits</option>
+                    <option data-tokens="honey">Honey</option>
+                    <option data-tokens="nuts">Nuts</option>
+                    <option data-tokens="flour grain seed">Grains and or flour</option>
+                    <option data-tokens="plants seed garden">Plants in containers</option>
+                    <option data-tokens="wine beer cider">Wine, beer, hard cider</option>
+                    <option data-tokens="meat">Meat</option>
+                    <option data-tokens="poultry chicken">Poultry</option>
+                    <option data-tokens="coffee tea">Coffee and or tea</option>
+                </select>
+                <button type="button" class="btn btn-default" aria-label="search" style="border-radius: 0px;" href="#about" onclick="search_product()">
+                    <span class="glyphicon  glyphicon-search" aria-hidden="true"></span>
+                </button>
+                </div>
+               
+            </li>
+             </li>
+             <li>
+                <a href="#about" onclick = $("#menu-close").click(); >Products</a>
+             </li>
+            
+         </ul>
+     </nav>
+ 
+    
+     <!-- Header -->
+     <header id="top" class="header">
+         <div class="text-vertical-center">
+         </div>
+     </header>
+     
+    <!-- Info About Weather and map-->
+     <section id="about" class="about">
+         <div class="container">
+             <div class="row">
+     
+     
+     <div id="map" class="map"></div>
+    <!-- Market Detail Modal -->
+<div id="detailModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="modal_header"></h4>
+      </div>
+      <div class="modal-body">
+        <p id="modal_content"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.getElementById('modal_content').innerHTML = '';">Close</button>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+     
+     
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <p id="detail_text"></p>
+                    <p>Help spread the word!</p>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank"><i class="fa fa-linkedin fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="http://www.stumbleupon.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank"><i class="fa fa-stumbleupon fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><i class="fa fa-pinterest fa-fw fa-3x"></i></a>
+                        </li>
+                        
+                    </ul>
+                    <br>
+                <br>
+                    <p style="font-size: 10px;"> © 2016 All rights reserved </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+ 
+         
+</body>
+     
+ <script>
+     // Closes the sidebar menu
+         $("#sidebar-wrapper").toggleClass("active");
+     });
+ 
+<script src="js/weather_api.js"></script>
+ <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyD8pwca_OWypNj0CIBc7KrfvKVe7viRZ8g&callback=initMap"
+     async defer></script>
+ <script src="js/js_map.js"></script>

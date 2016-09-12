@@ -1,0 +1,45 @@
+ 
+   </head>
+   <body>
+    <!-- Title -->
+     <div class="jumbotron">
+        <div id="title" class="title-contain"><h1>Please refresh the page! The Great Firewall of China may block this page. :-)</h1></div>
+         <div id="weather" class="text-right title-contain">Loading Weather...</div>
+         <div id="time" class="text-right title-contain"></div>
+     </div>
+ 
+    <!-- Nav Menu with search tool -->
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <!-- Brand and toggle get grouped for better mobile display -->
+       </div><!-- /.container-fluid -->
+     </nav>
+ 
+    <!-- details page on the right side -->
+     <div id="right" class="jumbotron">
+         <div id="detail_title" class="right-contain"></div>
+         <div id="detail_text" class="right-contain"></div>
+         <div id="radar" class="radarChart"></div>
+        <div id="detail_score" class="right-contain"></div>
+     </div>
+ 
+    <!-- div on the left side -->
+     <div id="left">
+        <!-- markets table -->
+         <div id="markets_table" style="display:none">
+             <table id="market_details" class="table table-bordered">
+                 <thead id="market_details_head">
+                 </tbody>
+             </table>
+         </div>
+        <!-- market products -->
+         <div id="product" class="jumbotron text-center" style="display:none">
+             <div id="product_title"></div>
+             <div id="product_text"></div>
+         </div>
+     </div>
+ 
+    <!-- google map -->
+     <div id="map"></div>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjY0KzE8_nud8HRIt4x328OqIG0m3XxIs&callback=initMap"
+     async defer></script>

@@ -1,0 +1,858 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/README.md
+index 0e12c3a..736c518 100755
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/README.md
+@@ -2,6 +2,10 @@
+ ## Introduction
+ This is a application which help people find fresh food in Greater Lafayette area.
+ 
++## Author
++* Name: Xuefeng Luo
++* Email: hakunamatatahenry@gmail.com
++
+ ## Key Words
+ Convenient, Fresh, Saving
+ 
+@@ -27,7 +31,6 @@ Convenient, Fresh, Saving
+ 
+ * Interaction Form:
+ 	1. people are able to search market by zip code
+-	2. people can select to compare markets
+ 
+ ## Build Case
+ All external sources including Javasripts, CSSs and APIs are list here.
+@@ -48,3 +51,17 @@ All external sources including Javasripts, CSSs and APIs are list here.
+ 
+ ## Test Case
+ 	1. Chrome
++	2. Opera
++
++## File Structure
++* index.html
++* css
++	* bootstrap.css
++	* map.css
++	* radar.css
++* js
++	* apiRequest.js
++	* map.js
++	* init.js
++	* bootstrap.js
++	* radarChart.js
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/apiRequest.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/apiRequest.js
+index 2b4914a..927868a 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/apiRequest.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/apiRequest.js
+@@ -2,65 +2,116 @@
+  * Author: Xuefeng Luo hakunamatatahenry@gmail
+  */
+ 
++
+ //request market data
+ function markets(map, zip = 47906){
+-	var xmlhttp = new XMLHttpRequest();
+-	var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip;
++	var xmlhttp,
++		url;
++
++	//request to get local markert info by zipcode
++	xmlhttp = new XMLHttpRequest();
++	url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip;
+ 	xmlhttp.open("GET", url, true);
+ 	xmlhttp.send();
+ 
+ 	xmlhttp.onreadystatechange = function() {
+ 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-	        var myArr = xmlhttp.responseText;
+-	        var text = JSON.parse(myArr);
++	    	var myArr,
++	    		text,
++	    		markets_num;
++
++	        myArr = xmlhttp.responseText;
++	        text = JSON.parse(myArr);
+ 
+ 	        //get markets number
+-	        var markets_num = text.results.length;
++	        markets_num = text.results.length;
+ 
+ 	        //process markets data to market objects
++	        //in order to provent 429 error settimeout for each request
+ 	        var i = 0;
+-	        for (i; i < markets_num; i++){
+-	        	var num = i + 1;
+-	        	var market_id = text.results[i].id;
+-	        	var market_name_distance = text.results[i].marketname;
+-	        	var name_index = text.results[i].marketname.indexOf(" ");
+-	        	var market_name = text.results[i].marketname.substring(name_index);
+-	        	var market_distance = text.results[i].marketname.substring(0, name_index);
+-
+-	        	//process market table and map
++
++	        myLoop();
++
++			function myLoop () {
++				//set timeout to 0.4 secs
++			   	setTimeout(function () {
++			      	if (i < markets_num) {
++			      		var num,
++			      			market_id,
++			      			market_name_distance,
++			      			name_index,
++			      			market_name,
++			      			market_distance;
++
++
++			         	myLoop();
++
++			         	//process the market data with id, name, distance
++			         	num = i + 1;
++			        	market_id = text.results[i].id;
++			        	market_name_distance = text.results[i].marketname;
++			        	name_index = text.results[i].marketname.indexOf(" ");
++			        	market_name = text.results[i].marketname.substring(name_index);
++			        	market_distance = text.results[i].marketname.substring(0, name_index);
++
++			        	//pass data and call market details function
+ 			        	market_details(market_id, market_name, num, market_distance, map);
+-	        };
++
++			        	//count increment
++			        	i++;
++
++			      	}
++			   	}, 400)
++			}
++
+ 	    }
+ 	};
+-};
++}
+ 
+ 
+ 
+ //request market details data
+ function market_details(id, name, num, distance, map){
+-	var xmlhttp = new XMLHttpRequest();
+-	var url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id;
++	var xmlhttp,
++		url;
++
++	// console.log(num);
++	xmlhttp = new XMLHttpRequest();
++	url = "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/mktDetail?id=" + id;
+ 	xmlhttp.open("GET", url, true);
+ 	xmlhttp.send();
+ 
+ 	xmlhttp.onreadystatechange = function() {
+ 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-	        var myArr = xmlhttp.responseText;
+-	        var text = JSON.parse(myArr);
++	    	var myArr,
++	    		text,
++	    		latlngstring,
++	    		lat,
++	    		lng,
++	    		product_num,
++	    		market,
++	    		zip_index,
++	    		zip;
++
++	        myArr = xmlhttp.responseText;
++	        text = JSON.parse(myArr);
+ 
+ 	        //get google link in order to retrieve lat and lig
+-	        var latlngstring = text.marketdetails.GoogleLink;
++	        latlngstring = text.marketdetails.GoogleLink;
+ 
+ 	        //get lat from google link
+-	        var lat = get_lat(latlngstring);
++	        lat = get_lat(latlngstring);
+ 
+ 	        //get lng from google link
+-	        var lng = get_lng(latlngstring);
++	        lng = get_lng(latlngstring);
+ 
+-	        var product_num = cal_product_num(text.marketdetails.Products);
++	        product_num = cal_product_num(text.marketdetails.Products);
++
++	        //set product to default if the num is unavailable online
++	        if(product_num === 0) product_num = 5;
+ 
+ 	        //create market object
+-	        var market = {
++	        market = {
+ 	        	id:num,
+ 	        	distance:distance,
+ 	        	address:text.marketdetails.Address,
+@@ -73,88 +124,154 @@ function market_details(id, name, num, distance, map){
+ 	        		lng:parseFloat(lng),
+ 	        	},
+ 	        	score:{
+-	        		price:num,
+-	        		freshness:num,
++	        		price:0.25,
++	        		freshness:0.25,
+ 	        		variety:score_variety(product_num),
+ 	        		distance:score_distance(distance),
+ 	        	},
+ 	        };
+ 
+-	        //add to market table
+-	        market_table(market);
++	        //get zip form address
++	        zip_index = market.address.lastIndexOf(",");
++	        zip = market.address.substring(zip_index + 2);
+ 
+-	        //add new google marker in map
+-	        new_marker(market.location, map, market);
++	        //request climate data
++	        climate(zip, market, map);
+ 	    }
+ 	};
+-};
+-
+-function get_schedule(raw_schedule){
+-	var schedule;
+-
+-	var index = raw_schedule.indexOf(";");
+-
+-	schedule = raw_schedule.substring(0, index);
+-
+-	return schedule;
+-};
++}
+ 
+ //request weather data
+ function weather(){
++	var xmlhttp,
++		url;
++
+ 	//get weather condition from Yahoo Weather
+-	var xmlhttp = new XMLHttpRequest();
+-	var url = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%2012778445&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
++	xmlhttp = new XMLHttpRequest();
++	url = "https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%2012778445&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+ 	xmlhttp.open("GET", url, true);
+ 	xmlhttp.send();
+ 
+ 	xmlhttp.onreadystatechange = function() {
+ 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-	        var myArr = xmlhttp.responseText;
+-	        var text = JSON.parse(myArr);
++	    	var myArr,
++	    		text,
++	    		condition;
++
++	        myArr = xmlhttp.responseText;
++	        text = JSON.parse(myArr);
+ 
+ 	        //retrieve condition for json
+-	        var condition = text.query.results.channel.item.condition.text;
++	        condition = text.query.results.channel.item.condition.text;
+ 
+ 	        //output weather
+ 	        output_weather(condition);
+ 	    }
+ 	};
+-};
++}
+ 
++//get latlng for zip when search new markets by zipcode
+ function show_search_result(zip){
+-	var latlng;
++	var xmlhttp,
++		url;
+ 
+-	var xmlhttp = new XMLHttpRequest();
+-	var url = "http://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&sensor=false";
++	xmlhttp = new XMLHttpRequest();
++	url = "http://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&sensor=false";
+ 	xmlhttp.open("GET", url, true);
+ 	xmlhttp.send();
+ 
+ 	xmlhttp.onreadystatechange = function() {
+ 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-	        var myArr = xmlhttp.responseText;
+-	        var text = JSON.parse(myArr);
++	    	var myArr,
++	    		text,
++	    		latlng;
++
++	        myArr = xmlhttp.responseText;
++	        text = JSON.parse(myArr);
+ 
++	        //get latlng for response
+ 	        latlng = text.results[0].geometry.location;
+ 
++	        //redo the map and table
+ 	        redraw_map_search(latlng, zip);
+ 	    }
+ 	};
+-};
++}
+ 
+ //reques climate data
+-function climate(){
+-	var xmlhttp = new XMLHttpRequest();
+-	var token = "xuoVwFiQRBuxlUAfZTjwEjwpkHSgZrfh";
+-	var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/datasets";
++function climate(zip = 47906, market, map){
++	var xmlhttp,
++		token,
++		year,
++		year_start,
++		url;
++
++	//request climate data online
++	xmlhttp = new XMLHttpRequest();
++	token = "xuoVwFiQRBuxlUAfZTjwEjwpkHSgZrfh";
++	year = date_year();
++	year_start = year - 1;
++	url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datatypeid=MNTM&datatypeid=TPCP&datasetid= GHCNDMS&locationid=ZIP:" + zip + "&startdate=" + year_start + "-01-01&enddate=" + year + "-01-01";
+ 	xmlhttp.open("GET", url, true);
+ 	xmlhttp.setRequestHeader("token", token);
+ 	xmlhttp.send();
+ 
+ 	xmlhttp.onreadystatechange = function() {
+ 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-	        var myArr = xmlhttp.responseText;
+-	        var text = JSON.parse(myArr);
++	    	var myArr,
++	    		text,
++	    		price,
++	    		price_num,
++	    		freshness,
++	    		freshness_num;
++
++	        myArr = xmlhttp.responseText;
++	        text = JSON.parse(myArr);
++
++	        price = 0;
++	        price_num = 0;
++
++	        freshness = 0;
++	        freshness_num = 0;
++
++	        if (text.results !== undefined){
++
++	        	var i;
++	        	//process climate data
++		        for (i = 0; i < text.results.length; i++)
++		        {
++		        	if(text.results[i].datatype === "TPCP")
++		        	{
++		        		price += text.results[i].value;
++		        		price_num++;
+ 		        	}
+-	};
+ 
++		        	if(text.results[i].datatype === "MNTM")
++		        	{
++		        		freshness += text.results[i].value;
++		        		freshness_num++;
++		        	}
++		        }
++
++		        //pass data to market object
++		        market.score.price = price/price_num/3000;
++
++		        //if data is unavailable online then set to default
++		        if(freshness_num !== 0)
++		        {
++		        	market.score.freshness = ((freshness/freshness_num) + 100) / 400;
++		    	}
++
++		    }
++
++	        //add to market table
++	        market_table(market);
++
++	        //add new google marker in map
++	        new_marker(market.location, map, market);
++
++	    }
+ 	};
++
++}
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/index.html
+index c6bc3df..d482910 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/index.html
+@@ -21,13 +21,14 @@
+ 
+   </head>
+   <body>
+-
++    <!-- Title -->
+     <div class="jumbotron">
+-        <div id="title" class="title-contain"><h1>Please refresh the page! The Greate Firewall of China may block this page. :-)</h1></div>
++        <div id="title" class="title-contain"><h1>Please refresh the page! The Great Firewall of China may block this page. :-)</h1></div>
+         <div id="weather" class="text-right title-contain">Loading Weather...</div>
+         <div id="time" class="text-right title-contain"></div>
+     </div>
+ 
++    <!-- Nav Menu with search tool -->
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <!-- Brand and toggle get grouped for better mobile display -->
+@@ -56,13 +57,17 @@
+       </div><!-- /.container-fluid -->
+     </nav>
+ 
++    <!-- details page on the right side -->
+     <div id="right" class="jumbotron">
+         <div id="detail_title" class="right-contain"></div>
+         <div id="detail_text" class="right-contain"></div>
+         <div id="radar" class="radarChart"></div>
++        <div id="detail_score" class="right-contain"></div>
+     </div>
+ 
++    <!-- div on the left side -->
+     <div id="left">
++        <!-- markets table -->
+         <div id="markets_table" style="display:none">
+             <table id="market_details" class="table table-bordered">
+                 <thead id="market_details_head">
+@@ -71,12 +76,14 @@
+                 </tbody>
+             </table>
+         </div>
++        <!-- market products -->
+         <div id="product" class="jumbotron text-center" style="display:none">
+             <div id="product_title"></div>
+             <div id="product_text"></div>
+         </div>
+     </div>
+ 
++    <!-- google map -->
+     <div id="map"></div>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjY0KzE8_nud8HRIt4x328OqIG0m3XxIs&callback=initMap"
+     async defer></script>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/init.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/init.js
+index 837d813..49940b0 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-MegamindHenry/init.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-MegamindHenry/init.js
+@@ -21,17 +21,22 @@ function init(map){
+ 	//initialize details div
+ 	init_right();
+ 
++	//initialize product table
+ 	init_product();
+-};
+ 
++}
++
++//redo map and table when people search 
+ function redraw_map_search(latlng, zip){
+ 	var map;
+ 
++	//create new map
+ 	map = new google.maps.Map(document.getElementById('map'), {
+ 	  	center: latlng,
+ 	  	zoom: 9
+ 	});
+ 
++	//initialize market table
+ 	init_market_table();
+ 
+ 	//request markets online and process to table and map
+@@ -40,49 +45,62 @@ function redraw_map_search(latlng, zip){
+ 	//initialize details div
+ 	init_right();
+ 
++	//initialize product div
+ 	init_product();
+-};
++}
+ 
++//get search text and proces search
+ function search(){
++	//get text form search textbox
+ 	var text = document.getElementById("search").value;
+ 
++	//navigate to map tab
+ 	nav_menu("map");
+ 
++	//show search result
+ 	show_search_result(text);
+-};
++}
+ 
+ //initialize details 
+ function init_right(){
++	var right_title,
++		right_contain;
+ 
++
++	//clear contain
+ 	document.getElementById("detail_title").innerHTML = "";
+ 	document.getElementById("detail_text").innerHTML = "";
+ 	document.getElementById("radar").innerHTML = "";
+-
+-
++	document.getElementById("detail_score").innerHTML = "";
+ 
+ 	//add title
+-	var right_title = add_html_element("h3", "Market Detials");
++	right_title = add_html_element("h3", "Market Detials");
+ 	right_title.align = "center";
+ 	document.getElementById("detail_title").appendChild(right_title);
+ 
+ 	//add message
+-	var right_contain = add_html_element("p", "Please select one market to view details!");
++	right_contain = add_html_element("p", "Please select one market to view details!");
+ 	document.getElementById("detail_text").appendChild(right_contain);
+-};
++}
+ 
+ //initialize details 
+ function init_product(){
++	var product_title,
++		product_contain;
++
++	//clear contain
+ 	document.getElementById("product_title").innerHTML = "";
+ 	document.getElementById("product_text").innerHTML = "";
+ 
+-
+-	var product_title = add_html_element("h3", "Market Product Detials");
++	//all title
++	product_title = add_html_element("h3", "Market Product Detials");
+ 	product_title.align = "center";
+ 	document.getElementById("product_title").appendChild(product_title);
+ 
+-	var product_contain = add_html_element("p", "Please select one market to view details!");
++	//all default message
++	product_contain = add_html_element("p", "Please select one market to view details!");
+ 	document.getElementById("product_text").appendChild(product_contain);
+-};
++}
+ 
+ //click function for nav tab
+ function nav_menu(id){
+@@ -93,7 +111,7 @@ function nav_menu(id){
+ 
+ 	//show the one
+ 	document.getElementById(id).style.display = "block";
+-};
++}
+ 
+ //shotcup function to create html element with text node
+ function add_html_element(type, text){
+@@ -107,23 +125,31 @@ function add_html_element(type, text){
+ 	new_element.appendChild(new_element_text);
+ 
+ 	return new_element;
+-};
++}
+ 
+ //initialize market table header
+ function init_market_table(){
++	var market_tr,
++		market_id_th,
++		market_name_th,
++		market_address_th,
++		market_detail_th;
++
++
++	//clear contain
+ 	document.getElementById("market_details_head").innerHTML = "";
+ 	document.getElementById("market_details_body").innerHTML = "";
+ 
+ 	//create tr
+-	var market_tr = document.createElement("tr");
++	market_tr = document.createElement("tr");
+ 
+ 	//create headers
+-	var market_id_th = add_html_element("th", "ID");
+-	var market_name_th = add_html_element("th", "Name");
+-	var market_address_th = add_html_element("th", "Adress");
++	market_id_th = add_html_element("th", "ID");
++	market_name_th = add_html_element("th", "Name");
++	market_address_th = add_html_element("th", "Adress");
+ 	// var market_google_th = add_html_element("th", "Google Link");
+-	var market_distance_th = add_html_element("th", "Distance");
+-	var market_detail_th = add_html_element("th", "Details");
++	market_distance_th = add_html_element("th", "Distance");
++	market_detail_th = add_html_element("th", "Details");
+ 
+ 	//add headers to tr
+ 	market_tr.appendChild(market_id_th);
+@@ -135,7 +161,7 @@ function init_market_table(){
+ 
+ 	//add tr to table
+ 	document.getElementById("market_details_head").appendChild(market_tr);
+-};
++}
+ 
+ //score market on distance, freshness, price and variety
+ function score_distance(distance){
+@@ -144,42 +170,55 @@ function score_distance(distance){
+ 	score = 2.5/distance;
+ 
+ 	return score;
+-};
++}
+ 
++//score market on distance, freshness, price and variety
+ function score_variety(product_num){
+ 	var score;
+ 
+ 	score = product_num/60;
+ 
+ 	return score;
+-};
++}
+ 
++//calculate the products number
+ function cal_product_num(products){
+-	var count;
++	var count,
++		count_1,
++		count_2;
+ 
+-	var count_1 = (products.match(/;/g) || []).length;
++	count_1 = (products.match(/;/g) || []).length;
+ 
+-	var count_2 = (products.match(/,/g) || []).length;
++	count_2 = (products.match(/,/g) || []).length;
+ 
+ 	count = count_1 + count_2;
+ 
+ 	return count;
+-};
++}
+ 
++//show product details in product tab
+ function show_product_details(raw_products){
++	var products,
++		product_num;
++
++	//clear contain
+ 	document.getElementById("product_text").innerHTML = "";
+ 
++	//navigate to product tab
+ 	nav_menu("product");
+ 
+-	var products = process_raw_products(raw_products);
++	//translate string to array
++	products = process_raw_products(raw_products);
+ 
+-	var product_num = products.length;
++	product_num = products.length;
+ 
++	//notice user if there is no data online
+ 	if (product_num === 1){
+ 		var product_p = add_html_element("p", "No products available online");
+ 		document.getElementById("product_text").appendChild(product_p);
+ 	}
+ 
++	//add products in the div
+ 	var i = 0;
+ 
+ 	for (i; i < product_num; i++){
+@@ -187,43 +226,57 @@ function show_product_details(raw_products){
+ 		document.getElementById("product_text").appendChild(product_p);
+ 
+ 
+-    };
++    }
+ 
+ 
+-};
++}
+ 
++//translate products string to array
+ function process_raw_products(raw_products){
+ 	var products = [];
+ 
+ 	products = raw_products.split(';');
+ 
+ 	return products;
+-};
++}
+ 
+ //show market detail on the right side
+ function show_market_details(market){
++	var name_h4,
++		address_p,
++		schedule_p,
++		product_p,
++		br,
++		total_score,
++		score_p,
++		market_data;
++
+ 	//clear text area
+ 	document.getElementById("detail_text").innerHTML = "";
++	document.getElementById("detail_score").innerHTML = "";
+ 
+ 	//create name and address
+-	var name_h4 = add_html_element("h4", market.name);
+-	var address_p = add_html_element("p", market.address);
+-	var schedule_p = add_html_element("p", market.schedule);
+-	var product_p = add_html_element("button", 'View Product Details');
++	name_h4 = add_html_element("h4", market.name);
++	address_p = add_html_element("p", market.address);
++	schedule_p = add_html_element("p", market.schedule);
++	product_p = add_html_element("button", 'View Product Details');
+ 	product_p.className = "btn btn-primary";
+ 	product_p.addEventListener('click', function(){
+ 		show_product_details(market.products);
+ 	}, false);
+ 
+-	var br = document.createElement("br");
++	br = document.createElement("br");
++
++	total_score = (market.score.freshness * 0.5 + market.score.price * 0.2 + market.score.variety * 0.2 + market.score.distance *0.1) * 200;
++	score_p = add_html_element("p", "Overall Score: " + Math.round(total_score));
+ 
+ 	//score market
+ 
+ 	//create market data for radar chart
+-	var market_data = [
++	market_data = [
+ 		[
+-			{axis:"Freshness",value:market.score.freshness/100},
+-			{axis:"Price",value:market.score.price/100},
++			{axis:"Freshness",value:market.score.freshness},
++			{axis:"Price",value:market.score.price},
+ 			{axis:"Variety",value:market.score.variety},
+ 			{axis:"Distance",value:market.score.distance},
+ 		]
+@@ -238,7 +291,8 @@ function show_market_details(market){
+ 	document.getElementById("detail_text").appendChild(address_p);
+ 	document.getElementById("detail_text").appendChild(schedule_p);
+ 	document.getElementById("detail_text").appendChild(product_p);
+-};
++	document.getElementById("detail_score").appendChild(score_p);
++}
+ 
+ //draw radar chart with data
+ //refrence: D3.js
+@@ -261,22 +315,30 @@ function show_market_details_radar(market_data){
+ 	};
+ 
+ 	RadarChart(".radarChart", market_data, radarChartOptions);
+-};
++}
+ 
+ //add market to market table
+ function market_table(market){
++	var market_tr,
++		market_id_td,
++		market_name_td,
++		market_address_td,
++		market_distance_td,
++		market_detail_td,
++		market_detail_td_a;
++
+ 	//create tr
+-	var market_tr = document.createElement("tr");
++	market_tr = document.createElement("tr");
+ 	market_tr.className = "active";
+ 
+ 	//create td
+-	var market_id_td = add_html_element("td", market.id);
+-	var market_name_td = add_html_element("td", market.name);
+-	var market_address_td = add_html_element("td", market.address);
++	market_id_td = add_html_element("td", market.id);
++	market_name_td = add_html_element("td", market.name);
++	market_address_td = add_html_element("td", market.address);
+ 	// var market_google_td = add_html_element("td", market.googlelink);
+-	var market_distance_td = add_html_element("td", market.distance);
+-	var market_detail_td = document.createElement("td");
+-	var market_detail_td_a = add_html_element("button", "Click");
++	market_distance_td = add_html_element("td", market.distance);
++	market_detail_td = document.createElement("td");
++	market_detail_td_a = add_html_element("button", "Click");
+ 	market_detail_td_a.className = "btn btn-primary";
+ 	market_detail_td_a.addEventListener('click', function(){
+ 		show_market_details(market);
+@@ -293,7 +355,7 @@ function market_table(market){
+ 
+ 	//add tr
+ 	document.getElementById("market_details_body").appendChild(market_tr);
+-};
++}
+ 
+ //retrieve lat from googlelink in market details
+ function get_lat(string){
+@@ -303,7 +365,7 @@ function get_lat(string){
+ 	var lat = string.substring(index_1, index_2);
+ 
+ 	return lat;
+-};
++}
+ 
+ //retrieve lng from googlelink in market details
+ function get_lng(string){
+@@ -313,7 +375,7 @@ function get_lng(string){
+ 	var lat = string.substring(index_1, index_2);
+ 
+ 	return lat;
+-};
++}
+ 
+ //process time
+ function time(){
+@@ -323,7 +385,7 @@ function time(){
+ 	//create html object and add to html
+ 	var time_p = add_html_element("p", now);
+ 	document.getElementById("time").appendChild(time_p);
+-};
++}
+ 
+ //process weather
+ function output_weather(condition){
+@@ -333,16 +395,41 @@ function output_weather(condition){
+ 
+ 	document.getElementById("weather").innerHTML = "";
+ 	document.getElementById("weather").appendChild(weather_p);
+-};
++}
++
++//get current year
++function date_year(){
++	//create time now
++	var now = new Date();
++
++	var year = now.getFullYear();
++
++	return year;
++
++}
++
++//get schedule data
++function get_schedule(raw_schedule){
++	var schedule;
++
++	var index = raw_schedule.indexOf(";");
++
++	schedule = raw_schedule.substring(0, index);
++
++	return schedule;
++}
+ 
+ //initialize title
+ function init_title() {
++	var title_h1,
++		title_p;
++
+ 	//clear title
+ 	document.getElementById("title").innerHTML = "";
+ 
+ 	//initial title
+-	var title_h1 = add_html_element("h1", "FFF (Find Fresh Food)");
+-	var title_p = add_html_element("p", "Find Fresh Food is a website to help people find the freshest and cheapest food in Greater Lafayette Area.");
++	title_h1 = add_html_element("h1", "FFF (Find Fresh Food)");
++	title_p = add_html_element("p", "Find Fresh Food is a website to help people find the freshest and cheapest food in Greater Lafayette Area.");
+ 	document.getElementById("title").appendChild(title_h1);
+ 	document.getElementById("title").appendChild(title_p);
+-};
+\ No newline at end of file
++}
+\ No newline at end of file

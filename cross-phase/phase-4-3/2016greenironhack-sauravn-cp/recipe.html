@@ -1,0 +1,176 @@
+	<meta charset="UTF-8">
+	<meta name ="keywords" content= "recipes, food, hungry, yummly API, time, cook, snack, main course, midnight snack, dinner, lunch, Laura Culham, Coral Xinting He, Luke Diamantopoulos, API">
+	<meta name="description" content= "At MunchTime we inspire your appetite with carefully selected recipes, perfect for the time of day.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans|Abril+Fatface' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" type ="text/css" href="css/style_recipe.css">
+	
+    <!-- Header -->
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+ 		<!--[if lt IE 9]>
+ 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+ 		<![endif]-->
+
+    
+	<!-- Clock Java and CSS  -->
+	<link rel="stylesheet" href="css/flipclock.css">
+    <link rel="stylesheet" href="css/style.css">
+ 
+	<!-- <link rel="icon" href="asset/fav.png" type="image/png"> -->
+	<!-- Clock Java and CSS  -->
+    
+     <!-- For the social media share buttons -->
+     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+     <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
+     </script>
+ 
+	<title>Recipe-of-the-Day</title>
+	<script id="recipeTemplate" type='x-handlebars-template'>
+		<div class='oneRecipe' ontouchstart="this.classList.toggle('hover');">	
+			<div class='flipper'>	
+				<div class='static'>
+					<img src="{{image}}">
+					<div class='recipe__title'>
+						<p>{{time}}</p>
+						<h2>{{name}}</h2>
+					</div>
+				</div>
+				<div class="details">
+			   	 <a href="{{source}}" target="_blank">Click here to see the full recipe!</a>
+					<ul class='click'>
+						<h2> Ingredients </h2>
+						{{#each ingredient}}
+						<li>{{this}}</li>
+						{{/each}}
+					</ul>
+ 
+			    	<a href="{{source}}" target="_blank">Click here to see the full recipe!</a>
+		    	</div>
+ 
+ 
+		   </div>
+		</div>
+	</script>
+
+ </head>
+
+ <body>
+
+<!-- Navigation Bar -->
+   <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header">
+        <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
+             <li><a href="#"></a></li>
+             <li><a href="#"></a></li>
+             <li><a href="wheather.html">Weather Details</a></li> 
+            <li><a href="discussion.html">Discussion Forum</a></li> 
+             <li><a href="recipe.html" class="wrapper-dropdown-1">Recipe of the Day</a></li>
+             <li>&nbsp;</li>
+           </ul> 
+         </div>
+     </div>
+ 		
+	<!-- </div> -->
+ 	
+ 
+	<div class="hero">
+	<!-- hero image by Todd Quackenbush -->
+			<!-- clock -->
+			<div class="clock" style="margin:2em;"></div>
+			<!-- clock -->
+				
+			<div class="buttons">
+				<h1>Recipe of the Day! (via Yummly API	)</h1>
+                <form action="" class="whatToEat">
+					<details>
+						
+						<summary class="clearfix"><p>Any Allergies?</p><img src="asset/plus.svg" alt=""></summary>
+						<ul class='Allergies clearfix'>
+							
+							<li>
+								<input type="checkbox" value="397^Egg-Free" id="egg">
+								<label for="egg">Egg</label>
+							</li>
+							
+							<li>
+								<input type="checkbox" value="394^Peanut-Free" id="peanuts">
+								<label for="peanuts">Peanuts</label>
+							</li>
+							<li>
+								<input type="checkbox" value="396^Dairy-Free" id="dairy">
+								<label for="dairy">Dairy</label>
+							</li>
+
+							<li>
+								<input type="checkbox" value="398^Seafood-Free" id="seafood">
+								<label for="seafood">Seafood</label>
+							</li>
+						</ul>
+					</details>
+ 		
+					<details>
+ 						
+						<summary class="clearfix"><p>Dietary Restrictions?</p><img src="asset/plus.svg" alt=""></summary>
+						<ul class="diet clearfix">
+ 							
+							<li>
+								<input type="checkbox" value="387^Lacto-ovo vegetarian" id="vegetarian">
+								<label for="vegetarian">Vegetarian</label>
+							</li>
+ 							
+							<li>
+								<input type="checkbox" value="386^Vegan" id="vegan">
+								<label for="vegan">Vegan</label>
+							</li>
+						</ul>
+					</details>
+ 					
+					<div class="submitbutton">
+						<input type="submit" value="Feed Me!" class="submit"></input>
+ 					</div>
+				</form>
+			</div>
+ 		</div>
+ 	</div>
+	<main id="content">
+		<div>
+				<section id="recipes">
+ 					
+				</section>		
+ 			
+			<div class="buttonmore">
+				<button class="more">Show me more</button>
+			</div>
+		</div>
+ 		
+	</main>
+	<!-- social icons -->
+    		<hr>
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+            <span class='st_linkedin_large' displayText='LinkedIn'></span>
+            <span class='st_pinterest_large' displayText='Pinterest'></span>	
+            <p> © 2016 IronHack Participant (Saurav Nanda). All rights reserved </p>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script src='js/script_recipe.js'></script>
+	<script src="js/flipclock.js"></script>	
+	<!-- twitter button  -->
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<!-- twitter button  -->
+
+	<!-- ------------------------------Clock javascript -->
+		<script type="text/javascript">
+				var clock;
+				
+				$(document).ready(function() {
+					clock = $('.clock').FlipClock({
+						clockFace: 'TwelveHourClock',
+						showSeconds: false
+ 					});
+		<!-- ------------------------------Clock javascript -->
+ 
+ </body>
+
+ </html>

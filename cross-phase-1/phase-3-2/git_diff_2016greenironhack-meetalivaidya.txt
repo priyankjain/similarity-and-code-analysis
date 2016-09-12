@@ -1,0 +1,245 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-meetalivaidya/index.html
+index 595e9c2..ef5f87b 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-meetalivaidya/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-meetalivaidya/index.html
+@@ -9,7 +9,7 @@
+     <meta name="description" content="">
+     <meta name="author" content="">
+ 
+-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
++    <title>Eat Fresh</title>
+ 
+     <!-- Bootstrap Core CSS -->
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+@@ -27,8 +27,6 @@
+     
+     
+ 
+-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyD8pwca_OWypNj0CIBc7KrfvKVe7viRZ8g&callback=initMap"
+-    async defer></script>
+     
+ </head>
+ <body>
+@@ -47,13 +45,13 @@
+                 <a href="#about" onclick = $("#menu-close").click(); >Seasonal produce</a>
+             </li>
+             <li>
+-                <a href="#services" onclick = $("#menu-close").click(); >Markets</a>
++                <a href="#about" onclick = $("#menu-close").click(); >Markets</a>
+             </li>
+             <li>
+-                <a href="#portfolio" onclick = $("#menu-close").click(); >Events</a>
++                <a href="#about" onclick = $("#menu-close").click(); >Events</a>
+             </li>
+             <li>
+-                <a href="#contact" onclick = $("#menu-close").click(); >Recipes</a>
++                <a href="#about" onclick = $("#menu-close").click(); >Recipes</a>
+             </li>
+         </ul>
+     </nav>
+@@ -74,7 +72,7 @@
+             <div class="row">
+                 <div class="col-lg-12 text-center">
+                     <h2 id ="isdayclear"></h2>
+-                    <p class="lead">Find out Farmer's markets near you.</p>
++                    <p class="lead">Find out outdoor Farmer's markets near you.</p>
+                 </div>
+             </div>
+             <!-- /.row -->
+@@ -84,44 +82,11 @@
+     
+     
+     <div id="map" class="map"></div>
+-<script>
+-var map;
+-var myLatLng = {lat: 40.418702, lng: -86.892306};
+-/*var marker = new google.maps.Marker({
+-    position: myLatLng,
+-    map: map,
+-    title: 'DOWNTOWN MARKET'
+-  });
+-*/
+- var farmersmarkets = {
+-  type: 'FeatureCollection',
+-  features: [{
+-    type: 'Feature',
+-    geometry: {type: 'Point', coordinates: [40.418702, -86.892306]}, //Static for now, will be obtained from dataset 
+-    properties: {name: 'DOWNTOWN MARKET'}
+-  }]
+-};
+-        
+-      function initMap() {
+-        map = new google.maps.Map(document.getElementById('map'), {
+-          center: {lat: 40.4259, lng: -86.9081},
+-          zoom: 13
+-        });
+-          
+-          var myLatLng = {lat: 40.418702, lng: -86.892306};
+-          
+-          var marker = new google.maps.Marker({
+-    position: myLatLng,
+-    map: map,
+-    title: 'DOWNTOWN MARKET'
+-  }); 
+-          
+-           //map.data.addGeoJson(cities);
+-      }
+-        
+-       
+-
+-</script>
++    <!--
++    <small>
++            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
++        </small>
++    -->
+         
+ 
+ <script>
+@@ -143,13 +108,13 @@ today = yyyy+'-'+mm+'-'+dd;
+   
+ var xmlhttp = new XMLHttpRequest();
+ //var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/datasets/";
+-var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:28801&startdate="+today+"&enddate="+today ; 
++var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:47906&startdate="+today+"&enddate="+today ; 
+ var token = "MVBSOBYURjJUHjDAtDxQUMwPXrwpinxd";    
+     
+ xmlhttp.onreadystatechange = function() {
+     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+         var myArr = (JSON.parse(xmlhttp.responseText)).results;
+-        //console.log(myArr);
++        console.log(myArr);
+         myFunction(myArr);
+     }
+ };
+@@ -160,13 +125,97 @@ xmlhttp.send();
+ 
+ function myFunction(arr) {
+     var out = "Its a clear day!";
+-    if (arr[2].value ==0);
++    if (arr[2].value <3); // Less precipitation
+     document.getElementById("isdayclear").innerHTML = out;
+ }   
++    
++    
++    
++    <!---------------------------------------------------------------->
++/*        
++function getResults(zip) {
++    // or
++    // function getResults(lat, lng) {
++    $.ajax({
++        type: "GET",
++        contentType: "application/json; charset=utf-8",
++        // submit a get request to the restful service zipSearch or locSearch.
++        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + "47906",
++        // or
++        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
++        crossDomain: true,
++        dataType: 'jsonp',
++        jsonpCallback: 'searchResultsHandler'
++    });
++}
++//iterate through the JSON result object.
++function searchResultsHandler(searchResults) {
++    //console.log(searchResults);
++    for (var key in searchresults) {
++        alert(key);
++        var results = searchresults[key];
++        for (var i = 0; i < results.length; i++) {
++            var result = results[i];
++            for (var key in result) {
++                //only do an alert on the first search result
++                if (i == 0) {
++                    alert(result[key]);
++                }
++            }
++        }
++    }
++}
++        
++getResults("47906");
++*/
++        
++        /*
++var settings = {
++  "async": true,
++  "crossDomain": true,
++  "url": "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=47906",
++  "method": "GET",
++  "headers": {
++    "cache-control": "no-cache",
++  }
++}
++
++$.ajax(settings).done(function (response) {
++  console.log(response);
++});
++
++*/
++        
++        
++        
++        
++        var data = null;
++
++var xhr = new XMLHttpRequest();
++xhr.withCredentials = true;
++
++xhr.addEventListener("readystatechange", function () {
++  if (this.readyState === 4) {
++    console.log(this.responseText);
++  }
++});
++
++xhr.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=47906");
++xhr.setRequestHeader("cache-control", "no-cache");
++//xhr.setRequestHeader("postman-token", "423d9ce3-5248-bac7-d0ff-146a2821c0ac");
++
++xhr.send(data);
++    <!---------------------------------------------------------------->
++     
++    
++    
++    
++    
++
+ </script>
+ 
+ 
+-    <!-- Custom Theme JavaScript -->
++    
+     <script>
+     // Closes the sidebar menu
+     $("#menu-close").click(function(e) {
+@@ -180,8 +229,29 @@ function myFunction(arr) {
+         $("#sidebar-wrapper").toggleClass("active");
+     });
+ 
++    // Scrolls to the selected menu item on the page
++    //$(function() {
++        $('a[href*=#]:not([href=#])').click(function() {
++            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
++
++                var target = $(this.hash);
++                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
++                if (target.length) {
++                    $('html,body').animate({
++                        scrollTop: target.offset().top
++                    }, 1000);
++                    return false;
++                }
++            }
++        });
++    //});    
++        
+     </script>
+     
+     
+     
+ </body>
++    
++    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyD8pwca_OWypNj0CIBc7KrfvKVe7viRZ8g&callback=initMap"
++    async defer></script>
++    <script src="js/js_map.js"></script>
+\ No newline at end of file

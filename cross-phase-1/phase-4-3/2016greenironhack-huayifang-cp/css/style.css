@@ -1,0 +1,240 @@
+ 	position: absolute;
+ 	width: 240px;
+ 	height: 100%;
+	left: 0mm;
+	top: 0mm;
+ }
+ 
+ #input{
+	width: 614px;
+	height: 243px;
+	background-color: #FFFFFF;
+	left: 38px;
+	top: 15px;
+	-webkit-box-shadow: 1px 1px 2px 2px #AAAAAA;
+	box-shadow: 1px 1px 2px 2px #AAAAAA;
+ }
+ 
+ #analysis{
+ 	color: #DDDDDD;
+ 	background-color: #FFFFFF;
+ 	width: 100%;
+	position: absolute;
+ 
+ }
+ #logo {
+ 	font-style: normal;
+ 	text-align: center;
+ }
+#card4 {
+	width: 840px;
+	height: 450px;
+}
+
+
+ 
+ @media screen{
+ #info {
+	left: 240px;
+ 	position: absolute;
+ 	-webkit-box-shadow: 0px 0px #646464;
+ 	box-shadow: 0px 0px #646464;
+ 	z-index: 0;
+ }
+#headBar {
+	height: 50px;
+	position: absolute;
+	width: 1679px;
+	z-index: 0;
+	text-shadow: 0px 0px;
+	background-color: #ffffff;
+	top: -5px;
+}
+
+ 
+ #map{
+left: 1080px; position: absolute; -webkit-box-shadow: 3px 3px 4px 3px #C4C4C4; box-shadow: 3px 3px 4px 3px #C4C4C4; border-radius: 3px; margin-top: 15px; margin-bottom: 10px; margin-right: 7px; margin-left: 0px; width: 565px; height: 860px;
+ }
+ 
+ #logo {
+         -o-transition:      background-color 0.2s;
+         transition:         background-color 0.2s;
+ }
+
+ #indexIcon {
+ 	font-family: andika;
+ 	font-style: normal;
+ }
+ #mapIcon {
+ 	margin-top: 0.1px;
+	border-right-color: #262626;
+ 
+ }
+ 
+ 		background-color: #363636;
+     }
+ #content {
+	position: absolute;
+ 	top: 60px;
+ 	height: 100%;
+ 	width: 100%;
+ }
+#storeDetail {
+	position: absolute;
+	width: 357px;
+	left: 531px;
+	z-index: 3;
+	height: 237px;
+	top: 600px;
+}
+ 
+#storeList {
+	width: 360px;
+	height: 565px;
+	position: absolute;
+	left: 686px;
+	font-size: large;
+	line-height: 160%;
+	background-color: #3498DB;
+	color: #FFFFFF;
+	top: 15px;
+	-webkit-box-shadow: 1px 1px 2px 2px #BFBFBF;
+	box-shadow: 1px 1px 2px 2px #BFBFBF;
+ }
+ 
+ .bubbleChart {
+	height: 330px;
+	width: 330px;
+ 	position: absolute;
+	top: 130px;
+	left: 169px;
+ }
+ 
+ #contentHeadLine {
+ }
+ .card {
+ 	height: 330px;
+	width: 466px;
+ 	-webkit-box-shadow: 1px 1px 1px 1px #B8B8B8;
+ 	box-shadow: 1px 1px 1px 1px #B8B8B8;
+ 	margin-top: 7px;
+ 	position: absolute;
+	left: 57px;
+ 	font-size: xx-large;
+	background-color: #FFFFFF;
+	top: 397px;
+ 
+ }
+ #card1 {
+ 	position: absolute;
+ 	margin-left: 7px;
+	left: 49px;
+	background-color: #ec407a;
+	color: #FFFFFF;
+	top: 10px;
+}
+#filt {
+	width: 262px;
+	height: 260px;
+	position: absolute;
+	top: 308px;
+	background-color: #E67E22;
+	left: 38px;
+	-webkit-box-shadow: 1px 1px 2px 2px #B2B2B2;
+	box-shadow: 1px 1px 2px 2px #B2B2B2;
+ }
+#openclose {
+	height: 229px;
+	width: 353px;
+	background-color: #E74C3C;
+	position: absolute;
+	left: 689px;
+	top: 619px;
+	-webkit-box-shadow: 1px 1px 2px 2px #B2B2B2;
+	box-shadow: 1px 1px 2px 2px #B2B2B2;
+	z-index: 0;
+}
+
+
+ 
+ 
+ 
+ }
+ #card2 {
+	left: 584px;
+ 	position: absolute;
+	background-color: #42A5F5;
+	color: #FFFFFF;
+	top: 9px;
+ }
+ #card3 {
+ 	position: absolute;
+	left: 1110px;
+	background-color: #66BB6A;
+	color: #FFFFFF;
+	top: 10px;
+}
+#comparison {
+	width: 606px;
+	height: 229px;
+	position: absolute;
+	background-color: #2ECC71;
+	-webkit-box-shadow: 1px 1px 2px 2px #C7C7C7;
+	box-shadow: 1px 1px 2px 2px #C7C7C7;
+	left: 38px;
+	top: 618px;
+}
+
+.circle {
+	width: 200px;
+	height: 200px;
+	top: 50px;
+}
+
+#circle1 {
+	position: absolute;
+	left: 50px;
+
+
+}
+
+#circle2 {
+	position: absolute;
+	left: 250px;
+
+	
+}
+
+#circle3 {
+	position: absolute;
+	left: 450px;
+	
+ }
+
+.Title {
+	position: absolute;
+	top: 180px;
+	color: #F3F3F3;
+	font-family: cabin;
+	font-style: normal;
+	font-weight: 400;		
+}
+
+#cirTitle1 {
+	position: absolute;
+	left: 80px;
+
+}
+
+#cirTitle2 {
+	position: absolute;
+	left: 280px;
+
+}
+
+#cirTitle3 {
+	position: absolute;
+	left: 488px;
+
+}
+

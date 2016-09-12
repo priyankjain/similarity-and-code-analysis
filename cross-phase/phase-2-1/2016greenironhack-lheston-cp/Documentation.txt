@@ -1,0 +1,3 @@
+Doc:
+
+Currently developed an initial tableau viz using the food almanac data set from Data.Gov. I am also currently on working on implementing the weather data set but do not plan on using it as much as other data sources. I am also developing a tool to crawl the twitterAPI in order to search every zipcode in indiana for specific results in order to determine where people are talking about fresh farm grown vegtables. I am starting the crawler later tonight and saving the data in a sqlite db, I was wondering if there was an instance I could also use for this project? The schema of the table is included as well.

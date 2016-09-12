@@ -1,0 +1,40 @@
+ 
+ button {
+ 	position: absolute;
+	left: 385px;
+	top: 98px;
+	width: 150;
+}
+
+.axis line {
+      stroke: #000;
+}
+
+.axis path {
+      fill: none;
+      stroke: #000;
+}
+
+.layer {
+      stroke: black;
+      fill: none;
+}
+
+.outlier {
+      stroke: black;
+      fill: none;
+      opacity: 0.3;
+}
+
+.axis + .axis g text {
+      display: none;
+}
+
+.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+}
+			
+.tooltip {
+				fill: #333333;
+ }

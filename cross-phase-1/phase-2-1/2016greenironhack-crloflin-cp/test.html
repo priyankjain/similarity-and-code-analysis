@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h1><p id ="myP"><font color = "darkseagreen">FreshMark.</font></p></h1>
+
+<div id="search">
+    <p>
+        <label for="search"><input type="text" id="search" size="20" name="search" value="" placeholder="Zip or City, State" /></label>
+    </p>
+</div>
+
+<button type="button">
+Search</button>
+
+
+<script>
+document.body.style.backgroundColor = "whitesmoke";
+document.getElementById("myP").style.font = "italic bold 40px georgia,serif";
+</script>
+
+<script> //MAP NOT WORKING
+function initMap() {
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    scrollwheel: false,
+    zoom: 8
+  });
+}
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU6TjpaA7ym889yyq9zarRa-h-Taweb80&callback=initMap"
+    async defer>
+</script>
+
+</body>
+</html>

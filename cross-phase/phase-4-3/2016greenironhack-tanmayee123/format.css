@@ -1,0 +1,30 @@
+ 	you may want to use relative rather than absolute in your own application */
+ 	position: absolute;
+     /* cover the 70 percent of the page width*/
+    width: 70%;
+    height: 100%;
+}
+
+div.relative {
+    position: fixed;
+    left: 70px;
+    border: 3px solid #73AD21;
+ }
+ 
+ #side-menu{
+ 
+ #menu-cover{
+ 	position: absolute;
+	top: 0%;
+	left: 70%;
+ }
+ 
+ .menu-line{
+ }
+ 
+ #menu-cover {
+	height: 100%;
+	width: 30%;
+ 	/* define the background color of the information panel */
+ 	background-color: #edeff1;
+ 	/* set radius for the ellipse frame */

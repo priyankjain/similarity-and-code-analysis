@@ -1,0 +1,38 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sabrina-hsu/Project 2 Script.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sabrina-hsu/Project 2 Script.js
+index bce9644..a3e4ae5 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sabrina-hsu/Project 2 Script.js	
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sabrina-hsu/Project 2 Script.js	
+@@ -56,6 +56,33 @@ function initMap() {
+ 		position: place.geometry.location
+ 	  }));
+ 	  
++	  myLatLng = {lat: 40.417715, lng: -86.891895}
++		
++	  markers.push(new google.maps.Marker({
++		  map: map,
++		  icon: icon,
++		  title: place.name,
++		  position: myLatLng
++	  }));
++	  
++	  myLatLng = {lat: 40.4445, lng:  -86.9136};
++	  
++	  markers.push(new google.maps.Marker({
++		  map: map,
++		  icon: icon,
++		  title: place.name,
++		  position: myLatLng
++	  }));
++	  
++	  myLatLng = {lat: 41.4670736, lng:  -87.0622542};
++	  
++	  markers.push(new google.maps.Marker({
++		  map: map,
++		  icon: icon,
++		  title: place.name,
++		  position: myLatLng
++	  }));
++
+ 	  if (place.geometry.viewport) {
+ 		//Only geocodes have viewport.
+ 		bounds.union(place.geometry.viewport);

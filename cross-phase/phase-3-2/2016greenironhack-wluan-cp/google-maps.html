@@ -1,0 +1,78 @@
+         var mapDiv = document.getElementById('map');
+         var map = new google.maps.Map(mapDiv, {
+           center: {lat: 40.4259, lng: -86.9081},
+          zoom: 13
+         });
+
+	//marker for farmers market
+	marker = new google.maps.Marker({
+	  position: {lat: 40.461469, lng: -86.915627},
+	  map: map,
+	  title: 'West Lafayette Farmers Market'
+	});
+	infowindow = new google.maps.InfoWindow({
+	                    content: ""
+	 });
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent("West Lafayette Farmers Market (Wednesday 4:00-8:00pm");
+	                        infowindow.open(map, marker);
+	 });
+	marker = new google.maps.Marker({
+	  position: {lat: 40.467880, lng: -86.926408},
+	  map: map,
+	  title: 'Sagamore West Farmers Market'
+	});
+	infowindow = new google.maps.InfoWindow({
+	                    content: ""
+	 });
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent("Sagamore West Farmers Market (Wednesday 3:30-7pm) ");
+	                        infowindow.open(map, marker);
+	 });
+	marker = new google.maps.Marker({
+	  position: {lat: 40.422585, lng: -86.910353},
+	  map: map,
+	  title: 'Purdue Farmers Market'
+	});
+	infowindow = new google.maps.InfoWindow({
+	                    content: ""
+	 });
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent("Purdue Farmers Market (Thursday 11:00am-2pm)");
+	                        infowindow.open(map, marker);
+	 });
+	marker = new google.maps.Marker({
+	  position: {lat: 40.417960, lng: -86.893216},
+	  map: map,
+	  title: 'Historic Lafayette Farmers Market'
+	});
+
+	infowindow = new google.maps.InfoWindow({
+	                    content: ""
+	 });
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent("Historic Lafayette Farmers Market (Saturday 7:30am-12:30pm)");
+	                        infowindow.open(map, marker);
+	 });
+
+
+ 	function getResults(zip) {
+     // or
+     // function getResults(lat, lng) {
+         }
+     }
+ }
+
+detailResultHandler(
+{
+   "marketdetails": {
+     "GoogleLink":"http://maps.google.com/?q=38.881112%2C%20-77.112179%20(%22Ballston+FRESHFARM+Market%22)",
+     "Address":"901 N Taylor St, Ballston, Virginia, 22203",
+     "Schedule":"June - October Thursday 3:00 PM to 7:00 PM",
+     "Products":"Baked goods; Cheese and/or dairy products; Eggs; Fresh fruit and vegetables; Fresh and/or dried herbs; Honey; Meat; Poultry"
+   }
+}
+);
+       }
+     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"

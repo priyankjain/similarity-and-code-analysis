@@ -1,0 +1,2798 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/.DS_Store b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/.DS_Store
+index 322452b..ed3a0e1 100644
+Binary files a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/.DS_Store and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/.DS_Store differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/README.md
+index 6713dd4..fc8f5d6 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/README.md
+@@ -1,5 +1,19 @@
+ # 2016greenironhack-sauravn
+ 
++## Submission - 3
++
++1. On the home page, **National Farmers Market Directory API** has been integrated to Google Maps. Enter your ZipCode to find Farmers Market near your place. Then click on any of the markers on **Google Maps** to see the details of the Marketplace such as: `Name and Address of the Market, Avaialble Products, Working Days and Timings`.
++
++2. Added **3 Tabs** below the **Zip Code** input area: `Marketplace Details, Graphical View, Price Comparison`. Once you click on the Google Markers, you will see the details of Marketplace in the first tab. **Radar Graph** has been integrated in the 2nd Tab to show: `Location, Freshness, Price, Availability, Open Hours, Customer Reviews`. Third tab is to show the Price comparison of products.
++
++3. Integrated **Yahoo weather API** with the Gauge Meters to show: `Temperature, Wind Chill, Wind Speed, Humidity`.
++
++4. Work in progress for:
++
++	1. Integration of Recipe-of-the-Day API.
++	2. Price Comparison Tab
++	3. UI Improvments
++
+ ## Submission - 2
+ 
+ 1. Modified the UI of the application. I used **Bootstrap CSS** `bootstrap.min.css` to develop a responsive design so that it will work for both desktop & mobile browsers.
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/RadarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/RadarChart.js
+deleted file mode 100644
+index 925c8ac..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/RadarChart.js
++++ /dev/null
+@@ -1,249 +0,0 @@
+-/**
+-This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+-If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+-You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+-The demo page of this project is located at: http://test.rcodi.charlessong.me/
+-
+-This is the javascript file for the radar chart.
+-It will create the basic template for the rader chart. All the numbers/information will be set in the script.js file.
+-**/
+-
+-// basic parameters for a radar chart template
+-var RadarChart = {
+-	//id is the ID for the chart in HTML
+-	//d is the data stored for presenting
+-	//options a potential styles for the chart
+-  	draw: function(id, d, options){
+-  		var cfg,
+-  			g,
+-  			allAxis,
+-  			total,
+-  			radius,
+-  			Format,
+-  			tooltip,
+-  			axis;
+-
+-	  	//basic parameters for a frame of Radar Chart
+-	  	cfg = {
+-			radius: 5,
+-			w: 500,
+-			h: 500,
+-			factor: 1,
+-			factortitle: .85,
+-			levels: 3,
+-			maxValue: 0,
+-			radians: 2 * Math.PI,
+-			opacityArea: 0.5,
+-			ToRight: 5,
+-			TranslateX: 80,
+-			TranslateY: 30,
+-			ExtraWidthX: 100,
+-			ExtraWidthY: 100,
+-			color: d3.scale.category10()
+-		};
+-		
+-		//if there is no definition for the style of the chart, we will use the first model by default
+-		if('undefined' !== typeof options){
+-		  for(var i in options){
+-			if('undefined' !== typeof options[i]){
+-			  cfg[i] = options[i];
+-			}
+-		  }
+-		}
+-
+-		//get the max value for showing in percentage
+-		cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+-		//get all the axis and lines for the chart template
+-		allAxis = (d[0].map(function(i, j){return i.axis}));
+-		total = allAxis.length;
+-		radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+-		Format = d3.format('%');
+-		d3.select(id).select("svg").remove();
+-		
+-		//set the final position information for the chart area
+-		g = d3.select(id)
+-				.append("svg")
+-				.attr("width", cfg.w+cfg.ExtraWidthX)
+-				.attr("height", cfg.h+cfg.ExtraWidthY)
+-				.append("g")
+-				.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+-				;
+-		//variable for showing tips while mouse moving on
+-		tooltip;
+-		
+-		//Circular segments
+-		var j = 0;
+-		var levelFactor
+-		for(j=0; j<cfg.levels-1; j++){
+-		    levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+-		    g.selectAll(".levels")
+-			   .data(allAxis)
+-			   .enter()
+-			   .append("svg:line")
+-			   .attr("x1", function(d, i){return levelFactor*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+-			   .attr("y1", function(d, i){return levelFactor*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+-			   .attr("x2", function(d, i){return levelFactor*(1-cfg.factor*Math.sin((i+1)*cfg.radians/total));})
+-			   .attr("y2", function(d, i){return levelFactor*(1-cfg.factor*Math.cos((i+1)*cfg.radians/total));})
+-			   .attr("class", "line")
+-			   .style("stroke", "grey")
+-			   .style("stroke-opacity", "0.75")
+-			   .style("stroke-width", "0.3px")
+-			   .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
+-		}
+-
+-		//Text indicating at what % each level is
+-		var j = 0;
+-		var levelFactor
+-		for(j=0; j<cfg.levels; j++){
+-		    levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+-		    g.selectAll(".levels")
+-			   .data([1]) //dummy data
+-			   .enter()
+-			   .append("svg:text")
+-			   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
+-			   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
+-			   .attr("class", "title")
+-			   .style("font-family", "sans-serif")
+-			   .style("font-size", "12px")
+-			   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
+-			   .attr("fill", "#737373")
+-			   .text(Format((j+1)*cfg.maxValue/cfg.levels));
+-		}
+-		
+-		series = 0;
+-
+-		//define all the axis in the chart as class "axis"
+-		axis = g.selectAll(".axis")
+-				.data(allAxis)
+-				.enter()
+-				.append("g")
+-				.attr("class", "axis");
+-
+-		//define all the lines in the chart as class "line"
+-		axis.append("line")
+-			.attr("x1", cfg.w/2)
+-			.attr("y1", cfg.h/2)
+-			.attr("x2", function(d, i){return cfg.w/2*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+-			.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+-			.attr("class", "line")
+-			.style("stroke", "grey")
+-			.style("stroke-width", "1px");
+-
+-		//define all the title in the chart as class "title"
+-		axis.append("text")
+-			.attr("class", "title")
+-			.text(function(d){return d})
+-			.style("font-family", "sans-serif")
+-			.style("font-size", "12px")
+-			.attr("text-anchor", "middle")
+-			.attr("dy", "1.5em")
+-			.attr("transform", function(d, i){return "translate(0, -10)"})
+-			.attr("x", function(d, i){return cfg.w/2*(1-cfg.factortitle*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
+-			.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
+-
+-	 	//create nodes for each point for scores
+-		d.forEach(function(y, x){
+-		    dataValues = [];
+-		    g.selectAll(".nodes")
+-				.data(y, function(j, i){
+-				  dataValues.push([
+-					cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+-					cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+-				  ]);
+-				});
+-		  	dataValues.push(dataValues[0]);
+-		  	g.selectAll(".area")
+-				 .data([dataValues])
+-				 .enter()
+-				 .append("polygon")
+-				 .attr("class", "radar-chart-serie"+series)
+-				 .style("stroke-width", "2px")
+-				 .style("stroke", cfg.color(series))
+-				 .attr("points",function(d) {
+-					 var str="";
+-					 var pti = 0;
+-					 for(pti=0;pti<d.length;pti++){
+-						 str=str+d[pti][0]+","+d[pti][1]+" ";
+-					 }
+-					 return str;
+-				  })
+-				 .style("fill", function(j, i){return cfg.color(series)})
+-				 .style("fill-opacity", cfg.opacityArea)
+-				 .on('mouseover', function (d){
+-									z = "polygon."+d3.select(this).attr("class");
+-									g.selectAll("polygon")
+-									 .transition(200)
+-									 .style("fill-opacity", 0.1); 
+-									g.selectAll(z)
+-									 .transition(200)
+-									 .style("fill-opacity", .7);
+-								  })
+-				 .on('mouseout', function(){
+-									g.selectAll("polygon")
+-									 .transition(200)
+-									 .style("fill-opacity", cfg.opacityArea);
+-				 });
+-		  series++;
+-		});
+-		series=0;
+-
+-		//create basic lines for rader chart frame
+-		d.forEach(function(y, x){
+-		    g.selectAll(".nodes")
+-				.data(y).enter()
+-				.append("svg:circle")
+-				.attr("class", "radar-chart-serie"+series)
+-				.attr('r', cfg.radius)
+-				.attr("alt", function(j){return Math.max(j.value, 0)})
+-				.attr("cx", function(j, i){
+-				  	dataValues.push([
+-						cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+-						cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+-					]);
+-					return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+-				})
+-				.attr("cy", function(j, i){
+-			  		return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+-				})
+-				.attr("data-id", function(j){return j.axis})
+-				.style("fill", cfg.color(series)).style("fill-opacity", .9)
+-				.on('mouseover', function (d){
+-					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+-					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+-					
+-					tooltip
+-						.attr('x', newX)
+-						.attr('y', newY)
+-						.text(Format(d.value))
+-						.transition(200)
+-						.style('opacity', 1);
+-						
+-					z = "polygon."+d3.select(this).attr("class");
+-					g.selectAll("polygon")
+-						.transition(200)
+-						.style("fill-opacity", 0.1); 
+-					g.selectAll(z)
+-						.transition(200)
+-						.style("fill-opacity", .7);
+-				})
+-				.on('mouseout', function(){
+-					tooltip
+-						.transition(200)
+-						.style('opacity', 0);
+-					g.selectAll("polygon")
+-						.transition(200)
+-						.style("fill-opacity", cfg.opacityArea);
+-				})
+-				.append("svg:title")
+-				.text(function(j){return Math.max(j.value, 0)});
+-
+-		  	series++;
+-		});
+-		//Tooltip
+-		tooltip = g.append('text')
+-				   .style('opacity', 0)
+-				   .style('font-family', 'sans-serif')
+-				   .style('font-size', '13px');
+-	}
+-};
+-
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/bullets.json b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/bullets.json
+deleted file mode 100644
+index 97cb1c1..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/bullets.json
++++ /dev/null
+@@ -1,7 +0,0 @@
+-[
+-  {"title":"Revenue","subtitle":"US$, in thousands","ranges":[150,225,300],"measures":[220,270],"markers":[250]},
+-  {"title":"Profit","subtitle":"%","ranges":[20,25,30],"measures":[21,23],"markers":[26]},
+-  {"title":"Order Size","subtitle":"US$, average","ranges":[350,500,600],"measures":[100,320],"markers":[550]},
+-  {"title":"New Customers","subtitle":"count","ranges":[1400,2000,2500],"measures":[1000,1650],"markers":[2100]},
+-  {"title":"Satisfaction","subtitle":"out of 5","ranges":[3.5,4.25,5],"measures":[3.2,4.7],"markers":[4.4]}
+-]
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset.css
+new file mode 100644
+index 0000000..8de1774
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset.css
+@@ -0,0 +1,47 @@
++/**
++ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
++ * http://cssreset.com
++ */
++html, body, div, span, applet, object, iframe,
++h1, h2, h3, h4, h5, h6, p, blockquote, pre,
++a, abbr, acronym, address, big, cite, code,
++del, dfn, em, img, ins, kbd, q, s, samp,
++small, strike, strong, sub, sup, tt, var,
++b, u, center,
++dl, dt, dd, ol, ul, li,
++fieldset, form, label, legend,
++table, caption, tbody, tfoot, thead, tr, th, td,
++article, aside, canvas, details, embed, 
++figure, figcaption, footer, header, hgroup, 
++menu, nav, output, ruby, section, summary,
++time, mark, audio, video {
++	margin: 0;
++	padding: 0;
++	border: 0;
++	font-size: 100%;
++	font: inherit;
++	vertical-align: baseline;
++}
++/* HTML5 display-role reset for older browsers */
++article, aside, details, figcaption, figure, 
++footer, header, hgroup, menu, nav, section {
++	display: block;
++}
++body {
++	line-height: 1;
++}
++ol, ul {
++	list-style: none;
++}
++blockquote, q {
++	quotes: none;
++}
++blockquote:before, blockquote:after,
++q:before, q:after {
++	content: '';
++	content: none;
++}
++table {
++	border-collapse: collapse;
++	border-spacing: 0;
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset_table.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset_table.css
+new file mode 100755
+index 0000000..4c2731a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/reset_table.css
+@@ -0,0 +1,51 @@
++/* http://meyerweb.com/eric/tools/css/reset/ 
++   v2.0 | 20110126
++   License: none (public domain)
++*/
++
++html, body, div, span, applet, object, iframe,
++h1, h2, h3, h4, h5, h6, p, blockquote, pre,
++a, abbr, acronym, address, big, cite, code,
++del, dfn, em, img, ins, kbd, q, s, samp,
++small, strike, strong, sub, sup, tt, var,
++b, u, i, center,
++dl, dt, dd, ol, ul, li,
++fieldset, form, label, legend,
++table, caption, tbody, tfoot, thead, tr, th, td,
++article, aside, canvas, details, embed, 
++figure, figcaption, footer, header, hgroup, 
++menu, nav, output, ruby, section, summary,
++time, mark, audio, video {
++	margin: 0;
++	padding: 0;
++	border: 0;
++	font-size: 100%;
++	font: inherit;
++	vertical-align: baseline;
++}
++/* HTML5 display-role reset for older browsers */
++article, aside, details, figcaption, figure, 
++footer, header, hgroup, menu, nav, section {
++	display: block;
++}
++body {
++	line-height: 1;
++}
++ol, ul {
++	list-style: none;
++}
++blockquote, q {
++	quotes: none;
++}
++blockquote:before, blockquote:after,
++q:before, q:after {
++	content: '';
++	content: none;
++}
++table {
++	border-collapse: collapse;
++	border-spacing: 0;
++}
++a{
++	text-decoration:none;
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_farmer.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_farmer.css
+new file mode 100644
+index 0000000..87cc008
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_farmer.css
+@@ -0,0 +1,219 @@
++
++/* Global styles */
++html, body {
++	height: 100%;
++	margin: 0px;
++	padding: 0px
++  }
++
++
++body {
++	font-family: "Open Sans", sans-serif;
++	/* font-family: 'Libre Baskerville', serif; */
++	color: #686868;
++	font-size: 15px;
++	background-color: #6B7283;
++}
++
++
++.clearfix:after { 
++   content: " ";
++   display: block; 
++   height: 0; 
++   clear: both;
++}
++
++.clear{
++	clear: both;
++}
++
++a {
++	text-decoration: none;
++	color: #79accd;
++}
++
++a:hover {
++	color: #79accd;
++	text-decoration: underline;
++}
++
++h1, h2, h3, h4, h5, h6 {
++	margin-bottom: 17px;
++	font-weight: 300;
++	/* color: #ff5400; */
++}
++
++h1 {
++	font-size: 28px;
++}
++
++h2 {
++	font-size: 26px;
++}
++
++h3 {
++	font-size: 24px;
++	margin-bottom: 15px;
++}
++
++ul{
++	list-style-type: square;
++	margin-left: 60px;
++	margin-bottom: 30px;
++}
++
++ul li{
++	line-height: 1.9;
++}
++
++
++.zipSearch{
++	display: none;
++}
++
++/* Popup */
++.markerPop{
++	
++}
++
++
++.twitter{
++	float: left;
++}
++
++.facebook{
++	float: left;
++	width: 150px !important;
++	height: 35px !important;
++}
++
++/* tablets and desktop */
++@media only screen and (min-width: 361px) {
++	
++	p {
++		margin-bottom: 15px;
++		line-height: 20px;
++	}
++
++	#map-farmer{
++		height: 100%;
++	}
++	#control{
++		float: left;
++		color: #D8D8DD;
++		width: 15%;
++		padding: 50px 30px 10px 30px;
++		border-right: 1px solid black;
++	}
++
++	#control input[type=text]{
++		width: 100%;
++		height: 40px;
++		font-size: 24px;
++		background-color: #6B7283;
++		border: 1px solid #BE757E;
++	}
++	
++	.learnButton {
++		margin-top: 10px;
++		margin-bottom: 200px;
++		background: #BE757E;
++		border: 0;
++		color: #D8D8DD;
++		height: 37px;
++		line-height: 37px;
++		width: 30%;
++		text-align: center;
++		cursor: pointer;
++	}
++	
++	#mc_embed_signup{
++	margin-top: 30px;
++	float: left;   
++	width: 300px;
++	}
++
++	#mc_embed_signup form label{
++		margin-bottom: 30px;
++		line-height: 20px;
++		clear: right;
++	}
++
++	#mc_embed_signup form input.email{
++		width: 100%;
++		height: 40px;
++		font-size: 24px;
++		background-color: #6B7283;
++		border: 1px solid #BE757E;
++	}
++}
++
++#wrapper{
++    width:100%;
++}
++
++#wrapper div{
++    height:10px;
++    width:calc(100% / 3);
++    display:inline-block;
++}
++
++/* phones */
++@media only screen and (max-width: 360px) {
++    
++	p {
++		margin-bottom: 10px;
++		line-height: 26px;
++	}
++	
++	#map-farmer{
++		height: 100%;
++	}
++	
++	#control{
++		color: #D8D8DD;
++		padding: 20px 30px 10px 30px;
++	}
++
++	#control input[type=text]{
++		width: 100%;
++		height: 40px;
++		font-size: 24px;
++		background-color: #6B7283;
++		border: 1px solid #BE757E;
++	}
++	
++	.learnButton {
++		float: left;
++		margin: 0px 10px 0px 10px;
++		margin-top: 20px;
++		margin-bottom: 20px;
++		background: #BE757E;
++		border: 0;
++		color: #D8D8DD;
++		height: 37px;
++		line-height: 37px;
++		width: 30%;
++		text-align: center;
++	}
++	
++	#mc_embed_signup{
++		display: none;
++	}
++
++	#mc_embed_signup form label{
++		margin-bottom: 30px;
++		line-height: 20px;
++		clear: right;
++	}
++
++	#mc_embed_signup form input.email{
++		width: 100%;
++		height: 40px;
++		font-size: 24px;
++		background-color: #6B7283;
++		border: 1px solid #BE757E;
++	}
++}
++
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_table.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_table.css
+new file mode 100755
+index 0000000..056c320
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/style_table.css
+@@ -0,0 +1,90 @@
++/*
++	Author:	Munawar Ahmed Mohammed
++	Website:	www.mobifreaks.com
++	Demo URI:	http://www.mobifreaks.com/u/6
++	Article URI:	http://www.mobifreaks.com/u/5
++*/
++		/* Resets html elements */
++	@import url(http://fonts.googleapis.com/css?family=Josefin+Slab); /* Installs a webfont ----->		font-family: 'Josefin Slab', serif; */
++
++/* ----- Article styling ----- */
++
++/* seo friendly tables */
++.table{
++	display:table;	/* Defines a Table */
++	font-family:Arial, Helvetica, sans-serif;
++	font-size:14px;
++	border-bottom:2px solid #dddddd;
++	color:#8d8d8d;
++	margin:10px 0;
++}
++.table-head{
++	 display: table-header-group; /* Defines a table header group */
++}
++.table-head .column{ /* Column inside the table-head */
++	background:#333333;
++	color:#7d7d7d;
++	border-right:1px solid #5d5d5d;
++	border-bottom:none;
++}
++.table-head .column:hover{ /* Column hover inside the table-head */
++	background:#222222;
++}
++.row{
++	display:table-row; /* Defines a table row */
++}
++.row .column:nth-child(1){ /* First column in a row */
++	border-left:1px solid #eeeeee;
++}
++.row:last-child .column{  /* column in a last row */
++	border-bottom:none;
++}
++.column{
++	display:table-cell; /* Defines a table cell */
++	padding:10px 20px;
++	border-bottom:1px solid #eeeeee;
++	border-right:1px solid #eeeeee;
++}
++.column:hover{
++	background:#f9f9f9;
++}
++/* Responsive table */
++@media all and (max-width: 640px){
++	.table,
++	.row,
++	.column,
++	.column:before{
++		display:block;	/* Converts a table, table row, table column and table column:before into a block element */
++	}
++	.table,
++	.row .column:last-child{
++		border-bottom:none;
++	}
++	.table-head{
++		position:absolute;	/* Hides table head but not using display none */
++		top:-1000em;
++		left:-1000em;
++	}
++	.row{
++		border:1px solid #eeeeee;
++		border-top:2px solid #dddddd;
++		border-bottom:2px solid #dddddd;
++		margin:20px 0;
++	}
++	.row .column:nth-child(1){ /* first column of the row */
++		border-left:none;
++	}
++	.row .column:last-child{ /* last column of the row */
++		border-right:none;
++	}
++	.row:last-child .column,
++	.column{ /* Column in the last row and column */
++		border-bottom:1px solid #eeeeee;
++	}
++	.column:before{ /* prints the value of data-label attribute before the column data */
++		font-weight:bold;
++		padding-right:20px;
++		font-size:12px;
++		content:" "attr(data-label)" //";	/* call the attribute value of data-label and adds a string // */
++	}
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/css/styles.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/styles.css
+index 0a5620c..ecb0066 100755
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/css/styles.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/css/styles.css
+@@ -93,6 +93,40 @@ body{
+ 
+ button {
+ 	position: absolute;
+-  left: 10px;
+-  top: 300px;
++	left: 385px;
++	top: 98px;
++	width: 150;
++}
++
++.axis line {
++      stroke: #000;
++}
++
++.axis path {
++      fill: none;
++      stroke: #000;
++}
++
++.layer {
++      stroke: black;
++      fill: none;
++}
++
++.outlier {
++      stroke: black;
++      fill: none;
++      opacity: 0.3;
++}
++
++.axis + .axis g text {
++      display: none;
++}
++
++.legend {
++				font-family: 'Raleway', sans-serif;
++				fill: #333333;
++}
++			
++.tooltip {
++				fill: #333333;
+ }
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/html5shiv.min.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/html5shiv.min.js
+new file mode 100644
+index 0000000..d4c731a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/html5shiv.min.js
+@@ -0,0 +1,4 @@
++/**
++* @preserve HTML5 Shiv 3.7.2 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
++*/
++!function(a,b){function c(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function d(){var a=t.elements;return"string"==typeof a?a.split(" "):a}function e(a,b){var c=t.elements;"string"!=typeof c&&(c=c.join(" ")),"string"!=typeof a&&(a=a.join(" ")),t.elements=c+" "+a,j(b)}function f(a){var b=s[a[q]];return b||(b={},r++,a[q]=r,s[r]=b),b}function g(a,c,d){if(c||(c=b),l)return c.createElement(a);d||(d=f(c));var e;return e=d.cache[a]?d.cache[a].cloneNode():p.test(a)?(d.cache[a]=d.createElem(a)).cloneNode():d.createElem(a),!e.canHaveChildren||o.test(a)||e.tagUrn?e:d.frag.appendChild(e)}function h(a,c){if(a||(a=b),l)return a.createDocumentFragment();c=c||f(a);for(var e=c.frag.cloneNode(),g=0,h=d(),i=h.length;i>g;g++)e.createElement(h[g]);return e}function i(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return t.shivMethods?g(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+d().join().replace(/[\w\-:]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(t,b.frag)}function j(a){a||(a=b);var d=f(a);return!t.shivCSS||k||d.hasCSS||(d.hasCSS=!!c(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),l||i(a,d),a}var k,l,m="3.7.2",n=a.html5||{},o=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,p=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,q="_html5shiv",r=0,s={};!function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",k="hidden"in a,l=1==a.childNodes.length||function(){b.createElement("a");var a=b.createDocumentFragment();return"undefined"==typeof a.cloneNode||"undefined"==typeof a.createDocumentFragment||"undefined"==typeof a.createElement}()}catch(c){k=!0,l=!0}}();var t={elements:n.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:m,shivCSS:n.shivCSS!==!1,supportsUnknownElements:l,shivMethods:n.shivMethods!==!1,type:"default",shivDocument:j,createElement:g,createDocumentFragment:h,addElements:e};a.html5=t,j(b)}(this,document);
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/index.html
+index 3a9e865..928e0e8 100755
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-sauravn/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/index.html
+@@ -36,7 +36,34 @@
+ 		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+         
+-      
++      	<!-- For the farmers API -->
++        <link rel="stylesheet" type="text/css" href="css/reset.css">
++		<link rel="stylesheet" type="text/css" href="css/style_farmer.css">
++		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
++		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
++        <script language="javascript" type="text/javascript" src="js/map.js"></script>
++        <script language="javascript" type="text/javascript" src="js/search.js"></script>
++        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
++        
++        <!-- For the tab view -->
++        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
++  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
++        
++        <!-- For the radar graph -->
++        <!-- Google fonts -->
++		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
++		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
++
++		<!-- D3.js -->
++		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
++        
++        <!-- Walmart API -->
++        <script language="javascript" type="text/javascript" src="js/walmart_api.js"></script>
++        
++        <!-- Table API -->
++        <script src="https://code.jquery.com/jquery-1.12.0.min.js" charset="utf-8"></script>
++		<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" charset="utf-8"></script>
++        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+         
+ 	</head>
+ 	<body>
+@@ -56,8 +83,8 @@
+           <li class="active"><a href="#"></a></li>
+             <li><a href="#"></a></li>
+             <li><a href="#"></a></li>
+-            <li><a href="#"></a></li> 
+-            <li><a href="#" class="wrapper-dropdown-1">Receipe of the Day</a></li>
++            <li><a href="wheather.html">Weather Details</a></li> 
++            <li><a href="recipe.html" class="wrapper-dropdown-1">Recipe of the Day</a></li>
+             <li>&nbsp;</li>
+           </ul> 
+         </div>
+@@ -65,161 +92,181 @@
+ 
+     <!-- <div id="map-canvas"></div> -->
+     <!-- Google Maps -->
+-    <div class="themap" id="gmap"></div>
+-    <i class="fa fa-spinner fa-3x fa-pulse loading-image" data-bind="visible: loading"></i>
++    <div class="themap" id="map-farmer"></div>
++    
+     <!-- <div id="map"> </div> -->
+     <div class="container-fluid" id="main">
+       <div class="row">
+         <div class="col-xs-8" id="left">
++        <br> <br> <br> <br><br>
++        <!-- Title bar -->
++           <div class="panel panel-default">
++            <div class="panel-heading"><a href="">Weather Details on Gauge Meters: West Lafayette, IN (via Yahoo API)</a></div>
++          </div> 
++        <!-- gauge bars -->
++	    <div id="g1"></div>
++        <div id="g2"></div>
++        <div id="g3"></div>
++        <div id="g4"></div>
+         
+-          <h2>&nbsp;</h2> 
+-          
+-          <!-- item list -->
+-          <!-- <div class="panel panel-default">
+-            <div class="panel-heading"><a href="">Fresh Vegetables</a></div>
+-          </div> -->
+-          
+-          <!-- Search bar -->
++        <!-- Title bar -->
+            <div class="panel panel-default">
+-		  	<div class="navbar-element settings-div">
+-				<a href="" id="settings" data-bind="click: toggleSettings"> <i class="fa fa-cog" style="color:#333"></i> </a>
+-				<div class="settings-menu-background" style="display:none" data-bind="visible: settingsOpen, click: toggleSettings">&nbsp;</div>
+-				<div class="settings-menu-container" style="display:none" data-bind="visible: settingsOpen">
+-					<div class="arrow-up"></div>
+-				<!-- temperature units -->
+-				<div>
+-					<div class="settings-menu item">Temperature
+-					</div><div class="settings-menu option"
+-						data-bind="css: { active: selectedTEMP() == 'C'}, click: setSelectedTEMP.bind($data, 'C')">C&deg;
+-					</div><div class="settings-menu option"
+-						data-bind="css: { active: selectedTEMP() == 'F'}, click: setSelectedTEMP.bind($data, 'F')">F&deg;</div>
++            <div class="panel-heading"><a href="">Find Fresh Vegetables in your Area (Enter ZipCode to proceed further!)</a></div>
+           </div> 
+-				<!-- precip units -->
++  		<!-- Start search bar -->  
+           <div>
+-					<div class="settings-menu item">Precipitation
+-					</div><div class="settings-menu option"
+-						data-bind="css: { active: selectedPRCP() == 'mm'}, click: setSelectedPRCP.bind($data, 'mm')">mm
+-					</div><div class="settings-menu option"
+-						data-bind="css: { active: selectedPRCP() == 'in'}, click: setSelectedPRCP.bind($data, 'in')">in</div>
+-				</div>
+-				<!-- <div class="settings-menu about">About</div> -->
+-			  </div>
++           	<form method="get" id="chooseZip">
++           		<div id="wrapper">
++            		<div id="c1">
++            		  <!-- <input name="submit" type="submit" class="wrapper-dropdown-3" id="submit" value="Locate Me!"> -->
++            		</div><!--
++    				--><div id="c2">
++            		  <label for="textfield"><strong>ZipCode:</strong></label>
++                      <input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
++            		</div><!--
++    				--><div id="c3">
++            		  <input type="submit" name="submit2" class="wrapper-dropdown-3" id="submit2" value="Find">
+             		</div>
+-            <div class="navbar-element places-div">
+-				<input class="places-input" id="google_geolocator" type="text" >
++                    <div id="results"></div>
+           		</div>
+-            <div class="navbar-element other-div">
+-				<div class="daag-container" data-bind="click: toggleDatepicker">
+-					<div class="daag-month" data-bind="text:getMonth">&nbsp;
++          	</form>
+           </div>
+-                    <div class="daag-day" data-bind="text:getDay">&nbsp;
+-					</div>
+-                    <div class="daag-year" data-bind="text:getYear">&nbsp;
++          <br><br>
++           <hr>
++          <div class="container">
++              
++              <ul class="nav nav-tabs">
++                <li class="active"><a data-toggle="tab" href="#home">Marketplace Details</a></li>
++                <li><a data-toggle="tab" href="#menu1">Graphical View</a></li>
++                <li><a data-toggle="tab" href="#menu2">Price Comparison</a></li>
++               </ul>
++             <hr>
++              <div class="tab-content">
++                <div id="home" class="tab-pane fade in active">
++                  <br>
++                  <div id="vegdetail">
+  				  </div>						
+                 </div>
+-			<input type="text" id="selectedDate" style="display:none;" data-bind="textInput: selectedDate">
+-			</div>(Choose Date)
++                <div id="menu1" class="tab-pane fade">
++                  <h3>Graphical Scale</h3>
++                  <div class="radarChart"></div>
++					<script src="js/radarChart.js"></script>	
++                    <script>
++                        ////////////////////////////////////////////////////////////// 
++                        //////////////////////// Set-Up ////////////////////////////// 
++                        ////////////////////////////////////////////////////////////// 
++            
++                        var margin = {top: 100, right: 100, bottom: 100, left: 100},
++                            width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
++                            height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
++                                
++                        ////////////////////////////////////////////////////////////// 
++                        ////////////////////////// Data ////////////////////////////// 
++                        ////////////////////////////////////////////////////////////// 
++            
++                        var data = [
++                                  [//Selected Farmers Market
++                                    {axis:"Location",value:getRandomInt(0.21, 0.23)},
++                                    {axis:"Freshness",value:getRandomInt(0.26, 0.29)},
++                                    {axis:"Price",value:getRandomInt(0.27, 0.30)},
++                                    {axis:"Availability",value:getRandomInt(0.15, 0.19)},
++									{axis:"Open Hours",value:getRandomInt(0.15, 0.19)},
++									{axis:"Customer Reviews",value:getRandomInt(0.15, 0.19)}
++                                  ]
++                                ];
++                        ////////////////////////////////////////////////////////////// 
++                        //////////////////// Draw the Chart ////////////////////////// 
++                        ////////////////////////////////////////////////////////////// 
++            
++                        var color = d3.scale.ordinal()
++                            .range(["#EDC951","#CC333F","#00A0B0"]);
++                            
++                        var radarChartOptions = {
++                          w: width,
++                          h: height,
++                          margin: margin,
++                          maxValue: 0.5,
++                          levels: 5,
++                          roundStrokes: true,
++                          color: color
++                        };
++                        //Call function to draw the Radar chart
++                        RadarChart(".radarChart", data, radarChartOptions);
++                    </script>
+                 </div>
++                <div id="menu2" class="tab-pane fade">
++                  <h3>Price Comparison</h3>
++                 <!-- <div id="price_comparison"> -->
+                   
+-          <!-- End Search bar -->
+-          
+-          <!-- Date picker -->
+-          <div id="infowindow" style="display:none" data-bind="visible: infowindowOpen, with: selectedStation">
+-			<table class="infowindow">
++                  <table id="example" class="display" cellspacing="0" width="100%">
+                     <thead>
+-                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
++                        <tr>
++                            <th>Product Items</th>
++                            <th>Walmart</th>
++                            <th>Meijer</th>
++                        </tr>
+                     </thead>
++                    <hr>
++                    <tfoot>
++                        <tr>
++                            <th>Product Items</th>
++                            <th>Walmart ($/lbs)</th>
++                            <th>Meijer</th>
++                        </tr>
++                    </tfoot>
+                     <tbody>
+                         <tr>
+-                        <th>Name:</th>
+-                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
++                            <td></td>
++                            <td></td>
++                            <td></td>
+                         </tr>
+-                    <!-- ko foreach: $root.selectedData() -->
+                         <tr>
+-                        <th data-bind="text: name"></th>
+-                        <td><span data-bind="text: value"></span>
+-                            <span data-bind="text: units"></span>
+-                        </td>
++                            <td>Potato</td>
++                            <td>2.5</td>
++                            <td>3</td>
+                         </tr>
+-                    <!-- /ko -->
++                        
+                         <tr>
+-                        <td colspan="2" style="text-align:center">
+-                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
+-                        </td>
++                            <td>Bell Pepper</td>
++                            <td>2.5</td>
++                            <td>3</td>
++                        </tr>
++                        <tr>
++                            <td>Salad</td>
++                            <td>4</td>
++                            <td>5.5</td>
+                         </tr>
+                      </tbody>
+                 </table>
+                 </div>
+-
+-            <div id="infowindow-closing" style="display:none">
+-                closing
+-            </div>
+-
+-            <div class="date-picker-background" style="display:none" data-bind="visible:datepickerOpen, click: toggleDatepicker">
+-                <div class="date-picker-container">
+-                    <div id="datepicker"></div>
+-                    <div class="datepicker-maxdatemessage">
+-                        Most Recent Data: <span data-bind="text: maxDate"></span>
+               </div>
+             </div>
+-            </div>
+-          
+-          <!-- End Date picker -->
+-          
+-            <!-- gauge bars -->
+-            <div id="g1"></div>
+-    		<div id="g2"></div>
+-    		<div id="g3"></div>
+-            <div id="g4"></div>
+-            <br>
++            <hr>
+             <!-- social icons -->
+             <span class='st_facebook_large' displayText='Facebook'></span>
+             <span class='st_twitter_large' displayText='Tweet'></span>
+             <span class='st_linkedin_large' displayText='LinkedIn'></span>
+             <span class='st_pinterest_large' displayText='Pinterest'></span>	
+-            
+-            
+-            <!-- adding the graph -->
+-           <!--  <div id="basic-info" class="menu-line">
+-                <div id="weather" class="menu-line">sunny!</div>
++            <p> © 2016 IronHack Participant (Saurav Nanda). All rights reserved </p>
+         </div>
+-            <div id="position-info">
+-                <div id="market" class="menu-line">
+-                 	<div id="market-name" class="test"></div>
+-                    <div id="website" class="test"></div>
+-                </div>
+-                <div id="website" class="menu-line"></div>
+-                <div id="street-name" class="menu-line"></div>
+-                <div id="open-status" class="menu-line"></div>
+-            </div>
+-            <div id="chart"></div>
+-            <div id="scores" class="menu-line"></div>
+-            <div id="comments" class="menu-line"></div>   -->   
+-          
+-          <hr>
+-         
+-          </div>
+-        <!-- <div class="col-xs-4"> -->
+-        <!--map-canvas will be postioned here-->
+-        <!-- </div> -->
+-        
+-         <!-- <div id="map">
+-            </div> -->
+-        
+       </div>
+     </div>
+     <!-- end template -->
+ 
+ 	<!-- script references -->
+-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
++		
+ 		<script src="js/bootstrap.min.js"></script>
+-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
++		
+ 		<script src="js/scripts.js"></script>
+         
+         <!-- code added -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
+ 
+-
++	<script>
++		$(document).ready(function() {
++    	$('#example').DataTable();
++		} );
++	</script>
+ 	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
+ 	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
+ 	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
+@@ -227,8 +274,8 @@
+     <!-- for API -->
+     <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
+ 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrqr3XYjEc-xICLC__yLxZlN3M_sxKt0&libraries=places"></script>
++	
++	
+ 	<script type="text/javascript" src="js/script_api.js"></script>
+ 	<script>
+ 		ko.applyBindings(new QuickDataTool.ViewModel());
+@@ -237,58 +284,75 @@
+     <script src="js/raphael-2.1.4.min.js"></script>
+ 	<script src="js/justgage.js"></script>
+         
+-    <!-- gauge script -->
++    <!-- Wheather Gauge Meters from Yahoo API -->
+ 	<script>
+-    var g1, g2, g3;
+-
++	  var select = "results";
++
++	  var callbackFunction = function(data) {
++		//var wind = data.query.results.channel.wind;
++		var windy = data.query[select].channel.wind;
++		var temp = data.query.results.channel.item.condition;
++		var atm =  data.query.results.channel.atmosphere;
++		//alert(wind.chill);
++		//document.getElementById("chill").innerHTML = windy.chill;
++		var g1, g2, g3, g4;
++		var x1 = windy.chill;
++		var x2 = windy.speed;
++		var x3 = temp.temp;
++		var x4 = atm.humidity;
+     document.addEventListener("DOMContentLoaded", function(event) {
+         g1 = new JustGage({
+             id: "g1",
+-            value: getRandomInt(350, 980),
+-            min: 350,
+-            max: 980,
+-            title: "Precipitation",
+-            label: "millimetre ",
++            value: x3,
++            min: -50,
++            max: 100,
++            title: "Temperature",
++            label: "F ",
+ 			labelFontColor: "blue"
+         });
+ 
+         g2 = new JustGage({
+             id: "g2",
+-            value: 32,
+-            min: 50,
+-            max: 100,
+-            title: "Snow",
+-            label: "millimetre",
++            value: x1,
++            min: -50,
++            max: 50,
++            title: "Wind Chill",
++            label: "F",
+ 			labelFontColor: "blue"
+         });
+ 
+         g3 = new JustGage({
+             id: "g3",
+-            value: 120,
+-            min: 50,
+-            max: 100,
+-            title: "Max Temparature",
+-            label: "F",
++            value: x2,
++            min: 0,
++            max: 50,
++            title: "Wind Speed",
++            label: "Miles per Hour",
+ 			labelFontColor: "blue"
+         });
+ 		
+ 		g4 = new JustGage({
+             id: "g4",
+-            value: 120,
+-            min: 50,
++            value: x4,
++            min: 0,
+             max: 100,
+-            title: "Min Temparature",
+-            label: "F",
++            title: "Humidity",
++            label: "Percentage %",
+ 			labelFontColor: "blue"
+         });
+ 
+         setInterval(function() {
+-            g1.refresh(getRandomInt(350, 980));
+-            g2.refresh(getRandomInt(0, 49));
+-            g3.refresh(getRandomInt(101, 200));
++            //g1.refresh(getRandomInt(350, 980));
++            //g2.refresh(getRandomInt(0, 49));
++            //g3.refresh(getRandomInt(101, 200));
+         }, 2500);
+     });
++	
++	  };
+ 	</script>
+ 	
++	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid = 2434562&format=json&callback=callbackFunction"></script>
++        
++    
+ 	</body>
+ </html>
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/index_backup.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/index_backup.html
+new file mode 100755
+index 0000000..6f4334f
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/index_backup.html
+@@ -0,0 +1,323 @@
++<!DOCTYPE html>
++<html lang="en">
++	<head>
++		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
++		<meta charset="utf-8">
++		<title>Fresh Vegetables Application</title>
++		<meta name="generator" content="Bootply" />
++		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
++		<link href="css/bootstrap.min.css" rel="stylesheet">
++		<!--[if lt IE 9]>
++			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
++		<![endif]-->
++		<link href="css/styles.css" rel="stylesheet">
++        
++        <!-- code added-->
++        
++        <link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
++		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
++        <script src="http://d3js.org/d3.v3.min.js"></script>
++        <script src="js/RadarChart.js"></script>
++        <script src="js/tutorial.js" type="text/javascript"></script>
++        <script src="js/script.js" type="text/javascript" ></script>
++
++        <link rel="stylesheet" type="text/css" href="css/style.css" />
++        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
++        <!-- For the fancy drop down -->
++        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
++        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
++        <!-- For the social media share buttons -->
++        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
++        <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
++        </script>
++        
++        <!-- For the API and Maps -->
++        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css"></link>
++		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
++		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
++        
++      
++        
++	</head>
++	<body>
++    <!-- begin template -->
++    <div class="navbar navbar-custom navbar-fixed-top">
++     <div class="navbar-header">
++       <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
++       <p>
++         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++         </a></p>
++        </div>
++        <div class="navbar-collapse collapse">
++          <ul class="nav navbar-nav">
++          <li class="active"><a href="#"></a></li>
++            <li><a href="#"></a></li>
++            <li><a href="#"></a></li>
++            <li><a href="#"></a></li> 
++            <li><a href="#" class="wrapper-dropdown-1">Receipe of the Day</a></li>
++            <li>&nbsp;</li>
++          </ul> 
++        </div>
++    </div>
++
++    <!-- <div id="map-canvas"></div> -->
++    <!-- Google Maps -->
++    <div class="themap" id="gmap"></div>
++    <i class="fa fa-spinner fa-3x fa-pulse loading-image" data-bind="visible: loading"></i>
++    <!-- <div id="map"> </div> -->
++    <div class="container-fluid" id="main">
++      <div class="row">
++        <div class="col-xs-8" id="left">
++        
++          <h2>&nbsp;</h2> 
++          
++          <!-- item list -->
++          <!-- <div class="panel panel-default">
++            <div class="panel-heading"><a href="">Fresh Vegetables</a></div>
++          </div> -->
++          
++          <!-- Search bar -->
++          <div class="panel panel-default">
++		  	<div class="navbar-element settings-div">
++				<a href="" id="settings" data-bind="click: toggleSettings"> <i class="fa fa-cog" style="color:#333"></i> </a>
++				<div class="settings-menu-background" style="display:none" data-bind="visible: settingsOpen, click: toggleSettings">&nbsp;</div>
++				<div class="settings-menu-container" style="display:none" data-bind="visible: settingsOpen">
++					<div class="arrow-up"></div>
++				<!-- temperature units -->
++				<div>
++					<div class="settings-menu item">Temperature
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedTEMP() == 'C'}, click: setSelectedTEMP.bind($data, 'C')">C&deg;
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedTEMP() == 'F'}, click: setSelectedTEMP.bind($data, 'F')">F&deg;</div>
++				</div>
++				<!-- precip units -->
++				<div>
++					<div class="settings-menu item">Precipitation
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedPRCP() == 'mm'}, click: setSelectedPRCP.bind($data, 'mm')">mm
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedPRCP() == 'in'}, click: setSelectedPRCP.bind($data, 'in')">in</div>
++				</div>
++				<!-- <div class="settings-menu about">About</div> -->
++			  </div>
++			</div>
++            <div class="navbar-element places-div">
++				<input class="places-input" id="google_geolocator" type="text" >
++			</div>
++            <div class="navbar-element other-div">
++				<div class="daag-container" data-bind="click: toggleDatepicker">
++					<div class="daag-month" data-bind="text:getMonth">&nbsp;
++					</div>
++                    <div class="daag-day" data-bind="text:getDay">&nbsp;
++					</div>
++                    <div class="daag-year" data-bind="text:getYear">&nbsp;
++					</div>
++				</div> 
++			<input type="text" id="selectedDate" style="display:none;" data-bind="textInput: selectedDate">
++			</div>(Choose Date)
++		</div>
++
++          <!-- End Search bar -->
++          
++          <!-- Date picker -->
++          <div id="infowindow" style="display:none" data-bind="visible: infowindowOpen, with: selectedStation">
++			<table class="infowindow">
++                <thead>
++                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
++                </thead>
++                <tbody>
++                    <tr>
++                        <th>Name:</th>
++                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
++                    </tr>
++                    <!-- ko foreach: $root.selectedData() -->
++                    <tr>
++                        <th data-bind="text: name"></th>
++                        <td><span data-bind="text: value"></span>
++                            <span data-bind="text: units"></span>
++                        </td>
++                    </tr>
++                    <!-- /ko -->
++                    <tr>
++                        <td colspan="2" style="text-align:center">
++                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
++                        </td>
++                    </tr>
++                 </tbody>
++			  </table>
++			</div>
++
++            <div id="infowindow-closing" style="display:none">
++                closing
++            </div>
++
++            <div class="date-picker-background" style="display:none" data-bind="visible:datepickerOpen, click: toggleDatepicker">
++                <div class="date-picker-container">
++                    <div id="datepicker"></div>
++                    <div class="datepicker-maxdatemessage">
++                        Most Recent Data: <span data-bind="text: maxDate"></span>
++                    </div>
++                </div>
++            </div>
++          
++          <!-- End Date picker -->
++          
++            <!-- gauge bars -->
++            <div id="g1"></div>
++    		<div id="g2"></div>
++    		<div id="g3"></div>
++            <div id="g4"></div>
++            <br>
++            
++          <!-- print wheather data -->  
++           <div id="printwthr" data-bind="visible: infowindowOpen, with: selectedStation">
++            <table>
++                <thead>
++                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
++                </thead>
++                <tbody>
++                    <tr>
++                        <th>Name:</th>
++                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
++                    </tr>
++                    <!-- ko foreach: $root.selectedData() -->
++                    <tr>
++                        <th data-bind="text: name"></th>
++                        <td><span data-bind="text: value"></span>
++                            <span data-bind="text: units"></span>
++                        </td>
++                    </tr>
++                    <!-- /ko -->
++                    <tr>
++                        <td colspan="2" style="text-align:center">
++                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
++                        </td>
++                    </tr>
++                 </tbody>
++			  </table>
++            </div>
++            <!-- social icons -->
++            <span class='st_facebook_large' displayText='Facebook'></span>
++            <span class='st_twitter_large' displayText='Tweet'></span>
++            <span class='st_linkedin_large' displayText='LinkedIn'></span>
++            <span class='st_pinterest_large' displayText='Pinterest'></span>	
++            
++            
++            <!-- adding the graph -->
++           <!--  <div id="basic-info" class="menu-line">
++                <div id="weather" class="menu-line">sunny!</div>
++            </div>
++            <div id="position-info">
++                <div id="market" class="menu-line">
++                 	<div id="market-name" class="test"></div>
++                    <div id="website" class="test"></div>
++                </div>
++                <div id="website" class="menu-line"></div>
++                <div id="street-name" class="menu-line"></div>
++                <div id="open-status" class="menu-line"></div>
++            </div>
++            <div id="chart"></div>
++            <div id="scores" class="menu-line"></div>
++            <div id="comments" class="menu-line"></div>   -->   
++          
++          <hr>
++         
++          </div>
++        <!-- <div class="col-xs-4"> -->
++        <!--map-canvas will be postioned here-->
++        <!-- </div> -->
++        
++         <!-- <div id="map">
++            </div> -->
++        
++      </div>
++    </div>
++    <!-- end template -->
++
++	<!-- script references -->
++		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
++		<script src="js/bootstrap.min.js"></script>
++		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
++		<script src="js/scripts.js"></script>
++        
++        <!-- code added -->
++       <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
++
++
++	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
++	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
++	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
++    
++    <!-- for API -->
++    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
++	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
++	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
++	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrqr3XYjEc-xICLC__yLxZlN3M_sxKt0&libraries=places"></script>
++	<script type="text/javascript" src="js/script_api.js"></script>
++	<script>
++		ko.applyBindings(new QuickDataTool.ViewModel());
++	</script>
++    <!-- For the gauge meters -->
++    <script src="js/raphael-2.1.4.min.js"></script>
++	<script src="js/justgage.js"></script>
++        
++    <!-- gauge script -->
++    <script>
++    var g1, g2, g3;
++	
++    document.addEventListener("DOMContentLoaded", function(event) {
++        g1 = new JustGage({
++            id: "g1",
++            value: getRandomInt(350, 480),
++            min: 350,
++            max: 980,
++            title: "Precipitation",
++            label: "millimetre ",
++			labelFontColor: "blue"
++        });
++
++        g2 = new JustGage({
++            id: "g2",
++            value: 82,
++            min: 50,
++            max: 100,
++            title: "Snow",
++            label: "millimetre",
++			labelFontColor: "blue"
++        });
++
++        g3 = new JustGage({
++            id: "g3",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Max Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++		
++		g4 = new JustGage({
++            id: "g4",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Min Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++
++        setInterval(function() {
++            //g1.refresh(getRandomInt(350, 980));
++            g2.refresh(getRandomInt(0, 49));
++            g3.refresh(getRandomInt(101, 200));
++        }, 2500);
++    });
++	
++    </script>
++    
++	</body>
++</html>
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/radarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/radarChart.js
+new file mode 100644
+index 0000000..c9eb6cb
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/radarChart.js
+@@ -0,0 +1,277 @@
++/////////////////////////////////////////////////////////
++/////////////// The Radar Chart Function ////////////////
++/////////////// Written by Nadieh Bremer ////////////////
++////////////////// VisualCinnamon.com ///////////////////
++/////////// Inspired by the code of alangrafu ///////////
++/////////////////////////////////////////////////////////
++	
++/** Random integer  */
++function getRandomInt(min, max) {
++  return Math.floor(Math.random() * (max - min + 1)) + min;
++}
++
++function RadarChart(id, data, options) {
++	var cfg = {
++	 w: 600,				//Width of the circle
++	 h: 600,				//Height of the circle
++	 margin: {top: 20, right: 20, bottom: 20, left: 20}, //The margins of the SVG
++	 levels: 3,				//How many levels or inner circles should there be drawn
++	 maxValue: 0, 			//What is the value that the biggest circle will represent
++	 labelFactor: 1.25, 	//How much farther than the radius of the outer circle should the labels be placed
++	 wrapWidth: 60, 		//The number of pixels after which a label needs to be given a new line
++	 opacityArea: 0.35, 	//The opacity of the area of the blob
++	 dotRadius: 4, 			//The size of the colored circles of each blog
++	 opacityCircles: 0.1, 	//The opacity of the circles of each blob
++	 strokeWidth: 2, 		//The width of the stroke around each blob
++	 roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
++	 color: d3.scale.category10()	//Color function
++	};
++	
++	//Put all of the options into a variable called cfg
++	if('undefined' !== typeof options){
++	  for(var i in options){
++		if('undefined' !== typeof options[i]){ cfg[i] = options[i]; }
++	  }//for i
++	}//if
++	
++	//If the supplied maxValue is smaller than the actual one, replace by the max in the data
++	var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
++		
++	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
++		total = allAxis.length,					//The number of different axes
++		radius = Math.min(cfg.w/2, cfg.h/2), 	//Radius of the outermost circle
++		Format = d3.format('%'),			 	//Percentage formatting
++		angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
++	
++	//Scale for the radius
++	var rScale = d3.scale.linear()
++		.range([0, radius])
++		.domain([0, maxValue]);
++		
++	/////////////////////////////////////////////////////////
++	//////////// Create the container SVG and g /////////////
++	/////////////////////////////////////////////////////////
++
++	//Remove whatever chart with the same id/class was present before
++	d3.select(id).select("svg").remove();
++	
++	//Initiate the radar chart SVG
++	var svg = d3.select(id).append("svg")
++			.attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
++			.attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
++			.attr("class", "radar"+id);
++	//Append a g element		
++	var g = svg.append("g")
++			.attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");
++	
++	/////////////////////////////////////////////////////////
++	////////// Glow filter for some extra pizzazz ///////////
++	/////////////////////////////////////////////////////////
++	
++	//Filter for the outside glow
++	var filter = g.append('defs').append('filter').attr('id','glow'),
++		feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
++		feMerge = filter.append('feMerge'),
++		feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
++		feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
++
++	/////////////////////////////////////////////////////////
++	/////////////// Draw the Circular grid //////////////////
++	/////////////////////////////////////////////////////////
++	
++	//Wrapper for the grid & axes
++	var axisGrid = g.append("g").attr("class", "axisWrapper");
++	
++	//Draw the background circles
++	axisGrid.selectAll(".levels")
++	   .data(d3.range(1,(cfg.levels+1)).reverse())
++	   .enter()
++		.append("circle")
++		.attr("class", "gridCircle")
++		.attr("r", function(d, i){return radius/cfg.levels*d;})
++		.style("fill", "#CDCDCD")
++		.style("stroke", "#CDCDCD")
++		.style("fill-opacity", cfg.opacityCircles)
++		.style("filter" , "url(#glow)");
++
++	//Text indicating at what % each level is
++	axisGrid.selectAll(".axisLabel")
++	   .data(d3.range(1,(cfg.levels+1)).reverse())
++	   .enter().append("text")
++	   .attr("class", "axisLabel")
++	   .attr("x", 4)
++	   .attr("y", function(d){return -d*radius/cfg.levels;})
++	   .attr("dy", "0.4em")
++	   .style("font-size", "10px")
++	   .attr("fill", "#737373")
++	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
++
++	/////////////////////////////////////////////////////////
++	//////////////////// Draw the axes //////////////////////
++	/////////////////////////////////////////////////////////
++	
++	//Create the straight lines radiating outward from the center
++	var axis = axisGrid.selectAll(".axis")
++		.data(allAxis)
++		.enter()
++		.append("g")
++		.attr("class", "axis");
++	//Append the lines
++	axis.append("line")
++		.attr("x1", 0)
++		.attr("y1", 0)
++		.attr("x2", function(d, i){ return rScale(maxValue*1.1) * Math.cos(angleSlice*i - Math.PI/2); })
++		.attr("y2", function(d, i){ return rScale(maxValue*1.1) * Math.sin(angleSlice*i - Math.PI/2); })
++		.attr("class", "line")
++		.style("stroke", "white")
++		.style("stroke-width", "2px");
++
++	//Append the labels at each axis
++	axis.append("text")
++		.attr("class", "legend")
++		.style("font-size", "11px")
++		.attr("text-anchor", "middle")
++		.attr("dy", "0.35em")
++		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
++		.attr("y", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.sin(angleSlice*i - Math.PI/2); })
++		.text(function(d){return d})
++		.call(wrap, cfg.wrapWidth);
++
++	/////////////////////////////////////////////////////////
++	///////////// Draw the radar chart blobs ////////////////
++	/////////////////////////////////////////////////////////
++	
++	//The radial line function
++	var radarLine = d3.svg.line.radial()
++		.interpolate("linear-closed")
++		.radius(function(d) { return rScale(d.value); })
++		.angle(function(d,i) {	return i*angleSlice; });
++		
++	if(cfg.roundStrokes) {
++		radarLine.interpolate("cardinal-closed");
++	}
++				
++	//Create a wrapper for the blobs	
++	var blobWrapper = g.selectAll(".radarWrapper")
++		.data(data)
++		.enter().append("g")
++		.attr("class", "radarWrapper");
++			
++	//Append the backgrounds	
++	blobWrapper
++		.append("path")
++		.attr("class", "radarArea")
++		.attr("d", function(d,i) { return radarLine(d); })
++		.style("fill", function(d,i) { return cfg.color(i); })
++		.style("fill-opacity", cfg.opacityArea)
++		.on('mouseover', function (d,i){
++			//Dim all blobs
++			d3.selectAll(".radarArea")
++				.transition().duration(200)
++				.style("fill-opacity", 0.1); 
++			//Bring back the hovered over blob
++			d3.select(this)
++				.transition().duration(200)
++				.style("fill-opacity", 0.7);	
++		})
++		.on('mouseout', function(){
++			//Bring back all blobs
++			d3.selectAll(".radarArea")
++				.transition().duration(200)
++				.style("fill-opacity", cfg.opacityArea);
++		});
++		
++	//Create the outlines	
++	blobWrapper.append("path")
++		.attr("class", "radarStroke")
++		.attr("d", function(d,i) { return radarLine(d); })
++		.style("stroke-width", cfg.strokeWidth + "px")
++		.style("stroke", function(d,i) { return cfg.color(i); })
++		.style("fill", "none")
++		.style("filter" , "url(#glow)");		
++	
++	//Append the circles
++	blobWrapper.selectAll(".radarCircle")
++		.data(function(d,i) { return d; })
++		.enter().append("circle")
++		.attr("class", "radarCircle")
++		.attr("r", cfg.dotRadius)
++		.attr("cx", function(d,i){ return rScale(d.value) * Math.cos(angleSlice*i - Math.PI/2); })
++		.attr("cy", function(d,i){ return rScale(d.value) * Math.sin(angleSlice*i - Math.PI/2); })
++		.style("fill", function(d,i,j) { return cfg.color(j); })
++		.style("fill-opacity", 0.8);
++
++	/////////////////////////////////////////////////////////
++	//////// Append invisible circles for tooltip ///////////
++	/////////////////////////////////////////////////////////
++	
++	//Wrapper for the invisible circles on top
++	var blobCircleWrapper = g.selectAll(".radarCircleWrapper")
++		.data(data)
++		.enter().append("g")
++		.attr("class", "radarCircleWrapper");
++		
++	//Append a set of invisible circles on top for the mouseover pop-up
++	blobCircleWrapper.selectAll(".radarInvisibleCircle")
++		.data(function(d,i) { return d; })
++		.enter().append("circle")
++		.attr("class", "radarInvisibleCircle")
++		.attr("r", cfg.dotRadius*1.5)
++		.attr("cx", function(d,i){ return rScale(d.value) * Math.cos(angleSlice*i - Math.PI/2); })
++		.attr("cy", function(d,i){ return rScale(d.value) * Math.sin(angleSlice*i - Math.PI/2); })
++		.style("fill", "none")
++		.style("pointer-events", "all")
++		.on("mouseover", function(d,i) {
++			newX =  parseFloat(d3.select(this).attr('cx')) - 10;
++			newY =  parseFloat(d3.select(this).attr('cy')) - 10;
++					
++			tooltip
++				.attr('x', newX)
++				.attr('y', newY)
++				.text(Format(d.value))
++				.transition().duration(200)
++				.style('opacity', 1);
++		})
++		.on("mouseout", function(){
++			tooltip.transition().duration(200)
++				.style("opacity", 0);
++		});
++		
++	//Set up the small tooltip for when you hover over a circle
++	var tooltip = g.append("text")
++		.attr("class", "tooltip")
++		.style("opacity", 0);
++	
++	/////////////////////////////////////////////////////////
++	/////////////////// Helper Function /////////////////////
++	/////////////////////////////////////////////////////////
++
++	//Taken from http://bl.ocks.org/mbostock/7555321
++	//Wraps SVG text	
++	function wrap(text, width) {
++	  text.each(function() {
++		var text = d3.select(this),
++			words = text.text().split(/\s+/).reverse(),
++			word,
++			line = [],
++			lineNumber = 0,
++			lineHeight = 1.4, // ems
++			y = text.attr("y"),
++			x = text.attr("x"),
++			dy = parseFloat(text.attr("dy")),
++			tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
++			
++		while (word = words.pop()) {
++		  line.push(word);
++		  tspan.text(line.join(" "));
++		  if (tspan.node().getComputedTextLength() > width) {
++			line.pop();
++			tspan.text(line.join(" "));
++			line = [word];
++			tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
++		  }
++		}
++	  });
++	}//wrap	
++	
++}//RadarChart
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/rbox.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/rbox.js
+new file mode 100644
+index 0000000..c6ada89
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/rbox.js
+@@ -0,0 +1,268 @@
++function binarySearch(a, key) {
++  var low = 0,
++      high = a.length - 1;
++  while(low <= high) {
++    var mid = Math.floor((low + high) / 2),
++        midVal = a[mid];
++    if(midVal < key) {
++      low = mid + 1;
++    } else if (midVal > key) {
++      high = mid - 1;
++    } else {
++      return mid;
++    }
++  }
++  return low; //returns insertion index if not found
++}
++
++// add boxplot stats.
++// m has .sortedVals
++function addStats(m) {
++  var vs = m.sortedVals,
++      q1 = d3.quantile(vs, 0.25),
++      q2 = d3.quantile(vs, 0.5),
++      q3 = d3.quantile(vs, 0.75),
++      iqr = q3 - q1;
++  var i = -1,
++      j = vs.length;
++  while (vs[++i] < q1 - 1.5 * iqr);
++  while (vs[--j] > q3 + 1.5 * iqr);
++
++  var wl = vs[i], //whisker low
++      wh = vs[j], //whisker high
++      ol = vs.slice(0, i),        //outliers low
++      oh = vs.slice(++j, vs.length); //outliers high
++  m.min = vs[0];
++  m.max = vs[vs.length-1];
++  m.q1 = q1;
++  m.q2 = q2;
++  m.q3 = q3;
++  m.wl = wl;
++  m.wh = wh;
++  m.ol = ol;
++  m.oh = oh;
++}
++
++// sets group.reduce
++// group => crossfilter group.
++function setReduceStats(group, metric) {
++  function reduceAdd(p, v) {
++    var i = binarySearch(p.sortedVals,v[metric]);
++    p.sortedVals.splice(i, 0, v[metric]);
++    return p;
++  }
++
++  function reduceRemove(p, v) {
++    var i = binarySearch(p.sortedVals, v[metric]);
++    p.sortedVals.splice(i, 1);
++    return p;
++  }
++
++  function reduceInitial() {
++    return {sortedVals:[], min:0, max:0, wl:0, q1:0, q2:0, q3:0, wh:0, ol:[], oh:[]};
++  }
++  return group.reduce(reduceAdd, reduceRemove, reduceInitial);
++}
++
++var rbox = function() {
++  var width = 960,
++      height = 500,
++      innerRadius = 80,
++      scaleOverride = null,
++      label = "",
++      dimension,
++      group,
++      axisText = Object,
++      color = "#3399FF"
++  ;
++
++  // selection => nested data
++  function my(selection) {
++    var svg = selection.select("svg g");
++    if(svg.empty()) {
++      selection = selection.append("svg")
++          .attr("width", width)
++          .attr("height", height)
++          .attr('class', 'star-container')
++        .append("g")
++          .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
++      selection.append("g").attr("class", "layers");
++      selection.append("g").attr("class", "axes");
++      selection.append("g").attr("class", "outliers")
++    } else {
++      selection = svg;
++    }
++
++    var fill = [d3.rgb(color).brighter(), color, color, d3.rgb(color).brighter()];
++
++    var outerRadius = height / 2 - 10;
++    var angle = d3.time.scale()
++      .range([0, 2 * Math.PI]);
++
++    var radius = d3.scale.linear()
++      .range([innerRadius, outerRadius]);
++
++    var stack = d3.layout.stack()
++      .offset("zero")
++      .x(function(d) { return d.key; })
++      .y(function(d) { return d.value; })
++    ;
++
++    var area = d3.svg.area.radial()
++      .interpolate("cardinal-closed")
++      .angle(function(d) { return angle(d.key); })
++      .innerRadius(function(d) { return radius(d.y0); })
++      .outerRadius(function(d) { return radius(d.y0 + d.y); });
++
++    selection.each(function() { //groups
++      var selection = d3.select(this),
++          g = selection.select("g");
++
++      var gs = group.all();
++      gs.forEach(function(g) { addStats(g.value); });
++      var ks = ["wl", "q1", "q2", "q3", "wh"];
++      var nested = ks.map(function(k, i) {
++        return gs.map(function(g) {
++          var tmp = Object.create(g); //clone(ish)
++          tmp.value = tmp.value[k] - (tmp.value[ks[i - 1]] || 0.0);
++          return tmp;
++        });
++      });
++      var layers = stack(nested);
++      layers.shift(); //no need to draw first layer
++
++      // Extend the domain slightly to match the range of [0, 2π].
++      angle.domain([0, Math.floor(d3.max(gs, function(g) { return g.key; })) + 0.999]); // hour => [0, 24), day => [0, 7)
++      if(scaleOverride) {
++        radius.domain(scaleOverride);
++      } else {
++        radius.domain([d3.min(gs, function(g) { return g.value.min; }),
++                       d3.max(gs, function(g) { return g.value.max; })]);
++      }
++
++      var selLabel = selection.selectAll(".label")
++          .data([label]);
++      selLabel.enter().append("text")
++          .attr("class", "label")
++          .attr("text-anchor", "middle");
++      selLabel
++          .text(function(d) { return d; })
++          .style("opacity", 1);
++
++
++      var selLayer = selection.select(".layers").selectAll(".layer")
++          .data(layers);
++      selLayer.enter().append("path")
++          .attr("class", "layer")
++          .attr("d", function(ds) { return area(ds.map(function(d) { return {key:d.key, y0:0, y:0}; })); })
++          .style("fill", function(d, i) { return fill[i]; })
++      selLayer
++        .transition().duration(200)
++          .attr("d", function(d) { return area(d); })
++          .style("fill", function(d, i) { return fill[i]; });
++
++
++      var outliersss = ["ol", "oh"].map(function(k) {
++          return gs.map(function(g) {
++              var theta = angle(g.key) - 0.5* Math.PI; //0 is at 12 o clock.
++              return g.value[k].map(function(v) {
++                  var h = radius(v);
++                  var coord = {x: h * Math.cos(theta),
++                               y: h * Math.sin(theta)};
++                  return coord;
++              });
++          });
++      });
++      var outlierss = [].concat.apply([], outliersss),
++          outliers = [].concat.apply([], outlierss);
++      var selOutlier = selection.select(".outliers").selectAll(".outlier")
++          .data(outliers);
++      selOutlier.enter()
++          .append("circle")
++          .attr("class", "outlier")
++      selOutlier
++          .attr("cx", function(d) { return d.x; })
++          .attr("cy", function(d) { return d.y; })
++          .attr("r", 2);
++      selOutlier.exit()
++          .remove();
++
++      var selAxis = selection.select(".axes").selectAll(".axis")
++        .data(d3.range(Math.floor(+angle.domain()[1]) + 1))
++      selAxis.enter().append("g")
++          .attr("class", "axis")
++        .append("text")
++          .attr("class", "axisLabel");
++      selAxis //.transition().duration(1000)
++          .attr("transform", function(d) { return "rotate(" + angle(d) * 180 / Math.PI + ")"; })
++          .call(d3.svg.axis()
++              .scale(radius.copy().range([-innerRadius, -outerRadius]))
++              .orient("left"));
++      selAxis.selectAll("text.axisLabel")
++          .text(function(d) { return axisText(d); })
++          .attr("y", -innerRadius + 6)
++          .attr("dy", ".71em")
++          .attr("text-anchor", "middle");
++      selAxis.exit()
++          .remove();
++    });
++  }
++
++  /** Getter/Setters **/
++  my.width = function(v) {
++    if (!arguments.length) return width;
++    width = v;
++    return my;
++  }
++  my.height = function(v) {
++    if (!arguments.length) return height;
++    height = v;
++    return my;
++  }
++  my.innerRadius = function(v) {
++    if (!arguments.length) return innerRadius;
++    innerRadius = v;
++    return my;
++  }
++  my.outerRadius = function(v) {
++    if (!arguments.length) return outerRadius;
++    outerRadius = v;
++    return my;
++  }
++  my.file = function(v) {
++    if (!arguments.length) return file;
++    file = v;
++    return my;
++  }
++  my.scaleOverride = function(v) {
++    if (!arguments.length) return scaleOverride;
++    scaleOverride = (v[0] == 0 && v[1] == 0) ? null : v; //maybe do something better here?
++    return my;
++  }
++  my.label = function(v) {
++    if (!arguments.length) return label;
++    label = v;
++    return my;
++  }
++  my.dimension = function(v) {
++    if (!arguments.length) return dimension;
++    dimension = v;
++    return my;
++  }
++  my.group = function(v) {
++    if (!arguments.length) return group;
++    group = v;
++    return my;
++  }
++  my.axisText = function(_) {
++    if (!arguments.length) return axisText;
++    axisText = _;
++    return my;
++  };
++  my.color = function(_) {
++    if (!arguments.length) return color;
++    color = _;
++    return my;
++  };
++  return my;
++};
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/recipe.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/recipe.html
+new file mode 100755
+index 0000000..13b84bd
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/recipe.html
+@@ -0,0 +1,189 @@
++<!DOCTYPE html>
++<html lang="en">
++	<head>
++		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
++		<meta charset="utf-8">
++		<title>Fresh Vegetables Application</title>
++		<meta name="generator" content="Bootply" />
++		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
++		<link href="css/bootstrap.min.css" rel="stylesheet">
++		<!--[if lt IE 9]>
++			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
++		<![endif]-->
++		<link href="css/styles.css" rel="stylesheet">
++        
++        <!-- code added-->
++        
++        <link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
++		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
++        <script src="http://d3js.org/d3.v3.min.js"></script>
++        <script src="js/RadarChart.js"></script>
++        <script src="js/tutorial.js" type="text/javascript"></script>
++        <script src="js/script.js" type="text/javascript" ></script>
++
++        <link rel="stylesheet" type="text/css" href="css/style.css" />
++        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
++        <!-- For the fancy drop down -->
++        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
++        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
++        <!-- For the social media share buttons -->
++        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
++        <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
++        </script>
++        
++        <!-- For the API and Maps -->
++        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css"></link>
++		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
++		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
++        
++      
++        
++	</head>
++	<body>
++    <!-- begin template -->
++    <div class="navbar navbar-custom navbar-fixed-top">
++     <div class="navbar-header">
++       <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
++       <p>
++         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++         </a></p>
++        </div>
++        <div class="navbar-collapse collapse">
++          <ul class="nav navbar-nav">
++          <li class="active"><a href="#"></a></li>
++            <li><a href="#"></a></li>
++            <li><a href="#"></a></li>
++			<li><a href="wheather.html">Weather Details</a></li> 
++            <li><a href="recipe.html" class="wrapper-dropdown-1">Recipe of the Day</a></li>
++            <li>&nbsp;</li>
++          </ul> 
++        </div>
++    </div>
++
++    <!-- <div id="map-canvas"></div> -->
++    <!-- Google Maps -->
++    <div class="themap" id="gmap"></div>
++    <i class="fa fa-spinner fa-3x fa-pulse loading-image" data-bind="visible: loading"></i>
++    <!-- <div id="map"> </div> -->
++    <div class="container-fluid" id="main">
++      <div class="row">
++        <div class="col-xs-8" id="left">
++        
++          <h2>&nbsp;</h2> 
++          
++          <!-- item list -->
++          <div class="panel panel-default">
++            <div class="panel-heading"><a href="">Recipes of the Day! (based on available products near you)</a></div>
++          </div> 
++          
++                    
++            <hr>
++            <!-- social icons -->
++            <span class='st_facebook_large' displayText='Facebook'></span>
++            <span class='st_twitter_large' displayText='Tweet'></span>
++            <span class='st_linkedin_large' displayText='LinkedIn'></span>
++            <span class='st_pinterest_large' displayText='Pinterest'></span>	
++            
++            
++           
++          
++          <hr>
++         
++          </div>
++        <!-- <div class="col-xs-4"> -->
++        <!--map-canvas will be postioned here-->
++        <!-- </div> -->
++        
++         <!-- <div id="map">
++            </div> -->
++        
++      </div>
++    </div>
++    <!-- end template -->
++
++	<!-- script references -->
++		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
++		<script src="js/bootstrap.min.js"></script>
++		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
++		<script src="js/scripts.js"></script>
++        
++        <!-- code added -->
++       <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
++
++
++	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
++	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
++	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
++    
++    <!-- for API -->
++    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
++	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
++	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
++	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrqr3XYjEc-xICLC__yLxZlN3M_sxKt0&libraries=places"></script>
++	<script type="text/javascript" src="js/script_api.js"></script>
++	<script>
++		ko.applyBindings(new QuickDataTool.ViewModel());
++	</script>
++    <!-- For the gauge meters -->
++    <script src="js/raphael-2.1.4.min.js"></script>
++	<script src="js/justgage.js"></script>
++        
++    <!-- gauge script -->
++    <script>
++    var g1, g2, g3;
++	
++    document.addEventListener("DOMContentLoaded", function(event) {
++        g1 = new JustGage({
++            id: "g1",
++            value: getRandomInt(350, 480),
++            min: 350,
++            max: 980,
++            title: "Precipitation",
++            label: "millimetre ",
++			labelFontColor: "blue"
++        });
++
++        g2 = new JustGage({
++            id: "g2",
++            value: 82,
++            min: 50,
++            max: 100,
++            title: "Snow",
++            label: "millimetre",
++			labelFontColor: "blue"
++        });
++
++        g3 = new JustGage({
++            id: "g3",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Max Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++		
++		g4 = new JustGage({
++            id: "g4",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Min Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++
++        setInterval(function() {
++            //g1.refresh(getRandomInt(350, 980));
++            g2.refresh(getRandomInt(0, 49));
++            g3.refresh(getRandomInt(101, 200));
++        }, 2500);
++    });
++	
++    </script>
++    
++	</body>
++</html>
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/search.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/search.js
+new file mode 100644
+index 0000000..97a233b
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/search.js
+@@ -0,0 +1,6 @@
++$(function() {
++	$( "#searchZip" ).click(function() {
++		$("#searchZip").hide();
++		$( ".zipSearch" ).show();
++	});
++});
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/walmart_api.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/walmart_api.js
+new file mode 100644
+index 0000000..2c7567a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/walmart_api.js
+@@ -0,0 +1,51 @@
++var helloApp = angular.module('myApp', []); 
++
++var apiKey = 'x6c5uajw6f37v24zt3hs7s7n'; 
++helloApp.controller("myCtrl",  function ($scope, $http) {
++	$http.defaults.headers.put = {
++		'Access-Control-Allow-Origin' : '*', 
++		'Access-Control-Allow-Methods' : 'POST, GET', 
++		'Access-Control-Allow-Credentials': true, 
++		'Content-Type' : 'application/json', 
++		'Accept' : 'application/json'
++	}; 
++	$http.defaults.useXDomain = true; 
++	delete $http.defaults.headers.common['X-Requested-With']; 
++
++	//This works with the Value of the Day API 
++    $http.get('https://api.walmartlabs.com/v1/vod?format=json&apiKey=' + apiKey).
++        success(function(data) {
++            $scope.valueOfDay = data;
++
++            var data = {
++            	"images" : [{ "largeImg" : $scope.valueOfDay.largeImage }]
++            }; 
++            data.images.forEach(function(obj){
++            	var img = new Image(); 
++            	img.src = obj.largeImg; 
++            	img.setAttribute("class", "valueImage"); 
++            	document.getElementById("img-container").appendChild(img); 
++            });
++            //console.log(greeting); 
++        });	
++        
++     //This works with the Trending API  
++     $http.get('http://api.walmartlabs.com/v1/trends?format=json&apiKey=' + apiKey). 
++     	success(function(data){
++     		$scope.trending = data; 
++     		/*
++     		for (val = 1; val < $scope.trending.length; val++){
++
++     		}
++			*/
++     	}); 
++		
++	// This is for fetching vegetable products
++	 $http.get('http://api.walmartlabs.com/v1/items?ids=10449951,47769900&apiKey=x6c5uajw6f37v24zt3hs7s7n' + apiKey).
++        success(function(data) {
++            document.getElementById("price_comparison").innerHTML = sucess;
++ });	
++        
++ 
++});
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/wheather.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/wheather.html
+new file mode 100755
+index 0000000..fb9bb1d
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-sauravn/wheather.html
+@@ -0,0 +1,393 @@
++<!DOCTYPE html>
++<html lang="en">
++	<head>
++		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
++		<meta charset="utf-8">
++		<title>Fresh Vegetables Application</title>
++		<meta name="generator" content="Bootply" />
++		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
++		<link href="css/bootstrap.min.css" rel="stylesheet">
++		<!--[if lt IE 9]>
++			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
++		<![endif]-->
++		<link href="css/styles.css" rel="stylesheet">
++        
++        <!-- code added-->
++        
++        <link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
++		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
++        <script src="http://d3js.org/d3.v3.min.js"></script>
++        <script src="js/RadarChart.js"></script>
++        <script src="js/tutorial.js" type="text/javascript"></script>
++        <script src="js/script.js" type="text/javascript" ></script>
++
++        <link rel="stylesheet" type="text/css" href="css/style.css" />
++        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
++        <!-- For the fancy drop down -->
++        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
++        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
++        <!-- For the social media share buttons -->
++        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
++        <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
++        </script>
++        
++        <!-- For the API and Maps -->
++        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css"></link>
++		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
++		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
++        
++      
++        
++	</head>
++	<body>
++    <!-- begin template -->
++    <div class="navbar navbar-custom navbar-fixed-top">
++     <div class="navbar-header">
++       <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
++       <p>
++         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++           <span class="icon-bar"></span>
++         </a></p>
++        </div>
++        <div class="navbar-collapse collapse">
++          <ul class="nav navbar-nav">
++          <li class="active"><a href="#"></a></li>
++            <li><a href="#"></a></li>
++            <li><a href="#"></a></li>
++            <li><a href="wheather.html">Weather Details</a></li> 
++            <li><a href="recipe.html" class="wrapper-dropdown-1">Receipe of the Day</a></li>
++            <li>&nbsp;</li>
++          </ul> 
++        </div>
++    </div>
++
++    <!-- <div id="map-canvas"></div> -->
++    <!-- Google Maps -->
++    <div class="themap" id="gmap"></div>
++    <i class="fa fa-spinner fa-3x fa-pulse loading-image" data-bind="visible: loading"></i>
++    <!-- <div id="map"> </div> -->
++    <div class="container-fluid" id="main">
++      <div class="row">
++        <div class="col-xs-8" id="left">
++        
++          <h2>&nbsp;</h2> 
++          
++          <!-- Search bar -->
++          <div class="panel panel-default">
++		  	<div class="navbar-element settings-div">
++				<a href="" id="settings" data-bind="click: toggleSettings"> <i class="fa fa-cog" style="color:#333"></i> </a>
++				<div class="settings-menu-background" style="display:none" data-bind="visible: settingsOpen, click: toggleSettings">&nbsp;</div>
++				<div class="settings-menu-container" style="display:none" data-bind="visible: settingsOpen">
++					<div class="arrow-up"></div>
++				<!-- temperature units -->
++				<div>
++					<div class="settings-menu item">Temperature
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedTEMP() == 'C'}, click: setSelectedTEMP.bind($data, 'C')">C&deg;
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedTEMP() == 'F'}, click: setSelectedTEMP.bind($data, 'F')">F&deg;</div>
++				</div>
++				<!-- precip units -->
++				<div>
++					<div class="settings-menu item">Precipitation
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedPRCP() == 'mm'}, click: setSelectedPRCP.bind($data, 'mm')">mm
++					</div><div class="settings-menu option"
++						data-bind="css: { active: selectedPRCP() == 'in'}, click: setSelectedPRCP.bind($data, 'in')">in</div>
++				</div>
++				<!-- <div class="settings-menu about">About</div> -->
++			  </div>
++			</div>
++            <div class="navbar-element places-div">
++				<input class="places-input" id="google_geolocator" type="text" >
++			</div>
++            <div class="navbar-element other-div">
++				<div class="daag-container" data-bind="click: toggleDatepicker">
++					<div class="daag-month" data-bind="text:getMonth">&nbsp;
++					</div>
++                    <div class="daag-day" data-bind="text:getDay">&nbsp;
++					</div>
++                    <div class="daag-year" data-bind="text:getYear">&nbsp;
++					</div>
++				</div> 
++			<input type="text" id="selectedDate" style="display:none;" data-bind="textInput: selectedDate">
++			</div>(Choose Date)
++		</div>
++
++          <!-- End Search bar -->
++          
++          <!-- Date picker -->
++          <div id="infowindow" style="display:none" data-bind="visible: infowindowOpen, with: selectedStation">
++			<table class="infowindow">
++                <thead>
++                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
++                </thead>
++                <tbody>
++                    <tr>
++                        <th>Name:</th>
++                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
++                    </tr>
++                    <!-- ko foreach: $root.selectedData() -->
++                    <tr>
++                        <th data-bind="text: name"></th>
++                        <td><span data-bind="text: value"></span>
++                            <span data-bind="text: units"></span>
++                        </td>
++                    </tr>
++                    <!-- /ko -->
++                    <tr>
++                        <td colspan="2" style="text-align:center">
++                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
++                        </td>
++                    </tr>
++                 </tbody>
++			  </table>
++			</div>
++
++            <div id="infowindow-closing" style="display:none">
++                closing
++            </div>
++
++            <div class="date-picker-background" style="display:none" data-bind="visible:datepickerOpen, click: toggleDatepicker">
++                <div class="date-picker-container">
++                    <div id="datepicker"></div>
++                    <div class="datepicker-maxdatemessage">
++                        Most Recent Data: <span data-bind="text: maxDate"></span>
++                    </div>
++                </div>
++            </div>
++          
++          <!-- End Date picker -->
++           <!-- Title bar -->
++           <div class="panel panel-default">
++            <div class="panel-heading"><a href="">Weather Details on Gauge Meters: West Lafayette, IN (via Yahoo API)</a></div>
++          </div> 
++            <!-- gauge bars -->
++            <div id="g1"></div>
++    		<div id="g2"></div>
++    		<div id="g3"></div>
++            <div id="g4"></div>
++            <br>
++            
++          <!-- print wheather data -->  
++           <div id="printwthr" data-bind="visible: infowindowOpen, with: selectedStation">
++            <table>
++                <thead>
++                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
++                </thead>
++                <tbody>
++                    <tr>
++                        <th>Name:</th>
++                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
++                    </tr>
++                    <!-- ko foreach: $root.selectedData() -->
++                    <tr>
++                        <th data-bind="text: name"></th>
++                        <td><span data-bind="text: value"></span>
++                            <span data-bind="text: units"></span>
++                        </td>
++                    </tr>
++                    <!-- /ko -->
++                    <tr>
++                        <td colspan="2" style="text-align:center">
++                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
++                        </td>
++                    </tr>
++                 </tbody>
++			  </table>
++            </div>
++            <!-- social icons -->
++            <span class='st_facebook_large' displayText='Facebook'></span>
++            <span class='st_twitter_large' displayText='Tweet'></span>
++            <span class='st_linkedin_large' displayText='LinkedIn'></span>
++            <span class='st_pinterest_large' displayText='Pinterest'></span>	
++            <p> © 2016 IronHack Participant (Saurav Nanda). All rights reserved </p>
++            
++            <!-- adding the graph -->
++           <!--  <div id="basic-info" class="menu-line">
++                <div id="weather" class="menu-line">sunny!</div>
++            </div>
++            <div id="position-info">
++                <div id="market" class="menu-line">
++                 	<div id="market-name" class="test"></div>
++                    <div id="website" class="test"></div>
++                </div>
++                <div id="website" class="menu-line"></div>
++                <div id="street-name" class="menu-line"></div>
++                <div id="open-status" class="menu-line"></div>
++            </div>
++            <div id="chart"></div>
++            <div id="scores" class="menu-line"></div>
++            <div id="comments" class="menu-line"></div>   -->   
++          
++          <hr>
++         
++          </div>
++        <!-- <div class="col-xs-4"> -->
++        <!--map-canvas will be postioned here-->
++        <!-- </div> -->
++        
++         <!-- <div id="map">
++            </div> -->
++        
++      </div>
++    </div>
++    <!-- end template -->
++
++	<!-- script references -->
++		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
++		<script src="js/bootstrap.min.js"></script>
++		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
++		<script src="js/scripts.js"></script>
++        
++        <!-- code added -->
++       <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
++
++
++	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
++	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
++	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
++    
++    <!-- for API -->
++    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
++	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
++	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
++	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrqr3XYjEc-xICLC__yLxZlN3M_sxKt0&libraries=places"></script>
++	<script type="text/javascript" src="js/script_api.js"></script>
++	<script>
++		ko.applyBindings(new QuickDataTool.ViewModel());
++	</script>
++    <!-- For the gauge meters -->
++    <script src="js/raphael-2.1.4.min.js"></script>
++	<script src="js/justgage.js"></script>
++    
++    <!-- Wheather Gauge Meters from Yahoo API -->
++	<script>
++	  var select = "results";
++
++	  var callbackFunction = function(data) {
++		//var wind = data.query.results.channel.wind;
++		var windy = data.query[select].channel.wind;
++		var temp = data.query.results.channel.item.condition;
++		var atm =  data.query.results.channel.atmosphere;
++		//alert(wind.chill);
++		//document.getElementById("chill").innerHTML = windy.chill;
++		var g1, g2, g3, g4;
++		var x1 = windy.chill;
++		var x2 = windy.speed;
++		var x3 = temp.temp;
++		var x4 = atm.humidity;
++    document.addEventListener("DOMContentLoaded", function(event) {
++        g1 = new JustGage({
++            id: "g1",
++            value: x3,
++            min: -50,
++            max: 100,
++            title: "Temperature",
++            label: "F ",
++			labelFontColor: "blue"
++        });
++
++        g2 = new JustGage({
++            id: "g2",
++            value: x1,
++            min: -50,
++            max: 50,
++            title: "Wind Chill",
++            label: "F",
++			labelFontColor: "blue"
++        });
++
++        g3 = new JustGage({
++            id: "g3",
++            value: x2,
++            min: 0,
++            max: 50,
++            title: "Wind Speed",
++            label: "Miles per Hour",
++			labelFontColor: "blue"
++        });
++		
++		g4 = new JustGage({
++            id: "g4",
++            value: x4,
++            min: 0,
++            max: 100,
++            title: "Humidity",
++            label: "Percentage %",
++			labelFontColor: "blue"
++        });
++
++        setInterval(function() {
++            //g1.refresh(getRandomInt(350, 980));
++            //g2.refresh(getRandomInt(0, 49));
++            //g3.refresh(getRandomInt(101, 200));
++        }, 2500);
++    });
++	
++	  };
++	</script>
++	
++	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid = 2434562&format=json&callback=callbackFunction"></script>
++        
++    <!-- gauge script 
++    <script>
++    var g1, g2, g3, g4;
++	var x ;
++	x = windy.chill;
++    document.addEventListener("DOMContentLoaded", function(event) {
++        g1 = new JustGage({
++            id: "g1",
++            value: ,
++            min: 0,
++            max: 100,
++            title: "Precipitation",
++            label: "millimetre ",
++			labelFontColor: "blue"
++        });
++
++        g2 = new JustGage({
++            id: "g2",
++            value: 82,
++            min: 50,
++            max: 100,
++            title: "Snow",
++            label: "millimetre",
++			labelFontColor: "blue"
++        });
++
++        g3 = new JustGage({
++            id: "g3",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Max Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++		
++		g4 = new JustGage({
++            id: "g4",
++            value: 120,
++            min: 50,
++            max: 100,
++            title: "Min Temparature",
++            label: "F",
++			labelFontColor: "blue"
++        });
++
++        setInterval(function() {
++            //g1.refresh(getRandomInt(350, 980));
++            //g2.refresh(getRandomInt(0, 49));
++            //g3.refresh(getRandomInt(101, 200));
++        }, 2500);
++    });
++	
++    </script> -->
++    
++    
++    
++	</body>
++</html>
+\ No newline at end of file

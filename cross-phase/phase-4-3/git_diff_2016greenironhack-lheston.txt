@@ -1,0 +1,257 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lheston/Documentation.txt b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Documentation.txt
+index 6fb5eda..1dce973 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lheston/Documentation.txt
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Documentation.txt
+@@ -1,8 +1,9 @@
+-Doc:
++Final Phase:
+ 
+-Currently developed an initial tableau viz using the food almanac data set from Data.Gov. I am also currently on working on implementing the weather data set but do not plan on using it as much as other data sources. I am also developing a tool to crawl the twitterAPI in order to search every zipcode in indiana for specific results in order to determine where people are talking about fresh farm grown vegtables. I am starting the crawler later tonight and saving the data in a sqlite db, I was wondering if there was an instance I could also use for this project? The schema of the table is included as well.
++The Viz is completed visualizing the twitter data. I was able to perform two complete pulls. The viz pulls the data by zip code and utilized the geocode package to decode the zips into lat and long coordinates and then pulls all the twitter data then writes it into a Sqlite db. Because of query limits the API could not be connected live as the geocode query was a parameter passed to the API and was not a data point outputted. The Keywords used to query twitter where “vegtables OR farmers market OR cheap food”. The number of queries within the given zip code was aggregated by count and then plotted on a map in the viz. 
+ 
++The other plot data from the food almanac was combined to create a composite metric on a county by county scale. It is currently filtered by state to just Indiana but can be altered using the filter feature on the side of the Viz.
+ 
+-UPDATE PHASE 3:
++Finally the CDO is visualized by lafayette weather showing the average temperature trend (updated live) using a Tableau web connector.
+ 
+-I have finished my data puller from twitter, it has completed one complete pull and has started its second to pull twitter data for two days. After this I will input into tableau to create the final viz. I got the OK at the very begining of the project ot use Tableau as long as it works web based so I am not sure why I am recieving low marks for using it. example data should be included in this submission as well.....
++The viz is created using a Tableau Public JS view in order to be web based. 
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lheston/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lheston/README.md
+deleted file mode 100644
+index a8e83f7..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-lheston/README.md
++++ /dev/null
+@@ -1 +0,0 @@
+-# 2016greenironhack-lheston
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme (Case Conflict).md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme (Case Conflict).md
+new file mode 100644
+index 0000000..a8e83f7
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme (Case Conflict).md	
+@@ -0,0 +1 @@
++# 2016greenironhack-lheston
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme.md
+new file mode 100644
+index 0000000..65c758a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/Readme.md
+@@ -0,0 +1,56 @@
++Readme
++
++Twitter and Food Almanac geographic mapping 
++
++Keywords: fresh groceries, cheap food, farmers market
++
++Description of the datasets and function design
++
++[name] [link] [data type] [data columns used] [data amount] Please provide a name+link+basicInfo to each dataset you have used.
++I used the food almanac dataset it is filtered through one of the python scripts I uploaded
++
++I also use a script that loops through the twitter API by geographic location (zipcode) a sample can be found on my github account
++
++[Y/N] Do you use the primary dataset ”online climate data” from data.gov?
++	Yes I use it and pull data live for the general lafayette area
++[Y/N] [List] Are all these datasets from data.gov? If not, where are they coming from (links)?
++No I utilized the twitter API and wrote my own python script to pull from it, It can be found in my github account, however I removed my credentials from the script for privacy reasons. 
++https://dev.twitter.com/overview/documentation
++Brief Description
++The twitter API allowed me to pull tweet text, location, retweet amount, and many other variables that are found in the documenation. 
++
++
++Use a paragraph to introduce your project.
++My project provides two cognisent views that shows where one can find fresh, cheap, famers markets and also another view where one can determine where people are talking about these same keywords in Indiana. 
++
++Map View:
++
++Y Basic Map with specific location (your map is located in a meaningful place, city of west lafayette for example)
++	(on a county and zipcode scale)
++N Markers for location of markets
++N Labels for markets' names
++N InfoWindow to show detail information of a market
++Y [describe] Any other cover on the map (for example, cloud cover to show the weather effect)
++yes incorporates the weather data
++Data Visualization: mentioned above and in captions on the viz
++
++Y [describe] Use Graph? What is the type? (bar chart, pie chart, radar chart ...) visualized lafayette weather conditions (updated live)
++Y [List] Any interaction available on the graph? List them (enable click on numbers, drag on lines, change time/variables ...)
++hover over to view tweet counts as well as to view the food almanac metric. Also there is a rank feature to show how the geolocations rank.
++Interaction Form:
++
++N [List] Any information output? list them. (text field, text area, label, plain HTML ...) Not from my viz but multiple outputs from my scripts
++Y [List] Any operation option (filters)? List them. (search markets, search vegetables, filter based on price, sort based on convenience ...) I filtered through all the twitter json data as well as the food almanac data. (shown in python scripts)
++Y [List] Any information input? List them. (comments, markers, user preference ...) User can filter by state for the food almanac data and can filter by zipcode for the twitter data. 
++Y [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
++[Y/N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
++can hover over and view data as well as use filter functions.
++
++Build Case How can we build and access your project on a Linux/Unix machine if you use external dependencies besides HTML/CSS/Javascript? List the dependencies you used, such as python, node.js, etc. List the steps we should follow to build the project. Your project will be built on Amazon Web Service, EC2, ubuntu 14.01 instance
++The viz will run independently as the connections are hosted and connected elsewhere.
++
++Test Case Which browsers did you test your project on? Chrome, IE, Edge, Safari, or Firefox?
++all work fine. 
++
++Additional information You Want to Share with Us E.g. any problems you faced/fixed, where you reached out to for help, etc.
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/datasample.csv b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/datasample.csv
+new file mode 100644
+index 0000000..55c256a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/datasample.csv
+@@ -0,0 +1,20 @@
++"RT @mishmosh614: As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @L…","Twitter for Windows Phone","Columbus, OH",46711.0
++"As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @LocalMattersOrg","Twitter for Windows Phone","Columbus, Ohio",46711.0
++"Check out @owlxwhite new location in our food Cory area! @ Memphis Farmers Market https://t.co/UL2QbQUbrW",Instagram,"Memphis, TN",46711.0
++"I'll Bite: Cotswold area gets its own farmers market https://t.co/ela1k1pk7c",dlvr.it,"Charlotte, NC",46711.0
++"The MemphisFarmersMarket IS BACK! Sat. @ 7 am - 1 pm. Local products, music, food &amp; fun! https://t.co/0P3UGzLQLB",dlvr.it,"Memphis, TN",46711.0
++"RT @mishmosh614: As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @L…","Twitter for Windows Phone","Columbus, OH",46714.0
++"As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @LocalMattersOrg","Twitter for Windows Phone","Columbus, Ohio",46714.0
++"Check out @owlxwhite new location in our food Cory area! @ Memphis Farmers Market https://t.co/UL2QbQUbrW",Instagram,"Memphis, TN",46714.0
++"I'll Bite: Cotswold area gets its own farmers market https://t.co/ela1k1pk7c",dlvr.it,"Charlotte, NC",46714.0
++"The MemphisFarmersMarket IS BACK! Sat. @ 7 am - 1 pm. Local products, music, food &amp; fun! https://t.co/0P3UGzLQLB",dlvr.it,"Memphis, TN",46714.0
++"RT @mishmosh614: As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @L…","Twitter for Windows Phone","Columbus, OH",46772.0
++"As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @LocalMattersOrg","Twitter for Windows Phone","Columbus, Ohio",46772.0
++"Check out @owlxwhite new location in our food Cory area! @ Memphis Farmers Market https://t.co/UL2QbQUbrW",Instagram,"Memphis, TN",46772.0
++"I'll Bite: Cotswold area gets its own farmers market https://t.co/ela1k1pk7c",dlvr.it,"Charlotte, NC",46772.0
++"The MemphisFarmersMarket IS BACK! Sat. @ 7 am - 1 pm. Local products, music, food &amp; fun! https://t.co/0P3UGzLQLB",dlvr.it,"Memphis, TN",46772.0
++"RT @mishmosh614: As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @L…","Twitter for Windows Phone","Columbus, OH",46773.0
++"As a consumer, what do you find confusing or misleading when purchasing food at grocery, restaurant, farmers market...? @LocalMattersOrg","Twitter for Windows Phone","Columbus, Ohio",46773.0
++"Check out @owlxwhite new location in our food Cory area! @ Memphis Farmers Market https://t.co/UL2QbQUbrW",Instagram,"Memphis, TN",46773.0
++"I'll Bite: Cotswold area gets its own farmers market https://t.co/ela1k1pk7c",dlvr.it,"Charlotte, NC",46773.0
++"The MemphisFarmersMarket IS BACK! Sat. @ 7 am - 1 pm. Local products, music, food &amp; fun! https://t.co/0P3UGzLQLB",dlvr.it,"Memphis, TN",46773.0
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/tweety1.py b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/tweety1.py
+new file mode 100644
+index 0000000..3b0074a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-lheston/tweety1.py
+@@ -0,0 +1,128 @@
++import tweepy as tp
++import sqlite3
++import pandas as pd 
++import numpy as np
++import time as t
++from geopy.geocoders import Nominatim
++import string
++from numpy import genfromtxt
++from geopy.exc import GeocoderTimedOut
++###radius use 15 miles
++###use nohup in bash to continuously run
++
++###geo stuff
++
++
++##tquery
++query = 'vegtables OR farmers market OR cheap food'
++radius = 500
++count = 200
++DataSet = pd.DataFrame
++loopCount = 0
++apCount = 0
++dn = []
++
++##read in zipcode file
++#zips = pd.read_csv("zips", delim_whitespace=True, header=None, names = ['a'])
++
++
++#zips = genfromtxt("zips")
++zips = genfromtxt("zips")
++
++conn=sqlite3.connect('twit.db')
++c = conn.cursor()
++
++
++#40.665137,-84.919308
++
++
++def location(zip):
++    geolocator = Nominatim()
++    t.sleep(5)
++    location = do_geocode(zip)
++    cordinates = ((location.latitude,location.longitude))
++    cordinates = str(cordinates)
++    cordinates = cordinates.replace("(","")
++    cordinates = cordinates.replace(")","")
++    cordinates = cordinates.replace(" ", "")
++    return cordinates
++
++def toDataFrame(tweets,zip):
++
++    DataSet = pd.DataFrame()
++
++    
++    DataSet['tweetText'] = [tweet.text for tweet in tweets]
++    DataSet['tweetID'] = [tweet.id for tweet in tweets]
++    DataSet['tweetRetweetCt'] = [tweet.retweet_count for tweet in tweets]
++    DataSet['tweetFavoriteCt'] = [tweet.favorite_count for tweet in tweets]
++    DataSet['tweetSource'] = [tweet.source for tweet in tweets]
++    DataSet['tweetCreated'] = [tweet.created_at for tweet in tweets]
++    DataSet['userID'] = [tweet.user.id for tweet in tweets]
++    DataSet['userScreen'] = [tweet.user.screen_name for tweet in tweets]
++    DataSet['userName'] = [tweet.user.name for tweet in tweets]
++    DataSet['userCreateDt'] = [tweet.user.created_at for tweet in tweets]
++    DataSet['userDesc'] = [tweet.user.description for tweet in tweets]
++    DataSet['userFollowerCt'] = [tweet.user.followers_count for tweet in tweets]
++    DataSet['userFriendsCt'] = [tweet.user.friends_count for tweet in tweets]
++    DataSet['userLocation'] = [tweet.user.location for tweet in tweets]
++    DataSet['userTimezone'] = [tweet.user.time_zone for tweet in tweets]
++    DataSet['zipcodeQuery'] = [zip for tweet in tweets]
++    #DataSet['lat'] = [tweet.geo.lat for tweet in tweets]
++
++    return DataSet
++
++def curTweepy(inputCode, count, query):
++    for items in tp.Cursor(api.search(geocode=inputCode, count=count, q=query)).items():
++        return items
++
++
++def do_geocode(address):
++    geolocator = Nominatim()
++    try:
++        return geolocator.geocode(address, timeout=None)
++    except GeocoderTimedOut:
++        return do_geocode(address)
++
++def lookUp(results,zip):
++    for result in results:
++        DataSet = toDataFrame(results,zip)
++        return DataSet
++
++auth = tp.OAuthHandler('hidden for security'')
++auth.set_access_token('hidden for security')
++
++api = tp.API(auth)
++
++for zip in zips:
++#for row, zip in zips.iterrows():
++    if (loopCount == 15):
++        t.sleep(960)
++        loopCount = 0
++    loopCount = loopCount + 1
++    cordinates = location(zip)
++    inputCode = str(cordinates) + ',' + str(radius) + 'mi'
++    #inputCode = '{0},{1}mi'.format(cordinates, radius)
++    #inputCode = '41.1255471,-85.1949746,400mi'
++    results = api.search(geocode=inputCode, count=100, q=query)
++    #results = curTweepy(inputCode, count, query)
++    #print('results retrieved')
++    #print results
++    DataSet = pd.DataFrame()
++    DataSet = lookUp(results,zip)
++    if DataSet is not None:
++        DataSet.to_sql(con=conn, name='data', flavor='sqlite', if_exists='append')
++    dn.append(DataSet)
++    print loopCount
++
++
++dn = pd.concat(dn, axis=1)
++print dn
++#dn.to_sql(con=conn, name='data', flavor='sqlite', if_exists='append')
++
++
++
++
++
++
++

@@ -1,0 +1,14 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-pjt90/scripts.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/scripts.js
+index c52d2d2..0342afb 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-pjt90/scripts.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/scripts.js
+@@ -244,7 +244,9 @@ function initMap() {
+                                         title: market[1],
+                                         zIndex: 1
+                                     });
++                                    marketMarker[i].addListener('click', function() {
+                                         
++                                      });
+                                 }
+                                 disableListener = false;
+ 

@@ -1,0 +1,13 @@
+ #map{
+ 	/* here we use absolute layout to find the position for google map
+ 	you may want to use relative rather than absolute in your own application */
+	width:33.3333%;
+    height:calc(100% - 0);
+     position:absolute;
+    right:16px;
+    top:50px;
+    bottom:0;
+    overflow:hidden;
+ }
+ 
+ #side-menu{

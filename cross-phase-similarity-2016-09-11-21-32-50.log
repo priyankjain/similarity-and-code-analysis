@@ -1,0 +1,2829 @@
+Cmd arguments are  ['cross-phase-similarity.py', 'skipMoss']
+Calculating cross-phase similarity for phases 1 and 2
+sauravn 40 cgrieger12 46 439
+cp 35 cgrieger12 33 255
+cp 34 sauravn 27 258
+cp 0 cp 0 81
+cgrieger12 12 cp 19 162
+sauravn 10 cp 18 150
+cp 0 cp 1 66
+cp 0 cp 45 42
+cp 10 cp 8 69
+cp 9 cgrieger12 6 74
+cp 0 sauravn 5 42
+cp 8 sauravn 5 71
+cp 0 shiboo18 39 56
+cp 0 cp 0 40
+cgrieger12 5 cp 18 62
+cp 86 tanmayee123 96 58
+cp 38 cgrieger12 4 42
+cp 36 sauravn 3 38
+cp 4 cp 6 44
+cp 14 tanmayee123 80 44
+cp 67 cp 13 41
+cp 32 cp 5 37
+cp 0 cgrieger12 3 33
+cp 1 cp 0 13
+pjt90 29 cp 11 41
+cgrieger12 3 tanmayee123 61 33
+cp 54 cgrieger12 3 34
+cp 24 pjt90 28 43
+cp 52 cp 18 32
+tanmayee123 58 cp 18 31
+cgrieger12 3 cp 18 31
+cp 10 cp 18 31
+cp 3 cp 0 30
+cp 4 cp 4 36
+cp 0 cp 0 7
+huayifang 64 sauravn 2 28
+huayifang 64 cgrieger12 2 28
+meetalivaidya 26 cp 9 42
+sauravn 2 cp 9 36
+cp 16 prachitamane 96 27
+cp 0 sauravn 2 19
+cp 20 cp 8 28
+cp 0 lostkuma 33 16
+cp 20 cp 0 21
+cgrieger12 2 cp 13 16
+cp 0 cgrieger12 2 28
+sauravn 1 cp 13 15
+cp 17 cp 36 21
+cp 3 cp 13 18
+cp 2 lostkuma 29 15
+cp 3 cp 7 29
+cp 16 pjt90 18 18
+cp 43 cp 7 18
+cp 0 cp 3 18
+huayifang 45 cp 3 22
+cp 0 shiboo18 13 15
+cp 2 cp 0 23
+cp 2 cp 15 20
+cp 2 lostkuma 25 12
+cp 2 cp 0 13
+cp 0 cp 36 13
+cp 14 tanmayee123 32 17
+cp 17 meetalivaidya 15 19
+cp 2 cp 0 11
+cp 13 cp 10 13
+pjt90 14 tanmayee123 30 18
+cp 27 pjt90 14 18
+cp 2 MegamindHenry 39 12
+cp 0 meetalivaidya 14 21
+cp 0 cp 0 15
+cp 1 shiboo18 10 16
+cp 1 cp 12 17
+huayifang 34 cp 12 13
+cp 0 cp 9 31
+cp 0 cp 9 14
+cp 0 cp 9 10
+cp 0 cp 5 11
+cp 0 pjt90 13 13
+cp 0 cp 12 9
+cp 0 cp 17 15
+cp 17 cp 12 33
+prachitamane 51 cp 12 16
+cp 0 shiboo18 9 15
+cp 1 cp 4 16
+cp 1 cp 9 18
+cp 1 lostkuma 16 18
+cp 12 cp 4 15
+cp 9 pmittal115 55 14
+cp 24 tanmayee123 22 12
+cp 24 pjt90 10 13
+cp 24 cp 19 12
+cp 9 cp 23 9
+cp 23 meetalivaidya 10 12
+cp 1 huayifang 25 8
+cp 6 cp 3 13
+cp 1 pjt90 9 19
+cp 1 pjt90 9 11
+shiboo18 7 cp 6 13
+sauravn 0 lostkuma 14 9
+lostkuma 14 cp 6 17
+cp 1 cp 3 29
+cp 6 cp 9 9
+cp 0 tanmayee123 19 8
+cp 0 cp 1 9
+cp 0 cp 17 8
+sauravn 0 shiboo18 7 14
+cp 0 cp 8 15
+cp 12 huayifang 22 13
+cp 12 cgrieger12 1 13
+cp 1 shiboo18 7 13
+cp 1 cp 12 7
+cp 0 cp 1 10
+cp 0 cp 3 10
+cgrieger12 0 cp 7 8
+cp 0 huayifang 21 8
+sauravn 0 pmittal115 43 13
+huayifang 21 pmittal115 43 10
+cp 1 cp 5 16
+cp 1 pmittal115 43 12
+cgrieger12 0 pmittal115 43 13
+sauravn 0 pjt90 8 12
+sauravn 0 cp 0 4
+cp 0 meetalivaidya 8 9
+cp 0 cgrieger12 0 10
+cp 0 cp 5 13
+cp 11 sauravn 0 7
+cgrieger12 0 pjt90 8 12
+cgrieger12 0 cp 0 12
+cp 0 sauravn 0 9
+cp 0 cp 1 15
+cp 1 cp 0 12
+cp 1 cp 5 8
+cp 0 cp 2 4
+lostkuma 9 meetalivaidya 6 8
+cp 15 lostkuma 9 6
+cp 5 shiboo18 4 11
+sauravn 0 cp 3 3
+cp 6 cp 4 12
+meetalivaidya 5 cp 3 10
+lostkuma 8 pjt90 5 9
+lostkuma 8 cp 4 9
+cp 0 lostkuma 8 8
+cp 0 cp 6 7
+cp 8 cp 5 11
+cp 0 cp 6 4
+cp 6 tanmayee123 11 5
+cp 6 pjt90 5 6
+huayifang 13 lostkuma 7 4
+cgrieger12 0 lostkuma 7 4
+cp 9 cp 6 5
+cp 12 cp 6 4
+meetalivaidya 5 cp 3 7
+cp 11 cp 3 5
+cp 4 cp 5 3
+cp 4 cp 1 3
+huayifang 12 cp 1 3
+huayifang 12 pjt90 4 3
+huayifang 12 cp 4 3
+cp 6 cp 1 3
+cp 6 pjt90 4 3
+cp 6 cp 4 3
+cp 0 pjt90 4 3
+cp 0 cp 4 3
+cp 0 cp 7 4
+cp 0 cp 4 3
+sauravn 0 cp 5 6
+cp 7 cp 4 5
+cp 4 cp 3 8
+cp 0 meetalivaidya 4 5
+cp 0 cp 10 5
+cp 0 shiboo18 3 11
+sauravn 0 cp 3 4
+cp 4 cp 3 4
+lostkuma 6 cp 1 5
+huayifang 11 cp 0 5
+cp 0 pmittal115 23 7
+cp 6 shiboo18 3 6
+cp 6 cp 0 6
+cp 0 cp 0 7
+cp 0 cp 4 8
+cp 0 tanmayee123 8 4
+cp 0 cp 4 5
+cp 0 lostkuma 6 4
+cp 0 cp 7 4
+cp 0 cp 9 3
+cp 3 meetalivaidya 4 5
+cp 3 cp 12 5
+cp 0 cp 2 3
+cp 0 pmittal115 21 6
+cp 0 cp 12 7
+meetalivaidya 4 shiboo18 3 3
+cp 4 shiboo18 3 4
+lostkuma 6 shiboo18 3 4
+lostkuma 6 pmittal115 21 6
+cp 0 pmittal115 21 6
+cp 0 pjt90 4 4
+cp 0 cp 3 4
+cp 0 cp 14 7
+jeffkeilmann 32 cp 0 16
+cp 0 cp 1 4
+cp 0 cp 2 6
+huayifang 10 cp 0 3
+huayifang 10 cp 7 4
+cp 5 shiboo18 3 5
+cp 5 cp 3 3
+cp 5 meetalivaidya 4 4
+cp 0 meetalivaidya 4 5
+cp 12 cp 2 5
+cp 12 cp 0 5
+cgrieger12 0 shiboo18 3 9
+cgrieger12 0 meetalivaidya 4 4
+cgrieger12 0 cp 12 5
+cp 0 cp 2 3
+cp 0 meetalivaidya 4 4
+cp 0 cp 7 5
+cp 9 cp 0 5
+cp 9 cgrieger12 0 4
+cp 0 pmittal115 21 5
+cp 0 cp 7 6
+OrderedDict([('taycurt17-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('Christyyy-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pmittal115-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('cgrieger12-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('shiboo18-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('jeffkeilmann-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('abelal16-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('huayifang-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ishwetasingh-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('aterriqu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lheston-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('wluan-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pjt90-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('meetalivaidya-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lostkuma-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('prachitamane-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('crloflin-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('MegamindHenry-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('hsu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('mgogte-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ccand93-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('dengc-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('sauravn-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('patrickherrod-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ankitbatheja-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('tanmayee123-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)]))])
+Calculating cross-phase similarity for phases 2 and 3
+cp 94 ishwetasingh 97 9259
+cp 15 sauravn 5 265
+cp 1 patrickherrod 0 215
+cp 1 cp 13 306
+MegamindHenry 44 cp 13 298
+cp 68 lostkuma 33 253
+cp 68 cp 40 260
+MegamindHenry 42 cp 1 285
+lostkuma 28 cp 33 204
+cp 31 cp 59 389
+cp 34 tanmayee123 47 212
+cp 17 tanmayee123 46 207
+cp 7 lostkuma 14 122
+cp 27 dengc 18 166
+patrickherrod 0 ishwetasingh 0 73
+cp 23 dengc 14 139
+cp 25 MegamindHenry 13 137
+cp 11 dengc 13 132
+lostkuma 9 cp 3 79
+patrickherrod 0 sauravn 1 64
+patrickherrod 0 taycurt17 45 42
+cp 3 tanmayee123 25 85
+MegamindHenry 10 lostkuma 7 65
+cp 14 cp 2 67
+MegamindHenry 8 cp 17 91
+lostkuma 6 cp 0 58
+cp 0 sauravn 0 46
+cp 10 cp 58 49
+cp 45 prachitamane 30 32
+cp 13 dengc 7 97
+MegamindHenry 6 cp 10 61
+cp 13 cp 11 93
+sauravn 0 ishwetasingh 0 38
+cp 9 cp 2 46
+cp 9 pmittal115 36 41
+cp 12 cp 5 92
+MegamindHenry 6 cp 5 55
+cp 32 aterriqu 70 45
+patrickherrod 0 cp 1 34
+cp 2 cp 1 38
+dengc 6 cp 46 40
+cp 1 cp 45 39
+cp 0 cp 4 44
+cp 8 cp 0 44
+lostkuma 4 dengc 5 39
+cp 2 dengc 5 39
+cp 28 cp 38 38
+MegamindHenry 5 cp 33 49
+pmittal115 29 dengc 5 38
+cp 7 cp 8 47
+cp 4 cp 1 40
+cp 25 tanmayee123 11 36
+ankitbatheja 0 patrickherrod 0 12
+cp 8 huayifang 38 19
+aterriqu 52 taycurt17 18 32
+aterriqu 52 tanmayee123 10 34
+cp 3 cp 23 40
+tanmayee123 10 taycurt17 18 31
+lostkuma 3 patrickherrod 0 30
+cp 1 taycurt17 17 30
+cp 1 aterriqu 50 33
+cp 3 cp 31 39
+ankitbatheja 0 cp 0 13
+cp 1 cp 21 32
+cp 21 taycurt17 16 27
+ankitbatheja 0 cp 1 37
+sauravn 0 cp 31 27
+pmittal115 22 cp 6 36
+cp 0 taycurt17 16 17
+MegamindHenry 3 dengc 3 31
+ankitbatheja 0 ishwetasingh 0 6
+cp 4 tanmayee123 7 30
+cp 2 pmittal115 17 22
+cp 23 taycurt17 12 12
+cp 0 abelal16 42 27
+cp 5 cp 0 22
+pmittal115 16 cp 23 20
+dengc 2 prachitamane 12 18
+cp 0 taycurt17 11 25
+MegamindHenry 2 cp 0 14
+lostkuma 2 sauravn 0 21
+pmittal115 14 tanmayee123 6 23
+pmittal115 14 cp 0 17
+abelal16 36 tanmayee123 6 17
+MegamindHenry 2 patrickherrod 0 12
+cp 13 cp 4 18
+cp 17 meetalivaidya 17 18
+ankitbatheja 0 cp 4 17
+MegamindHenry 2 ankitbatheja 0 11
+dengc 2 tanmayee123 5 25
+cp 3 cp 16 17
+cp 0 cp 18 21
+cp 4 lostkuma 1 13
+cp 15 wluan 13 12
+MegamindHenry 2 cp 17 19
+ankitbatheja 0 taycurt17 8 31
+cp 3 prachitamane 9 8
+cp 3 patrickherrod 0 13
+sauravn 0 taycurt17 8 14
+sauravn 0 cp 0 11
+pmittal115 12 prachitamane 9 13
+cp 0 pmittal115 11 16
+huayifang 17 wluan 12 33
+cp 4 cp 9 24
+cp 0 dengc 2 13
+cp 0 cp 3 14
+cp 25 taycurt17 8 18
+cp 3 cp 1 20
+cp 1 prachitamane 8 17
+patrickherrod 0 cp 9 22
+cp 24 crloflin 38 13
+MegamindHenry 1 pmittal115 11 17
+lostkuma 1 pmittal115 11 16
+cp 0 sauravn 0 12
+ankitbatheja 0 huayifang 16 15
+MegamindHenry 1 cp 3 23
+cp 3 cp 3 33
+MegamindHenry 1 tanmayee123 4 16
+pmittal115 10 aterriqu 21 14
+dengc 1 pjt90 9 18
+cp 3 cp 14 14
+tanmayee123 4 cp 12 14
+cp 10 tanmayee123 4 21
+patrickherrod 0 cp 2 11
+patrickherrod 0 abelal16 24 9
+huayifang 14 cp 7 16
+ankitbatheja 0 sauravn 0 14
+cp 10 meetalivaidya 11 16
+cp 3 cp 0 9
+cp 2 sauravn 0 13
+cp 3 cp 2 17
+cp 0 prachitamane 6 13
+cp 0 meetalivaidya 11 16
+prachitamane 6 tanmayee123 3 13
+cp 3 cp 0 11
+lostkuma 1 tanmayee123 3 29
+cp 0 cp 0 9
+prachitamane 6 wluan 9 9
+cp 6 cp 12 18
+abelal16 21 aterriqu 17 11
+abelal16 21 cp 8 11
+MegamindHenry 1 cp 0 11
+cp 1 cp 18 13
+cp 0 tanmayee123 3 30
+ankitbatheja 0 pmittal115 8 15
+cp 2 dengc 1 16
+patrickherrod 0 dengc 1 8
+cp 0 pjt90 7 8
+ankitbatheja 0 lostkuma 1 10
+sauravn 0 tanmayee123 3 10
+lostkuma 1 cp 0 9
+cp 2 sauravn 0 12
+cp 17 prachitamane 6 12
+prachitamane 5 cp 11 7
+patrickherrod 0 cp 0 11
+cp 0 cp 0 9
+cp 2 cp 11 15
+aterriqu 16 cp 11 8
+cp 7 cp 11 8
+cp 1 cp 8 15
+lostkuma 1 cp 10 9
+lostkuma 1 cp 6 13
+dengc 1 taycurt17 5 16
+cp 6 dengc 1 16
+cp 2 cp 6 16
+sauravn 0 cp 7 19
+cp 0 ishwetasingh 0 14
+cp 0 cp 7 9
+cp 1 ishwetasingh 0 12
+patrickherrod 0 cp 7 7
+cp 0 dengc 1 17
+cp 0 cp 2 11
+lostkuma 0 taycurt17 5 13
+cp 0 patrickherrod 0 11
+cp 0 meetalivaidya 9 8
+cp 2 taycurt17 5 13
+cp 2 ishwetasingh 0 9
+ankitbatheja 0 dengc 1 15
+MegamindHenry 1 sauravn 0 9
+MegamindHenry 1 prachitamane 5 8
+MegamindHenry 1 huayifang 11 7
+cp 2 sauravn 0 7
+cp 2 cp 8 14
+cp 2 cp 2 16
+cp 0 cp 2 8
+pmittal115 6 cp 0 8
+pmittal115 6 cp 6 10
+pmittal115 6 abelal16 17 8
+cp 1 cp 0 8
+cp 1 aterriqu 14 10
+cp 1 abelal16 17 8
+aterriqu 14 cp 2 10
+abelal16 17 cp 2 8
+cp 5 cgrieger12 26 9
+ankitbatheja 0 tanmayee123 2 4
+ankitbatheja 0 cp 0 4
+cp 1 abelal16 15 7
+cp 1 cp 18 8
+cp 0 cp 7 8
+cp 6 cp 0 11
+pmittal115 5 cp 7 8
+patrickherrod 0 cp 7 7
+patrickherrod 0 cp 18 8
+aterriqu 12 cp 7 8
+abelal16 15 cp 7 8
+cp 18 cp 1 8
+lostkuma 0 cp 12 7
+cp 1 cp 1 9
+MegamindHenry 0 cp 12 7
+cp 0 cp 11 5
+prachitamane 4 cp 6 4
+meetalivaidya 6 prachitamane 4 12
+cp 11 tanmayee123 2 5
+abelal16 13 cp 11 5
+sauravn 0 cp 1 8
+meetalivaidya 6 tanmayee123 2 12
+ankitbatheja 0 cp 0 6
+lostkuma 0 meetalivaidya 6 7
+cp 0 cp 6 6
+cp 0 cp 6 5
+hsu 8 wluan 5 11
+cp 0 hsu 8 4
+sauravn 0 cp 14 7
+cp 0 cp 14 6
+huayifang 6 cp 6 5
+cp 1 pjt90 4 7
+cp 10 dengc 0 10
+abelal16 11 taycurt17 3 5
+cp 1 cp 6 4
+cp 1 cp 0 5
+cp 14 cp 6 6
+cp 0 tanmayee123 1 8
+cp 0 cp 9 4
+MegamindHenry 0 hsu 7 4
+cp 1 tanmayee123 1 14
+cp 1 cp 0 4
+hsu 7 pjt90 4 5
+pmittal115 4 taycurt17 3 8
+cp 0 pmittal115 4 8
+cp 3 prachitamane 3 9
+cp 1 cp 9 6
+cp 13 dengc 0 6
+cp 4 cp 0 6
+lostkuma 0 cp 4 4
+lostkuma 0 abelal16 10 5
+tanmayee123 1 cp 5 5
+sauravn 0 cp 8 4
+cp 0 pjt90 3 4
+pmittal115 4 pjt90 3 4
+patrickherrod 0 tanmayee123 1 5
+OrderedDict([('taycurt17-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('Christyyy-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pmittal115-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('cgrieger12-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('shiboo18-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('jeffkeilmann-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('abelal16-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('huayifang-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ishwetasingh-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('aterriqu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lheston-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('wluan-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pjt90-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('meetalivaidya-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lostkuma-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('prachitamane-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('crloflin-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('MegamindHenry-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('hsu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('mgogte-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ccand93-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('dengc-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('sauravn-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('patrickherrod-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ankitbatheja-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('tanmayee123-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)]))])
+Calculating cross-phase similarity for phases 3 and 4
+lostkuma 24 cp 17 557
+patrickherrod 1 sauravn 14 303
+abelal16 70 pmittal115 40 261
+abelal16 69 cp 13 261
+patrickherrod 1 cp 31 228
+cp 11 pmittal115 34 209
+pmittal115 27 dengc 51 346
+cp 2 sauravn 8 124
+cp 86 aterriqu 99 115
+cp 6 lostkuma 5 76
+cp 5 sauravn 3 72
+abelal16 17 sauravn 3 70
+cp 8 huayifang 20 51
+cp 11 dengc 15 74
+cp 2 sauravn 2 64
+cp 4 patrickherrod 0 56
+abelal16 12 taycurt17 67 49
+cp 3 cp 2 54
+patrickherrod 0 cp 2 52
+sauravn 2 taycurt17 59 41
+patrickherrod 0 pmittal115 6 60
+huayifang 13 dengc 11 92
+abelal16 9 lostkuma 2 46
+pmittal115 5 sauravn 1 43
+huayifang 12 pmittal115 5 92
+patrickherrod 0 cp 0 52
+lostkuma 2 sauravn 1 38
+abelal16 8 patrickherrod 0 44
+abelal16 7 dengc 8 45
+aterriqu 27 wluan 36 38
+cp 23 wluan 36 38
+cp 2 cp 0 37
+sauravn 1 cp 17 32
+cp 82 aterriqu 23 25
+sauravn 1 cp 12 30
+tanmayee123 1 aterriqu 21 32
+tanmayee123 1 cp 19 32
+cp 75 cp 19 27
+sauravn 1 cp 2 32
+cp 42 crloflin 46 35
+sauravn 1 cp 50 14
+cp 0 cp 13 29
+cp 1 cp 13 26
+cp 2 sauravn 1 27
+pmittal115 3 aterriqu 18 26
+pmittal115 3 cp 15 26
+pmittal115 2 wluan 21 25
+cp 13 cp 44 13
+patrickherrod 0 cp 11 20
+cp 0 taycurt17 23 24
+cp 13 cp 11 9
+cp 8 meetalivaidya 19 26
+lostkuma 1 cp 0 18
+aterriqu 14 dengc 4 18
+cp 12 dengc 4 18
+cp 0 cp 11 20
+cp 8 cp 1 15
+huayifang 5 cp 1 20
+cp 9 cp 7 23
+cp 29 cp 10 6
+cp 12 cp 29 7
+abelal16 3 cp 0 16
+cp 37 taycurt17 20 18
+huayifang 4 cp 9 16
+abelal16 3 cp 2 26
+cp 2 dengc 4 22
+cp 9 wluan 17 15
+dengc 3 wluan 16 17
+huayifang 4 lostkuma 0 12
+pmittal115 2 taycurt17 18 10
+MegamindHenry 4 pmittal115 2 21
+lostkuma 0 taycurt17 18 21
+cp 1 cgrieger12 9 22
+huayifang 4 sauravn 0 18
+cgrieger12 9 taycurt17 17 25
+cp 1 cp 6 22
+abelal16 3 cp 8 19
+tanmayee123 0 dengc 3 14
+sauravn 0 tanmayee123 0 15
+pmittal115 1 tanmayee123 0 13
+cp 0 taycurt17 17 21
+patrickherrod 0 dengc 3 14
+cp 1 cp 1 14
+cp 1 tanmayee123 0 13
+huayifang 4 cp 0 13
+huayifang 4 cgrieger12 9 24
+cp 1 prachitamane 13 13
+sauravn 0 dengc 3 17
+cp 0 cp 0 16
+dengc 3 taycurt17 16 22
+cp 1 cp 0 13
+abelal16 3 cgrieger12 9 23
+tanmayee123 0 cp 7 11
+cp 1 taycurt17 16 13
+cp 1 cgrieger12 9 20
+cp 1 cp 7 13
+cp 2 taycurt17 16 15
+MegamindHenry 3 huayifang 3 33
+tanmayee123 0 cp 35 12
+sauravn 0 cp 8 12
+sauravn 0 cp 26 10
+MegamindHenry 3 cp 1 14
+cp 0 dengc 2 14
+huayifang 3 taycurt17 14 14
+MegamindHenry 3 abelal16 2 13
+pmittal115 1 prachitamane 10 17
+pmittal115 1 crloflin 19 13
+cp 7 taycurt17 12 11
+lostkuma 0 cp 5 12
+abelal16 2 cp 7 11
+MegamindHenry 3 sauravn 0 11
+cp 0 taycurt17 12 13
+aterriqu 8 cp 23 12
+cp 7 cp 1 10
+cp 5 cp 7 8
+cp 28 cp 23 12
+cp 0 cp 7 9
+MegamindHenry 2 dengc 2 17
+tanmayee123 0 taycurt17 12 9
+cp 0 cp 1 12
+cp 0 cp 5 15
+patrickherrod 0 tanmayee123 0 13
+patrickherrod 0 cp 7 8
+dengc 2 cp 6 10
+cp 0 tanmayee123 0 12
+pmittal115 1 cp 1 15
+dengc 2 cp 1 11
+crloflin 17 cp 1 15
+cp 5 dengc 2 8
+abelal16 2 cp 0 11
+cp 0 cp 4 16
+MegamindHenry 2 prachitamane 9 13
+cp 20 cp 5 1
+sauravn 0 cp 15 12
+cp 0 cp 1 13
+cp 0 cp 5 11
+cp 15 cp 20 1
+lostkuma 0 tanmayee123 0 9
+aterriqu 7 taycurt17 11 8
+cp 6 taycurt17 11 8
+cp 5 cp 5 11
+cp 25 taycurt17 11 8
+sauravn 0 cp 6 8
+abelal16 2 cp 1 9
+sauravn 0 cp 5 15
+sauravn 0 ishwetasingh 7 9
+cp 0 dengc 2 8
+cp 0 cp 0 8
+cp 0 cp 3 15
+patrickherrod 0 cp 5 11
+patrickherrod 0 cp 3 14
+ishwetasingh 7 cp 5 10
+cp 1 cp 0 11
+dengc 2 cp 5 15
+cgrieger12 6 cp 3 14
+MegamindHenry 2 cp 3 10
+abelal16 1 cp 16 6
+abelal16 1 Christyyy 18 8
+tanmayee123 0 wluan 7 8
+prachitamane 6 tanmayee123 0 11
+Christyyy 18 dengc 1 8
+cp 0 cp 14 9
+cp 0 pmittal115 0 14
+tanmayee123 0 cp 14 7
+tanmayee123 0 crloflin 12 5
+cp 0 cp 1 8
+abelal16 1 huayifang 1 9
+Christyyy 16 cp 3 9
+prachitamane 5 dengc 1 12
+cp 0 prachitamane 5 8
+cp 3 taycurt17 7 13
+abelal16 1 prachitamane 5 11
+lostkuma 0 meetalivaidya 6 6
+cp 0 crloflin 10 6
+tanmayee123 0 cp 0 7
+patrickherrod 0 aterriqu 4 5
+huayifang 1 cp 3 5
+cp 0 cp 3 5
+aterriqu 4 cp 0 5
+cp 3 cp 0 4
+cp 3 cgrieger12 3 8
+cp 3 aterriqu 4 5
+sauravn 0 Christyyy 14 6
+pmittal115 0 cp 3 3
+MegamindHenry 1 taycurt17 6 4
+Christyyy 14 taycurt17 6 6
+Christyyy 14 cp 12 6
+prachitamane 5 cp 10 3
+pmittal115 0 cp 0 3
+pmittal115 0 cp 2 3
+cp 0 tanmayee123 0 6
+MegamindHenry 1 cp 11 4
+MegamindHenry 1 tanmayee123 0 4
+prachitamane 4 cp 2 6
+cp 0 cp 10 6
+cp 2 crloflin 9 8
+MegamindHenry 1 crloflin 9 6
+prachitamane 4 sauravn 0 6
+cp 0 crloflin 9 5
+cp 0 cp 12 9
+ishwetasingh 4 cp 2 5
+dengc 1 cp 2 7
+cp 12 cp 3 9
+abelal16 1 cp 0 5
+Christyyy 13 cp 0 6
+cp 0 cp 0 5
+prachitamane 4 cp 8 5
+patrickherrod 0 cp 0 6
+meetalivaidya 5 cp 0 6
+dengc 1 cp 10 7
+abelal16 1 tanmayee123 0 5
+MegamindHenry 1 lostkuma 0 4
+cp 0 meetalivaidya 4 7
+pmittal115 0 cp 7 9
+cp 0 meetalivaidya 4 7
+MegamindHenry 1 cp 0 6
+tanmayee123 0 cp 0 6
+sauravn 0 meetalivaidya 4 4
+sauravn 0 cp 0 4
+sauravn 0 crloflin 8 3
+sauravn 0 cgrieger12 3 7
+sauravn 0 cp 10 9
+sauravn 0 aterriqu 3 4
+sauravn 0 cp 12 4
+cp 0 cp 9 4
+cp 0 cp 8 5
+cp 0 crloflin 8 4
+cp 0 cp 7 9
+cp 0 cp 10 9
+cp 0 aterriqu 3 4
+cp 0 cp 12 4
+prachitamane 4 cp 0 6
+prachitamane 4 cp 0 4
+prachitamane 4 crloflin 8 7
+pmittal115 0 cp 0 5
+cp 0 cp 2 5
+cp 0 cp 10 6
+patrickherrod 0 taycurt17 5 5
+patrickherrod 0 cp 9 5
+patrickherrod 0 cp 8 4
+patrickherrod 0 cp 2 2
+patrickherrod 0 cgrieger12 3 7
+patrickherrod 0 cp 10 8
+cp 0 cp 8 4
+cp 1 taycurt17 5 5
+cp 1 cp 8 4
+cp 1 cp 2 5
+lostkuma 0 cp 2 5
+lostkuma 0 patrickherrod 0 3
+lostkuma 0 cp 0 3
+OrderedDict([('taycurt17-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('Christyyy-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pmittal115-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('cgrieger12-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('shiboo18-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('jeffkeilmann-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('abelal16-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('huayifang-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ishwetasingh-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('aterriqu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lheston-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('wluan-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('pjt90-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('meetalivaidya-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('lostkuma-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('prachitamane-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('crloflin-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('MegamindHenry-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('hsu-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('mgogte-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ccand93-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('dengc-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('sauravn-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('patrickherrod-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('ankitbatheja-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)])),
+             ('tanmayee123-cp',
+              OrderedDict([('taycurt17', 0),
+                           ('crloflin', 0),
+                           ('pmittal115', 0),
+                           ('ankitbatheja', 0),
+                           ('ishwetasingh', 0),
+                           ('pjt90', 0),
+                           ('sauravn', 0),
+                           ('dengc', 0),
+                           ('jeffkeilmann', 0),
+                           ('Christyyy', 0),
+                           ('prachitamane', 0),
+                           ('ccand93', 0),
+                           ('wluan', 0),
+                           ('huayifang', 0),
+                           ('patrickherrod', 0),
+                           ('lheston', 0),
+                           ('lostkuma', 0),
+                           ('MegamindHenry', 0),
+                           ('shiboo18', 0),
+                           ('meetalivaidya', 0),
+                           ('hsu', 0),
+                           ('tanmayee123', 0),
+                           ('cgrieger12', 0),
+                           ('mgogte', 0),
+                           ('aterriqu', 0),
+                           ('abelal16', 0)]))])

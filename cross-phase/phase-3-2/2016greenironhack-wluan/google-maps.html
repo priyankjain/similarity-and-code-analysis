@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 1000px;
+        height: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40.4259, lng: -86.9081},
+          zoom: 12
+        });
+	function getResults(zip) {
+    // or
+    // function getResults(lat, lng) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        // submit a get request to the restful service zipSearch or locSearch.
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+        // or
+        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
+        dataType: 'jsonp',
+        jsonpCallback: 'searchResultsHandler'
+    });
+}
+//iterate through the JSON result object.
+function searchResultsHandler(searchResults) {
+    for (var key in searchresults) {
+        alert(key);
+        var results = searchresults[key];
+        for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            for (var key in result) {
+                //only do an alert on the first search result
+                if (i == 0) {
+                    alert(result[key]);
+                }
+            }
+        }
+    }
+}
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+  </body>
+</html>

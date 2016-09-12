@@ -1,0 +1,84 @@
+ /* make the body div cover the whole page */
+ 
+ html, body { 
+height: 120%; 
+ margin: 12; 
+ padding: 0; 
+ background-image: url("background.jpeg");
+ 
+ .bubbleChart {
+ 	min-width: 100px;
+	max-width: 400px;
+	height: 330px;
+ 	margin: 0 auto;
+ }
+ 
+ }
+ 
+ #title{
+	font-size: 140%;
+ 	color:white;
+ }
+ 
+ 	you may want to use relative rather than absolute in your own application */
+ 	position: absolute;
+     /* cover the 70 percent of the page width*/
+    width: 68%;
+    height: 115%;
+ }
+ 
+#sec2{
+ 	position: absolute;
+ 	/* define the postiion of information panel */
+	left: 0%;
+	top: 55%;
+ }
+ 
+ #position-info{
+ 	background-color: #edeff1;
+	width: 70%;
+ }
+ 
+
+ 
+ #side-menu{
+ 	position: absolute;
+ 	/* define the postiion of information panel */
+	top: 30%;
+	left: 69%;
+     /* cover the 30 percent of the page width*/
+	width: 30%;
+	height: 120%;
+ }
+ 
+ #menu-cover{
+ }
+ 
+ .menu-line{
+	height: 50px;
+ }
+ 
+ #menu-cover {
+	height: 89%;
+	width: 80%;
+ 	/* define the background color of the information panel */
+	background-color: #edeff1;
+	/* set radius for the ellipse frame */
+     border-radius: 11px;
+     /* add paddings so there would be some blank spaces around the informaiton panel */
+     padding: 24px 23px 20px;
+     height:30px;
+     width:250px;
+ 	position: absolute;
+	top: 40%;
+	left: 7%;
+ }
+ 
+ .button2{
+     height:30px;
+     width:250px;
+ 	position: absolute;
+	top: 47%;
+	left: 7%;
+ }
+ 

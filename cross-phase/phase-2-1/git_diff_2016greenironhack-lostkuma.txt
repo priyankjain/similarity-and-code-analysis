@@ -1,0 +1,1003 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/README.md
+index 1040459..433da14 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/README.md
+@@ -1,7 +1,7 @@
+-**Find My Veggies** v1.0.0 - 2016-03-26  
+-Please visit GitHub for the complete code here: [https://github.com/lostkuma/iron-hack-project/](https://github.com/lostkuma/iron-hack-project/)  
++**Find My Veggies** v1.0.0 - 2016-04-01  
++* **Problem:** Due to the Google free api plan problem, only maximum to 1000 quote can be requested in 24hr, so when querying date for store details, only about 9 store details can be requested.
+ 
+-This is a Web App to help people find fresh and cheap vegetables for Indiana.  
++This is a Web App to help people find fresh and cheap vegetables for Lafayette area.  
+ 
+ The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables.
+ Those features will include but not limited to: freshness, price, open hours, distance, predicted transportation time, parking lot accessibility, customer ratings, service, etc. for a single store. As well as the comparison function over these features for multiple stores.  
+@@ -11,36 +11,48 @@ Those features will include but not limited to: freshness, price, open hours, di
+ Dataets that will be used are listed. However, at this phase not all details of how they will be used are specified.  
+ (More datasets will be added later. Existing datasets maybe modified later.)  
+ 	* Climate Data Online (http://catalog.data.gov/dataset/climate-data-online-cdo)  
+-	  Normals Daily Data for Indiana from 3/24/2012 to 3/24/2016  
++	  Normals Daily Data for Indiana from 3/24/2015 to 3/24/2016  
+ 	  Columns used: Precipitation, Winds, Daily total sunshine, Maximum temperature, Minimum temperature, Snowfall  
+-	* FEMA Disaster Declarations Summary (http://catalog.data.gov/dataset/disaster-declaration)  
+-	  Disaster Declaration summary data for Indiana from 2004 to 2014  
+-	  Columns used: Incident type, Declared county area, Begin date, End date  
+-All datasets used are from data.gov  
++	* Seasonal vegetable chart (http://www.cuesa.org/eat-seasonally/charts/vegetables)  
++	  Vegetable names and in season months
++	* Google Store Details data gotten from query (https://maps.googleapis.com/maps/)  
++	  geometry location, place_id, place name, place address, place phone number, place website, place rating, place price level, place open hours
++	
+ 	
+ * Map View
+-	* The initialized Map is located at Indianapolis since it is the capital of Indiana  
+-	* Major locations sell vegetables will be marked on the map with name tags displayed on top  
+-	* Market name will shown when mouse is moved to a tag  
+-	* Upon clicking on a tag, information for the location will be shown on the side bar of the webpage. Information contains the features discussed above for a market  
+-	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the information windown with a weather icon at the webpage
++	* The initialized Map is located at West lafayette and Lafayette area
++	* Major locations sell vegetables are marked with markers on the map
++	* Click on marker
++		* info window with store names, locations, and view in google map links displayed
++		* side menu displays detailed information for the store
++		* display the driving route for the store
++		* estimated driving time will be added in the next update, and possibily traveling method selections too
++		* geolocation features for automatically detect browser location will be added in the next update
++	* Current weather data will be retrived use OpenWeatherMap API (http://openweathermap.org/api), and be displayed in the side menu
+ 	
+ * Data Visualization
+-	* Radar chart will be used for data visualization  
+-	* A comparison button will be displayed on the information window. By clicking it, a pop up window that allows the comparison of  three markets will be displayed. Sortable bar graph is used for the comparison for three markets  
+-	* By clicking on some features (i.e. price) will display the actualy price range on the chart
++	* Radar chart for single store's features
++	* side menu tab 1 - basic info
++		* store name, phone, website, ratings, open hour for today is displayed
++		* radar chart for detailed features (data needs to be calculated and linked later)
++	* side menu tab 2 - compare stores
++		* compare three stores information with radar chart or bar graph will be added in the next update
++		* features of the stores are displayed for choices
++	* side menu tab 3 - seasonal vegetable chart
++		* seasonal vegetables for this month are displayed
++		* click on names and display pictures function will be added in the next update
+ 
+ * Interation Form:
+-	* Information output: The weblink of the markets will be provided, and freshness rating will be displayed for each market
+-	* Operation option: Filters based on features will affect the change of tags on the map, and search on market names will only result to the tags of a certain set of markets (e.g. search "Walmart" will only display tags for Walmart)
+-	* Information input: Allow area selection by inputing a county/city name on top left texting box on the map
+-	* Interaction with map: By clicking the comparison button on the information window, a pop up window that allows the comparison of  three markets will be displayed. The market in selection will be automatically added and other two markets can be added to comparison by dragging the tags on the map  
+-	* Interaction with data visualization: Checkboxes that enable/disable features will be available above the radar chart, which will affect the chart  
++	* Information output: store links and link to google maps, google map place details output for each store
++	* Operation option: switch between tabs, turn on/off features, current date and time displayed on top right and will disappear if browser window gets small. App starts with a cover which can scroll down with animation when clicking on buttons and navigation bar on top.
++	* Information input: turn on/off features for comparison of stores
++	* Interaction with map: click on markers, info window displays and side menu changes for specific store, geolocation will be added later 
++	* Interaction with data visualization: Checkboxes that enable/disable features for comparison which will change the data displayed
+ 
+ **Content**  
+ * README.txt  --This file.  
+ * index.html  --Web page for the App  
+-* style.css  --CSS style file with template from Bootstrap  
++* css  --A directory contains all css files
+ * js  --A directory contains all the javescript files  
+ * image  --A directory contains all images used in the website  
+   
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/css/scrolling-nav.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/css/scrolling-nav.css
+new file mode 100644
+index 0000000..e985cd8
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/css/scrolling-nav.css
+@@ -0,0 +1,30 @@
++/*!
++ * Start Bootstrap - Scrolling Nav HTML Template (http://startbootstrap.com)
++ * Code licensed under the Apache License v2.0.
++ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
++ */
++
++@media(min-width:767px) {
++    .navbar {
++        padding: 20px 0;
++        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
++        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
++        transition: background .5s ease-in-out,padding .5s ease-in-out;
++    }
++
++    .top-nav-collapse {
++        padding: 0;
++    }
++}
++
++.intro-section {
++    height: 100%;
++    padding-top: 25%;
++    padding-bottom: 50%;
++    text-align: center;
++}
++
++.about-section {
++    height: 80%;
++    padding-top: 54px;
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/css/style.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/css/style.css
+index e608bbf..5cddfa8 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/css/style.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/css/style.css
+@@ -1,37 +1,108 @@
+-/* fixed navbar */
+-html {
+-	height: 100%;
++body {
+     width: 100%;
++    height: 100%;
++    background-image: url("../image/background.jpg");
++    background-position: 0px 50px;
++    background-attachment: fixed;
++    background-size: 100% 100%;
+ }
+ 
+-body {
+-  padding-top: 30px;
+-  padding-bottom: 10px;
++html {
++    width: 100%;
+     height: 100%;
+ }
+ 
++@media screen and (max-width: 768px) {
++	.navbar-icon {
++		display: none;
++	}
++	#current-date{
++		display: none;
++	}
++}
++
++.navbar-icon {
++	position: relative;
++	float: left;
++	overflow: hidden;
++	max-height: 50px;
++	max-width: 50px;
++}
++
+ #map{
+ 	position: absolute;
+-    height: 100%;
++    height: 95%;
+     width: 70%;
+     left: 10px;
++    overflow: hidden;
++    margin-bottom: 10px;
+ }
+ 
+-#side-menu{
++.side-menu{
+ 	position: absolute;
+-  left: 70%;
+-  height: 100%;
++	left: 70.3%;
++	height: 95%;
+ 	width: 30%;
++	padding: 5px 13px;
++	overflow: hidden;
++	margin-bottom: 10px;
+ }
+ 
+ #menu-cover {
+ 	position: absolute;
+-  top: 0%;
+-  left: 15px;
+-  right: 5%;
+-  padding: 10% 10% 10%;
+-  height: 98%;
+-  width: 92%;
+-  background-color: #e6ffb3;
+-  font-size: 18px;
+-  border-radius: 15px;
++	padding: 15px 25px 15px;
++	width: 93%;
++	height: 91%;
++	background-color: #eee;
++	font-size: 14px;
++	overflow: scroll;
++	text-align: center;
++	border-bottom-right-radius: 10px;
++	border-bottom-left-radius: 10px;
++}
++
++
++
++.multi {
++	column-count:2;
++	-moz-column-count:2;
++	-webkit-column-count: 2;
++}
++
++#current-date {
++	position: absolute;
++	font-size: 16px;
++	margin-top: 12px;
++	margin-right: 50px;
++	right: 20px;
++	color: white;
++}
++
++.side-menu li {
++	border-style: ridge;
++	border-width: 1px;
++	border-top-right-radius: 10px;
++	border-top-left-radius: 10px;
++	background-color: #dbdbdb;
++}
++
++.intro-section h1, h3 {
++	text-shadow: 2.5px 1.5px #f6f6f6;
++}
++
++.basic-info {
++	line-height: 70%;
++}
++
++.radar-chart {
++	padding-top: 30px;
++	visibility: hidden;
++}
++
++#radar-chart {
++	position: relative;
++	top: 10px;
++	left: -53px;
++}
++
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/drawChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/drawChart.js
+new file mode 100644
+index 0000000..9dffe4c
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/drawChart.js
+@@ -0,0 +1,78 @@
++var w = 270,
++	h = 270;
++
++var colorscale = d3.scale.category10();
++
++var LegendOptions = []
++
++var d = [
++	[
++	{axis:"price", value:0.5},
++	{axis:"rating", value:0.5},
++	{axis:"freshness", value:0.5},
++	{axis:"parking", value:0.6},
++	{axis:"open hour", value:0.3},
++	{axis:"distance", value:0.8},
++	{axis:"service", value:0.3}
++	]
++];
++
++//Options for the Radar chart, other than default
++var mycfg = {
++  w: w,
++  h: h,
++  maxValue: 1.0,
++  levels: 5,
++  ExtraWidthX: 120
++}
++
++//Call function to draw the Radar chart
++//Will expect that data is in %'s
++RadarChart.draw("#radar-chart", d, mycfg);
++
++//Initiate legend
++var svg = d3.select('#body')
++	.selectAll('svg')
++	.append('svg')
++	.attr("width", w)
++	.attr("height", h)
++
++//Create the title for the legend
++var text = svg.append("text")
++	.attr("class", "title")
++	.attr('transform', 'translate(90,0)') 
++	.attr("x", w - 70)
++	.attr("y", 10)
++	.attr("font-size", "12px")
++	.attr("fill", "#404040")
++	.text("Store Info");
++		
++//Initiate Legend	
++var legend = svg.append("g")
++	.attr("class", "legend")
++	.attr("height", 100)
++	.attr("width", 200)
++	.attr('transform', 'translate(90,20)') 
++	;
++	//Create colour squares
++	legend.selectAll('rect')
++	  .data(LegendOptions)
++	  .enter()
++	  .append("rect")
++	  .attr("x", w - 65)
++	  .attr("y", function(d, i){ return i * 20;})
++	  .attr("width", 10)
++	  .attr("height", 10)
++	  .style("fill", function(d, i){ return colorscale(i);})
++	  ;
++	//Create text next to squares
++	legend.selectAll('text')
++	  .data(LegendOptions)
++	  .enter()
++	  .append("text")
++	  .attr("x", w - 52)
++	  .attr("y", function(d, i){ return i * 20 + 9;})
++	  .attr("font-size", "11px")
++	  .attr("fill", "#737373")
++	  .text(function(d) { return d; })
++	  ;
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0-star.png
+new file mode 100644
+index 0000000..85d8698
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0.5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0.5-star.png
+new file mode 100644
+index 0000000..c4d67fe
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/0.5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1-star.png
+new file mode 100644
+index 0000000..161ac5e
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1.5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1.5-star.png
+new file mode 100644
+index 0000000..832b24b
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/1.5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2-star.png
+new file mode 100644
+index 0000000..7785d08
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2.5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2.5-star.png
+new file mode 100644
+index 0000000..bb1c275
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/2.5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3-star.png
+new file mode 100644
+index 0000000..a8beafb
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3.5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3.5-star.png
+new file mode 100644
+index 0000000..52a33ac
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/3.5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4-star.png
+new file mode 100644
+index 0000000..5b24c4d
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4.5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4.5-star.png
+new file mode 100644
+index 0000000..25e3651
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/4.5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/5-star.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/5-star.png
+new file mode 100644
+index 0000000..3872c18
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/5-star.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/BNdO1.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/BNdO1.png
+new file mode 100644
+index 0000000..f2dbfc6
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/BNdO1.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/background.jpg b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/background.jpg
+new file mode 100644
+index 0000000..7507408
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/background.jpg differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/marker.gif b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/marker.gif
+new file mode 100644
+index 0000000..13173ed
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/marker.gif differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/star_ratings.gif b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/star_ratings.gif
+new file mode 100644
+index 0000000..826cc5c
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/image/star_ratings.gif differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/index.html
+index 1af01f1..00058ad 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-lostkuma/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/index.html
+@@ -4,54 +4,137 @@
+ 	<meta charset="utf-8">
+ 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+-		<title>FindMyVeggies</title>
++
++    <script src="http://d3js.org/d3.v3.min.js"></script>
++    <script src="js/radarChart.js"></script>
++
+ 	<link href="css/style.css" rel="stylesheet">
+-		<link href="css/bootstrap.css" rel="stylesheet">
+-		<script src="js/map.js" type="text/javascript"></script>
++	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
++	<link href="css/scrolling-nav.css" rel="stylesheet">
++
++	<title>FindMyVeggies</title>
+     <link rel="shortcut icon" href="image/icon.png" />
+ </head>
+ 
+-	<body>
+-	    <nav class="navbar navbar-inverse navbar-fixed-top">
++<!-- scrolling navigation bar -->
++<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
++
++    <!-- Navigation -->
++    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+-	        <div class="navbar-header">
+-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
++            <div class="navbar-header page-scroll">
++                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+-	          <a class="navbar-brand" href="#">Find My Veggies page outline</a>
++                <img src="image/icon.png" class="navbar-icon"/>
++                <a class="navbar-brand page-scroll" href="#page-top">Find My Veggies</a>
+             </div>
+-	        <div id="navbar" class="navbar-collapse collapse">
+-	          <form class="navbar-form navbar-right">
+-	          </form>
++            <!-- Collect the nav links, forms, and other content for toggling -->
++            <div class="collapse navbar-collapse navbar-ex1-collapse">
++                <ul class="nav navbar-nav">
++                   	<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
++                    <li class="hidden">
++                        <a class="page-scroll" href="#page-top"></a>
++                    </li>
++                    <li>
++                        <a class="page-scroll" href="#app">The App</a>
++                    </li>
++                </ul>
++                <p id="current-date"></p>
+             </div><!-- /.navbar-collapse -->
+-	      </div>
++        </div><!-- /.container -->
+     </nav>
+ 
+-	    <!-- Main jumbotron for a primary marketing message or call to action -->
+-	    <div class="jumbotron">
++    <!-- Intro section -->
++    <section id="intro" class="intro-section">
+         <div class="container">
+-	        <p>This is a Web App to help people find fresh and cheap vegetables for Indiana. The App uses Google Map API combined with open datasets to display features for local food markets regarding to vegetables. </p>
++            <div class="row">
++                <div class="col-lg-12">
++                    <h1>Find My Veggies</h1>
++                    <h3>Don't know where to find fresher and cheaper veggies?<br>
++                    This app will tell you grocery stores near you and more!</h3>
++                    <a class="btn btn-primary btn-lg page-scroll" href="#app">Try it now</a>
++                </div>
+             </div>
+         </div>
++    </section>    
+ 
++    <!-- The app section -->
++    <section id="app" class="about-section">
+         <div class="container">
+-		    <div id="map">
++        	<!-- map -->
++		    <div id="map"></div>
++		    <!-- side menu -->
++			<div class="side-menu">
++				<!-- side menu tabs -->
++				<ul class="nav nav-tabs nav-justified" id="customize-tag">
++			    	<li class="active"><a data-toggle="tab" href="#basic">Basic Information</a></li>
++			    	<li><a data-toggle="tab" href="#comparison">Compare Stores</a></li>
++			    	<li><a data-toggle="tab" href="#veggie-chart">Seasonal Veggies</a></li>
++			  	</ul>
++			  	<!-- side menu tab contents-->
++			  	<div class="tab-content">
++			 		<!-- tab content for basic -->
++				   	<div id="basic" class="tab-pane fade in active">
++				      	<div id="menu-cover">
++				      		<h4 id="store-name">Click on map to display store info</h4>
++				      		<div class="basic-info">
++				      			<p id="store-phone"></p>
++					      		<p><a id="store-website"></a></p>
++					      		<p id="open-hour-today"></p>
++					      		<p id="store-rating"></p>
+ 					      	</div>
+-
+-			<div id="side-menu">
++					      	<div class="radar-chart">
++					      		<p>View of store information</p>
++					      		<p>(Need to be edited)</p>
++								<div id="radar-chart"></div>
++							</div>						
++						</div>
++				    </div>
++				    <!-- tab content for comparison-->
++				    <div id="comparison" class="tab-pane fade">
++						<div id="menu-cover">
++							<p>"comparison of three stores will be showed here"</p>
++							<p>Select up to three stores for comparison</p>
++							<p>Add/delete features to be compared</p>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">price</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">ratings</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">frenshness</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">parking</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">open hour</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">service</label>
++								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">distance</label>
++						</div>
++				    </div>
++				    <!-- tab content for veggie-chart -->
++				    <div id="veggie-chart" class="tab-pane fade">
+ 				    	<div id="menu-cover">
+-				<p>
+-				side menu goes here
+-				</p>
++				    		<h4>In season Veggies of this month</h4>
++				    		<div class=multi>
++				    		<p id="seasonal-veggies"></p>
+ 				    		</div>
+ 				    	</div>
+ 				    </div>
++			  	</div><!-- tab-contents -->
++			</div><!-- side-menu-->
++		</div><!-- /.container -->
++    </section>
++
++	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
++  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
++
++  		<script src="js/jquery.easing.min.js"></script>
++    	<script src="js/scrolling-nav.js"></script>
++
++		<script src="js/map.js" type="text/javascript"></script>
++		<script src="js/veggies.js" type="text/javascript"></script>
++		<script src="js/main.js" type="text/javascript"></script>
++    	<script src="js/drawChart.js" type="text/javascript"></script>
+ 
+-	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&callback=initMap"
+-	    async defer></script>
++		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&libraries=places&callback=initMap" async defer></script>
+ 
+ 	</body>
+ </html>	    
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/main.js
+new file mode 100644
+index 0000000..c98bb5d
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/main.js
+@@ -0,0 +1,94 @@
++// get current date and time
++var month;
++
++function startTime() {
++	var currentDate = new Date();
++	var hour = currentDate.getHours();
++	var minute = currentDate.getMinutes();
++	var second = currentDate.getSeconds();
++	minute = checkSecMin(minute);
++	second = checkSecMin(second);
++	var am_or_pm;
++	if (hour < 12) {
++		am_or_pm = "am";
++	} else if (hour == 12) {
++		am_or_pm = "pm";
++	} else if (hour > 12) {
++		hour -= 12;
++		am_or_pm = "pm";
++	}
++	var current_time = hour + ":" + minute + ":" + second + am_or_pm;
++	document.getElementById("current-date").innerHTML = getCurrentDate() + " " + current_time;
++	var t = setTimeout(startTime, 500);
++
++
++	function getCurrentDate() {
++		var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
++		var day = currentDate.getDate();
++		month = currentDate.getMonth() + 1;
++		var year = currentDate.getFullYear();
++		var day_of_week = days[currentDate.getDay()];
++
++		var current_date = month + "/" + day + "/" + year;
++		var display_date = day_of_week + ", " + current_date + ", ";
++		return display_date;
++	}
++}
++
++function checkSecMin(i) {
++	if (i < 10) {
++		i = "0" + i
++	}
++return i;
++}
++
++// get list of seasonal veggies for this month
++function seasonalVeggies() {
++	var seasonal_veggies = []
++	var veggies = VEGGIES;
++	for (var key in veggies) {
++		var seasons_of_veggie;
++		seasons_of_veggie = veggies[key];
++		for (var i = 0; i < seasons_of_veggie.length; i++) {
++			if (seasons_of_veggie[i] == month) {
++				seasonal_veggies.push(key.replace(/_/, " "));
++			}
++		}
++	}
++	document.getElementById("seasonal-veggies").innerHTML = seasonal_veggies.join("<br>");
++}
++
++
++requestData = {
++	"datasetid": "GHCNDMS",
++	"startdate": "2003-03-01",
++	"enddate": "2004-03-02",
++	"stationid": "GHCND:USw00014835",
++	"cityid": "CITY:US180006",
++	"limit": 100,
++	"datatypeid": "MMNT"
++}
++// GHCND daily summary
++
++
++function getWeatherData() {
++	function addWeatherRequestToken(request) {
++  		request.setRequestHeader('token', 'kktKTtcWcfdlsZzGDIiMRUXfPoKYOxxA');
++ 	}
++	function weatherDataResponseCallback(response) {
++  	console.log(response);
++ 	}
++ 	var scheduleGetData = {
++		url: "http://www.ncdc.noaa.gov/cdo-web/api/v2/data",
++		dataType: "json",
++		data: requestData,
++		beforeSend: addWeatherRequestToken,
++		success: weatherDataResponseCallback,
++};
++	$.ajax(scheduleGetData);
++}
++
++
++startTime();
++seasonalVeggies();
++getWeatherData();
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/radarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/radarChart.js
+new file mode 100644
+index 0000000..8d85ed6
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/radarChart.js
+@@ -0,0 +1,221 @@
++//Practically all this code comes from https://github.com/alangrafu/radar-chart-d3
++//I only made some additions and aesthetic adjustments to make the chart look better 
++//(of course, that is only my point of view)
++//Such as a better placement of the titles at each line end, 
++//adding numbers that reflect what each circular level stands for
++//Not placing the last level and slight differences in color
++//
++//For a bit of extra information check the blog about it:
++//http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
++
++var RadarChart = {
++  draw: function(id, d, options){
++  var cfg = {
++	 radius: 5,
++	 w: 600,
++	 h: 600,
++	 factor: 1,
++	 factorLegend: .85,
++	 levels: 3,
++	 maxValue: 0,
++	 radians: 2 * Math.PI,
++	 opacityArea: 0.5,
++	 ToRight: 5,
++	 TranslateX: 80,
++	 TranslateY: 30,
++	 ExtraWidthX: 100,
++	 ExtraWidthY: 100,
++	 color: d3.scale.category10()
++	};
++	
++	if('undefined' !== typeof options){
++	  for(var i in options){
++		if('undefined' !== typeof options[i]){
++		  cfg[i] = options[i];
++		}
++	  }
++	}
++	cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
++	var allAxis = (d[0].map(function(i, j){return i.axis}));
++	var total = allAxis.length;
++	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
++	var Format = d3.format('%');
++	d3.select(id).select("svg").remove();
++	
++	var g = d3.select(id)
++			.append("svg")
++			.attr("width", cfg.w+cfg.ExtraWidthX)
++			.attr("height", cfg.h+cfg.ExtraWidthY)
++			.append("g")
++			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
++			;
++
++	var tooltip;
++	
++	//Circular segments
++	for(var j=0; j<cfg.levels-1; j++){
++	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
++	  g.selectAll(".levels")
++	   .data(allAxis)
++	   .enter()
++	   .append("svg:line")
++	   .attr("x1", function(d, i){return levelFactor*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
++	   .attr("y1", function(d, i){return levelFactor*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
++	   .attr("x2", function(d, i){return levelFactor*(1-cfg.factor*Math.sin((i+1)*cfg.radians/total));})
++	   .attr("y2", function(d, i){return levelFactor*(1-cfg.factor*Math.cos((i+1)*cfg.radians/total));})
++	   .attr("class", "line")
++	   .style("stroke", "grey")
++	   .style("stroke-opacity", "0.75")
++	   .style("stroke-width", "0.3px")
++	   .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
++	}
++
++	//Text indicating at what % each level is
++	for(var j=0; j<cfg.levels; j++){
++	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
++	  g.selectAll(".levels")
++	   .data([1]) //dummy data
++	   .enter()
++	   .append("svg:text")
++	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
++	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
++	   .attr("class", "legend")
++	   .style("font-family", "sans-serif")
++	   .style("font-size", "10px")
++	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
++	   .attr("fill", "#737373")
++	   .text(Format((j+1)*cfg.maxValue/cfg.levels));
++	}
++	
++	series = 0;
++
++	var axis = g.selectAll(".axis")
++			.data(allAxis)
++			.enter()
++			.append("g")
++			.attr("class", "axis");
++
++	axis.append("line")
++		.attr("x1", cfg.w/2)
++		.attr("y1", cfg.h/2)
++		.attr("x2", function(d, i){return cfg.w/2*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
++		.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
++		.attr("class", "line")
++		.style("stroke", "grey")
++		.style("stroke-width", "1px");
++
++	axis.append("text")
++		.attr("class", "legend")
++		.text(function(d){return d})
++		.style("font-family", "sans-serif")
++		.style("font-size", "12px")
++		.attr("text-anchor", "middle")
++		.attr("dy", "1em")
++		.attr("transform", function(d, i){return "translate(0, -10)"})
++		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-30*Math.sin(i*cfg.radians/total);})
++		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-18*Math.cos(i*cfg.radians/total);});
++
++ 
++	d.forEach(function(y, x){
++	  dataValues = [];
++	  g.selectAll(".nodes")
++		.data(y, function(j, i){
++		  dataValues.push([
++			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
++			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
++		  ]);
++		});
++	  dataValues.push(dataValues[0]);
++	  g.selectAll(".area")
++					 .data([dataValues])
++					 .enter()
++					 .append("polygon")
++					 .attr("class", "radar-chart-serie"+series)
++					 .style("stroke-width", "2px")
++					 .style("stroke", cfg.color(series))
++					 .attr("points",function(d) {
++						 var str="";
++						 for(var pti=0;pti<d.length;pti++){
++							 str=str+d[pti][0]+","+d[pti][1]+" ";
++						 }
++						 return str;
++					  })
++					 .style("fill", function(j, i){return cfg.color(series)})
++					 .style("fill-opacity", cfg.opacityArea)
++					 .on('mouseover', function (d){
++										z = "polygon."+d3.select(this).attr("class");
++										g.selectAll("polygon")
++										 .transition(200)
++										 .style("fill-opacity", 0.1); 
++										g.selectAll(z)
++										 .transition(200)
++										 .style("fill-opacity", .7);
++									  })
++					 .on('mouseout', function(){
++										g.selectAll("polygon")
++										 .transition(200)
++										 .style("fill-opacity", cfg.opacityArea);
++					 });
++	  series++;
++	});
++	series=0;
++
++
++	d.forEach(function(y, x){
++	  g.selectAll(".nodes")
++		.data(y).enter()
++		.append("svg:circle")
++		.attr("class", "radar-chart-serie"+series)
++		.attr('r', cfg.radius)
++		.attr("alt", function(j){return Math.max(j.value, 0)})
++		.attr("cx", function(j, i){
++		  dataValues.push([
++			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
++			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
++		]);
++		return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
++		})
++		.attr("cy", function(j, i){
++		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
++		})
++		.attr("data-id", function(j){return j.axis})
++		.style("fill", cfg.color(series)).style("fill-opacity", .9)
++		.on('mouseover', function (d){
++					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
++					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
++					
++					tooltip
++						.attr('x', newX)
++						.attr('y', newY)
++						.text(Format(d.value))
++						.transition(200)
++						.style('opacity', 1);
++						
++					z = "polygon."+d3.select(this).attr("class");
++					g.selectAll("polygon")
++						.transition(200)
++						.style("fill-opacity", 0.1); 
++					g.selectAll(z)
++						.transition(200)
++						.style("fill-opacity", .7);
++				  })
++		.on('mouseout', function(){
++					tooltip
++						.transition(200)
++						.style('opacity', 0);
++					g.selectAll("polygon")
++						.transition(200)
++						.style("fill-opacity", cfg.opacityArea);
++				  })
++		.append("svg:title")
++		.text(function(j){return Math.max(j.value, 0)});
++
++	  series++;
++	});
++	//Tooltip
++	tooltip = g.append('text')
++			   .style('opacity', 0)
++			   .style('font-family', 'sans-serif')
++			   .style('font-size', '13px');
++  }
++};
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/scrolling-nav.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/scrolling-nav.js
+new file mode 100644
+index 0000000..f7324c4
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/scrolling-nav.js
+@@ -0,0 +1,19 @@
++//jQuery to collapse the navbar on scroll
++$(window).scroll(function() {
++    if ($(".navbar").offset().top > 50) {
++        $(".navbar-fixed-top").addClass("top-nav-collapse");
++    } else {
++        $(".navbar-fixed-top").removeClass("top-nav-collapse");
++    }
++});
++
++//jQuery for page scrolling feature - requires jQuery Easing plugin
++$(function() {
++    $('a.page-scroll').bind('click', function(event) {
++        var $anchor = $(this);
++        $('html, body').stop().animate({
++            scrollTop: $($anchor.attr('href')).offset().top
++        }, 1500, 'easeInOutExpo');
++        event.preventDefault();
++    });
++});
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/veggies.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/veggies.js
+new file mode 100644
+index 0000000..bd2d00d
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-lostkuma/veggies.js
+@@ -0,0 +1,79 @@
++// seasonal veggie chart
++
++window.VEGGIES = {
++	Artichokes: [3, 4, 5, 6, 9, 10, 11, 12],
++	Arugula: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Asparagus: [2, 3, 4, 5, 6],
++	Beets: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Bok_choy: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Broccoli: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Broccoli_rabe: [1, 2, 3, 4, 5, 6, 9, 10, 11, 12],
++	Brussels_sprouts: [1, 2, 3, 4, 5, 9, 10, 11, 12],	
++	Burdock: [7, 8, 9, 10, 11, 12],
++	Cabbage: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Cactus_pads: [5, 6, 7, 8, 9, 10],
++	Cardoons: [1, 2, 3, 4, 5, 6, 11, 12],
++	Carrots: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Cauliflower: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Celeriac: [4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Celery: [4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Chard: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Chicory: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Collard_greens: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],	
++	Corn: [1, 2, 3, 4, 5, 11, 12],
++	Cress: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Cucumbers: [6, 7, 8, 9, 10, 11],
++	Dandelion_greens: [1, 2, 3, 4, 5],	
++	Eggplant: [6, 7, 8, 9, 10],
++	Endive: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Fava_beans: [3, 4, 5, 6, 7],
++	Fava_greens: [1, 2, 3, 4, 5],
++	Fennel: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Garlic: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Green_beans: [6, 7, 8, 9],
++	Green_garlic: [2, 3, 4, 5, 6],
++	Herbs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Horseradish: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
++	Kale: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Kohlrabi: [1, 2, 3, 4, 11, 12],
++	Lambsquarters: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],	
++	Leeks: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Lettuce: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Mizuna: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Mushrooms: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Mustard_greens: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Nettles: [1, 2, 3, 4, 5, 6, 7],
++	Okra: [6, 7, 8, 9, 10, 11],
++	Onions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Orach: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Parsnips: [1, 2, 3, 4, 5, 10, 11, 12],
++	Pea_shoots: [1, 2, 3, 4, 5],
++	Peas: [4, 5, 6, 7, 8, 9, 10, 11],
++	Chile_peppers: [7, 8, 9, 10, 11, 12],
++	Sweet_Peppers: [5, 6, 7, 8, 9, 10, 11, 12],
++	Potatoes: [6, 7, 8],
++	Purslane: [4, 5, 6, 7, 8, 9, 10, 11],
++	Radishes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Rutabagas: [1, 2, 3, 4, 10, 11, 12],
++	Salsify: [9, 10, 11, 12],
++	Scallions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Shallots: [5, 6, 7],
++	Shelling_beans: [8, 9, 10],	
++	Spinach: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Sprouts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Summer_squash: [6, 7, 8, 9, 10],	
++	Winter_squash: [10, 11, 12],	
++	Sunchokes: [1, 2, 3, 4, 9, 10, 11, 12],
++	Sweet_potatoes: [9, 10, 11, 12],	
++	Tatsoi: [1, 2, 3, 4, 10, 11, 12],
++	Tomatillos: [6, 7, 8, 9, 10, 11],	
++	Tomatoes: [6, 7, 8, 9, 10],
++	Turnips: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
++	Yacon: [11, 12],
++
++}
++
++
++
++// seasonal veggies chart
++// http://www.cuesa.org/eat-seasonally/charts/vegetables
+\ No newline at end of file

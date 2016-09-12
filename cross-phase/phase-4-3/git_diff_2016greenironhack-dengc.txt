@@ -1,0 +1,1124 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/bg.png b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/bg.png
+new file mode 100644
+index 0000000..6579886
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/bg.png differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/main.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/main.css
+index 290407d..1ae2c15 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/main.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/main.css
+@@ -8,7 +8,7 @@ The demo page of this project is located at: http://test.rcodi.charlessong.me/
+ /* make the body div cover the whole page */
+ 
+ html, body { 
+-height: 140%; 
++height: 120%; 
+ margin: 12; 
+ padding: 0; 
+ background-image: url("background.jpeg");
+@@ -19,8 +19,8 @@ background-position: bottom;
+ 
+ .bubbleChart {
+ 	min-width: 100px;
+-	max-width: 800px;
+-	height: 500px;
++	max-width: 400px;
++	height: 330px;
+ 	margin: 0 auto;
+ }
+ 
+@@ -39,7 +39,7 @@ h1 {
+ }
+ 
+ #title{
+-	font-size: 120%;
++	font-size: 140%;
+ 	color:white;
+ }
+ 
+@@ -48,45 +48,32 @@ h1 {
+ 	you may want to use relative rather than absolute in your own application */
+ 	position: absolute;
+     /* cover the 70 percent of the page width*/
+-    width: 70%;
+-    height: 70%;
+-}
+-
+-#sec1{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	left: 72%;
++    width: 68%;
++    height: 115%;
+ }
+ 
+-#info{
++#sec2{
+ 	position: absolute;
+ 	/* define the postiion of information panel */
+-	top: 100%;
+-
++	left: 0%;
++	top: 55%;
+ }
+ 
+ #position-info{
+ 	background-color: #edeff1;
+-	width: 40%;
++	width: 70%;
+ }
+ 
+-#sec2{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	left: 42%;
+-	top:0%;
+-}
++
+ 
+ #side-menu{
+ 	position: absolute;
+ 	/* define the postiion of information panel */
+-	top: 105%;
+-	left: 0%;
++	top: 30%;
++	left: 69%;
+     /* cover the 30 percent of the page width*/
+-	width: 100%;
+-	height: 0%;
+-
+-
++	width: 30%;
++	height: 120%;
+ }
+ 
+ #menu-cover{
+@@ -96,15 +83,15 @@ h1 {
+ }
+ 
+ .menu-line{
+-	height: 40px;
++	height: 50px;
+ }
+ 
+ #menu-cover {
+-	height: 35%;
+-	width: 90%;
++	height: 89%;
++	width: 80%;
+ 	/* define the background color of the information panel */
+-/*	background-color: #edeff1;
+-*/	/* set radius for the ellipse frame */
++	background-color: #edeff1;
++	/* set radius for the ellipse frame */
+     border-radius: 11px;
+     /* add paddings so there would be some blank spaces around the informaiton panel */
+     padding: 24px 23px 20px;
+@@ -128,22 +115,15 @@ h1 {
+     height:30px;
+     width:250px;
+ 	position: absolute;
+-	top: 493%;
+-	left: 20%;
++	top: 40%;
++	left: 7%;
+ }
+ 
+ .button2{
+     height:30px;
+     width:250px;
+ 	position: absolute;
+-	top: 593%;
+-	left: 20%;
++	top: 47%;
++	left: 7%;
+ }
+ 
+-  #sec3{
+-
+-  position: absolute;
+-  /* define the postiion of information panel */
+-  left: 72%;
+-  top:50%;
+-  }
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/menu.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/menu.css
+new file mode 100644
+index 0000000..7686984
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/menu.css
+@@ -0,0 +1,154 @@
++@import url(http://fonts.googleapis.com/css?family=Oswald);
++#cssmenu,
++#cssmenu ul,
++#cssmenu ul li,
++#cssmenu ul li a,
++#cssmenu #menu-button {
++  margin: 0;
++  padding: 0;
++  border: 0;
++  list-style: none;
++  line-height: 1;
++  display: block;
++  position: relative;
++  -webkit-box-sizing: border-box;
++  -moz-box-sizing: border-box;
++  box-sizing: border-box;
++}
++#cssmenu:after,
++#cssmenu > ul:after {
++  content: ".";
++  display: block;
++  clear: both;
++  visibility: hidden;
++  line-height: 0;
++  height: 0;
++}
++#cssmenu #menu-button {
++  display: none;
++}
++#cssmenu {
++  width: auto;
++  border: 3px solid #fd8a17;
++  border-radius: 3px;
++  font-family: 'Oswald', sans-serif;
++  line-height: 1;
++  background: #f7f7f7;
++  box-shadow: 1px 1px 0 #df7002, 2px 2px 0 #df7002, 3px 3px 3px rgba(0, 0, 0, 0.35);
++}
++#cssmenu > ul {
++  background: url('bg.png');
++}
++#cssmenu > ul > li {
++  float: left;
++}
++#cssmenu.align-center > ul {
++  font-size: 0;
++  text-align: center;
++}
++#cssmenu.align-center > ul > li {
++  display: inline-block;
++  float: none;
++}
++#cssmenu.align-right > ul > li {
++  float: right;
++}
++#cssmenu > ul > li > a {
++  padding: 20px 25px;
++  font-size: 14px;
++  text-transform: uppercase;
++  text-decoration: none;
++  color: #fd8a17;
++  -webkit-transition: all .2s ease;
++  -moz-transition: all .2s ease;
++  -ms-transition: all .2s ease;
++  -o-transition: all .2s ease;
++  transition: all .2s ease;
++}
++#cssmenu > ul > li > a:hover,
++#cssmenu > ul > li:hover > a,
++#cssmenu > ul > li.active > a {
++  color: #444444;
++}
++#cssmenu #menu-indicator {
++  position: absolute;
++  bottom: 0;
++  display: block;
++  height: 0;
++  width: 0;
++  border: 5px solid transparent;
++  border-bottom-color: #fd8a17;
++  -webkit-transition: all 0.25s ease-out;
++  -moz-transition: all 0.25s ease-out;
++  -ms-transition: all 0.25s ease-out;
++  -o-transition: all 0.25s ease-out;
++  transition: all 0.25s ease-out;
++}
++#cssmenu.small-screen {
++  width: 100%;
++}
++#cssmenu.small-screen > ul,
++#cssmenu.small-screen.align-center > ul {
++  width: 100%;
++  text-align: left;
++}
++#cssmenu.small-screen > ul > li,
++#cssmenu.small-screen.align-center > ul > li {
++  float: none;
++  display: block;
++  border-top: 1px solid rgba(100, 100, 100, 0.1);
++}
++#cssmenu.small-screen > ul > li > a {
++  padding: 18px 25px;
++}
++#cssmenu.small-screen > ul > li:after,
++#cssmenu.small-screen > ul > li:before {
++  display: none;
++}
++#cssmenu.small-screen #menu-button {
++  display: block;
++  padding: 18px 25px;
++  cursor: pointer;
++  font-size: 14px;
++  text-transform: uppercase;
++  text-decoration: none;
++  color: #fd8a17;
++  background: url('bg.png');
++}
++#cssmenu.small-screen #menu-button.menu-opened {
++  color: #444444;
++}
++#cssmenu.small-screen #menu-button:after {
++  content: "";
++  position: absolute;
++  right: 25px;
++  top: 19.5px;
++  display: block;
++  -webkit-box-sizing: content-box;
++  -moz-box-sizing: content-box;
++  box-sizing: content-box;
++  border-top: 2px solid #fd8a17;
++  border-bottom: 2px solid #fd8a17;
++  width: 18px;
++  height: 3px;
++}
++#cssmenu.small-screen #menu-button.menu-opened:after {
++  border-top: 2px solid #444444;
++  border-bottom: 2px solid #444444;
++}
++#cssmenu.small-screen #menu-button:before {
++  content: "";
++  position: absolute;
++  right: 25px;
++  top: 29.5px;
++  display: block;
++  width: 18px;
++  height: 2px;
++  background: #fd8a17;
++}
++#cssmenu.small-screen #menu-button.menu-opened:before {
++  background: #444444;
++}
++#cssmenu.small-screen #menu-indicator {
++  display: none;
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/startPage.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/startPage.css
+index 1640071..2367273 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/startPage.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/css/startPage.css
+@@ -35,11 +35,6 @@ h3 {
+     font-size: 160%;
+ }
+ 
+-#text{
+-	font-size: 120%;
+-	color:black;
+-}
+-
+ img {
+     opacity: 0.8;
+     width:350px;
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/tutorial.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/tutorial.css
+deleted file mode 100644
+index 2c799aa..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/css/tutorial.css
++++ /dev/null
+@@ -1,129 +0,0 @@
+-/*
+-This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+-If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+-You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+-The demo page of this project is located at: http://test.rcodi.charlessong.me/
+-*/
+-
+-/* make the body div cover the whole page */
+-html, body { 
+-height: 100%; 
+-margin: 12; 
+-padding: 0; 
+-}
+-
+-.bubbleChart {
+-	min-width: 100px;
+-	max-width: 800px;
+-	height: 500px;
+-	margin: 0 auto;
+-}
+-
+-/* use "#" for ids and use "." for classes
+-usually an id in unique in one html page*/
+-#header {
+-    background-color:green;
+-    text-align:center;
+-    padding:5px;
+-}
+-
+-h1 {
+-    color: red;
+-    font-style: oblique;
+-    font-size: 333%;
+-}
+-
+-#title{
+-	font-size: 120%;
+-	color:white;
+-}
+-
+-#map{
+-	/* here we use absolute layout to find the position for google map
+-	you may want to use relative rather than absolute in your own application */
+-	position: absolute;
+-    /* cover the 70 percent of the page width*/
+-    width: 70%;
+-    height: 70%;
+-}
+-
+-#sec1{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	left: 72%;
+-}
+-
+-#info{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	top: 100%;
+-
+-}
+-
+-#position-info{
+-	background-color: #edeff1;
+-	width: 40%;
+-}
+-
+-#sec2{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	left: 42%;
+-	top:0%;
+-}
+-
+-#side-menu{
+-	position: absolute;
+-	/* define the postiion of information panel */
+-	top: 105%;
+-	left: 0%;
+-    /* cover the 30 percent of the page width*/
+-	width: 100%;
+-	height: 0%;
+-
+-
+-}
+-
+-#menu-cover{
+-	position: absolute;
+-	top: 3%;
+-	left: 3%;
+-}
+-
+-.menu-line{
+-	height: 40px;
+-}
+-
+-#menu-cover {
+-	height: 35%;
+-	width: 90%;
+-	/* define the background color of the information panel */
+-/*	background-color: #edeff1;
+-*/	/* set radius for the ellipse frame */
+-    border-radius: 11px;
+-    /* add paddings so there would be some blank spaces around the informaiton panel */
+-    padding: 24px 23px 20px;
+-    /* settings for the font */
+-    font-family: "Lato",Helvetica,Arial,sans-serif;
+-    font-size: 15px;
+-}
+-
+-/* there defines every single line in the information panel */
+-.menu-line{
+-	border-radius: 11px;
+-    box-shadow: none;
+-    color: #34495e;
+-    font-family: "Lato",Helvetica,Arial,sans-serif;
+-    font-size: 15px;
+-    line-height: 1.467;
+-    padding: 4px 4px;
+-}
+-
+-.button{
+-    height:30px;
+-    width:250px;
+-position: absolute;
+-	top: 593%;
+-	left: 13%;
+-}
+-
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/image/vegetable2.jpg b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/image/vegetable2.jpg
+new file mode 100644
+index 0000000..c78cfac
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/image/vegetable2.jpg differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/index.html
+index d29cf65..03b36e4 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/index.html
+@@ -23,6 +23,9 @@ The demo page of this project is located at: http://test.rcodi.charlessong.me/
+     
+     <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+     <script src="js/liquidFillGauge.js" language="JavaScript"></script>
++    <link rel="stylesheet" href="css/menu.css">
++   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
++   <script src="js/menu.js"></script>
+     <style>
+         .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+     </style>
+@@ -33,9 +36,15 @@ The demo page of this project is located at: http://test.rcodi.charlessong.me/
+   <body>
+ 	<div id="header">
+ 			<h1>Lafayette Fresh Vegetable</h1>
+-		<p id = "text"><a href="main.html">Try to find a market for fresh vegetable? Check it out! &#10154; &#10152; &#8688; &#10140; &#8658;</a></p>
+-
++	</div>
+ 
++    <div id='cssmenu'>
++<ul>
++   <li class='active'>
++   <li><a href='main.html'>Map</a></li>
++   <li><a href='markets.html'>Markets</a></li>
++   <li><a href='vegetables.html'>vegetables</a></li>
++</ul>
+ </div>
+ 
+ 	<div id="sec2">
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/main.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/main.html
+index 217febd..c99cea9 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/main.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/main.html
+@@ -33,29 +33,18 @@ The demo page of this project is located at: http://test.rcodi.charlessong.me/
+   <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+   <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+ 
+-
+   </head>
+ 
+ 
+   <body>
+ 	<div id="header">
+ 			<h1>Lafayette Fresh Vegetable</h1>
+-		<p id="title">Map of Lafayette and markets' info!</p>
++		<p id="title"> <a href= 'index.html'>&#x21da; Back to Home &#x21a9; </a></p>
+ 	</div>
+ 
+  <div id="map">
+ 		</div>
+ 
+-	<div id="sec1">
+-		<img src="image/market2.jpg" style="width:365px;height:470px;">
+-
+-	</div>
+-
+-
+-	<div id="info">
+-			<h2>Markekt Info:</h2>
+-	</div>
+-
+ 
+ 	<div id="content">
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/main.js
+index 646de3a..4dfeb89 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-dengc/main.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/main.js
+@@ -1,14 +1,3 @@
+-/**
+-This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+-If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+-You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+-The demo page of this project is located at: http://test.rcodi.charlessong.me/
+-
+-This is the javascript file for the Google map.
+-The position for the map and chart will be changed in the final project. Generally the chart will show up once you click the lable in the map.
+-**/
+-
+-
+ //init the google map in the webpage         
+ function initMap() {
+ 
+@@ -128,6 +117,189 @@ function initMap() {
+                             document.getElementById("btn2").disabled = false;
+ 
+ });
++
++
++
++    marker5 = new google.maps.Marker({
++        position: {lat: 40.4194781, lng: -86.7357577},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '4').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker5, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Cooley Family Farm");
++                            infowindow.open(map, marker5);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Cooley Family Farm";
++                            document.getElementById("street-name").innerHTML = "24 North 900 East, Lafayette, IN 47905";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://cooleyfamilyfarm.com" + "\">" + "http://cooleyfamilyfarm.com" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker6 = new google.maps.Marker({
++        position: {lat: 40.3921134, lng: -86.8574059},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '5').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker6, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Trader Bucks");
++                            infowindow.open(map, marker6);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Trader Bucks";
++                            document.getElementById("street-name").innerHTML = "2330 Sagamore Pkwy S, Lafayette, IN 47905";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://traderbucksfleamarkets.com/" + "\">" + "http://traderbucksfleamarkets.com/" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker7 = new google.maps.Marker({
++        position: {lat: 40.4218258, lng: -86.9072859},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '6').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker7, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Rubia Flower Market");
++                            infowindow.open(map, marker7);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Rubia Flower Market";
++                            document.getElementById("street-name").innerHTML = "224 E State St, West Lafayette, IN 47906";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://www.rubiaflowermarket.com/" + "\">" + "http://www.rubiaflowermarket.com/" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker8 = new google.maps.Marker({
++        position: {lat: 40.4311229, lng: -86.8741022},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '7').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker8, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Market Square Shopping Center");
++                            infowindow.open(map, marker8);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Market Square Shopping Center";
++                            document.getElementById("street-name").innerHTML = "2200 Elmwood Ave, Lafayette, IN 47904";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "https://www.facebook.com/marketsquareshoppingcenter" + "\">" + "https://www.facebook.com/marketsquareshoppingcenter" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker9 = new google.maps.Marker({
++        position: {lat: 40.4539199, lng: -86.9143953},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '8').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker9, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Sunspot Natural Market");
++                            infowindow.open(map, marker9);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Sunspot Natural Market";
++                            document.getElementById("street-name").innerHTML = "500 Sagamore Pkwy W, West Lafayette, IN 47906";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://sunspotnatural.tflmag.com/" + "\">" + "http://sunspotnatural.tflmag.com/" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker10 = new google.maps.Marker({
++        position: {lat: 40.4522881, lng: -86.9263006},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '9').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker10, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("Asia Market");
++                            infowindow.open(map, marker10);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "Asia Market";
++                            document.getElementById("street-name").innerHTML = "2400 Yeager Rd, West Lafayette, IN 47906";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://www.asiaorientalmarket.com/" + "\">" + "http://www.asiaorientalmarket.com/" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
++
++
++    marker11 = new google.maps.Marker({
++        position: {lat: 40.4190638, lng: -86.8399744},
++        map: map,
++        icon: 'http://google-maps-icons.googlecode.com/files/red' + ('0' + '10').slice(-2) + '.png',
++        title: 'Lafayette'
++    });
++
++    infowindow = new google.maps.InfoWindow({
++                            content: ""
++                        });
++    google.maps.event.addListener(marker11, 'click', function() {
++      //location.reload();
++
++        infowindow.setContent("D & R");
++                            infowindow.open(map, marker11);
++                            $("#sec2").empty();
++                            document.getElementById("market-name").innerHTML = "D & R";
++                            document.getElementById("street-name").innerHTML = "105 N Creasy Ln, Lafayette, IN 47905";
++                            document.getElementById("website").innerHTML = "<a href=\"" + "http://dandrmarket.net/" + "\">" + "http://dandrmarket.net/" + "</a>";
++                            document.getElementById("open-status").innerHTML = timeStamp();;
++                            document.getElementById("btn1").disabled = false;
++                            document.getElementById("btn2").disabled = false;
++
++});
+     //create a new httprequest for this session
+     xmlhttp = new XMLHttpRequest();
+     //json format data resource url 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/markets.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/markets.html
+new file mode 100644
+index 0000000..a4784d7
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/markets.html
+@@ -0,0 +1,118 @@
++<html>
++  <head>
++	<meta charset="UTF-8">
++	<meta name="descriptions" content="Place to Eat">
++	<meta name="author" content="Charles Song">
++
++	<link rel="stylesheet" href="css/startPage.css" >
++
++	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
++  
++
++    <link rel="stylesheet" href="css/menu.css">
++   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
++   <script src="js/menu.js"></script>
++    
++
++  </head>
++
++
++  <body>
++	<div id="header">
++			<h1>Lafayette Fresh Vegetable</h1>
++      <h2 style="color: white">Markets' Info!</h2>
++
++	</div>
++
++    <div id='cssmenu'>
++<ul>
++   <li class='active'>
++   <li><a href='index.html'>Home</a></li>
++   <li><a href='main.html'>Map</a></li>
++   <li><a href='vegetables.html'>vegetables</a></li>
++</ul>
++</div>
++
++
++<div id='sec1'>
++<ul id='inside'>
++   <li><a id='link' href='http://www.yelp.com/biz/c-and-t-market-west-lafayette'>C&T Market</a></li>
++   <li><a id='link' href='http://wlfarmersmarket.com/'>West Lafayette Farmers Market</a></li>
++   <li><a id='link' href='http://freshthyme.com/'>Fresh Thyme Farmers Markets</a></li>
++   <li><a id='link' href='http://cooleyfamilyfarm.com'>Cooley Family Farm</a></li>
++   <li><a id='link' href='http://traderbucksfleamarkets.com/'>Trader Bucks</a></li>
++   <li><a id='link' href='http://www.rubiaflowermarket.com/'>Rubia Flower Market</a></li>
++   <li><a id='link' href='https://www.facebook.com/marketsquareshoppingcenter'>Market Square Shopping Center</a></li>
++   <li><a id='link' href='http://sunspotnatural.tflmag.com/'>Sunspot Natural Market</a></li>
++   <li><a id='link' href='http://www.asiaorientalmarket.com/'>Asia Market</a></li>
++   <li><a id='link' href='http://dandrmarket.net/'>D & R</a></li>
++
++</ul>
++
++    <style>
++       
++    #sec1{
++
++      position: absolute;
++    left: 15%;
++    top: 44%;
++    }
++
++#inside {
++    list-style-type: none;
++    margin: 0;
++    padding: 0;
++    width: 300px;
++    background-color: #FFA500;
++    border: 1px solid #555;
++}
++
++li a {
++    display: block;
++    color: #000;
++    padding: 10px 16px;
++    text-decoration: none;
++}
++
++li {
++    text-align: center;
++    border-bottom: 1px solid #555;
++}
++
++li:last-child {
++    border-bottom: none;
++}
++
++#link:hover:not(.active) {
++    background-color: #555;
++    color: white;
++}
++
++    </style>
++
++</div>
++
++	<div id="sec2">
++		<img id="mar" src="image/market2.jpg" >
++
++    <style>
++       
++        #sec2{
++    position: absolute;
++    left: 60%;
++    top: 44%;
++    }
++
++    #mar{
++    opacity: 1;
++    width:280px;
++    height:390px
++        
++    }
++    
++    </style>
++	</div>
++
++
++  </body>
++</html>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/menu.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/menu.js
+new file mode 100644
+index 0000000..13a1208
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/menu.js
+@@ -0,0 +1,139 @@
++(function($) {
++
++  $.fn.menumaker = function(options) {
++      
++      var cssmenu = $(this), settings = $.extend({
++        title: "Menu",
++        format: "dropdown",
++        breakpoint: 768,
++        sticky: false
++      }, options);
++
++      return this.each(function() {
++        cssmenu.find('li ul').parent().addClass('has-sub');
++        if (settings.format != 'select') {
++          cssmenu.prepend('<div id="menu-button">' + settings.title + '</div>');
++          $(this).find("#menu-button").on('click', function(){
++            $(this).toggleClass('menu-opened');
++            var mainmenu = $(this).next('ul');
++            if (mainmenu.hasClass('open')) { 
++              mainmenu.hide().removeClass('open');
++            }
++            else {
++              mainmenu.show().addClass('open');
++              if (settings.format === "dropdown") {
++                mainmenu.find('ul').show();
++              }
++            }
++          });
++
++          multiTg = function() {
++            cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
++            cssmenu.find('.submenu-button').on('click', function() {
++              $(this).toggleClass('submenu-opened');
++              if ($(this).siblings('ul').hasClass('open')) {
++                $(this).siblings('ul').removeClass('open').hide();
++              }
++              else {
++                $(this).siblings('ul').addClass('open').show();
++              }
++            });
++          };
++
++          if (settings.format === 'multitoggle') multiTg();
++          else cssmenu.addClass('dropdown');
++        }
++
++        else if (settings.format === 'select')
++        {
++          cssmenu.append('<select style="width: 100%"/>').addClass('select-list');
++          var selectList = cssmenu.find('select');
++          selectList.append('<option>' + settings.title + '</option>', {
++                                                         "selected": "selected",
++                                                         "value": ""});
++          cssmenu.find('a').each(function() {
++            var element = $(this), indentation = "";
++            for (i = 1; i < element.parents('ul').length; i++)
++            {
++              indentation += '-';
++            }
++            selectList.append('<option value="' + $(this).attr('href') + '">' + indentation + element.text() + '</option');
++          });
++          selectList.on('change', function() {
++            window.location = $(this).find("option:selected").val();
++          });
++        }
++
++        if (settings.sticky === true) cssmenu.css('position', 'fixed');
++
++        resizeFix = function() {
++          if ($(window).width() > settings.breakpoint) {
++            cssmenu.find('ul').show();
++            cssmenu.removeClass('small-screen');
++            if (settings.format === 'select') {
++              cssmenu.find('select').hide();
++            }
++            else {
++              cssmenu.find("#menu-button").removeClass("menu-opened");
++            }
++          }
++
++          if ($(window).width() <= settings.breakpoint && !cssmenu.hasClass("small-screen")) {
++            cssmenu.find('ul').hide().removeClass('open');
++            cssmenu.addClass('small-screen');
++            if (settings.format === 'select') {
++              cssmenu.find('select').show();
++            }
++          }
++        };
++        resizeFix();
++        return $(window).on('resize', resizeFix);
++
++      });
++  };
++})(jQuery);
++
++(function($){
++$(document).ready(function(){
++
++$(window).load(function() {
++  $("#cssmenu").menumaker({
++    title: "Menu",
++    format: "dropdown"
++  });
++
++
++$('#cssmenu').prepend("<div id='menu-indicator'></div>");
++
++var foundActive = false, activeElement, indicatorPosition, indicator = $('#cssmenu #menu-indicator'), defaultPosition;
++
++$("#cssmenu > ul > li").each(function() {
++  if ($(this).hasClass('active')) {
++    activeElement = $(this);
++    foundActive = true;
++  }
++});
++
++if (foundActive === false) {
++  activeElement = $("#cssmenu > ul > li").first();
++}
++
++defaultPosition = indicatorPosition = activeElement.position().left + activeElement.width()/2 - 5;
++console.log(activeElement);
++console.log(activeElement.position().left);
++console.log(activeElement.width());
++indicator.css("left", indicatorPosition);
++
++$("#cssmenu > ul > li").hover(function() {
++  activeElement = $(this);
++  indicatorPosition = activeElement.position().left + activeElement.width()/2 - 5;
++  indicator.css("left", indicatorPosition);
++}, 
++function() {
++  indicator.css("left", defaultPosition);
++});
++
++});
++
++});
++})(jQuery);
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/vegetables.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/vegetables.html
+new file mode 100644
+index 0000000..7e0a75a
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-dengc/vegetables.html
+@@ -0,0 +1,116 @@
++<html>
++  <head>
++	<meta charset="UTF-8">
++	<meta name="descriptions" content="Place to Eat">
++	<meta name="author" content="Charles Song">
++
++	<link rel="stylesheet" href="css/startPage.css" >
++
++	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
++  
++
++    <link rel="stylesheet" href="css/menu.css">
++   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
++   <script src="js/menu.js"></script>
++    
++
++  </head>
++
++
++  <body>
++	<div id="header">
++			<h1>Lafayette Fresh Vegetable</h1>
++      <h2 style="color: white">Vegetables' Info!</h2>
++	</div>
++
++    <div id='cssmenu'>
++<ul>
++   <li class='active'>
++   <li><a href='index.html'>Home</a></li>
++   <li><a href='main.html'>Map</a></li>
++   <li><a href='markets.html'>Markets</a></li>
++</ul>
++</div>
++
++
++<div id='sec1'>
++<ul id='inside'>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Chinese_cabbage'>Chinese cabbage</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Collard_greens'>Collard greens</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Cnidoscolus_aconitifolius'>Cnidoscolus aconitifolius</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Eruca_sativa'>Eruca sativa</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Telfairia_occidentalis'>Telfairia occidentalis</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Plantago_major'>Plantago major</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Adansonia'>Adansonia</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Lettuce'>Lettuce</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Basella_alba'>Basella alba</a></li>
++   <li><a id='link' href='https://en.wikipedia.org/wiki/Phytolacca_americana'>Phytolacca americana</a></li>
++
++</ul>
++
++    <style>
++
++    #sec1{
++
++      position: absolute;
++    left: 15%;
++    top: 44%;
++    }
++
++#inside {
++    list-style-type: none;
++    margin: 0;
++    padding: 0;
++    width: 300px;
++    background-color: #00FF00;
++    border: 1px solid #555;
++}
++
++li a {
++    display: block;
++    color: #000;
++    padding: 10px 16px;
++    text-decoration: none;
++}
++
++li {
++    text-align: center;
++    border-bottom: 1px solid #555;
++}
++
++li:last-child {
++    border-bottom: none;
++}
++
++#link:hover:not(.active) {
++    background-color: #555;
++    color: white;
++}
++    </style>
++
++</div>
++
++	<div id="sec2">
++		<img id="mar" src="image/vegetable2.jpg" >
++
++    <style>
++       
++       #sec2{
++    position: absolute;
++    left: 60%;
++    top: 44%;
++    }
++
++    #mar{
++    opacity: 1;
++    width:280px;
++    height:390px
++        
++    }
++    
++    </style>
++	</div>
++
++
++  </body>
++</html>

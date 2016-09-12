@@ -1,0 +1,833 @@
+{"meta" : {
+    "view" : {
+      "id" : "x5xx-pszi",
+      "name" : "Farmers Markets - 2015",
+      "attribution" : "City of Chicago",
+      "attributionLink" : "http://www.cityofchicago.org",
+      "averageRating" : 0,
+      "category" : "Environment & Sustainable Development",
+      "createdAt" : 1430885878,
+      "description" : "Chicago's Farmers Markets bring more than 70 vendors selling fresh fruits, vegetables, plants and flowers to neighborhoods throughout the City of Chicago. Markets are held Tuesday, Wednesday, Thursday, Saturday and Sunday around the city.",
+      "displayType" : "table",
+      "downloadCount" : 278,
+      "indexUpdatedAt" : 1431106525,
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 11182616,
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1431044305,
+      "publicationGroup" : 2784884,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1431044223,
+      "rowsUpdatedBy" : "3qqc-w7ag",
+      "tableId" : 2795208,
+      "totalTimesRated" : 0,
+      "viewCount" : 256,
+      "viewLastModified" : 1431100835,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { }
+      }, {
+        "id" : 202654755,
+        "name" : "LOCATION",
+        "dataTypeName" : "text",
+        "fieldName" : "location",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115332,
+        "width" : 369,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "61st Street Farmers Market",
+          "null" : 0,
+          "largest" : "Willis Tower Plaza",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Loyola Farmers Market"
+          }, {
+            "count" : 19,
+            "item" : "Green City Market - Lincoln Park"
+          }, {
+            "count" : 18,
+            "item" : "Lowline Market"
+          }, {
+            "count" : 17,
+            "item" : "Edgewater Farmers Market"
+          }, {
+            "count" : 16,
+            "item" : "Roseland Community Farmers Market"
+          }, {
+            "count" : 15,
+            "item" : "Green City Market - Fulton"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654756,
+        "name" : "INTERSECTION",
+        "dataTypeName" : "text",
+        "fieldName" : "intersection",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115333,
+        "width" : 244,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "111th & Cottage Grove",
+          "null" : 0,
+          "largest" : "Washington & Dearborn",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Lake & Kedzie"
+          }, {
+            "count" : 19,
+            "item" : "1200 W. Loyola Ave. (Loyola Red Line stop)"
+          }, {
+            "count" : 18,
+            "item" : "1800 N. Clark St. (South end of Lincoln Park)"
+          }, {
+            "count" : 17,
+            "item" : "Southport Brown Line station auxiliary exit (3410 N. Southport)"
+          }, {
+            "count" : 16,
+            "item" : "11400 S. Michigan Ave."
+          }, {
+            "count" : 15,
+            "item" : "Fulton & Halsted"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654757,
+        "name" : "DAY",
+        "dataTypeName" : "text",
+        "fieldName" : "day",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115334,
+        "width" : 136,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "Monday",
+          "null" : 0,
+          "largest" : "Wednesday",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Wednesday"
+          }, {
+            "count" : 19,
+            "item" : "Tuesday"
+          }, {
+            "count" : 18,
+            "item" : "Saturday"
+          }, {
+            "count" : 17,
+            "item" : "Thursday"
+          }, {
+            "count" : 16,
+            "item" : "Sunday"
+          }, {
+            "count" : 15,
+            "item" : "Monday"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654758,
+        "name" : "START TIME",
+        "dataTypeName" : "text",
+        "fieldName" : "start_time",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115335,
+        "width" : 160,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "10:00 AM",
+          "null" : 0,
+          "largest" : "9:30 AM",
+          "top" : [ {
+            "count" : 20,
+            "item" : "4:00 PM"
+          }, {
+            "count" : 19,
+            "item" : "2:00 PM"
+          }, {
+            "count" : 18,
+            "item" : "7:00 AM"
+          }, {
+            "count" : 17,
+            "item" : "10:00 AM"
+          }, {
+            "count" : 16,
+            "item" : "8:00 AM"
+          }, {
+            "count" : 15,
+            "item" : "9:00 AM"
+          }, {
+            "count" : 14,
+            "item" : "3:00 PM"
+          }, {
+            "count" : 13,
+            "item" : "11:00 AM"
+          }, {
+            "count" : 12,
+            "item" : "2:30 PM"
+          }, {
+            "count" : 11,
+            "item" : "9:30 AM"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654759,
+        "name" : "END TIME",
+        "dataTypeName" : "text",
+        "fieldName" : "end_time",
+        "position" : 5,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115336,
+        "width" : 129,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "1:00 PM",
+          "null" : 0,
+          "largest" : "8:00 PM",
+          "top" : [ {
+            "count" : 20,
+            "item" : "8:00 PM"
+          }, {
+            "count" : 19,
+            "item" : "7:00 PM"
+          }, {
+            "count" : 18,
+            "item" : "1:00 PM"
+          }, {
+            "count" : 17,
+            "item" : "3:00 PM"
+          }, {
+            "count" : 16,
+            "item" : "2:00 PM"
+          }, {
+            "count" : 15,
+            "item" : "4:00 PM"
+          }, {
+            "count" : 14,
+            "item" : "6:30 PM"
+          }, {
+            "count" : 13,
+            "item" : "1:30 PM"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654760,
+        "name" : "START DATE",
+        "dataTypeName" : "calendar_date",
+        "fieldName" : "start_date",
+        "position" : 6,
+        "renderTypeName" : "calendar_date",
+        "tableColumnId" : 28115337,
+        "width" : 159,
+        "cachedContents" : {
+          "non_null" : 45,
+          "smallest" : "2015-04-22T00:00:00",
+          "null" : 2,
+          "largest" : "2015-09-28T00:00:00",
+          "top" : [ {
+            "count" : 20,
+            "item" : "2015-07-08T00:00:00"
+          }, {
+            "count" : 19,
+            "item" : "2015-06-30T00:00:00"
+          }, {
+            "count" : 18,
+            "item" : "2015-06-13T00:00:00"
+          }, {
+            "count" : 17,
+            "item" : "2015-06-20T00:00:00"
+          }, {
+            "count" : 16,
+            "item" : "2015-06-18T00:00:00"
+          }, {
+            "count" : 15,
+            "item" : "2015-06-02T00:00:00"
+          }, {
+            "count" : 14,
+            "item" : "2015-05-09T00:00:00"
+          }, {
+            "count" : 13,
+            "item" : "2015-07-01T00:00:00"
+          }, {
+            "count" : 12,
+            "item" : "2015-06-06T00:00:00"
+          }, {
+            "count" : 11,
+            "item" : "2015-07-02T00:00:00"
+          }, {
+            "count" : 10,
+            "item" : "2015-05-14T00:00:00"
+          }, {
+            "count" : 9,
+            "item" : "2015-05-19T00:00:00"
+          }, {
+            "count" : 8,
+            "item" : "2015-06-25T00:00:00"
+          }, {
+            "count" : 7,
+            "item" : "2015-06-27T00:00:00"
+          }, {
+            "count" : 6,
+            "item" : "2015-06-28T00:00:00"
+          }, {
+            "count" : 5,
+            "item" : "2015-05-20T00:00:00"
+          }, {
+            "count" : 4,
+            "item" : "2015-06-07T00:00:00"
+          }, {
+            "count" : 3,
+            "item" : "2015-05-13T00:00:00"
+          }, {
+            "count" : 2,
+            "item" : "2015-04-22T00:00:00"
+          }, {
+            "count" : 1,
+            "item" : "2015-06-04T00:00:00"
+          } ]
+        },
+        "format" : {
+          "view" : "date",
+          "align" : "left"
+        }
+      }, {
+        "id" : 202654761,
+        "name" : "END DATE",
+        "dataTypeName" : "calendar_date",
+        "fieldName" : "end_date",
+        "position" : 7,
+        "renderTypeName" : "calendar_date",
+        "tableColumnId" : 28115338,
+        "width" : 144,
+        "cachedContents" : {
+          "non_null" : 45,
+          "smallest" : "2015-08-17T00:00:00",
+          "null" : 2,
+          "largest" : "2015-10-31T00:00:00",
+          "top" : [ {
+            "count" : 20,
+            "item" : "2015-09-02T00:00:00"
+          }, {
+            "count" : 19,
+            "item" : "2015-09-29T00:00:00"
+          }, {
+            "count" : 18,
+            "item" : "2015-10-24T00:00:00"
+          }, {
+            "count" : 17,
+            "item" : "2015-10-10T00:00:00"
+          }, {
+            "count" : 16,
+            "item" : "2015-10-15T00:00:00"
+          }, {
+            "count" : 15,
+            "item" : "2015-10-27T00:00:00"
+          }, {
+            "count" : 14,
+            "item" : "2015-10-31T00:00:00"
+          }, {
+            "count" : 13,
+            "item" : "2015-09-30T00:00:00"
+          }, {
+            "count" : 12,
+            "item" : "2015-10-01T00:00:00"
+          }, {
+            "count" : 11,
+            "item" : "2015-10-29T00:00:00"
+          }, {
+            "count" : 10,
+            "item" : "2015-10-28T00:00:00"
+          }, {
+            "count" : 9,
+            "item" : "2015-09-26T00:00:00"
+          }, {
+            "count" : 8,
+            "item" : "2015-10-03T00:00:00"
+          }, {
+            "count" : 7,
+            "item" : "2015-09-27T00:00:00"
+          }, {
+            "count" : 6,
+            "item" : "2015-10-07T00:00:00"
+          }, {
+            "count" : 5,
+            "item" : "2015-10-14T00:00:00"
+          }, {
+            "count" : 4,
+            "item" : "2015-10-04T00:00:00"
+          }, {
+            "count" : 3,
+            "item" : "2015-10-25T00:00:00"
+          }, {
+            "count" : 2,
+            "item" : "2015-09-23T00:00:00"
+          }, {
+            "count" : 1,
+            "item" : "2015-09-21T00:00:00"
+          } ]
+        },
+        "format" : {
+          "view" : "date",
+          "align" : "left"
+        }
+      }, {
+        "id" : 202654762,
+        "name" : "WEBSITE",
+        "dataTypeName" : "url",
+        "fieldName" : "website",
+        "position" : 8,
+        "renderTypeName" : "url",
+        "tableColumnId" : 28115339,
+        "width" : 334,
+        "cachedContents" : {
+          "non_null" : 46,
+          "smallest" : {
+            "url" : "http://JeffersonParkSundayMarket.com"
+          },
+          "null" : 1,
+          "largest" : {
+            "url" : "http://wickerparkbucktown.com/farmers-market/about"
+          },
+          "top" : [ {
+            "count" : 20,
+            "item" : {
+              "url" : "http://chicagofarmersmarkets.us"
+            }
+          }, {
+            "count" : 19,
+            "item" : {
+              "url" : "http://chicagobotanic.org/urbanagriculture"
+            }
+          }, {
+            "count" : 18,
+            "item" : {
+              "url" : "http://andersonville.org/events/andersonvillefarmers-market/"
+            }
+          }, {
+            "count" : 17,
+            "item" : {
+              "url" : "http://friendsofportagepark.org"
+            }
+          }, {
+            "count" : 16,
+            "item" : {
+              "url" : "http://tifoods.com/urbanislandersmarket"
+            }
+          }, {
+            "count" : 15,
+            "item" : {
+              "url" : "http://growinghomeinc.org/our-farms/"
+            }
+          }, {
+            "count" : 14,
+            "item" : {
+              "url" : "http://southloopfarmersmarket.com"
+            }
+          }, {
+            "count" : 13,
+            "item" : {
+              "url" : "http://LincolnSquareRavenswood.org"
+            }
+          }, {
+            "count" : 12,
+            "item" : {
+              "url" : "http://glenwoodsundaymarket.org"
+            }
+          }, {
+            "count" : 11,
+            "item" : {
+              "url" : "http://experimentalstation.org/farmers-market"
+            }
+          }, {
+            "count" : 10,
+            "item" : {
+              "url" : "http://logansquarefarmersmarket.org"
+            }
+          }, {
+            "count" : 9,
+            "item" : {
+              "url" : "http://wickerparkbucktown.com/farmers-market/about"
+            }
+          }, {
+            "count" : 8,
+            "item" : {
+              "url" : "http://seawaybank.us"
+            }
+          }, {
+            "count" : 7,
+            "item" : {
+              "url" : "http://farmersmarket.hornerpark.org"
+            }
+          }, {
+            "count" : 6,
+            "item" : {
+              "url" : "http://blogs.luc.edu/farmersmarket/"
+            }
+          }, {
+            "count" : 5,
+            "item" : {
+              "url" : "http://JeffersonParkSundayMarket.com"
+            }
+          }, {
+            "count" : 4,
+            "item" : {
+              "url" : "http://pilsencommunitymarket.org"
+            }
+          }, {
+            "count" : 3,
+            "item" : {
+              "url" : "http://greencitymarket.org"
+            }
+          }, {
+            "count" : 2,
+            "item" : {
+              "url" : "http://lakeviewchamber.com/ssa-27/low-line-market-.aspx"
+            }
+          }, {
+            "count" : 1,
+            "item" : {
+              "url" : "http://weisshospital.com"
+            }
+          } ]
+        },
+        "format" : { },
+        "subColumnTypes" : [ "url", "description" ]
+      }, {
+        "id" : 202654763,
+        "name" : "TYPE",
+        "dataTypeName" : "text",
+        "fieldName" : "type",
+        "position" : 9,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115340,
+        "width" : 125,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "Downtown",
+          "null" : 0,
+          "largest" : "Neighborhood",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Neighborhood"
+          }, {
+            "count" : 19,
+            "item" : "Downtown"
+          }, {
+            "count" : 18,
+            "item" : "Independent"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654764,
+        "name" : "LINK ACCEPTED",
+        "dataTypeName" : "text",
+        "fieldName" : "link_accepted",
+        "position" : 10,
+        "renderTypeName" : "text",
+        "tableColumnId" : 28115341,
+        "width" : 176,
+        "cachedContents" : {
+          "non_null" : 47,
+          "smallest" : "N",
+          "null" : 0,
+          "largest" : "Y",
+          "top" : [ {
+            "count" : 20,
+            "item" : "Y"
+          }, {
+            "count" : 19,
+            "item" : "N"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654765,
+        "name" : "LATITUDE",
+        "dataTypeName" : "number",
+        "fieldName" : "latitude",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 28115342,
+        "width" : 143,
+        "cachedContents" : {
+          "non_null" : 46,
+          "smallest" : "41.686898",
+          "sum" : "1926.81304066",
+          "null" : 1,
+          "average" : "41.88724001434783",
+          "largest" : "42.0083615",
+          "top" : [ {
+            "count" : 20,
+            "item" : "41.8848705"
+          }, {
+            "count" : 19,
+            "item" : "42.0008961"
+          }, {
+            "count" : 18,
+            "item" : "41.9149395"
+          }, {
+            "count" : 17,
+            "item" : "41.943836"
+          }, {
+            "count" : 16,
+            "item" : "41.88679"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654766,
+        "name" : "LONGITUDE",
+        "dataTypeName" : "number",
+        "fieldName" : "longitude",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 28115343,
+        "width" : 157,
+        "cachedContents" : {
+          "non_null" : 46,
+          "smallest" : "-87.767046",
+          "sum" : "-4032.74777346",
+          "null" : 1,
+          "average" : "-87.66842985782609",
+          "largest" : "-87.590568",
+          "top" : [ {
+            "count" : 20,
+            "item" : "-87.7062339"
+          }, {
+            "count" : 19,
+            "item" : "-87.6607393"
+          }, {
+            "count" : 18,
+            "item" : "-87.6342005"
+          }, {
+            "count" : 17,
+            "item" : "-87.66392"
+          }, {
+            "count" : 16,
+            "item" : "-87.6475031"
+          } ]
+        },
+        "format" : { }
+      }, {
+        "id" : 202654767,
+        "name" : "MAP",
+        "dataTypeName" : "location",
+        "fieldName" : "map",
+        "position" : 13,
+        "renderTypeName" : "location",
+        "tableColumnId" : 28115344,
+        "width" : 276,
+        "cachedContents" : {
+          "non_null" : 46,
+          "smallest" : {
+            "longitude" : "-87.6611589",
+            "latitude" : "41.8578656"
+          },
+          "null" : 1,
+          "largest" : {
+            "longitude" : "-87.6475031",
+            "latitude" : "41.88679"
+          },
+          "top" : [ {
+            "count" : 20,
+            "item" : {
+              "longitude" : "-87.7062339",
+              "latitude" : "41.8848705"
+            }
+          }, {
+            "count" : 19,
+            "item" : {
+              "longitude" : "-87.6607393",
+              "latitude" : "42.0008961"
+            }
+          }, {
+            "count" : 18,
+            "item" : {
+              "longitude" : "-87.6342005",
+              "latitude" : "41.9149395"
+            }
+          }, {
+            "count" : 17,
+            "item" : {
+              "longitude" : "-87.66392",
+              "latitude" : "41.943836"
+            }
+          }, {
+            "count" : 16,
+            "item" : {
+              "longitude" : "-87.6475031",
+              "latitude" : "41.88679"
+            }
+          } ]
+        },
+        "format" : { },
+        "subColumnTypes" : [ "human_address", "latitude", "longitude", "machine_address", "needs_recoding" ]
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "custom_fields" : {
+          "Metadata" : {
+            "Last Updated Date via Automated Load" : "",
+            "Time Period" : "2015",
+            "Data Owner" : "Cultural Affairs & Special Events",
+            "Frequency" : "Updated as needed"
+          }
+        },
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+      },
+      "owner" : {
+        "id" : "3qqc-w7ag",
+        "displayName" : "Tom Schenk Jr",
+        "profileImageUrlLarge" : "/api/users/3qqc-w7ag/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/3qqc-w7ag/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/3qqc-w7ag/profile_images/TINY",
+        "roleName" : "administrator",
+        "screenName" : "Tom Schenk Jr",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards", "manage_provenance", "create_story", "edit_story_title_desc", "create_story_copy", "delete_story", "manage_story_collaborators", "manage_story_visibility", "manage_story_public_version", "edit_story", "view_unpublished_story", "view_story", "view_all_dataset_status_logs" ]
+      },
+      "query" : { },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "3qqc-w7ag",
+        "displayName" : "Tom Schenk Jr",
+        "profileImageUrlLarge" : "/api/users/3qqc-w7ag/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/3qqc-w7ag/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/3qqc-w7ag/profile_images/TINY",
+        "roleName" : "administrator",
+        "screenName" : "Tom Schenk Jr",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards", "manage_provenance", "create_story", "edit_story_title_desc", "create_story_copy", "delete_story", "manage_story_collaborators", "manage_story_visibility", "manage_story_public_version", "edit_story", "view_unpublished_story", "view_story", "view_all_dataset_status_logs" ]
+      },
+      "tags" : [ "food", "events", "gis", "sustainability" ],
+      "flags" : [ "default" ]
+    }
+  },
+  "data" : [ [ 1, "FB306215-59F4-40FF-AEC6-64AC01A5E557", 1, 1431044201, "700397", 1431044201, "700397", "{\n}", "Pilsen Night Market", "18th St. & Blue Island Ave.", "Wednesday", "4:00 PM", "8:00 PM", "2015-07-08T00:00:00", "2015-09-02T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.8578656", "-87.6611589", [ null, "41.8578656", "-87.6611589", null, false ] ]
+, [ 2, "1DF2099D-CEE5-4BC7-BAFC-F33ECF790289", 2, 1431044201, "700397", 1431044201, "700397", "{\n}", "Columbus Park", "Harrison & Central", "Tuesday", "2:00 PM", "7:00 PM", "2015-06-30T00:00:00", "2015-09-29T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.87263635", "-87.76501013", [ null, "41.87263635", "-87.76501013", null, false ] ]
+, [ 3, "0CCF013A-420C-48EA-8E1E-70A4B5D12702", 3, 1431044201, "700397", 1431044201, "700397", "{\n}", "Northcenter", "Lincoln & Belle Plaine", "Saturday", "7:00 AM", "1:00 PM", "2015-06-13T00:00:00", "2015-10-24T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.95597563", "-87.67910157", [ null, "41.95597563", "-87.67910157", null, false ] ]
+, [ 4, "85704C5A-DDB9-4D93-A4C1-B67C9D21E2C4", 4, 1431044201, "700397", 1431044201, "700397", "{\n}", "Printers Row", "Dearborn & Polk", "Saturday", "7:00 AM", "1:00 PM", "2015-06-20T00:00:00", "2015-10-24T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.87228245", "-87.6291295", [ null, "41.87228245", "-87.6291295", null, false ] ]
+, [ 5, "75BE030A-FC9A-4DD3-B546-861EDF05CB1F", 5, 1431044201, "700397", 1431044201, "700397", "{\n}", "Garfield Park (Monthly on 2nd Saturdays)", "Lake & Kedzie", "Saturday", "10:00 AM", "1:00 PM", "2015-06-13T00:00:00", "2015-10-10T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.8848705", "-87.7062339", [ null, "41.8848705", "-87.7062339", null, false ] ]
+, [ 6, "F8EC0F3B-BECF-4D5B-BDA6-B642DCD268D5", 6, 1431044201, "700397", 1431044201, "700397", "{\n}", "Garfield Park (Monthly on 3rd Thursdays)", "Lake & Kedzie", "Thursday", "10:00 AM", "1:00 PM", "2015-06-18T00:00:00", "2015-10-15T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.8848705", "-87.7062339", [ null, "41.8848705", "-87.7062339", null, false ] ]
+, [ 7, "EA0995C5-8CA8-4299-9FDE-7F20572A8C12", 7, 1431044201, "700397", 1431044201, "700397", "{\n}", "Lincoln Square", "Lincoln/Leland/Western", "Tuesday", "7:00 AM", "1:00 PM", "2015-06-02T00:00:00", "2015-10-27T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.96648354", "-87.68874981", [ null, "41.96648354", "-87.68874981", null, false ] ]
+, [ 8, "4E01CEC2-6FE7-4F21-8BE4-5C22586971B1", 8, 1431044201, "700397", 1431044201, "700397", "{\n}", "Division Street", "Division & Dearborn", "Saturday", "7:00 AM", "1:00 PM", "2015-05-09T00:00:00", "2015-10-31T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.90392319", "-87.62998609", [ null, "41.90392319", "-87.62998609", null, false ] ]
+, [ 9, "454927C8-73BB-42C0-91C7-3C8B1A8F3F0D", 9, 1431044201, "700397", 1431044201, "700397", "{\n}", "La Follette Park", "1333 N. Laramie Ave.", "Wednesday", "2:00 PM", "7:00 PM", "2015-07-01T00:00:00", "2015-09-30T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.90504906", "-87.75555328", [ null, "41.90504906", "-87.75555328", null, false ] ]
+, [ 10, "4DE257C1-DC14-4602-95A2-EEC740C35F63", 10, 1431044201, "700397", 1431044201, "700397", "{\n}", "Lincoln Park", "Armitage & Orchard", "Saturday", "7:00 AM", "1:00 PM", "2015-06-06T00:00:00", "2015-10-31T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.918257", "-87.646017", [ null, "41.918257", "-87.646017", null, false ] ]
+, [ 11, "97598CE2-5C52-476E-AA16-02EA14E7CA3F", 11, 1431044201, "700397", 1431044201, "700397", "{\n}", "Austin Town Hall", "Lake & Central", "Saturday", "2:00 PM", "7:00 PM", "2015-07-02T00:00:00", "2015-10-01T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.88784113", "-87.76525281", [ null, "41.88784113", "-87.76525281", null, false ] ]
+, [ 12, "8687ABBD-F75D-468F-88B2-5A8D0D092B36", 12, 1431044201, "700397", 1431044201, "700397", "{\n}", "Daley Plaza", "Washington & Dearborn", "Thursday", "7:00 AM", "3:00 PM", "2015-05-14T00:00:00", "2015-10-29T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Downtown", "Y", "41.88346159", "-87.63001202", [ null, "41.88346159", "-87.63001202", null, false ] ]
+, [ 13, "1B94C90F-4CAF-4FFA-8C08-4EFDCF435A6F", 13, 1431044201, "700397", 1431044201, "700397", "{\n}", "Federal Plaza", "Adams & Dearborn", "Tuesday", "7:00 AM", "3:00 PM", "2015-05-19T00:00:00", "2015-10-27T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Downtown", "Y", "41.87912229", "-87.62961735", [ null, "41.87912229", "-87.62961735", null, false ] ]
+, [ 14, "0F240F80-8F1A-42ED-B5F9-E47877B4C441", 14, 1431044201, "700397", 1431044201, "700397", "{\n}", "Pullman", "111th & Cottage Grove", "Wednesday", "7:00 AM", "1:00 PM", "2015-07-08T00:00:00", "2015-10-28T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.69182489", "-87.61006528", [ null, "41.69182489", "-87.61006528", null, false ] ]
+, [ 15, "FFA20278-7E8D-4CD2-9ACC-17E9807D38BB", 15, 1431044201, "700397", 1431044201, "700397", "{\n}", "Willis Tower Plaza", "233 S. Wacker Drive", "Thursday", "7:00 AM", "3:00 PM", "2015-06-25T00:00:00", "2015-10-29T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Downtown", "Y", "41.87734375", "-87.63661967", [ null, "41.87734375", "-87.63661967", null, false ] ]
+, [ 16, "3F7181B5-597E-4627-BBF6-4705234E8B2C", 16, 1431044201, "700397", 1431044201, "700397", "{\n}", "West Humboldt Park", "3601 W. Chicago Ave.", "Saturday", "10:00 AM", "2:00 PM", "2015-06-27T00:00:00", "2015-09-26T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.89527979", "-87.71657105", [ null, "41.89527979", "-87.71657105", null, false ] ]
+, [ 17, "D0925D7D-EFC0-49DB-93A4-FE5B70069666", 17, 1431044201, "700397", 1431044201, "700397", "{\n}", "Near West Side", "Location TBD", "Saturday", "4:00 PM", "8:00 PM", null, null, [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", null, null, [ null, null, null, null, null ] ]
+, [ 18, "66B9DB35-A676-4F9B-9243-893D26858BE4", 18, 1431044201, "700397", 1431044201, "700397", "{\n}", "Englewood/ Anchor House", "71st & Racine", "Saturday", "8:00 AM", "1:00 PM", "2015-06-27T00:00:00", "2015-10-03T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.765042", "-87.6541122", [ null, "41.765042", "-87.6541122", null, false ] ]
+, [ 19, "4BE9F5B6-EFD3-485C-BFC3-571B6E69559E", 19, 1431044201, "700397", 1431044201, "700397", "{\n}", "Ford City", "7601 S. Cicero Ave.", "Wednesday", "8:00 AM", "1:00 PM", "2015-07-08T00:00:00", "2015-09-30T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.7536343", "-87.7331374", [ null, "41.7536343", "-87.7331374", null, false ] ]
+, [ 20, "B85D3C6B-8CDF-4905-B22F-4E6E0F0EE358", 20, 1431044201, "700397", 1431044201, "700397", "{\n}", "Bronzeville", "Dr. Martin Luther King Jr. Dr. & 26th St.", "Saturday", "10:00 AM", "2:00 PM", null, null, [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.8451793", "-87.6180851", [ null, "41.8451793", "-87.6180851", null, false ] ]
+, [ 21, "EF713DA0-B1BA-43F5-BBA6-2AF00AC2826C", 21, 1431044201, "700397", 1431044201, "700397", "{\n}", "Perry Avenue Community Market", "5749 S. Perry Ave.", "Sunday", "10:00 AM", "2:00 PM", "2015-06-28T00:00:00", "2015-09-27T00:00:00", [ "http://chicagofarmersmarkets.us", null ], "Neighborhood", "Y", "41.7895449", "-87.627372", [ null, "41.7895449", "-87.627372", null, false ] ]
+, [ 22, "A50E313C-895E-4147-BBA6-8B387FBBD08D", 22, 1431044201, "700397", 1431044201, "700397", "{\n}", "Chicago Botanic Garden's Windy City Harvest (Washington Park)", "555 E. 51st St.", "Wednesday", "9:00 AM", "1:00 PM", "2015-07-08T00:00:00", "2015-10-07T00:00:00", [ "http://chicagobotanic.org/urbanagriculture", null ], "Independent", "Y", "41.8013958", "-87.6123864", [ null, "41.8013958", "-87.6123864", null, false ] ]
+, [ 23, "0A437F29-1B56-471E-894B-5FD770AEF7CA", 23, 1431044201, "700397", 1431044201, "700397", "{\n}", "Chicago Botanic Garden's Windy City Harvest (Lawndale)", "3750 W. Ogden Ave.", "Wednesday", "9:00 AM", "1:00 PM", "2015-07-08T00:00:00", "2015-10-07T00:00:00", [ "http://chicagobotanic.org/urbanagriculture", null ], "Independent", "Y", "41.8533645", "-87.7192132", [ null, "41.8533645", "-87.7192132", null, false ] ]
+, [ 24, "8A81F86B-79EC-4197-AB69-4850758E6430", 24, 1431044201, "700397", 1431044201, "700397", "{\n}", "Andersonville Farmers Market", "1500 W. Berwyn (between Clark and Ashland)", "Wednesday", "3:00 PM", "8:00 PM", "2015-05-20T00:00:00", "2015-10-14T00:00:00", [ "http://andersonville.org/events/andersonvillefarmers-market/", null ], "Independent", "Y", "41.9780083", "-87.6683433", [ null, "41.9780083", "-87.6683433", null, false ] ]
+, [ 25, "61961F0A-9964-4F1E-BFCC-089FB3CCC50F", 25, 1431044201, "700397", 1431044201, "700397", "{\n}", "Portage Park Farmers Market", "Berteau & Central (NW corner of park)", "Sunday", "10:00 AM", "2:00 PM", "2015-06-07T00:00:00", "2015-10-04T00:00:00", [ "http://friendsofportagepark.org", null ], "Independent", "Y", "41.956796", "-87.767046", [ null, "41.956796", "-87.767046", null, false ] ]
+, [ 26, "5A017162-5A81-458D-8951-7E63C86B2264", 26, 1431044201, "700397", 1431044201, "700397", "{\n}", "The Urban Islander's Market", "Treasure Island Foods 2121 N. Clybourn Ave.", "Wednesday", "3:00 PM", "8:00 PM", "2015-05-13T00:00:00", "2015-09-30T00:00:00", [ "http://tifoods.com/urbanislandersmarket", null ], "Independent", "Y", "41.920092", "-87.6619038", [ null, "41.920092", "-87.6619038", null, false ] ]
+, [ 27, "AE5B46EB-938F-479A-AAA1-8BC651FF8F98", 27, 1431044201, "700397", 1431044201, "700397", "{\n}", "Growing Home's Wood St. Farm Stand", "5814 S. Wood St.", "Wednesday", "11:00 AM", "4:00 PM", "2015-04-22T00:00:00", "2015-10-28T00:00:00", [ "http://growinghomeinc.org/our-farms/", null ], "Independent", "Y", "41.787897", "-87.669475", [ null, "41.787897", "-87.669475", null, false ] ]
+, [ 28, "15AF12CF-C943-40EF-BE12-AF8030C2868E", 28, 1431044201, "700397", 1431044201, "700397", "{\n}", "South Loop Farmers Market", "1936 S. Michigan Ave.", "Thursday", "4:00 PM", "8:00 PM", "2015-06-25T00:00:00", "2015-10-15T00:00:00", [ "http://southloopfarmersmarket.com", null ], "Independent", "N", "41.8557577", "-87.6243496", [ null, "41.8557577", "-87.6243496", null, false ] ]
+, [ 29, "AE607B87-0DB7-4DCE-8EE6-0F0C9F9841D1", 29, 1431044201, "700397", 1431044201, "700397", "{\n}", "Lincoln Square Thursday Evening Farmers Market", "2301 W. Leland Ave.", "Thursday", "4:00 PM", "8:00 PM", "2015-06-04T00:00:00", "2015-10-29T00:00:00", [ "http://LincolnSquareRavenswood.org", null ], "Independent", "N", "41.9668208", "-87.6875001", [ null, "41.9668208", "-87.6875001", null, false ] ]
+, [ 30, "4DB7B918-1F09-447D-89FD-678345C08E6D", 30, 1431044201, "700397", 1431044201, "700397", "{\n}", "Glenwood Sunday Market", "6900 N. Glenwood Ave.", "Sunday", "9:00 AM", "2:00 PM", "2015-06-07T00:00:00", "2015-10-25T00:00:00", [ "http://glenwoodsundaymarket.org", null ], "Independent", "Y", "42.0083615", "-87.6663239", [ null, "42.0083615", "-87.6663239", null, false ] ]
+, [ 31, "B4366B1C-A6D1-4BA3-B275-A84CBD1F1FC7", 31, 1431044201, "700397", 1431044201, "700397", "{\n}", "61st Street Farmers Market", "6100 S. Blackstone Ave.", "Saturday", "9:00 AM", "2:00 PM", "2015-05-16T00:00:00", "2015-10-31T00:00:00", [ "http://experimentalstation.org/farmers-market", null ], "Independent", "Y", "41.78407", "-87.590568", [ null, "41.78407", "-87.590568", null, false ] ]
+, [ 32, "7FD3EF24-4659-4408-B8FD-A7ADD25C1E1E", 32, 1431044201, "700397", 1431044201, "700397", "{\n}", "Logan Square Farmers Market", "3107 W. Logan Blvd.", "Sunday", "10:00 AM", "3:00 PM", "2015-05-17T00:00:00", "2015-10-25T00:00:00", [ "http://logansquarefarmersmarket.org", null ], "Independent", "Y", "41.9279548", "-87.7052487", [ null, "41.9279548", "-87.7052487", null, false ] ]
+, [ 33, "A3477BE1-32D6-4771-AF21-C6FE266A940C", 33, 1431044201, "700397", 1431044201, "700397", "{\n}", "Wicker Park Farmers Market", "1425 N. Damen Ave.", "Sunday", "8:00 AM", "2:00 PM", "2015-06-14T00:00:00", "2015-10-25T00:00:00", [ "http://wickerparkbucktown.com/farmers-market/about", null ], "Independent", "Y", "41.9080486", "-87.676738", [ null, "41.9080486", "-87.676738", null, false ] ]
+, [ 34, "E942D0BD-D281-4A41-9479-659A57852676", 34, 1431044201, "700397", 1431044201, "700397", "{\n}", "Seaway Bank Farmers Market", "87th Street and Langley Ave. (SE corner)", "Wednesday", "9:00 AM", "2:00 PM", "2015-07-22T00:00:00", "2015-09-23T00:00:00", [ "http://seawaybank.us", null ], "Independent", "Y", "41.7366468", "-87.6072612", [ null, "41.7366468", "-87.6072612", null, false ] ]
+, [ 35, "27C9763C-74E8-469C-AD09-CACA91089234", 35, 1431044201, "700397", 1431044201, "700397", "{\n}", "Horner Park Farmers Market", "2741 W. Montrose Ave.", "Saturday", "9:00 AM", "1:00 PM", "2015-06-06T00:00:00", "2015-10-03T00:00:00", [ "http://farmersmarket.hornerpark.org", null ], "Independent", "N", "41.960554", "-87.6977103", [ null, "41.960554", "-87.6977103", null, false ] ]
+, [ 36, "20A2BC39-40BE-404B-85DD-C14183E641F8", 36, 1431044201, "700397", 1431044201, "700397", "{\n}", "Loyola Farmers Market", "1200 W. Loyola Ave. (Loyola Red Line stop)", "Monday", "3:00 PM", "7:00 PM", "2015-06-08T00:00:00", "2015-09-21T00:00:00", [ "http://blogs.luc.edu/farmersmarket/", null ], "Independent", "Y", "42.0008961", "-87.6607393", [ null, "42.0008961", "-87.6607393", null, false ] ]
+, [ 37, "A05792D5-B21E-4A32-A655-C6C43D1FA4C9", 37, 1431044201, "700397", 1431044201, "700397", "{\n}", "Loyola Farmers Market", "1200 W. Loyola Ave. (Loyola Red Line stop)", "Monday", "2:30 PM", "6:30 PM", "2015-09-28T00:00:00", "2015-10-12T00:00:00", [ "http://blogs.luc.edu/farmersmarket/", null ], "Independent", "Y", "42.0008961", "-87.6607393", [ null, "42.0008961", "-87.6607393", null, false ] ]
+, [ 38, "0ACD54FE-F114-4E90-89D8-F68538C6880E", 38, 1431044201, "700397", 1431044201, "700397", "{\n}", "Jefferson Park Sunday Market (2nd and 4th Sundays)", "4800 N. Long Ave.", "Sunday", "9:30 AM", "1:30 PM", "2015-06-14T00:00:00", "2015-10-25T00:00:00", [ "http://JeffersonParkSundayMarket.com", null ], "Independent", "N", "41.9676712", "-87.7625765", [ null, "41.9676712", "-87.7625765", null, false ] ]
+, [ 39, "99AA05C5-F95A-47A7-8B6A-8F89CA3F1CF2", 39, 1431044201, "700397", 1431044201, "700397", "{\n}", "Pilsen Community Market", "1800 S. Halsted (Byline Bank parking lot)", "Sunday", "9:00 AM", "2:00 PM", "2015-05-31T00:00:00", "2015-10-25T00:00:00", [ "http://pilsencommunitymarket.org", null ], "Independent", "Y", "41.8578369", "-87.6469366", [ null, "41.8578369", "-87.6469366", null, false ] ]
+, [ 40, "8A01E3E8-C189-4C9C-9972-99D1EAD98835", 40, 1431044201, "700397", 1431044201, "700397", "{\n}", "Green City Market - Lincoln Park", "1800 N. Clark St. (South end of Lincoln Park)", "Wednesday", "7:00 AM", "1:00 PM", "2015-05-06T00:00:00", "2015-10-28T00:00:00", [ "http://greencitymarket.org", null ], "Independent", "Y", "41.9149395", "-87.6342005", [ null, "41.9149395", "-87.6342005", null, false ] ]
+, [ 41, "5F69C415-D69A-497A-8FA0-7D65BE118C0C", 41, 1431044201, "700397", 1431044201, "700397", "{\n}", "Green City Market - Lincoln Park", "1800 N. Clark St. (South end of Lincoln Park)", "Saturday", "7:00 AM", "1:00 PM", "2015-05-02T00:00:00", "2015-10-31T00:00:00", [ "http://greencitymarket.org", null ], "Independent", "Y", "41.9149395", "-87.6342005", [ null, "41.9149395", "-87.6342005", null, false ] ]
+, [ 42, "8DC66ED2-D077-4266-B0ED-815FF3C28EA4", 42, 1431044201, "700397", 1431044201, "700397", "{\n}", "Lowline Market", "Southport Brown Line station auxiliary exit (3410 N. Southport)", "Thursday", "3:00 PM", "8:00 PM", "2015-06-04T00:00:00", "2015-09-03T00:00:00", [ "http://lakeviewchamber.com/ssa-27/low-line-market-.aspx", null ], "Independent", "N", "41.943836", "-87.66392", [ null, "41.943836", "-87.66392", null, false ] ]
+, [ 43, "EA9E0826-70CB-41DF-B1EF-B20450404F75", 43, 1431044201, "700397", 1431044201, "700397", "{\n}", "Lowline Market", "Southport Brown Line station auxiliary exit (3410 N. Southport)", "Thursday", "3:00 PM", "7:00 PM", "2015-09-10T00:00:00", "2015-10-08T00:00:00", [ "http://lakeviewchamber.com/ssa-27/low-line-market-.aspx", null ], "Independent", "N", "41.943836", "-87.66392", [ null, "41.943836", "-87.66392", null, false ] ]
+, [ 44, "F8E3DC18-9C24-4238-B5E6-DF5281CBEB30", 44, 1431044201, "700397", 1431044201, "700397", "{\n}", "Weiss Uptown Farmers Market", "4646 N. Marine Dr.", "Thursday", "7:00 AM", "1:00 PM", "2015-06-04T00:00:00", "2015-10-22T00:00:00", [ "http://weisshospital.com", null ], "Independent", "Y", "41.9664324", "-87.6493557", [ null, "41.9664324", "-87.6493557", null, false ] ]
+, [ 45, "651A8700-FC37-4680-BB66-97F831264ADB", 45, 1431044201, "700397", 1431044201, "700397", "{\n}", "Edgewater Farmers Market", "1200 W. Norwood St.", "Saturday", "8:00 AM", "1:00 PM", "2015-06-13T00:00:00", "2015-08-17T00:00:00", [ "http://edgewater.org", null ], "Independent", "N", "41.9918134", "-87.6603395", [ null, "41.9918134", "-87.6603395", null, false ] ]
+, [ 46, "5B8C75E0-8AEF-4575-AE51-47C2D92C759D", 46, 1431044201, "700397", 1431044201, "700397", "{\n}", "Roseland Community Farmers Market", "11400 S. Michigan Ave.", "Saturday", "10:00 AM", "3:00 PM", "2015-04-25T00:00:00", "2015-08-28T00:00:00", [ null, null ], "Independent", "Y", "41.686898", "-87.621256", [ null, "41.686898", "-87.621256", null, false ] ]
+, [ 47, "C0FD785F-9213-49D4-971C-FFFDFA9DD282", 47, 1431044201, "700397", 1431044201, "700397", "{\n}", "Green City Market - Fulton", "Fulton & Halsted", "Saturday", "7:00 AM", "1:00 PM", "2015-06-06T00:00:00", "2015-10-31T00:00:00", [ "http://greencitymarket.org", null ], "Independent", "Y", "41.88679", "-87.6475031", [ null, "41.88679", "-87.6475031", null, false ] ]
+ ]}

@@ -1,0 +1,199 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/README.md
+index 20517f4..e1557ba 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/README.md
+@@ -4,20 +4,11 @@
+ 
+ 2. Keywords: Price, Freshness, Availability
+ 
+-3. Currently, I have used no datasets, but I intend to use the required Climate
+-dataset, as well as farmers market data in Chicago and some data that I will scrape
+-from local grocery stores. I am also looking into using the Yelp API to display
+-store ratings.
+-
+-4. Kick-Ass Crops will help a user find the best, freshest, cheapest fruits and
+-vegetables in the area. It will accomplish this by sorting through climate data
+-to determine what might be available locally given precipitation figures, and
+-scraping through stores in the area to determine where the user might find the
+-best and cheapest produce. Kick-Ass Crops will also serve as an excellent source
+-for cross referencing store qualities, as Yelp reviews for each store will be 
+-available side by side along with the price of their desired produce. If a given
+-plant is either unavailable (out of season, etc.) or too expensive for the user,
+-Kick-Ass Crops will provide them with an alternative that they might also enjoy.
++3. I ended up trying to use the Climate Dataset, but I could not get it to work. I did compile a small list of local farmers' markets
++and grocery stores, and their locations.
++
++4. Kick-Ass Crops ended up being a solid learning experience for me. I was able to begin using JS, and I made an overlay for Google
++Maps. I didn't achieve the goals I set out to, but it was perhaps a good start.
+ 
+ Map View:
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/climate.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/climate.js
+new file mode 100644
+index 0000000..5340fcf
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/climate.js
+@@ -0,0 +1,2 @@
++curl -H "token:sZSVSuTKUpZimolrktatiZdVUvFNXQUj" "url"
++$.ajax({ url:http://www.ncdc.noaa.gov/cdo-web/api/v2/datasets, data:{<data>}, headers:{ token:sZSVSuTKUpZimolrktatiZdVUvFNXQUj } })
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/find_stores.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/find_stores.js
+deleted file mode 100644
+index 3095574..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/find_stores.js
++++ /dev/null
+@@ -1,7 +0,0 @@
+-/**
+-Uses markets.js and stores.js to determine which locations are best to get the desired produce.
+-**/
+-
+-include markets.js and stores.js
+-
+-Interface markets and stores to find list of potential markets and stores that carry given produce, as well as information about the markets/stores
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/index.html
+new file mode 100644
+index 0000000..bff027c
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/index.html
+@@ -0,0 +1,94 @@
++<!DOCTYPE html>
++<meta charset="utf-8">
++<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
++<style>
++
++html, body, #map {
++  width: 100%;
++  height: 100%;
++  margin: 0;
++  padding: 0;
++}
++
++.stations, .stations svg {
++  position: absolute;
++}
++
++.stations svg {
++  width: 60px;
++  height: 20px;
++  padding-right: 100px;
++  font: 10px sans-serif;
++}
++
++.stations circle {
++  fill: brown;
++  stroke: black;
++  stroke-width: 1.5px;
++}
++
++</style>
++<div id="map"></div>
++<script src="//maps.google.com/maps/api/js?sensor=true"></script>
++<script src="//d3js.org/d3.v3.min.js"></script>
++<script>
++
++// Create the Google Map…
++var map = new google.maps.Map(d3.select("#map").node(), {
++  zoom: 10,
++  center: new google.maps.LatLng(41.87160608, -87.63038635),
++  mapTypeId: google.maps.MapTypeId.TERRAIN
++});
++
++// Load the station data. When the data comes back, create an overlay.
++d3.json("stations.json", function(error, data) {
++  if (error) throw error;
++
++  var overlay = new google.maps.OverlayView();
++
++  // Add the container when the overlay is added to the map.
++  overlay.onAdd = function() {
++    var layer = d3.select(this.getPanes().overlayLayer).append("div")
++        .attr("class", "stations");
++
++    // Draw each marker as a separate SVG element.
++    // We could use a single SVG, but what size would it have?
++    overlay.draw = function() {
++      var projection = this.getProjection(),
++          padding = 10;
++
++      var marker = layer.selectAll("svg")
++          .data(d3.entries(data))
++          .each(transform) // update existing markers
++        .enter().append("svg")
++          .each(transform)
++          .attr("class", "marker");
++
++      // Add a circle.
++      marker.append("circle")
++          .attr("r", 4.5)
++          .attr("cx", padding)
++          .attr("cy", padding);
++
++      // Add a label.
++      marker.append("text")
++          .attr("x", padding + 7)
++          .attr("y", padding)
++          .attr("dy", ".31em")
++          .text(function(d) { return d.key; });
++
++      function transform(d) {
++        d = new google.maps.LatLng(d.value[1], d.value[0]);
++        d = projection.fromLatLngToDivPixel(d);
++        return d3.select(this)
++            .style("left", (d.x - padding) + "px")
++            .style("top", (d.y - padding) + "px");
++      }
++    };
++  };
++
++  // Bind our overlay to the map…
++  overlay.setMap(map);
++});
++
++</script>
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/markets.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/markets.js
+deleted file mode 100644
+index 67ba22d..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/markets.js
++++ /dev/null
+@@ -1,8 +0,0 @@
+-/**
+-Uses climate.js and data from Chicago farmers markets to determine what vegetables might be available in local
+-farmers markets, and also information on hours, availability, etc. for local farmers markets.
+-**/
+-
+-connect to farmers market data API With token
+-
+-crawl through farmers market data to find useful information about markets matching produce criteria
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/stations.json b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/stations.json
+new file mode 100644
+index 0000000..9b4ef5d
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-jeffkeilmann/stations.json
+@@ -0,0 +1,11 @@
++{"Lincoln Park Farmers Market":[-87.6460907,41.9182217,"Lincoln Park Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"SOAR Farmers Market":[-87.6216664,41.8968672,"SOAR Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Pilsen Farmers Market":[-87.6466781,41.858101,"Pilsen Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Independence Park Farmers Market":[-87.7248516,41.9534394,"Independence Park Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Wood Street Urban Farm":[-87.6695085,41.7880107,"Wood Street Urban Farm ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Lincoln Square Farmers Market":[-87.687504,41.9668326,"Lincoln Square Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Logan Square Farmers Market":[-87.7104851,41.9312976,"Logan Square Farmers Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Chicago's Downtown Farmstand":[-87.625494,41.8848747,"Chicago's Downtown Farmstand ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Evergreen Park Farmers' Market":[-87.701713,41.729735,"Evergreen Park Farmers' Market ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Jewel-Osco":[-87.6286026,41.8922263,"Jewel-Osco ",[32,2,7,3,1,1,2,7,9,17,16,2,1]],
++"Walmart":[-87.642278,41.880757,"Walmart ",[32,2,7,3,1,1,2,7,9,17,16,2,1]]}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/stores.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/stores.js
+deleted file mode 100644
+index a8f59de..0000000
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-jeffkeilmann/stores.js
++++ /dev/null
+@@ -1,5 +0,0 @@
+-/**
+-Find information about local stores and also scrapes their sites for prices on produce.
+-**/
+-
+-Pull data from store websites concerning available produce In the area, as well as store information including hours, etc.
+\ No newline at end of file

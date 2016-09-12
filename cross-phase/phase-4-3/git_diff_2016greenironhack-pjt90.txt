@@ -1,0 +1,208 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/FreshVeggies/CSS/Fresh Veggies.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/FreshVeggies/CSS/Fresh Veggies.css
+index 4052af9..5ee985c 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/FreshVeggies/CSS/Fresh Veggies.css	
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/FreshVeggies/CSS/Fresh Veggies.css	
+@@ -18,3 +18,35 @@
+ 	height: 100%;
+     background: #808080;
+ }
++
++#menu-cover{
++	position: absolute;
++	top: 3%;
++	left: 3%;
++    height: 89%;
++	width: 80%;
++	/* define the background color of the information panel */
++	background-color: #edeff1;
++	/* set radius for the ellipse frame */
++    border-radius: 11px;
++    /* add paddings so there would be some blank spaces around the informaiton panel */
++    padding: 24px 23px 20px;
++    /* settings for the font */
++    font-family: "Lato",Helvetica,Arial,sans-serif;
++    font-size: 15px;
++    overflow-y: auto;
++}
++
++.menu-line{
++	height: 50px;
++    border-radius: 11px;
++    box-shadow: none;
++    color: #34495e;
++    font-family: "Lato",Helvetica,Arial,sans-serif;
++    font-size: 15px;
++    line-height: 1.467;
++    padding: 4px 4px;
++}
++
++	
++
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/FreshVeggies/JS/closure-library-20160315.zip b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/FreshVeggies/JS/closure-library-20160315.zip
+deleted file mode 100644
+index 9edf950..0000000
+Binary files a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/FreshVeggies/JS/closure-library-20160315.zip and /dev/null differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/index.html
+index 1319416..a1a0027 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/index.html
+@@ -23,7 +23,36 @@
+   
+     <div id="map"></div>
+       <div id="information">
+-        <h1 style="color:red">Information will be displayed here</h1>
++          <!--<h1 style="color:red">Information will be displayed here</h1>-->
++          <div id="menu-cover" class="menu-line">
++              
++              <div id="position-info">
++                  <div id="market" class="menu-line">
++                      <div id="market-name"></div>
++                      <!--<div id="website" ></div>-->
++                  </div>
++                  <div id="website" class="menu-line"></div>
++                  <!--<div id="street-name" class="menu-line"></div>-->
++                  <div id="dates" class="menu-line"></div>
++                  <div id="hours" class="menu-line"></div>
++                  <div id="organic" class="menu-line"></div>
++                  <div id="bakedgoods" class="menu-line"></div>
++                  <div id="cheese" class="menu-line"></div>
++                  <div id="crafts" class="menu-line"></div>
++                  <div id="flowers" class="menu-line"></div>
++                  <div id="eggs" class="menu-line"></div>
++                  <div id="seafood" class="menu-line"></div>
++                  <div id="herbs" class="menu-line"></div>
++                  <div id="vegetables" class="menu-line"></div>
++                  <div id="honey" class="menu-line"></div>
++                  <div id="jams" class="menu-line"></div>
++                  <div id="mushrooms" class="menu-line"></div>
++              </div>
++              <div id="chart">
++              </div>
++              <div id="scores" class="menu-line"></div>
++              <div id="comments" class="menu-line"></div>
++          </div>
+       </div>
+ 
+       
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/scripts.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/scripts.js
+index 0342afb..6822af4 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase3/2016greenironhack-pjt90/scripts.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase4/2016greenironhack-pjt90/scripts.js
+@@ -1,4 +1,4 @@
+-var map, marker, infowindow, urlzip, url, xmlhttp, zip, latitude, longitude;
++var map, marker, infowindow, urlzip, url, xmlhttp, zip, latitude, longitude,storage,globalmarker,incaseoferror;
+ var disableListener = false;
+ 
+ //initialize map on homepage
+@@ -28,8 +28,29 @@ function initMap() {
+     //    marker.setIcon('https://www.google.com/mapfiles/marker_green.png');
+     //});
+ 
+-    //Code for placing current location marker on mouse click
++    //function clearMarkers() {
++    //    console.log("Entered clearMarkers");
++    //    google.maps.Map.prototype.markers = new Array();
++
++    //    google.maps.Map.prototype.addMarker = function (marker) {
++    //        this.markers[this.markers.length] = marker;
++    //    };
++
++    //    google.maps.Map.prototype.getMarkers = function () {
++    //        return this.markers
++    //    };
++
++    //    google.maps.Map.prototype.clearMarkers = function () {
++    //        for (var i = 0; i < this.markers.length; i++) {
++    //            this.markers[i].setMap(null);
++    //        }
++    //        this.markers = new Array();
++    //    };
++    //}
++
+ 
++
++    //Code for placing current location marker on mouse click
+     function placeMarker(location) {
+         if (disableListener) {
+             return;
+@@ -43,6 +64,7 @@ function initMap() {
+                 map: map
+             });
+         }
++        //clearMarkers();
+         geocodeLatLng(geocoder, map, infowindow);
+     }
+     google.maps.event.addListener(map, 'click', function (event) {
+@@ -212,7 +234,9 @@ function initMap() {
+ 
+                             function setMarkers(washedData,map)
+                             {
+-                                
++                                globalmarker = [];
++                                storage = [];
++                                storage = washedData;
+                                 marketMarker = [];
+                                 var marketMarker;
+                                 var image = {
+@@ -232,23 +256,56 @@ function initMap() {
+                                 //display markers on map
+                                 for (var i=0; i<washedData.length;i++)
+                                 {
+-                                    disableListener = true;
++                                    console.log(i);
++                                    //disableListener = true;
+                                     var market = washedData[i];
+-                                    console.log(market);
++                                    //console.log(market);
+                                     myLatlng = new google.maps.LatLng(market[4], market[3]);
+                                     marketMarker[i] = new google.maps.Marker({
+                                         position: myLatlng,
+                                         map: map,
+                                         icon: image,
+                                         shape: shape,
+-                                        title: market[1],
++                                        title: market[0],
+                                         zIndex: 1
+                                     });
+-                                    marketMarker[i].addListener('click', function() {
++                                    marketMarker[i].addListener("click", function (event) {
++                                        var lat=0, long=0, counter = 0,title;
++                                        title = this.title;
++                                        console.log(title);
++                                       
++                                        for (counter in storage)
++                                        {
++                                            if(storage[counter][0]==title)
++                                            {
++                                                console.log(storage);
++                                                console.log(storage[counter]);
++                                                document.getElementById('market-name').innerHTML = storage[counter][0];
++                                                document.getElementById('dates').innerHTML = storage[counter][1];
++                                                document.getElementById('hours').innerHTML = storage[counter][2];
++                                                document.getElementById('website').innerHTML = storage[counter][6];
++                                                document.getElementById('organic').innerHTML = "Organic? - " + storage[counter][5];
++                                                document.getElementById('bakedgoods').innerHTML = "Baked Goods? - " + storage[counter][7];
++                                                document.getElementById('cheese').innerHTML = "Cheese? - " + storage[counter][8];
++                                                document.getElementById('crafts').innerHTML = "Crafts? - " + storage[counter][9];
++                                                document.getElementById('flowers').innerHTML = "Flowers? - " + storage[counter][10];
++                                                document.getElementById('eggs').innerHTML = "Eggs? - " + storage[counter][11];
++                                                document.getElementById('seafood').innerHTML = "Seafood? - " + storage[counter][12];
++                                                document.getElementById('herbs').innerHTML = "Herbs? - " + storage[counter][13];
++                                                document.getElementById('vegetables').innerHTML = "Vegetables? - " + storage[counter][14];
++                                                document.getElementById('honey').innerHTML = "Honey? - " + storage[counter][15];
++                                                document.getElementById('jams').innerHTML = "Seafood? - " + storage[counter][16];
++                                                document.getElementById('mushrooms').innerHTML = "Mushrooms? - " + storage[counter][17];
++
++                                                break;
+ 
++                                            }
++                                            counter++;
++                                        }
+                                     });
++                                    globalmarker = marketMarker;
+                                 }
+-                                disableListener = false;
++                                //disableListener = false;
+ 
+                                 
+                                 //add markers on the map

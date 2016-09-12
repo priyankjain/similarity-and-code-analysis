@@ -1,0 +1,303 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/README.md
+index 08e3989..09452e0 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/README.md
+@@ -5,15 +5,29 @@ freshness, price, transportation convenience, accurate, availability
+ 
+ 2. Description of the datasets and function design
+ Climate Data Online[http://catalog.data.gov/dataset/climate-data-online-cdo]provides free access to NCDC's archive of global historical weather and climate data in addition to station history information. The application use CDO APIs to retrieve the current weather.
++National Farmers Market Directory[https://www.ams.usda.gov/local-food-directories/farmersmarkets]The Directory is designed to provide customers with convenient access to information about farmers market listings to include: market locations, directions, operating times, product offerings, accepted forms of payment, and more.
+ 
+ 3. Brief Description
+-With Cheapest, you can find the store that offers "Best" vegetable. The definition of "Best" would depend on you. If you think freshness is the most important, then Cheapest would tell you where you can buy fresh vegetable by listing all the stores sorted by freshness of their vegetables. When distance is your priority and freshness is second factor, Cheapest would help you find the nearest store with fresh vegetables.  
++With Cheapest, you can find the store that offers "Best" vegetable. The definition of "Best" would depend on you. If you think freshness is the most important, then Cheapest would tell you where you can buy fresh vegetable by listing all the stores sorted by freshness of their vegetables. When distance is your priority and freshness is second factor, Cheapest would help you find the nearest store with fresh vegetables.  Moreover, Cheapest would help you check if the food is available or not and filter the result according to your choice. Cheapest would also estimate the price trend of the food you search according to the recent weather conditions. Enjoy the Cheapest!
+  
+  * Map View:
+-	1. Basic Map with specific location (Greater Lafayette Area)
+-	2. Markers for location of markets
+-	3. Labels for markets' names
+-	4. InfoWindow to show detail information of a market
++	1. [Y] Basic Map with specific location (your map is located in a meaningful place, city of west lafayette for example)
++	2. [Y] Markers for location of markets
++	3. [Y] Labels for markets' names
++	4. [Y] InfoWindow to show detail information of a market
++	5. [N] [describe] Any other cover on the map (for example, cloud cover to show the weather effect)
++
++ * Data Visualization:
++	1. [N] [describe] Use Graph? What is the type? (bar chart, pie chart, radar chart ...)
++	2. [N] [List] Any interaction available on the graph? List them (enable click on numbers, drag on lines, change time/variables ...)
++	
++ * Interaction Form:
++	1. [N] [List] Any information output? list them. (text field, text area, label, plain HTML ...)
++	2. [N] [List] Any operation option (filters)? List them. (search markets, search vegetables, filter based on price, sort based on convenience ...)
++	3. [N] [List] Any information input? List them. (comments, markers, user preference ...)
++	4. [N] [List] Interaction with Map? List them. (filter on price will affect map markers, sort on price will affect map markers, ...)
++	5. [N] [List] Interaction with data visualization? List them. (filter, sort, set variables ...)
++	
+ 
+ 4. Test Case
+ The project has been tested by Chrome, Edge, Safari, and Firefox.
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/c.jpg b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/c.jpg
+new file mode 100644
+index 0000000..c1f5242
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/c.jpg differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/css/style.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/style.css
+index d5770ec..79c8bb2 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/css/style.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/css/style.css
+@@ -1,28 +1,18 @@
+-
+-
+ html, body {
+ 	height: 100%;
+ 	margin: 0;
+-padding: 0; 
++	background-color: #f9f9f9;
++	width: auto;
+ }
+ 
+-#map{
+-	position: absolute;
+-	left: 40%;
+-    width: 60%;
+-    height: 100%;
+-}
+ 
+-.content{
+-	font-family: cursive;
+-	font-size: 16;
+-}
+-
+-#information{
+-	background-color: #edeff1;
++#menu{
++	background-color: #474747;
+ 	position: absolute;
+-	width: 40%;
++	width: 240px;
+ 	height: 100%;
++	top: 0px;
++	display: inline;
+ }
+ 
+ #input{
+@@ -40,20 +30,94 @@ padding: 0;
+ 	height: 50%;
+ }
+ 
+-#weather{
+-	border: 3px solid #73AD21;
+-	position: absolute;
+-	left: 50%;
+-	top: 50%;
+-	width: 50%;
+-	height: 50%;
++
++#headLine {
++	height: 60px;
++	color: #DDDDDD;
++	background-color: #FFFFFF;
++	width: 100%;
++	left: 240px;
++	position: fixed;
++
++}
++#logo {
++	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
++	font-size: 24px;
++	color: #DBDBDB;
++	font-style: normal;
++	text-align: center;
+ }
+ 
+-#storeInfo{
+-	border: 3px solid #73AD21;
++@media screen{
++#info {
++	height: 20px;
++	left: 240px;
++	top: 0px;
++	display: inline-block;
+ 	position: absolute;
+-	top: 50%;
+-	width: 50%;
+-	height: 50%;
++	-webkit-box-shadow: 0px 0px #646464;
++	box-shadow: 0px 0px #646464;
++}
++
++#map{
++	height: 100%;
++	width: 100%;
++}
++
++#logo {
++	margin-top: 15px;
++	color: #F3F3F3;
++	font-family: cabin;
++	font-style: normal;
++	font-weight: 400;
++}
++
++#logoIcon {
++}
++.navi {
++	color: #FBFBFB;
++	margin-top: 160px;
++	text-align: center;
++	font-size: large;
++	font-family: andika;
++	font-style: normal;
++	font-weight: 400;
++	height: 55px;
++	padding-top: 8px;
++	     -webkit-transition: background-color 0.2s;
++        -moz-transition:    background-color 0.2s;
++        -ms-transition:     background-color 0.2s;
++        -o-transition:      background-color 0.2s;
++        transition:         background-color 0.2s;
++}
++#index {
++}
++#indexIcon {
++	font-family: andika;
++	font-style: normal;
++	font-weight: 400;
++	width: auto;
++}
++#mapIcon {
++	margin-top: 0.1px;
++
++}
++
++    .navi:hover {
++		background-color: #363636;
++    }
++#content {
++	position: fixed;
++	top: 60px;
++	height: 100%;
++	width: 100%;
+ }
+ 
++
++
++
++
++
++
++
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/getMarket.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/getMarket.js
+new file mode 100644
+index 0000000..c597bea
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/getMarket.js
+@@ -0,0 +1,30 @@
++function getResults(zip) {
++    // or
++    // function getResults(lat, lng) {
++    $.ajax({
++        type: "GET",
++        contentType: "application/json; charset=utf-8",
++        // submit a get request to the restful service zipSearch or locSearch.
++        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
++        // or
++        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
++        dataType: 'jsonp',
++        jsonpCallback: 'searchResultsHandler'
++    });
++}
++//iterate through the JSON result object.
++function searchResultsHandler(searchResults) {
++    for (var key in searchresults) {
++        alert(key);
++        var results = searchresults[key];
++        for (var i = 0; i < results.length; i++) {
++            var result = results[i];
++            for (var key in result) {
++                //only do an alert on the first search result
++                if (i == 0) {
++                    alert(result[key]);
++                }
++            }
++        }
++    }
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/index.html
+index 9f5b529..106d7fe 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase1/2016greenironhack-huayifang/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/index.html
+@@ -6,32 +6,28 @@
+ 
+ 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+ 	<script src="javascript/map.js" type="text/javascript"></script>	
++    <script src="javascript/getMarket.js" type="text/javascript">getResults(47906)</script>
+ 	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
++  <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/andika:n4:default;cabin:n4:default.js" type="text/javascript"></script>
++  <script type="text/javascript">
++    $(document).ready(function(){
++         $("#mapIcon").click(function(){
++             document.getElementById("content").innerHTML = "<p>You may close this window <a href='javascript:closeWindow("+myvar+","+mytxt+");'>here</a></p>";
++         });
++    });
++</script>
+ </head>
+   <body>
+-  	<div id="information">
+-		<div id="input">
+-			Here will be the input
+-		</div>
+-		<div id="analysis">
+-		Here will be analysis result like some graphes
+-		</div>
+-		<div id="weather">
+-		Here will be the display of weather
+-		</div>
+-		<div id="storeInfo">
+-			<div id="market" class="menu-line">
+-				<div id="market-name" class="content"></div>
+-				<div id="website" class="content"></div>
++  <script src="javascript/getMarket.js" type="text/javascript">getResults(47906)</script>
++<div id="info">
++  <div id="headLine">&nbsp;</div>
++  <div id="content">&nbsp;</div>
+ </div>
+-			<div id="street-name" class="content"></div>
+-			<div id="open-status" class="content"></div>
++<div id="menu">
++<div id="logo"><img src="css/c.jpg" width="21" height="21" id="logoIcon">  CHEAPEST</div>
++  <div class="navi" id="indexIcon">Index</div>
++  <a href="map.html"><div class="navi" id="mapIcon">Map</div></a>
+ </div>
+-	</div>
+-	<div id="map">
+-	</div>
+-
+-
+   	<script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqhZ6hHcWDXbjajiHWtb5wGfYLdSaWDyo&callback=initMap">
+     </script>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/map.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/map.html
+new file mode 100644
+index 0000000..9992341
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/2016greenironhack-phase2/2016greenironhack-huayifang/map.html
+@@ -0,0 +1,16 @@
++<!doctype html>
++<html>
++<head>
++<meta charset="utf-8">
++<title>map</title>
++	<script src="javascript/map.js" type="text/javascript"></script>	
++<link href="css/style.css" rel="stylesheet" type="text/css">
++</head>
++
++<body>
++<div id="map"></div>
++  	<script async defer
++      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqhZ6hHcWDXbjajiHWtb5wGfYLdSaWDyo&callback=initMap">
++    </script>
++</body>
++</html>

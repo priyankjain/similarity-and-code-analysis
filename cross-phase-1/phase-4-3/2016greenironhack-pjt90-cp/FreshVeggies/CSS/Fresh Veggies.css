@@ -1,0 +1,35 @@
+ 	height: 100%;
+     background: #808080;
+ }
+
+#menu-cover{
+	position: absolute;
+	top: 3%;
+	left: 3%;
+    height: 89%;
+	width: 80%;
+	/* define the background color of the information panel */
+	background-color: #edeff1;
+	/* set radius for the ellipse frame */
+    border-radius: 11px;
+    /* add paddings so there would be some blank spaces around the informaiton panel */
+    padding: 24px 23px 20px;
+    /* settings for the font */
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    overflow-y: auto;
+}
+
+.menu-line{
+	height: 50px;
+    border-radius: 11px;
+    box-shadow: none;
+    color: #34495e;
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.467;
+    padding: 4px 4px;
+}
+
+	
+

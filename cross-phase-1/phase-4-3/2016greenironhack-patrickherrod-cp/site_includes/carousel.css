@@ -1,0 +1,24 @@
+   background-color: rgba(136, 136, 136, 0.4);
+ }
+ 
+#title > p {
+  display: inline;
+  margin-bottom: 5px;
+  font-family: 42px/1.1 "Raleway", sans-serif;
+  font-size: 25px;
+  color: #ffffff;
+  background-color: rgba(136, 136, 136, 0.4);
+}
+
+ /* MARKETING CONTENT
+ -------------------------------------------------- */
+ 
+ }
+ 
+ 
+.tooltip {
+    fill: #333333;
+}
+ /*
+ #mapText {
+   width:10%;
