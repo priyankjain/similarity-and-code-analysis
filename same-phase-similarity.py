@@ -122,8 +122,8 @@ def dumpSimilarityMetric(similarityDict, fileName):
 	for firstName, internalDict in similarityDict.items():
 		if count == 0:
 			csvwriter.writerow([""] + list(internalDict.keys()))
-		csvwriter.writerow([firstName] + [round(x, 3) for x in list(internalDict.values())])
-		count = 1
+			count = 1
+		csvwriter.writerow([firstName] + [round(x, 5) for x in list(internalDict.values())])		
 	similarity_matrix_file.close()
 
 def dumpNumberOfLines(projectDict, fileName):

@@ -4,6 +4,8 @@
 # Email: jain206@purdue.edu
 # Description: Compare cross-phase similarity between two different
 # participants in subsequent phases using MOSS
+# Pre-requisite: The same-phase-similarity script should have ran sucessfully
+# before this script is called
 #############################################################################
 import os
 import config
@@ -18,7 +20,7 @@ import traceback
 import requests
 import bs4
 import collections
-
+import csv
 
 def initializeMetricDictionaries():
 	crossPhaseSimilarityDict = collections.OrderedDict()
@@ -48,16 +50,21 @@ def interpretMOSSResults(soup, similarityDict):
 		for td in tr.select('td'):
 			txt = td.get_text().strip()
 			if count==0:			
-				bits = txt.split(" ")
-				firstProjectName  = bits[0].replace("/","").split("-")[-1].strip()
+				bits = txt.split(" ")	
+				if bits[0].endswith("-cp/"):
+					firstProjectName = bits[0].replace("/","").split("-")[-2].strip() + '-cp'
+				else:
+					firstProjectName = bits[0].replace("/","").split("-")[-1].strip()
 				firstProjectPercentage = int(bits[1].replace("(","").replace("%","").replace(")","").strip())
 			elif count==1:
 				bits = txt.split(" ")
-				secondProjectName = bits[0].replace("/","").split("-")[-1].strip()
+				if bits[0].endswith("-cp/"):
+					secondProjectName = bits[0].replace("/","").split("-")[-2].strip() + '-cp'
+				else:
+					secondProjectName = bits[0].replace("/","").split("-")[-1].strip()
 				secondProjectPercentage = int(bits[1].replace("(","").replace("%","").replace(")","").strip())
 			elif count==2:
 				linesMatched = int(txt)
-				print(firstProjectName, firstProjectPercentage, secondProjectName, secondProjectPercentage, linesMatched)
 				if (not firstProjectName.endswith("-cp") and secondProjectName.endswith("-cp")) \
 					or (not secondProjectName.endswith("-cp") and firstProjectName.endswith("-cp")):
 					similarity_score = None
@@ -70,6 +77,17 @@ def interpretMOSSResults(soup, similarityDict):
 					else:
 						similarityDict[secondProjectName][firstProjectName] = similarity_score
 			count = (count + 1) % 3
+
+def dumpSimilarityMetric(similarityDict, fileName):
+	similarity_matrix_file = open(fileName, 'w')
+	csvwriter = csv.writer(similarity_matrix_file, delimiter=",", quotechar='"')
+	count = 0
+	for firstName, internalDict in similarityDict.items():
+		if count == 0:
+			csvwriter.writerow([""] + list(internalDict.keys()))
+			count = 1
+		csvwriter.writerow([firstName] + [round(x, 5) for x in list(internalDict.values())])		
+	similarity_matrix_file.close()
 
 homedir = os.getcwd()
 logFile = open('cross-phase-similarity-{0}.log'.format(strftime('%Y-%m-%d-%H-%M-%S')), 'w')
@@ -194,8 +212,9 @@ for phase in range(2, 5):
 		interpretMOSSResults(soup, similarityDict)
 		pprint.pprint(similarityDict)
 		
+		#Dump cross-phase similarity metric
+		dumpSimilarityMetric(similarityDict, 'cross-phase-similarity-metric-phase-{0}-{1}.csv'.format(curPhase, prevPhase))
 	except Exception:
 		print("Exception occurred while processing phase {0}: {1}".format(phase, sys.exc_info()[0]))
 		print("Stack trace: ")
 		traceback.print_exc()
-		input()
