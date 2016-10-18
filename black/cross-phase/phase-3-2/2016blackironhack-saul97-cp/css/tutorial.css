@@ -1,0 +1,18 @@
+ 	padding: 0px;
+ }
+ #map{
+	width:50%;
+	height:400px;
+ }
+ 
+ #chart{
+ 	float: right;
+ 	height: 90%;
+ }
+
+#weather{
+       font-size:30px;
+       color:red;
+
+
+}	

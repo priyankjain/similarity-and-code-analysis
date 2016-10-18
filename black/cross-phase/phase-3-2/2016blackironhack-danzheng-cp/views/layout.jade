@@ -1,0 +1,23 @@
+         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+         meta(name='theme-color' content='#58498e')
+         meta(name='csrf-token', content=_csrf)
+        title TravelSmart
+        link(rel='shortcut icon', href='/globe.png')
+        link(rel='stylesheet', type='text/css', href='/css/main.css')
+        if (title=='Home')
+            link(rel='stylesheet', type='text/css' href='/css/lib/jquery.fullPage.css')
+            link(rel='stylesheet', type='text/css' href='/css/lib/c3-0.4.11.min.css')
+ 
+     if (title=='Home')
+         body.purple
+             include partials/footer
+         script(src='/js/lib/jquery-2.2.0.min.js')
+         script(src='/js/lib/bootstrap.min.js') 
+        script(src='/js/lib/jquery-ui.min.js')
+        script(src='/js/lib/jquery.fullPage.js')
+        script(src='/js/lib/moment.js')
+        script(src='/js/lib/d3-3.5.17.min.js')
+        script(src='/js/lib/c3-0.4.11.min.js')
+         script(src='/js/main.js')
+         script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB25869j0yLHkbkcxHeWU4njUz_l4Z5fYU&libraries=places&callback=initMap")
+     else

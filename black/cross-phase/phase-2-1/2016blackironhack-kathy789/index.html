@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travel Safe</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!--   Optional theme -->
+	<!--
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	-->
+	<!--
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    -->
+	<link rel="stylesheet" href="travelSafe.css" type="text/css"/>
+	<style type="text/css">
+		#map {
+			width: 100%;
+			height: 400px;
+			background-color: grey; 
+			margin: 60px;
+
+		}
+	</style>
+	
+    <script type="text/javascript">
+	    function initMap(){
+	        var mapDiv = document.getElementById('map'); //Line 1: Save reference to div element where map would be shown
+	        var map = new google.maps.Map(mapDiv, {//Line 2: Create Map object passing element reference, center and zoom as parameters
+	            center: {lat: 40.4237, lng: -86.9212}, //This is Purdue University's Location
+	            zoom: 12});
+
+	        // create a marker of  Purdue University location 
+	        var marker = new google.maps.Marker({ //Line 1
+            position: {lat: 40.4237, lng: -86.9212}, //Line2: Location to be highlighted
+            map: map,//Line 3: Reference to map object
+            title: 'Purdue University'   // when we hover over the marker, it will show to title.
+            }); //Line 4: Title to be given
+             
+            // creat a infor window    // info window need to be tested 
+            infowindow = new google.maps.InfoWindow({
+                       content: "This is Purdue University"
+                   });
+            google.maps.event.addListener(marker, 'click', function() {
+                       infowindow.setContent("Purdue University");
+                       infowindow.open(map, marker);
+                   });
+    }
+    </script>
+</head>
+<body>
+     <h3>Travel Safe Map </h3>
+     <div class="row">
+
+          <div id="side-menu" class=col-md-5>
+              <div>
+                   <p> Purdue University </p>
+              </div>
+              <div>hellow</div>
+              <div>world</div>
+              <div>iii</div>
+              <div>aaaa</div>
+
+          </div>
+          <div id="map" class=col-md-3></div>
+          
+     </div>     
+     <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaBmWXYjjXerU14M2QnPZGCd-zfyLB_MI&callback=initMap">
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Purdue Ironhacks Tutorial Project</title>
+  <style>
+     #map {
+       width :50%;
+       height :400px;
+       background-color: grey;
+     }
+     #weather {
+      
+       position: relative;
+       left:800px;
+       top: -50px;
+       width:50%;
+       height:400px;
+       background-color: grey;
+     }
+  </style>
+  
+ </head>
+  <body>
+    <h3>Purdue Ironhacks Tutorial Project</h3>
+    <div id="map"></div>
+    <div id="weather"></div>
+    <div id="marker"></div>
+    <script type = "text/javascript">
+	 
+	function initMap() {
+         var mapDiv = document.getElementById('map');
+	 var target = {lat:40.4167, lng:-86.8753};
+	 var map = new google.maps.Map(mapDiv, {
+		        center: target,
+			zoom:12});
+	
+
+	 var contentString = '<div id="content">' +
+		 '<div id="siteNotice">' +
+		 '</div>' +
+		 '<h1 id="firstHeading" class="firstHeading">Lafayette Area</h1>'+
+		 '<div id="bodyContent">'+
+		 '<p><b>This is Lafayette area</p>'
+		 '</div>'+
+		 '</div>';
+	 var infowindow = new google.maps.InfoWindow({
+			 content: contentString
+			 });
+	 var marker = new google.maps.Marker({
+			 position: target,
+			 map:map,
+			 titile:'Chicago'
+	 });
+	 marker.addListener('click',function() {
+			
+			 infowindow.open(map,marker);
+			 });
+
+	 }
+       
+ </script>
+     <script async defer 
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4lO1PjOC9xzRaOK86FJoht6VBFYcsB8&callback=initMap">
+    </script>
+  </body>
+
+  </html>
+

@@ -1,0 +1,937 @@
+Cmd arguments are  ['cross-phase-similarity.py']
+Calculating cross-phase similarity for phases 1 and 2
+Performing git diff for 2016blackironhack-danzheng across phase 1 and 2
+Creating directory 2016blackironhack-danzheng in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-danzheng
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/main.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/public/css/main.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/home.jade
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/layout.jade
+Completed processing 2016blackironhack-danzheng across phase 1 and 2
+Performing git diff for 2016blackironhack-thesoupgirl across phase 1 and 2
+Creating directory 2016blackironhack-thesoupgirl in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-thesoupgirl
+Completed processing 2016blackironhack-thesoupgirl across phase 1 and 2
+Performing git diff for 2016blackironhack-sauravn across phase 1 and 2
+Creating directory 2016blackironhack-sauravn in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-sauravn
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/AsterChart.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/JSON_template.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/RadarChart.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/asset/arrow_Sagar_Unagar.svg
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/asset/plus.svg
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/barGraph.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/bootstrap.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/bullet.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/comments-data.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/_setup.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/bootstrap.min.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/demo.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/flipclock.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/flipclock.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/font-awesome.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/jquery-comments.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/jquery.rating.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/main.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/noJS.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/reset.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/reset_table.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/star-rating.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/style.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/style_api.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/style_farmer.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/style_recipe.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/style_table.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/styles.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/css/tutorial.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/data/bower.json
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/data/package.json
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/datasheet.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/decisiontree.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/flipclock.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/font/fontawesome-webfont.svg
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/gauge.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/gulpfile.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/home.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/html5shiv.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery-1.7.1.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery-comments.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery-comments.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery.MetaData.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/jquery.easing.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/jquery.fullPage.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery.rating.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/jquery.rating.pack.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/justgage.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/main.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/map.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/maplace.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/modernizr.custom.79639.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/raphael-2.1.4.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/rbox.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/script.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/script_recipe.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/scripts.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/search.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/star-rating.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/tutorial.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/veggies.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn/walmart_api.js
+Completed processing 2016blackironhack-sauravn across phase 1 and 2
+Performing git diff for 2016blackironhack-saul97 across phase 1 and 2
+Creating directory 2016blackironhack-saul97 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-saul97
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-saul97/hack.html
+Completed processing 2016blackironhack-saul97 across phase 1 and 2
+Performing git diff for 2016blackironhack-drewatk across phase 1 and 2
+Creating directory 2016blackironhack-drewatk in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-drewatk
+Completed processing 2016blackironhack-drewatk across phase 1 and 2
+Performing git diff for 2016blackironhack-emmyzhang across phase 1 and 2
+Creating directory 2016blackironhack-emmyzhang in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-emmyzhang
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/content.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/css/main.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/home.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/main.js
+Completed processing 2016blackironhack-emmyzhang across phase 1 and 2
+Performing git diff for 2016blackironhack-cg505 across phase 1 and 2
+Creating directory 2016blackironhack-cg505 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-cg505
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/app/components/App.jsx
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/Map.jsx
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/NewMap.jsx
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/labelsexample.jsx
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/brunch-config.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/initialize.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/package.json
+Completed processing 2016blackironhack-cg505 across phase 1 and 2
+Performing git diff for 2016blackironhack-lennax across phase 1 and 2
+Creating directory 2016blackironhack-lennax in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-lennax
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/.gitignore
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/Procfile
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/gunicorn_config.txt
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/requirements.txt
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/script.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/server.py
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/static/style.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax/templates-index.html
+Completed processing 2016blackironhack-lennax across phase 1 and 2
+Performing git diff for 2016blackironhack-kathy789 across phase 1 and 2
+Creating directory 2016blackironhack-kathy789 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-kathy789
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-kathy789/index.html
+Completed processing 2016blackironhack-kathy789 across phase 1 and 2
+Performing git diff for 2016blackironhack-rkp7 across phase 1 and 2
+Creating directory 2016blackironhack-rkp7 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-rkp7
+Completed processing 2016blackironhack-rkp7 across phase 1 and 2
+Performing git diff for 2016blackironhack-analyst1001 across phase 1 and 2
+Creating directory 2016blackironhack-analyst1001 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-analyst1001
+Completed processing 2016blackironhack-analyst1001 across phase 1 and 2
+Performing git diff for 2016blackironhack-chriscoraggio across phase 1 and 2
+Creating directory 2016blackironhack-chriscoraggio in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-chriscoraggio
+Completed processing 2016blackironhack-chriscoraggio across phase 1 and 2
+Performing git diff for 2016blackironhack-nathanamorin across phase 1 and 2
+Creating directory 2016blackironhack-nathanamorin in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-nathanamorin
+Completed processing 2016blackironhack-nathanamorin across phase 1 and 2
+Performing git diff for 2016blackironhack-pptx across phase 1 and 2
+Creating directory 2016blackironhack-pptx in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Inside project 2016blackironhack-pptx
+Completed processing 2016blackironhack-pptx across phase 1 and 2
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-danzheng
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-thesoupgirl to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-thesoupgirl
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-sauravn to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-sauravn
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-saul97 to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-saul97
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-drewatk to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-drewatk
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-emmyzhang
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505 to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-cg505
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-lennax to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-lennax
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-kathy789 to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-kathy789
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-rkp7 to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-rkp7
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-analyst1001 to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-analyst1001
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-nathanamorin to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-nathanamorin
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-pptx to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-pptx
+Checking files . . . 
+OK
+Uploading 2016blackironhack-analyst1001/RadarChart.js ...done.
+Uploading 2016blackironhack-analyst1001/map.js ...done.
+Uploading 2016blackironhack-analyst1001/script.js ...done.
+Uploading 2016blackironhack-analyst1001/tutorial.js ...done.
+Uploading 2016blackironhack-cg505-cp/brunch-config.js ...done.
+Uploading 2016blackironhack-cg505-cp/initialize.js ...done.
+Uploading 2016blackironhack-cg505/brunch-config.js ...done.
+Uploading 2016blackironhack-cg505/initialize.js ...done.
+Uploading 2016blackironhack-cg505/reducers.js ...done.
+Uploading 2016blackironhack-danzheng-cp/main.js ...done.
+Uploading 2016blackironhack-danzheng/app.js ...done.
+Uploading 2016blackironhack-danzheng/bootstrap.min.js ...done.
+Uploading 2016blackironhack-danzheng/home.js ...done.
+Uploading 2016blackironhack-danzheng/jquery-2.2.0.min.js ...done.
+Uploading 2016blackironhack-danzheng/main.js ...done.
+Uploading 2016blackironhack-drewatk/RadarChart.js ...done.
+Uploading 2016blackironhack-drewatk/script.js ...done.
+Uploading 2016blackironhack-drewatk/tutorial.js ...done.
+Uploading 2016blackironhack-emmyzhang-cp/main.js ...done.
+Uploading 2016blackironhack-emmyzhang/RadarChart.js ...done.
+Uploading 2016blackironhack-emmyzhang/main.js ...done.
+Uploading 2016blackironhack-emmyzhang/script.js ...done.
+Uploading 2016blackironhack-emmyzhang/tutorial.js ...done.
+Uploading 2016blackironhack-kathy789/RadarChart.js ...done.
+Uploading 2016blackironhack-kathy789/script.js ...done.
+Uploading 2016blackironhack-kathy789/tutorial.js ...done.
+Uploading 2016blackironhack-lennax-cp/script.js ...done.
+Uploading 2016blackironhack-lennax/script.js ...done.
+Uploading 2016blackironhack-nathanamorin/RadarChart.js ...done.
+Uploading 2016blackironhack-nathanamorin/bootstrap.js ...done.
+Uploading 2016blackironhack-nathanamorin/bootstrap.min.js ...done.
+Uploading 2016blackironhack-nathanamorin/index.js ...done.
+Uploading 2016blackironhack-nathanamorin/jquery.js ...done.
+Uploading 2016blackironhack-nathanamorin/jquery.min.js ...done.
+Uploading 2016blackironhack-nathanamorin/script.js ...done.
+Uploading 2016blackironhack-nathanamorin/tutorial.js ...done.
+Uploading 2016blackironhack-pptx/RadarChart.js ...done.
+Uploading 2016blackironhack-pptx/script.js ...done.
+Uploading 2016blackironhack-pptx/tutorial.js ...done.
+Uploading 2016blackironhack-rkp7/RadarChart.js ...done.
+Uploading 2016blackironhack-rkp7/script.js ...done.
+Uploading 2016blackironhack-rkp7/tutorial.js ...done.
+Uploading 2016blackironhack-saul97/RadarChart.js ...done.
+Uploading 2016blackironhack-saul97/script.js ...done.
+Uploading 2016blackironhack-saul97/tutorial.js ...done.
+Uploading 2016blackironhack-sauravn-cp/AsterChart.js ...done.
+Uploading 2016blackironhack-sauravn-cp/barGraph.js ...done.
+Uploading 2016blackironhack-sauravn-cp/bootstrap.min.js ...done.
+Uploading 2016blackironhack-sauravn-cp/datasheet.js ...done.
+Uploading 2016blackironhack-sauravn-cp/decisiontree.js ...done.
+Uploading 2016blackironhack-sauravn-cp/gauge.js ...done.
+Uploading 2016blackironhack-sauravn-cp/jquery.easing.min.js ...done.
+Uploading 2016blackironhack-sauravn-cp/jquery.fullPage.js ...done.
+Uploading 2016blackironhack-sauravn-cp/main.js ...done.
+Uploading 2016blackironhack-sauravn-cp/map.js ...done.
+Uploading 2016blackironhack-sauravn-cp/maplace.js ...done.
+Uploading 2016blackironhack-sauravn-cp/veggies.js ...done.
+Uploading 2016blackironhack-sauravn/JSON_template.js ...done.
+Uploading 2016blackironhack-sauravn/RadarChart.js ...done.
+Uploading 2016blackironhack-sauravn/bootstrap.min.js ...done.
+Uploading 2016blackironhack-sauravn/bullet.js ...done.
+Uploading 2016blackironhack-sauravn/comments-data.js ...done.
+Uploading 2016blackironhack-sauravn/flipclock.js ...done.
+Uploading 2016blackironhack-sauravn/gauge.js ...done.
+Uploading 2016blackironhack-sauravn/gulpfile.js ...done.
+Uploading 2016blackironhack-sauravn/html5shiv.min.js ...done.
+Uploading 2016blackironhack-sauravn/jquery-1.7.1.min.js ...done.
+Uploading 2016blackironhack-sauravn/jquery-comments.js ...done.
+Uploading 2016blackironhack-sauravn/jquery-comments.min.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.MetaData.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.rating.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.rating.pack.js ...done.
+Uploading 2016blackironhack-sauravn/justgage.js ...done.
+Uploading 2016blackironhack-sauravn/map.js ...done.
+Uploading 2016blackironhack-sauravn/modernizr.custom.79639.js ...done.
+Uploading 2016blackironhack-sauravn/raphael-2.1.4.min.js ...done.
+Uploading 2016blackironhack-sauravn/rbox.js ...done.
+Uploading 2016blackironhack-sauravn/script.js ...done.
+Uploading 2016blackironhack-sauravn/script_api.js ...done.
+Uploading 2016blackironhack-sauravn/script_recipe.js ...done.
+Uploading 2016blackironhack-sauravn/scripts.js ...done.
+Uploading 2016blackironhack-sauravn/search.js ...done.
+Uploading 2016blackironhack-sauravn/star-rating.js ...done.
+Uploading 2016blackironhack-sauravn/tutorial.js ...done.
+Uploading 2016blackironhack-sauravn/walmart_api.js ...done.
+Uploading 2016blackironhack-thesoupgirl/RadarChart.js ...done.
+Uploading 2016blackironhack-thesoupgirl/script.js ...done.
+Uploading 2016blackironhack-thesoupgirl/tutorial.js ...done.
+Uploading 2016blackironhack-analyst1001/home.html ...done.
+Uploading 2016blackironhack-analyst1001/index2.html ...done.
+Uploading 2016blackironhack-cg505-cp/index.html ...done.
+Uploading 2016blackironhack-cg505/index.html ...done.
+Uploading 2016blackironhack-drewatk/home.html ...done.
+Uploading 2016blackironhack-emmyzhang-cp/content.html ...done.
+Uploading 2016blackironhack-emmyzhang-cp/home.html ...done.
+Uploading 2016blackironhack-emmyzhang/home.html ...done.
+Uploading 2016blackironhack-kathy789-cp/index.html ...done.
+Uploading 2016blackironhack-kathy789/home.html ...done.
+Uploading 2016blackironhack-kathy789/index.html ...done.
+Uploading 2016blackironhack-lennax-cp/index.html ...done.
+Uploading 2016blackironhack-lennax/index.html ...done.
+Uploading 2016blackironhack-lennax/templates-index.html ...done.
+Uploading 2016blackironhack-nathanamorin/home.html ...done.
+Uploading 2016blackironhack-nathanamorin/index.html ...done.
+Uploading 2016blackironhack-pptx/home.html ...done.
+Uploading 2016blackironhack-rkp7/home.html ...done.
+Uploading 2016blackironhack-saul97-cp/hack.html ...done.
+Uploading 2016blackironhack-saul97/hack.html ...done.
+Uploading 2016blackironhack-saul97/home.html ...done.
+Uploading 2016blackironhack-sauravn-cp/home.html ...done.
+Uploading 2016blackironhack-sauravn/home.html ...done.
+Uploading 2016blackironhack-thesoupgirl/home.html ...done.
+Query submitted.  Waiting for the server's response.
+http://moss.stanford.edu/results/283015906
+
+OrderedDict([('sauravn-cp',
+              OrderedDict([('danzheng', 0.018),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0.013333333333333334),
+                           ('pptx', 0)])),
+             ('kathy789-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0.018823529411764708),
+                           ('kathy789', 0.01953488372093023),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('danzheng-cp',
+              OrderedDict([('danzheng', 0.01888888888888889),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('chriscoraggio-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('cg505-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0.42387755102040814),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('nathanamorin-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('analyst1001-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('rkp7-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('drewatk-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('thesoupgirl-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('lennax-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.02666666666666667),
+                           ('cg505', 0),
+                           ('lennax', 0.09473684210526316),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('saul97-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('pptx-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('emmyzhang-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0.016),
+                           ('sauravn', 0),
+                           ('saul97', 0.016),
+                           ('drewatk', 0.015),
+                           ('emmyzhang', 0.3036144578313253),
+                           ('cg505', 0),
+                           ('lennax', 0.01),
+                           ('kathy789', 0.016),
+                           ('rkp7', 0.016),
+                           ('analyst1001', 0.016),
+                           ('nathanamorin', 0),
+                           ('pptx', 0.016)]))])
+Calculating cross-phase similarity for phases 2 and 3
+Performing git diff for 2016blackironhack-danzheng across phase 2 and 3
+Creating directory 2016blackironhack-danzheng in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-danzheng
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/c3-0.4.11.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/d3-3.5.17.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/jquery-ui.min.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/jquery.fullPage.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/main.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/moment.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/public/css/lib/c3-0.4.11.min.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/public/css/lib/jquery.fullPage.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/public/css/main.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/public/css/themes/modern/_variables.scss
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-danzheng/public/globe.svg
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/public/heart.svg
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/home.jade
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/layout.jade
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/partials/footer.jade
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/partials/header.jade
+Completed processing 2016blackironhack-danzheng across phase 2 and 3
+Performing git diff for 2016blackironhack-thesoupgirl across phase 2 and 3
+Creating directory 2016blackironhack-thesoupgirl in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-thesoupgirl
+Completed processing 2016blackironhack-thesoupgirl across phase 2 and 3
+Performing git diff for 2016blackironhack-sauravn across phase 2 and 3
+Creating directory 2016blackironhack-sauravn in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-sauravn
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-sauravn/css/main.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-sauravn/home.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-sauravn/main_maps.js
+Completed processing 2016blackironhack-sauravn across phase 2 and 3
+Performing git diff for 2016blackironhack-saul97 across phase 2 and 3
+Creating directory 2016blackironhack-saul97 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-saul97
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-saul97/css/tutorial.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-saul97/hack.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-saul97/main.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-saul97/mostWork.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-saul97/overView.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-saul97/script.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-saul97/tutorial.js
+Completed processing 2016blackironhack-saul97 across phase 2 and 3
+Performing git diff for 2016blackironhack-drewatk across phase 2 and 3
+Creating directory 2016blackironhack-drewatk in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-drewatk
+Completed processing 2016blackironhack-drewatk across phase 2 and 3
+Performing git diff for 2016blackironhack-emmyzhang across phase 2 and 3
+Creating directory 2016blackironhack-emmyzhang in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-emmyzhang
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/RadarChart.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/bootstrap-datepicker.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/css/main.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/css/datepicker.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/less/datepicker.less
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/home.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/main.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/script.js
+Completed processing 2016blackironhack-emmyzhang across phase 2 and 3
+Performing git diff for 2016blackironhack-cg505 across phase 2 and 3
+Creating directory 2016blackironhack-cg505 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-cg505
+Completed processing 2016blackironhack-cg505 across phase 2 and 3
+Performing git diff for 2016blackironhack-lennax across phase 2 and 3
+Creating directory 2016blackironhack-lennax in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-lennax
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/README.md
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/requirements.txt
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/script.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/server.py
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/static/style.css
+Completed processing 2016blackironhack-lennax across phase 2 and 3
+Performing git diff for 2016blackironhack-kathy789 across phase 2 and 3
+Creating directory 2016blackironhack-kathy789 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-kathy789
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-kathy789/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-kathy789/script.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-kathy789/travel.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-kathy789/travelSafe.css
+Completed processing 2016blackironhack-kathy789 across phase 2 and 3
+Performing git diff for 2016blackironhack-rkp7 across phase 2 and 3
+Creating directory 2016blackironhack-rkp7 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-rkp7
+Completed processing 2016blackironhack-rkp7 across phase 2 and 3
+Performing git diff for 2016blackironhack-analyst1001 across phase 2 and 3
+Creating directory 2016blackironhack-analyst1001 in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-analyst1001
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/States.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/alabama.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/alaska.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/american_samoa.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/arizona.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/arkansas.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/california.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/colorado.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/commonwealth_of_the_northern_mariana_islands.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/connecticut.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/delaware.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/district_of_columbia.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/florida.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/georgia.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/guam.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/hawaii.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/idaho.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/illinois.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/indiana.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/iowa.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/kansas.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/kentucky.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/louisiana.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/maine.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/maryland.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/massachusetts.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/michigan.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/minnesota.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/mississippi.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/missouri.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/montana.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/nebraska.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/nevada.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/new_hampshire.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/new_jersey.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/new_mexico.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/new_york.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/north_carolina.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/north_dakota.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/ohio.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/oklahoma.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/oregon.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/pennsylvania.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/puerto_rico.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/rhode_island.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/south_carolina.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/south_dakota.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/stateDataParser.py
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/tennessee.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/texas.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/utah.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/vermont.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/virgin_islands_of_the_united_states.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/virginia.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/washington.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/west_virginia.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/wisconsin.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/data/states/wyoming.kml
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-analyst1001/map.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-analyst1001/us_states.kml
+Completed processing 2016blackironhack-analyst1001 across phase 2 and 3
+Performing git diff for 2016blackironhack-chriscoraggio across phase 2 and 3
+Creating directory 2016blackironhack-chriscoraggio in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-chriscoraggio
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-chriscoraggio/circles.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-chriscoraggio/get_lat_lng.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-chriscoraggio/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-chriscoraggio/map-maker.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-chriscoraggio/report.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-chriscoraggio/resources/airports.json
+Completed processing 2016blackironhack-chriscoraggio across phase 2 and 3
+Performing git diff for 2016blackironhack-nathanamorin across phase 2 and 3
+Creating directory 2016blackironhack-nathanamorin in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-nathanamorin
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-nathanamorin/app/css/main.css
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-nathanamorin/geoxml3.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-nathanamorin/index.html
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-nathanamorin/index.js
+Processing file home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-nathanamorin/infobox_packed.js
+Completed processing 2016blackironhack-nathanamorin across phase 2 and 3
+Performing git diff for 2016blackironhack-pptx across phase 2 and 3
+Creating directory 2016blackironhack-pptx in /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2
+Inside project 2016blackironhack-pptx
+Completed processing 2016blackironhack-pptx across phase 2 and 3
+/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-sauravn-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-sauravn
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-kathy789-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-kathy789
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-danzheng-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-danzheng
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-chriscoraggio-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-chriscoraggio
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-cg505-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-cg505
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-nathanamorin-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-nathanamorin
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-analyst1001-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-analyst1001
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-rkp7-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-rkp7
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-drewatk-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-drewatk
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-thesoupgirl-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-thesoupgirl
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-lennax-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-lennax
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-saul97-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-saul97
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-pptx-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-pptx
+Copying directory /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-2-1/2016blackironhack-emmyzhang-cp to /home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/cross-phase/phase-3-2/2016blackironhack-emmyzhang
+Checking files . . . 
+OK
+Uploading 2016blackironhack-analyst1001-cp/map.js ...done.
+Uploading 2016blackironhack-cg505/brunch-config.js ...done.
+Uploading 2016blackironhack-cg505/initialize.js ...done.
+Uploading 2016blackironhack-chriscoraggio-cp/circles.js ...done.
+Uploading 2016blackironhack-chriscoraggio-cp/get_lat_lng.js ...done.
+Uploading 2016blackironhack-chriscoraggio-cp/map-maker.js ...done.
+Uploading 2016blackironhack-chriscoraggio-cp/report.js ...done.
+Uploading 2016blackironhack-danzheng-cp/c3-0.4.11.min.js ...done.
+Uploading 2016blackironhack-danzheng-cp/d3-3.5.17.min.js ...done.
+Uploading 2016blackironhack-danzheng-cp/jquery-ui.min.js ...done.
+Uploading 2016blackironhack-danzheng-cp/jquery.fullPage.js ...done.
+Uploading 2016blackironhack-danzheng-cp/main.js ...done.
+Uploading 2016blackironhack-danzheng-cp/moment.js ...done.
+Uploading 2016blackironhack-danzheng/main.js ...done.
+Uploading 2016blackironhack-emmyzhang-cp/RadarChart.js ...done.
+Uploading 2016blackironhack-emmyzhang-cp/bootstrap-datepicker.js ...done.
+Uploading 2016blackironhack-emmyzhang-cp/main.js ...done.
+Uploading 2016blackironhack-emmyzhang-cp/script.js ...done.
+Uploading 2016blackironhack-emmyzhang/main.js ...done.
+Uploading 2016blackironhack-kathy789-cp/script.js ...done.
+Uploading 2016blackironhack-kathy789-cp/travel.js ...done.
+Uploading 2016blackironhack-lennax-cp/script.js ...done.
+Uploading 2016blackironhack-lennax/script.js ...done.
+Uploading 2016blackironhack-nathanamorin-cp/geoxml3.js ...done.
+Uploading 2016blackironhack-nathanamorin-cp/index.js ...done.
+Uploading 2016blackironhack-nathanamorin-cp/infobox_packed.js ...done.
+Uploading 2016blackironhack-saul97-cp/mostWork.js ...done.
+Uploading 2016blackironhack-saul97-cp/overView.js ...done.
+Uploading 2016blackironhack-sauravn-cp/main_maps.js ...done.
+Uploading 2016blackironhack-sauravn/AsterChart.js ...done.
+Uploading 2016blackironhack-sauravn/barGraph.js ...done.
+Uploading 2016blackironhack-sauravn/bootstrap.min.js ...done.
+Uploading 2016blackironhack-sauravn/datasheet.js ...done.
+Uploading 2016blackironhack-sauravn/decisiontree.js ...done.
+Uploading 2016blackironhack-sauravn/gauge.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.easing.min.js ...done.
+Uploading 2016blackironhack-sauravn/jquery.fullPage.js ...done.
+Uploading 2016blackironhack-sauravn/main.js ...done.
+Uploading 2016blackironhack-sauravn/map.js ...done.
+Uploading 2016blackironhack-sauravn/maplace.js ...done.
+Uploading 2016blackironhack-sauravn/veggies.js ...done.
+Uploading 2016blackironhack-cg505/index.html ...done.
+Uploading 2016blackironhack-chriscoraggio-cp/index.html ...done.
+Uploading 2016blackironhack-emmyzhang-cp/home.html ...done.
+Uploading 2016blackironhack-emmyzhang/content.html ...done.
+Uploading 2016blackironhack-emmyzhang/home.html ...done.
+Uploading 2016blackironhack-kathy789-cp/index.html ...done.
+Uploading 2016blackironhack-kathy789/index.html ...done.
+Uploading 2016blackironhack-lennax-cp/index.html ...done.
+Uploading 2016blackironhack-lennax/index.html ...done.
+Uploading 2016blackironhack-nathanamorin-cp/index.html ...done.
+Uploading 2016blackironhack-saul97-cp/main.html ...done.
+Uploading 2016blackironhack-saul97/hack.html ...done.
+Uploading 2016blackironhack-sauravn-cp/home.html ...done.
+Uploading 2016blackironhack-sauravn/home.html ...done.
+Query submitted.  Waiting for the server's response.
+http://moss.stanford.edu/results/290761384
+
+OrderedDict([('sauravn-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0.01875),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.05090909090909091),
+                           ('cg505', 0),
+                           ('lennax', 0.024),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('kathy789-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.016),
+                           ('cg505', 0),
+                           ('lennax', 0.016),
+                           ('kathy789', 0.2583132530120482),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('danzheng-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0.0672),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('chriscoraggio-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('cg505-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('nathanamorin-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('analyst1001-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('rkp7-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('drewatk-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('thesoupgirl-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('lennax-cp',
+              OrderedDict([('danzheng', 0.04615384615384615),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0.01916666666666667),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.19),
+                           ('cg505', 0),
+                           ('lennax', 0.13037037037037036),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('saul97-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.03428571428571429),
+                           ('cg505', 0),
+                           ('lennax', 0.024),
+                           ('kathy789', 0.01894736842105263),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('pptx-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)])),
+             ('emmyzhang-cp',
+              OrderedDict([('danzheng', 0),
+                           ('thesoupgirl', 0),
+                           ('sauravn', 0),
+                           ('saul97', 0),
+                           ('drewatk', 0),
+                           ('emmyzhang', 0.03),
+                           ('cg505', 0),
+                           ('lennax', 0),
+                           ('kathy789', 0),
+                           ('rkp7', 0),
+                           ('analyst1001', 0),
+                           ('chriscoraggio', 0),
+                           ('nathanamorin', 0),
+                           ('pptx', 0)]))])

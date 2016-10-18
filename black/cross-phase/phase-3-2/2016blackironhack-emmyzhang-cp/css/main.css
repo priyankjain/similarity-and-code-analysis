@@ -1,0 +1,24 @@
+ .navbar {
+     font-family: Montserrat, sans-serif;
+ }
+#date {
+  color: #555;
+}
+#datachart {
+  width: 100%;
+}
+ h2 {
+     font-size: 24px;
+     text-transform: uppercase;
+     border-color: transparent;
+     color: #fff !important;
+ }
+button.navbar-toggle {
+  color: #fff;
+}
+span.icon-bar {
+  color: #fff;
+}
+ /* Footer */
+ 
+ footer .glyphicon {

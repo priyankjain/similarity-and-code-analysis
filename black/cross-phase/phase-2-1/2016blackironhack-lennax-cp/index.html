@@ -1,0 +1,80 @@
+ 
+     <link rel='stylesheet' href='static/style.css' type='text/css'>
+ 
+    <script type="text/javascript">
+        var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+
+ </head>
+ 
+ <body>
+             <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                     <span class="icon-bar"></span>
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                             <form>
+                                <label for="destination">
+                                    Destination:
+                                </label>
+                                <br/>
+                                <input type=text id="destination" size="25" name="destination" title="Destination address" placeholder='e.g. "60613" or "Chicago, IL"' required>
+                                <br/>
+                                <label for="date">
+                                        Date of travel:
+                                </label>
+                                <br/>
+                                <input type="date" id="date" size="10" name="date" title="Date" pattern="^\d{2}/\d{2}/\d{4}$" placeholder="MM/DD/YYYY" required>
+                                <br/>
+                                <input type="submit" id="submit" class="disabled" title="Please fill out the required values" disabled>
+                             </form>
+                         </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div id="gauge"></div>
+                            </div>
+                            <div class="col-md-7" id="result">
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div id="ladder"></div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                         <div id="map">Right panel</div>
+                 </div>
+             </div>
+             <div role="tabpanel" class="tab-pane fade" id="about">
+                <h1>About</h1>
+                
+                <h2>Data sources</h2>
+                <div class="references">
+                  <p>
+                    Centers for Disease Control and Prevention, National Center for Health Statistics. Compressed Mortality File 1999-2014 on CDC WONDER Online Database, released December 2015. Data are from the Compressed Mortality File 1999-2014 Series 20 No. 2T, 2015, as compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed at <a href="http://wonder.cdc.gov/cmf-icd10.html">http://wonder.cdc.gov/cmf-icd10.html</a> on Oct 1, 2016.</p>
+              </div>
+                <h2>References</h2>
+                <div class="references">
+
+                    <p>Chen, S., Blanford, J. I., Fleischer, S. J., Hutchinson, M., Saunders, M. C., &amp; Thomas, M. B. (2013). Estimating West Nile Virus Transmission Period in Pennsylvania Using an Optimized Degree-Day Model. Vector Borne and Zoonotic Diseases, 13(7), 489–497. <a href="http://doi.org/10.1089/vbz.2012.1094">http://doi.org/10.1089/vbz.2012.1094</a></p>
+                    <p>Waldock, J., Chandra, N. L., Lelieveld, J., Proestos, Y., Michael, E., Christophides, G., &amp; Parham, P. E. (2013). The role of environmental variables on Aedes albopictus biology and chikungunya epidemiology. Pathogens and Global Health, 107(5), 224–241. <a href="http://doi.org/10.1179/2047773213Y.0000000100">http://doi.org/10.1179/2047773213Y.0000000100</a></p>
+                </div>
+
+            </div>
+             <div role="tabpanel" class="tab-pane fade" id="contact">
+                <h1>Contact</h1>
+                <p>Copyright 2016 Lenna X. Peterson</p>
+                <p><a href="http://www.github.com/lennax">github.com/lennax</a></p>
+            </div>
+         </div>
+     </div>
+ 
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDadi4nI9R8BtPsLjB8Lh31jB8kZ60hde0"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+ 
+    <script type="text/javascript" src="static/script.js"></script>
+ 
+ </body>
+ 

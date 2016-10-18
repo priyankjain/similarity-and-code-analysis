@@ -1,0 +1,1302 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/README.md
+index bf96cee..b70d086 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/README.md
+@@ -4,11 +4,7 @@ README
+ Travel Risk Evaluation
+ ----------------------
+ 
+-Copyright 2016 Lenna X. Peterson
+-
+-https://www.github.com/lennax
+-
+-arklenna@gmail.com
++[REDACTED]
+ 
+ Keywords
+ --------
+@@ -18,10 +14,10 @@ Keywords
+ 
+ Datasets
+ --------
+-* NOAA 1981-2010 Climate Normals 
+-    - ftp://ftp.ncdc.noaa.gov/pub/data/normals/1981-2010/products/temperature/mly-cldd-base57.txt
+-    - Text data
+-    - The month column corresponding to the date of travel is used
++* NOAA Climate Normals Monthly
++    - http://www.ncdc.noaa.gov/cdo-web/api/v2/
++    - JSON data
++    - Normal annual precipitation, temperature, and growing degree day information is used to assess the suitability of the climate for mosquitoes
+     - Data is available for the entire US
+ 
+ * Zika Cases Reported in the United States
+@@ -48,14 +44,9 @@ Datasets
+ 
+ Description
+ -----------
+-This website provides travelers with information and context about the risk of contracting a vector-born zoonotic disease while traveling within the United States.
++This website provides travelers with information and context about the risk of contracting Zika virus and other mosquito-borne diseases while traveling within the United States.
+ The user provides their destination and date of travel.
+ The website shows the destination on a map and estimates the disease risk on that date.
+-<!--The website will use data in the following ways:-->
+-
+-<!--* Weather data from *Open Climate* will be used to estimate mosquito population; mosquito population has a positive correlation with risk-->
+-<!--* Population density of the area from *Data.gov* has a positive correlation with risk-->
+-<!--* Statistics about vector-born zoonotic diseases from *Data.gov* will be used to list possible infections in the area-->
+ 
+ * Map View
+     1. Y The map is centered on the travel destination
+@@ -65,15 +56,15 @@ The website shows the destination on a map and estimates the disease risk on tha
+     5. y The map will have visual indicators of heat, precipitation, and population density
+ 
+ * Data Visualization
+-    1. Y The page uses a Google Charts gauge to show estimated risk
+-    2. N The gauge is not interactive (may add interactive chart of multiple risk factors)
++    1. Y The page uses a color-coded table to show risk components and a Plot.ly graph to show risk of Zika virus in context of other risks
++    2. N The chart has hover but no click interaction
+ 
+ * Interaction Form
+     1. Y Information about climate, mosquito activity, and cases of Zika in the state is output
+     2. y The user will be able to change the date and destination of travel to see how risk is changed
+     3. Y The user inputs their date of travel and destination
+-    4. y If the user changes the date and destination of travel, the map will be updated based on the climate and location
+-    5. y If the user changes the date and destination of travel, the gauge will be updated based on the risk
++    4. Y If the user changes the date and destination of travel, the map is updated based on the location
++    5. y If the user changes the date and destination of travel, the charts are be updated based on the risk
+ 
+ Build Case
+ ----------
+@@ -86,8 +77,10 @@ Build Case
+     - beautifulsoup4
+ 
+ * Building
++
+     sudo apt-get install python python-flask python-pip
+-    sudo pip install flask-cors
++
++    sudo pip install -r requirements.txt
+ 
+ * Usage
+     1. Start the flask server with `python server.py`
+@@ -101,3 +94,5 @@ This website was tested on Ubuntu 14.04 using Google Chrome version 53.0.2785.11
+ Additional Information
+ ----------------------
+ In the description section, items marked with an uppercase Y are functional while items marked with a lowercase y have not been implemented.
++
++The URL provided for climate data online was not detailed enough to easily find the REST API. This is largely due to poor design of the NOAA website. I did not know the REST API existed until I saw it in another participant's README.
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/index.html
+index bd02a80..3800c3e 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/index.html
+@@ -6,7 +6,7 @@
+ 
+     <meta charset="UTF-8">
+     <meta name="description" content="Travel risk evaluator">
+-    <meta name="author" content="Lenna Peterson">
++    <!--[ REDACTED ]-->
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Latest compiled and minified CSS -->
+@@ -57,6 +57,15 @@
+                 <div class="row">
+                     <div class="col-md-6">
+                         <div class="col-md-12">
++<div>
++Three major factors that determine the risk for Zika virus are:
++<ol>
++<li>How many cases of Zika virus have been reported in the area?</li>
++<li>How populous is the area?</li>
++<li>Does the area have mosquitoes and if so, is it mosquito season?</li>
++</ol>
++          Please enter your destination and date of travel and information about the risk factors will appear below.
++</div>
+                             <form>
+                                 <label for="destination">
+                                     Destination:
+@@ -74,10 +83,8 @@
+                             </form>
+                         </div>
+                         <div class="row">
+-                            <div class="col-md-5">
+-                                <div id="gauge"></div>
+-                            </div>
+-                            <div class="col-md-7" id="result">
++                            <div class="col-md-12 spinner"><img src="static/ajax-loader.gif" alt="loading" width=32 height=32/> </div>
++                            <div class="col-md-12" id="result">
+                             </div>
+                         </div>
+                         <div class="row">
+@@ -115,8 +122,7 @@
+             </div>
+             <div role="tabpanel" class="tab-pane fade" id="contact">
+                 <h1>Contact</h1>
+-                <p>Copyright 2016 Lenna X. Peterson</p>
+-                <p><a href="http://www.github.com/lennax">github.com/lennax</a></p>
++                <!--[ REDACTED ]-->
+             </div>
+         </div>
+     </div>
+@@ -124,7 +130,7 @@
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDadi4nI9R8BtPsLjB8Lh31jB8kZ60hde0"></script>
++    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDadi4nI9R8BtPsLjB8Lh31jB8kZ60hde0&libraries=places"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <!-- Plotly.js -->
+     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/requirements.txt b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/requirements.txt
+index 0933832..17224d6 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/requirements.txt
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/requirements.txt
+@@ -5,3 +5,4 @@ gunicorn >= 19.6.0
+ flask-cors >= 3.0.2
+ numpy >= 1.8.2
+ beautifulsoup4 >= 4.5.1
++requests>=2.2.1
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/script.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/script.js
+index b06f6d6..e822a10 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/script.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/script.js
+@@ -1,5 +1,5 @@
+ /**
+-Copyright 2016 Lenna X. Peterson
++ * [ REDACTED ]
+ **/
+ 
+ if (typeof MYAPPLICATION === "undefined") {
+@@ -47,9 +47,61 @@ MyApp.initMap = function () {
+     //            panControl: false,
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+   };
+-  // Not sure if this needs to be declared outside
+   MyApp.map = new google.maps.Map(mapCanvas, mapOptions);
+ 
++  var map = MyApp.map;
++
++  var input = document.getElementById('destination');
++
++  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
++
++  var autocomplete = new google.maps.places.Autocomplete(input);
++  autocomplete.bindTo('bounds', map);
++
++  var infowindow = new google.maps.InfoWindow();
++  var marker = new google.maps.Marker({
++    map: map,
++    anchorPoint: new google.maps.Point(0, -29)
++  });
++
++  autocomplete.addListener('place_changed', function () {
++    infowindow.close();
++    marker.setVisible(false);
++    var place = autocomplete.getPlace();
++    if (!place.geometry) {
++      window.alert("Autocomplete's returned place contains no geometry");
++      return;
++    }
++
++    // If the place has a geometry, then present it on a map.
++    if (place.geometry.viewport) {
++      map.fitBounds(place.geometry.viewport);
++    } else {
++      map.setCenter(place.geometry.location);
++      map.setZoom(17); // Why 17? Because it looks good.
++    }
++    marker.setIcon( /** @type {google.maps.Icon} */ ({
++      url: place.icon,
++      size: new google.maps.Size(71, 71),
++      origin: new google.maps.Point(0, 0),
++      anchor: new google.maps.Point(17, 34),
++      scaledSize: new google.maps.Size(35, 35)
++    }));
++    marker.setPosition(place.geometry.location);
++    marker.setVisible(true);
++
++    var address = '';
++    if (place.address_components) {
++      address = [
++        (place.address_components[0] && place.address_components[0].short_name || ''),
++        (place.address_components[1] && place.address_components[1].short_name || ''),
++        (place.address_components[2] && place.address_components[2].short_name || '')
++      ].join(' ');
++    }
++
++    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
++    infowindow.open(map, marker);
++  });
+ };
+ 
+ MyApp.drawGauge = function (risk) {
+@@ -78,8 +130,9 @@ MyApp.drawGauge = function (risk) {
+   // setInterval(function () { // data.setValue(0, 1, 40 + Math.round(60 * Math.random())); // chart.draw(data, options); // }, 13000);  
+ };
+ 
+-MyApp.drawLadder = function (zcases) {
++MyApp.drawLadder = function (destcases, incases) {
+   "use strict";
++
+   var cause = [
+ 'Heart disease',
+ 'Lung cancer',
+@@ -104,6 +157,48 @@ MyApp.drawLadder = function (zcases) {
+ 
+   var breakpoint = 4;
+ 
++  var deathColor = 'rgba(119, 190, 222, 0.95)';
++  var deathMarker = {
++    color: deathColor,
++    line: {
++      color: deathColor,
++      width: 1,
++    },
++    symbol: 'circle',
++    size: 16
++  };
++
++  var caseColor = 'rgba(211, 115, 38, 0.95)';
++  var caseMarker = {
++    color: caseColor,
++    line: {
++      color: caseColor,
++      width: 1,
++    },
++    symbol: 'square',
++    size: 16
++  };
++
++  var caseColorIn = 'rgba(229, 170, 38, 0.95)';
++  var caseMarkerIn = {
++    color: caseColorIn,
++    line: {
++      color: caseColorIn,
++      width: 1,
++    },
++    symbol: 'diamond',
++    size: 16
++  };
++
++  var dummytrace = {
++    type: 'scatter',
++    x: [0],
++    y: [0],
++    mode: 'markers',
++    name: 'Deaths per 1M in USA',
++    marker: deathMarker,
++  };
++
+   var smalltrace = {
+     type: 'scatter',
+     x: rate.slice(breakpoint, rate.length),
+@@ -113,15 +208,7 @@ MyApp.drawLadder = function (zcases) {
+     textposition: 'right',
+     name: 'Deaths per 1M',
+     showlegend: false,
+-    marker: {
+-      color: 'rgba(156, 165, 196, 0.95)',
+-      line: {
+-        color: 'rgba(156, 165, 196, 1.0)',
+-        width: 1,
+-      },
+-      symbol: 'circle',
+-      size: 16
+-    }
++    marker: deathMarker
+   };
+ 
+   var largetrace = {
+@@ -132,61 +219,53 @@ MyApp.drawLadder = function (zcases) {
+     text: cause.slice(0, breakpoint),
+     textposition: 'left',
+     name: 'Deaths per 1M in USA',
+-    //showlegend: false,
+-    marker: {
+-      color: 'rgba(156, 165, 196, 0.95)',
+-      line: {
+-        color: 'rgba(156, 165, 196, 1.0)',
+-        width: 1,
+-      },
+-      symbol: 'circle',
+-      size: 16
+-    }
++    showlegend: false,
++    marker: deathMarker
+   };
+ 
+-  var gbstrace = {
++  //  var gbsCases = 15;
++  //  var gbstrace = {
++  //    type: 'scatter',
++  //    x: [gbsCases],
++  //    y: [gbsCases],
++  //    //y: ['Guillain-Barré Syndrome'],
++  //    text: ['Guillain-Barré Syndrome'],
++  //    textposition: 'center',
++  //    mode: 'markers',
++  //    name: 'Cases per 1M in USA',
++  //    //showlegend: false,
++  //    marker: caseMarker
++  //  };
++
++  var zikatrace = {
+     type: 'scatter',
+-    x: [15],
+-    y: [15],
+-    //y: ['Guillain-Barré Syndrome'],
+-    text: ['Guillain-Barré Syndrome'],
++    x: [destcases],
++    y: [destcases],
++    text: ['Zika Virus'],
+     textposition: 'center',
+-    mode: 'markers+text',
+-    name: 'Cases per 1M in USA',
++    mode: 'markers',
++    name: 'Cases per 1M in state',
+     //showlegend: false,
+-    marker: {
+-      color: 'rgba(211, 172, 167, 0.95)',
+-      line: {
+-        color: 'rgba(211, 172, 167, 1.0)',
+-        width: 1,
+-      },
+-      symbol: 'circle',
+-      size: 16
+-    }
++    marker: caseMarker
+   };
+ 
+-  var zikatrace = {
++  var zikatrace_in = {
+     type: 'scatter',
+-    x: [zcases],
+-    y: [zcases],
+-    //y: ['Guillain-Barré Syndrome'],
+-    text: ['Zika Virus Syndrome'],
++    x: [incases],
++    y: [incases],
++    text: ['Zika Virus (IN)'],
+     textposition: 'center',
+-    mode: 'markers+text',
+-    name: 'Cases per 1M in state',
++    mode: 'markers',
++    name: 'Cases per 1M (IN)',
+     //showlegend: false,
+-    marker: {
+-      color: 'rgba(211, 172, 167, 0.95)',
+-      line: {
+-        color: 'rgba(211, 172, 167, 1.0)',
+-        width: 1,
+-      },
+-      symbol: 'circle',
+-      size: 16
+-    }
++    marker: caseMarkerIn
+   };
+ 
+-  var data = [smalltrace, largetrace, gbstrace, zikatrace];
++  var data = [smalltrace, largetrace,
++//              gbstrace,
++              zikatrace,
++              zikatrace_in,
++              dummytrace];
+ 
+   var xtickvals = [0.1, 1, 10, 100, 1000];
+   var xticktext = ["1 in 10 million", "1 in 1 million", "1 in 100,000", "1 in 10,000", "1 in 1,000"];
+@@ -233,10 +312,67 @@ MyApp.drawLadder = function (zcases) {
+     //    b: 50,
+     //    t: 80
+     //  },
+-    //showlegend: false,
++    showlegend: false,
+     legend: {
+       orientation: 'h',
+     },
++    annotations: [
++//      {
++//        x: Math.log10(gbsCases),
++//        y: Math.log10(gbsCases),
++//        xref: 'x',
++//        yref: 'y',
++//        text: 'Guillain-Barré Syndrome',
++////        font: {
++////          color: caseColor,
++////        },
++//        bgcolor: 'rgba(255, 255, 255, 0.8)',
++//        bordercolor: caseColor,
++//        showarrow: true,
++//        arrowcolor: 'rgb(67, 67, 67)',
++//        arrowhead: 2,
++//        ax: 100,
++//        ay: 0
++//      },
++      {
++        x: Math.log10(incases),
++        y: Math.log10(incases),
++        xref: 'x',
++        yref: 'y',
++        text: 'Zika Virus Syndrome (IN)',
++        //        font: {
++        //          color: caseColor,
++        //        },
++        bgcolor: 'rgba(255, 255, 255, 0.8)',
++        bordercolor: caseColorIn,
++        borderwidth: 2,
++        showarrow: true,
++        arrowwidth: 2,
++        arrowcolor: 'rgb(67, 67, 67)',
++        arrowhead: 2,
++        ax: 100,
++        ay: -10
++      },
++      {
++        x: Math.log10(destcases),
++        y: Math.log10(destcases),
++        xref: 'x',
++        yref: 'y',
++        text: 'Zika Virus Syndrome',
++        //        font: {
++        //          color: caseColor,
++        //        },
++        bgcolor: 'rgba(255, 255, 255, 0.8)',
++        bordercolor: caseColor,
++        borderwidth: 2,
++        showarrow: true,
++        arrowwidth: 2,
++        arrowcolor: 'rgb(67, 67, 67)',
++        arrowhead: 2,
++        ax: 100,
++        ay: -10
++      }
++    ],
+     width: 600,
+     height: 400,
+     paper_bgcolor: 'rgb(254, 247, 234)',
+@@ -271,6 +407,10 @@ MyApp.submitForm = function () {
+ 
+   if (MyApp.validData()) {
+ 
++    // Clear result div
++    $('#result').text("");
++    $('#ladder').text("");
++
+     var destination = $('input[name="destination"]').val();
+     //console.log(destination)
+ 
+@@ -329,7 +469,7 @@ MyApp.submitForm = function () {
+           county: county,
+         },
+         function (data) {
+-          if (data.result.error != 0) {
++          if (data.result.error) {
+             $('#result').text("Error: " + data.result.error);
+             return 1
+           } else {
+@@ -337,10 +477,11 @@ MyApp.submitForm = function () {
+             $('input[name=destination]').focus().select();
+             //alert(data.result);
+             //MyApp.drawGauge(data.result.risk);
+-            // FIXME correct behavior on zero
+-            MyApp.drawLadder(0);
++            console.log(data.result.destrisk);
++            console.log(data.result.inrisk);
++            MyApp.drawLadder(data.result.destrisk, data.result.inrisk);
+             //console.log(data.result.text)
+-            $('#result').text(data.result.text);
++            $('#result').html(data.result.text);
+           }
+         });
+     });
+@@ -377,8 +518,19 @@ $(document).ready(function () {
+   // Bind button click to submit
+   $('input#submit').bind('click', MyApp.submitForm);
+ 
++  // Loading animation code
++  $(document).ajaxStart(function () {
++    MyApp.disableSubmit();
++    $('body').addClass("loading");
++    //console.log( "Triggered ajaxStart handler." );
++  });
++  $(document).ajaxStop(function () {
++    $('body').removeClass("loading");
++    MyApp.checkSubmit();
++    //console.log( "Triggered ajaxStop handler." );
++  });
++
+   // Bind enter to submit
+-  // FIXME require input validation
+   $('input[type=text]').bind('keydown', function (e) {
+     if (e.keyCode == 13) {
+       MyApp.submitForm(e);
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/server.py b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/server.py
+index fc739f4..9f46b6b 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/server.py
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/server.py
+@@ -3,7 +3,6 @@
+ # STANDARD LIBRARY
+ import datetime
+ from functools import update_wrapper
+-from ftplib import FTP
+ import json
+ import logging
+ import unicodedata
+@@ -12,6 +11,7 @@ import urllib2
+ # 3RD PARTY LIBRARIES
+ from bs4 import BeautifulSoup
+ import numpy as np
++import requests
+ 
+ from flask import Flask, jsonify, render_template, request, make_response, current_app
+ # from flask_cors import CORS, cross_origin
+@@ -30,9 +30,13 @@ app.logger.debug('debug message')
+ 
+ ####
+ 
+-open_climate_ftp = "ftp.ncdc.noaa.gov"
+-#"/pub/data/normals/1981-2010/"
++
++climate_url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/"
++climate_token = "yUvXbVJaOILecTHUTEUEppAxSxHavTJy"
++climate_headers = dict(token=climate_token)
++
+ zika_url = "http://www.cdc.gov/zika/intheus/maps-zika-us.html"
++
+ census_api_key = "36a6a8b2ee9eafcc4afb7f7948e2724907c628e3"
+ census_url = "http://api.census.gov/data/2015/acs1"
+ 
+@@ -59,80 +63,317 @@ def calculate():
+     mydate = request.args.get('date')
+     state = request.args.get('state')
+     county = request.args.get('county')
++
++    errors = list()
++
++    # parse date
++    datefmt = "%Y-%m-%d"
++    try:
++        parsed_date = datetime.datetime.strptime(mydate, datefmt)
++    except ValueError:
++        # Server-side input validation
++        errors.append('invalid date format')
++
++    if not state:
++        errors.append('state not specified')
++
++    if errors:
++        msg = ", ".join(errors)
++        return jsonify(result=dict(error=msg))
++
+ #    print destination
+     kwargs = dict(lat=lat,
+                   lng=lng,
+-                  mydate=mydate,
++                  mydate=parsed_date,
+                   state=state,
+                   county=county)
+     return jsonify(result=get_result(**kwargs))
+ 
+-def get_result(lat, lng, mydate, state=None, county=None):
++def get_result(lat, lng, mydate, state, county=None):
+ 
+     result_dict = dict(text=None,
+-                       risk=None,
+-                       zcases=None,
++                       destrisk=None,
++                       inrisk=None,
+                        error=0)
+   
+     latlng = (lat, lng)
+     #print latlng
+     app.logger.debug(latlng)
+ 
+-    # parse date
+-    datefmt = "%Y-%m-%d"
+-    try:
+-        parsed_date = datetime.datetime.strptime(mydate, datefmt)
+-    except ValueError:
+-        # Server-side input validation
+-        result_dict['error'] = 'Invalid date'
+-        return result_dict
+-    month_number = parsed_date.month
+-    month_name = parsed_date.strftime("%B")
++    # Risk factors:
++        # How many people are infected in the state?
++        # How populous is the destination?
++        # Are mosquitoes active in the destination?
++            # Is it mosquito season?
+ 
+-#    print mydate, month_number, month_name
++    errors = dict(cases=None,
++                  pop=None,
++                  climate=None)
+ 
++    risks = dict(cases=None,
++                 state_pop=None,
++                 county_pop=None,
++                 mosquito_risk=None,
++                 mosquito_season=None)
++
++    indiana_risks = dict(cases=None,
++                         state_pop=None,
++                         county_pop=None,
++                         mosquito_risk=None,
++                         mosquito_season=None)
++
++    # How many people are infected in the state?
+     app.logger.debug(state)
+     cases = None
+-    pop_sentence = None
+-    if state is not None:
+     app.logger.debug("getting zika data")
++    def add_zika_row(row):
++        case1 = row[1]
++        case2 = row[2]
++        try:
++            case1 = int(case1)
++            case2 = int(case2)
++        except (ValueError, TypeError):
++            app.logger.error("Invalid cases number")
++        else:
++            return case1 + case2
+     zika_data = get_zika()
+     for row in zika_data[1:]:
+-            app.logger.debug("{0} {1} {2}".format(row[0], state, state.lower() == row[0].lower()))
+-            if state.lower() == row[0].lower():
+-                cases = row[1] + row[2]
++        app.logger.debug("{0} {1} {2} {3} ".format(row[0], state, state.lower() == row[0].lower(), row[0].lower() == "indiana"))
++        if row[0].lower() == state.lower():
++            cases = add_zika_row(row)
++            #cases = row[1] + row[2]
++        if row[0].lower() == "indiana":
++            indiana_risks['cases'] = add_zika_row(row)
++            #indiana_risks['cases'] = row[1] + row[2]
++    if cases is None:
++        errors['cases'] = "No case data was found for %s." % state
++    else:
++        risks['cases'] = cases
+ 
++    # How populous is the destination?
+     pop_dict = get_population(state=state, county=county)
+-        if pop_dict['error'] is None:
+-            if county is not None and pop_dict['county_pop'] is not None:
+-                pop_sentence = "{0}, {1} has {county_pop} residents.".format(county, state, **pop_dict)
+-            elif pop_dict['state_pop'] is not None:
+-                pop_sentence = "{0} has {state_pop} residents.".format(state, **pop_dict)
+-
+-    # possibly temporarily use zip codes
+-#    ftp://ftp.ncdc.noaa.gov/pub/data/normals/1981-2010/station-inventories/zipcodes-normals-stations.txt
+-
+-    # Query NOAA for list of weather stations
+-    ftp = FTP(open_climate_ftp)
+-    ftp.login()
+-    ftp.cwd("/pub/data/normals/1981-2010/")
+-
+-    station_list = list()
+-    # Fixed width
+-    # Columns: ID, lat, long, ??, state 2 letter, name, ???, ???
+-    ftp.retrlines("RETR station-inventories/allstations.txt",
+-                  station_list.append)
+-    coord_array = np.zeros((len(station_list), 2))
+-    for x, line in enumerate(station_list):
+-        parts = line.split()
+-        lat = float(parts[1])
+-        lon = float(parts[2])
+-        coord_array[x, 0] = lat
+-        coord_array[x, 1] = lon
++    if not pop_dict.pop('error'):
++        risks.update(pop_dict)
++    else:
++        pop_err = "No population data was found for %s." % state
++        if county is not None:
++            pop_err += " county %s" % county
++        errors['pop'] = pop_err
++
++    in_pop_dict = get_population(state="indiana", county="tippecanoe")
++    if not in_pop_dict.pop('error'):
++        indiana_risks.update(in_pop_dict)
++
++    # Are mosquitoes active in the destination?
++        # Is it mosquito season?
++    climate_dict = get_climate(latlng=latlng,
++                               month_number=mydate.month)
++    if climate_dict['error']:
++        errors['climate'] = climate_dict.pop('error')
++    else:
++        risks.update(climate_dict)
++
++    in_climate_dict = get_climate(latlng=(40.4237, -86.9212),
++                                  month_number=mydate.month)
++    if not in_climate_dict['error']:
++        indiana_risks.update(in_climate_dict)
++
++    result_text = """
++   <table class="tg">
++     <tr>
++       <th>Risk Factor<br></th>
++       <th>{inloc}<br></th>
++       <th>{destination}<br></th>
++     </tr>
++     <tr>
++       <td>Cases statewide</td>
++       <td class="{incasesclass}">{incases}<br></td>
++       <td class="{casesclass}">{cases}</td>
++     </tr>
++     <tr>
++       <td>Population</td>
++       <td class="{inpopclass}">{inpop}</td>
++       <td class="{popclass}">{pop}</td>
++     </tr>
++     <tr>
++       <td>Mosquitoes</td>
++       <td class="{inclimateclass}">{inclimate}</td>
++       <td class="{climateclass}">{climate}</td>
++     </tr>
++   </table>
++   <ul>
++   <li>{casesummary}</li>
++   <li>{popsummary}</li>
++   <li>{climatesummary}</li>
++   </ul>
++   Overall, the risk of getting Zika virus in the USA is low. For context, the following chart shows the rate of cases of Zika virus in Indiana and {state} compared to the annual risk of selected causes of death.
++     """
++    #"""
++    #{destination} has {pop} people.
++    #The state of {dest_state} has {cases} reported cases of Zika virus.
++    #{mosquito_phrase}
++    #Compared to Indiana, your destination {cases_cmp}.
++    #{case_vs_pop_prep}, {pop_cmp}.
++    #{mosquito_cmp_phrase}
++    #"""
++
++    app.logger.debug(risks)
++
++    result_kwargs = dict(state=state)
++
++    # Initialize classes to "unknown"
++    for datatype in "cases", "pop", "climate":
++        for prefix in "", "in":
++            result_kwargs['{0}{1}class'.format(prefix, datatype)] = "unknown"
++
++    month_name = mydate.strftime("%B")
++
++    inloc = "Indiana"
++    destination = state
++    pop = risks['state_pop']
++    inpop = indiana_risks['state_pop']
++    if county:
++        inloc = "Tippecanoe County, Indiana"
++        destination = "{0}, {1}".format(county, state)
++        pop = risks['county_pop']
++        inpop = indiana_risks['county_pop']
++    result_kwargs['inloc'] = inloc
++    result_kwargs['destination'] = destination
++
++    popsummary = "No population comparison was available. In general, traveling to a less populous area may reduce your risk."
++    if pop is not None and inpop is not None:
++        popratio = pop * 1.0 / inpop
++        if popratio > 2:
++            inpopclass = "better"
++            popclass = "worse"
++            popsummary = "{destination} is more populous than {inloc}. You could reduce your risk by traveling to a less populous area."
++        elif popratio < 0.5:
++            inpopclass = "worse"
++            popclass = "better"
++            popsummary = "{destination} is less populous than {inloc}. This may reduce your risk."
++        else:
++            inpopclass = "same"
++            popclass = "same"
++            popsummary = "{destination} and {inloc} have similar populations. You could reduce your risk by traveling to a less populous area."
++        result_kwargs['inpopclass'] = inpopclass
++        result_kwargs['popclass'] = popclass
++    result_kwargs['pop'] = "{0:,}".format(pop) if pop is not None else "-"
++    result_kwargs['inpop'] = "{0:,}".format(inpop) if inpop is not None else "-"
++    result_kwargs['popsummary'] = popsummary.format(**result_kwargs)
++
++    incases = indiana_risks['cases']
++    cases = risks['cases']
++    casesummary = "No case comparison was available. In general, traveling to an area with fewer cases may reduce your risk."
++    if cases is not None and incases is not None:
++        caseratio = cases * 1.0 / incases
++        if caseratio > 2:
++            incaseclass = "better"
++            caseclass = "worse"
++            casesummary = "{state} has more cases of Zika virus than Indiana. You could reduce your risk by traveling to an area with fewer cases."
++        elif caseratio < 0.5:
++            incaseclass = "worse"
++            caseclass = "better"
++            casesummary = "{state} has fewer cases of Zika virus than Indiana. This may reduce your risk."
++        else:
++            incaseclass = "same"
++            caseclass = "same"
++            casesummary = "{state} and Indiana have similar numbers of Zika virus cases. You could reduce your risk by traveling to an area with fewer cases."
++        result_kwargs['incasesclass'] = incaseclass
++        result_kwargs['casesclass'] = caseclass
++    result_kwargs['cases'] = "{0:,}".format(cases) if cases is not None else "-"
++    result_kwargs['incases'] = "{0:,}".format(incases) if incases is not None else "-"
++    result_kwargs['casesummary'] = casesummary.format(state=state)
++
++    # Truth table
++    #mosquito_risk   mosquito_season risk
++    #True    None    unknown
++    #None    None    unknown
++    #True    True    in season
++    #None    True    in season
++    #True    False   out of season
++    #None    False   out of season
++    #False   False   minimal
++    #False   True    minimal
++    #False   None    minimal
++
++    mosquito_risk_names = ["Minimal", "Unknown", "Out of season", "In season"]
++    mosquito_risk_classes = ["better", "unknown", "better", "worse"]
++    def parse_risk(mosquito_risk, mosquito_season, **kwargs):
++        if mosquito_risk is None or mosquito_risk:
++            if mosquito_season is None:
++                # If mosquito season is unknown, overall risk is unknown
++                return 1
++            elif mosquito_season:
++                # Mosquito season is risk
++                return 3
++            else:
++                # Not mosquito season reduces risk
++                return 2
++        else:
++            # No mosquito risk
++            return 0
++
++    in_mosquito_risk = parse_risk(**indiana_risks)
++    result_kwargs['inclimate'] = mosquito_risk_names[in_mosquito_risk]
++    result_kwargs['inclimateclass'] = mosquito_risk_classes[in_mosquito_risk]
++    mosquito_risk = parse_risk(**risks)
++    result_kwargs['climate'] = mosquito_risk_names[mosquito_risk]
++    result_kwargs['climateclass'] = mosquito_risk_classes[mosquito_risk]
++
++    climate_summary = list()
++    if mosquito_risk_names[in_mosquito_risk] == "In season":
++        climate_summary.append("{month_name} is mosquito season in West Lafayette, Indiana. You could reduce your risk by leaving Indiana for an area without mosquitoes.")
++    if mosquito_risk_names[mosquito_risk] == "In season":
++        climate_summary.append("{month_name} is mosquito season in {destination}. You could reduce your risk by traveling before or after mosquito season or to a different area without mosquitoes.")
++    if not climate_summary:
++        climate_sentence = "{month_name} is not mosquito season for either West Lafayette, Indiana or {state}, so the risk of getting infected by a mosquito is low."
++    else:
++        climate_sentence = " ".join(climate_summary)
++    result_kwargs['climatesummary'] = climate_sentence.format(month_name=month_name, **result_kwargs)
++
++    #if errors['cases']:
++        #case_text = errors['cases']
++    #else:
++        #case_text = "{0} has {1} reported cases of Zika virus".format(state, risks['cases'])
++    #result_text.append(case_text)
++
++    #result_kwargs = dict(dest_state=state)
++    #destination = state
++    #pop = risks['pop']['state_pop']
++    #if county:
++        #destination = "{0}, {1}".format(county, state)
++        #pop = risks['pop']['county_pop']
++    #result_kwargs['destination'] = destination
++    #result_kwargs['pop'] = pop
++
++    # Needed results:
++        # Text summary
++        # destination cases per 1M
++        # Indiana cases per 1M
++
++    ## TODO handle missing data classes better
++    #if state is not None and cases is not None:
++        #result_text += " {0} total cases of Zika have been reported in {1}.".format(cases, state)
++        ## TODO logistic function
++        #risk = min(100, risk * 2)
++
++    #if pop_sentence is not None:
++        #result_text = result_text + " " + pop_sentence
++
++    result_dict['text'] = result_text.format(**result_kwargs)
++    result_dict['destrisk'] = rate_per_mil(**risks)
++    result_dict['inrisk'] = rate_per_mil(**indiana_risks)
+ 
+-#    print coord_array[:6]
++    return result_dict
+ 
+-    # Find closest weather station
++def rate_per_mil(cases, state_pop, **kwargs):
++    if cases is not None and state_pop:
++        # Pseudocount
++        if cases == 0:
++            cases = 1
++        rate = cases * 1.0 / state_pop
++        rate_per_m = rate * 1000000
++        return rate_per_m
+ 
+ # radius of Earth in miles
+ earth_radius = 3958.75
+@@ -159,151 +400,138 @@ def get_result(lat, lng, mydate, state=None, county=None):
+ 
+     return lng_diff
+ 
++def get_climate(latlng, month_number):
++
++    # Are mosquitoes active in the destination?
++    # Is it mosquito season?
++    result_dict = dict(mosquito_risk=None,
++                       mosquito_season=None,
++                       error="")
++
++    datatypes = ["MLY-TAVG-NORMAL", "MLY-PRCP-NORMAL", "MLY-GRDD-BASE57"]
++
++    lat, lng = latlng
++    extent = [lat - 0.5, lng - 0.5, lat + 0.5, lng + 0.5]
++
++    r = requests.get(climate_url + "stations", headers=climate_headers, params=dict(extent=",".join(str(x) for x in extent), datatypeid=datatypes))
++
++    if r.status_code != 200:
++        result_dict['error'] = "error getting stations"
++        return result_dict
++
++    result_json = r.json()
++
++    if not result_json:
++        result_dict['error'] = "no station results"
++        return result_dict
++
++    station_list = result_json['results']
++    coord_array = np.zeros((len(station_list), 2))
++    for x, line in enumerate(station_list):
++        coord_array[x, 0] = line['latitude']
++        coord_array[x, 1] = line['longitude']
++
+     distances = get_distances(latlng, coord_array)
+     # Get the index of the smallest distance
+     closest_index = np.argpartition(distances, 1)[0]
+     closest_row = station_list[closest_index]
+-    stationid = closest_row.split()[0]
+-
+-    #print stationid
+-    app.logger.debug(stationid)
+-
+-    # TODO Get month data for that weather station
+-#        1. Long-term averages of monthly precipitation totals:
+-#  	  mly-prcp-normal.txt
+-#       2. The average number of days per month with snowfall greater than 1 inch:
+-#          mly-snow-avgnds-ge010ti.txt
+-#       3. Daily average base-65 heating degree days:
+-#          dly-htdd-normal.txt.
+-#       4. Daily average base-50 heating degree days:
+-#          dly-htdd-base50.txt
+-#       5. Hourly heat index normals:
+-#          hly-hidx-normal.txt
+-
+-#       Variable  Columns  Type
+-#       ----------------------------
+-#       STNID       1- 11  Character
+-#       VALUE1     19- 23  Integer
+-#       FLAG1      24- 24  Character
+-#       - - - - - - - - - - - - - -
+-#       VALUE12    96-100  Integer
+-#       FLAG12    101-101  Character
+-#       ----------------------------
+-#
+-#       These variables have the following definitions:
+-#
+-#       STNID   is the GHCN-Daily station identification code.
+-#       VALUE1  is the January value.
+-#       FLAG1   is the completeness flag for January. See Flags section below.
+-#       - - - -
+-#       Value12 is the December value.
+-#       Flag12  is the completeness flag for December.
+-
+-    def get_row(filename):
+-        row_list = list()
+-        ftp.retrlines("RETR {0}".format(filename), row_list.append)
+-        for line in row_list:
+-            stnid = line[:11]
+-            if stnid == stationid:
+-                return line
+-
+-    #ftp.retrlines("RETR products/auxiliary/station/{0}-normals.txt".format(stationid))
++    print closest_row
++    stationid = closest_row['id']
++    datefmt = "%Y-%m-%d"
++    data_date = datetime.datetime.strptime(closest_row['maxdate'], datefmt)
++    start_date = data_date - datetime.timedelta(days=365*10)
++    start_date = start_date.strftime(datefmt)
++
++    r = requests.get(climate_url + "data", headers=climate_headers,
++                     params=dict(
++                         stationid=stationid,
++                         startdate=start_date,
++                         enddate=closest_row['maxdate'],
++                         datasetid=["NORMAL_MLY"],
++                         datatypeid=datatypes,
++                         limit=36,
++                         includemetadata="false",
++                         )
++                    )
++
++    #(YYYY-MM-DDThh:mm:ss)
++    datetimefmt = datefmt + "T%H:%M:%S"
++
++    if r.status_code != 200:
++        result_dict['error'] = "error getting station data"
++        return result_dict
++    
++    result_json = r.json()
++    if not result_json:
++        result_dict['error'] = "no station data results"
++        return result_dict
++
++    data_dict = {k: dict() for k in datatypes}
++    climatedata = result_json['results']
++    for row in climatedata:
++        try:
++            rowdate = datetime.datetime.strptime(row['date'], datetimefmt)
++        except ValueError:
++            app.logger.debug("Invalid datetime %s", row['date'])
++        else:
++            row_month_no = rowdate.month
++            value = row['value']
++            if value < 0:
++                value = 0
++            data_dict[row['datatype']][row_month_no] = value
+ 
+     temp_risk = None
+     rain_risk = None
+     
+     # http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4001452/
+     # Aedes albopictus is not expected to survive average January temperatures of -5 C (23 F)
+-#    tenths of degrees Fahrenheit for maximum, minimum, average, dew point, heat
+-#    index, wind chill, and air temperature normals and standard deviations.
+-#    e.g., "703" is 70.3F
+-    tavg_row = get_row("products/temperature/mly-tavg-normal.txt")
+-    if tavg_row is not None:
+-        tavg_ints = [int(v[:-1]) * 0.1 for v in tavg_row.split()[1:]]
+-        jan_temp = tavg_ints[0]
+-        temp_risk = bool(jan_temp > 23.0)
++    # Tenths of degrees Fahrenheit
++    jan_temp = data_dict['MLY-TAVG-NORMAL'].get(1)
++    if jan_temp is not None:
++        temp_risk = bool(jan_temp * 0.1 > 23.0)
+ 
+     # Aedes albopictus requires a minimum annual rainfall of ~250 mm (9.8 inches)
+-#    tenths of inches for average monthly/seasonal/annual snowfall,
+-#    month-to-date/year-to-date snowfall, and percentiles of snowfall.
+-#    e.g. "39" is 3.9"
+-    rain_row = get_row("products/precipitation/ann-prcp-normal.txt")
+-    if rain_row is not None:
+-        rain_in = int(rain_row.split()[1][:-1]) * 0.1
+-        rain_risk = bool(rain_in >= 9.8)
++    # hundredths of inches
++    rain_in = sum(data_dict['MLY-PRCP-NORMAL'].values())
++    rain_risk = bool(rain_in * 0.01 >= 9.8)
++
++    print temp_risk, rain_risk
+ 
+     if temp_risk and rain_risk:
++        result_dict['mosquito_risk'] = True
+ 
+-        cooling_value = None
++    if (temp_risk is not None and not temp_risk) or (rain_risk is not None and not rain_risk):
++        result_dict['mosquito_risk'] = False
++    else:
+         # http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3700474/
+         # roughly 100 degree days for Culex
+-        # Cooling degree days are equivalent to growing degree days
+-        cooling_result = get_row("products/temperature/mly-cldd-base57.txt")
+-        #    print cooling_result
+-        if cooling_result is not None:
+-            cooling_list = cooling_result.split()
+-            cooling_ints = [int(v[:-1]) if v[0] !=
+-                            "-" else 0 for v in cooling_list[1:]]
+-            cumulative_cdd = np.cumsum(cooling_ints)
+-            #print cumulative_cdd
+-            app.logger.debug(cumulative_cdd)
+-            cooling_value = cumulative_cdd[month_number - 1]
+-
+-        cooling_text = "mosquitoes have likely not yet hatched"
+-        if cooling_value > 100:
+-            cooling_text = "mosquitoes have likely hatched"
++        growing_dict = data_dict['MLY-GRDD-BASE57']
++        growing_ints = [0] * 12
++        for month_idx in range(12):
++            month_val = growing_dict.get(month_idx + 1)
++            if month_val is not None:
++                growing_ints[month_idx] = month_val
++        cumulative_gdd = np.cumsum(growing_ints)
++        growing_value = cumulative_gdd[month_number - 1]
++
++        mosquito_season = False
++        if growing_value > 100:
++            # Tenths of degrees Fahrenheit
++            month_temp = data_dict['MLY-TAVG-NORMAL'].get(month_number)
++            if month_temp is not None:
++                month_temp *= 0.1
+ 
+             # tmin 9.6 C (49.28 F)
+             # tmax 37 C (98.6 F)
+-            # TODO convert to quadratic
+-            month_temp = tavg_ints[month_number - 1]
+-
+-            conjunction = "but"
+-            risk = 1
+-            if month_temp < 49.28:
+-                temp_text = "it is too cold for mosquitoes"
+-            elif month_temp > 98.6:
+-                temp_text = "it is too hot for mosquitoes"
+-            else:
+-                conjunction = "and"
+-                temp_text = "it is the right temperature for mosquitoes"
+-                risk = 15
+-
+-            cooling_text = " ".join([cooling_text, conjunction, temp_text])
++            tmin = 49.28
++            tmax = 98.6
+ 
+-        # Aedes aegypti populations are not necessarily rainfall dependent
+-    #    hundredths of inches for average monthly/seasonal/annual precipitation,
+-    #    month-to-date/year-to-date precipitation, and percentiles of precipitation.
+-    #    e.g., "1" is 0.01" and "1486" is 14.86"
+-#        precip_result = get_row("products/precipitation/mly-prcp-normal.txt")
+-#    #    print precip_result
+-#        precip_list = precip_result.split()
+-#        precip_value = int(precip_list[month_number][:-1]) * 0.01
+-
+-        result_text = "The climate at your destination is hospitable to mosquitoes. In {month_name}, {cooling_text}.".format(
+-            cooling_text=cooling_text, month_name=month_name)
+-
+-        # TODO compute some sort of risk
+-        risk = 15
+-
+-    else:
+-        result_text = "The climate at your destination is not hospitable to mosquitoes."
+-        risk = 1
+-    
+-    if state is not None and cases is not None:
+-        result_text += " {0} total cases of Zika have been reported in {1}.".format(cases, state)
+-        # TODO logistic function
+-        risk = min(100, risk * 2)
+-
+-    if pop_sentence is not None:
+-        result_text = result_text + " " + pop_sentence
+-
+-    result_dict['text'] = result_text
+-    result_dict['risk'] = risk
++            if month_temp >= tmin and month_temp <= tmax:
++                mosquito_season = True
++        result_dict['mosquito_season'] = mosquito_season
+ 
+     return result_dict
+ 
+-
+ def get_zika():
+     html_doc = urllib2.urlopen(zika_url)
+ 
+@@ -320,7 +548,7 @@ def get_zika():
+ 
+     def process_row(row):
+         for x in 1, 2:
+-            row[x] = int(row[x].split()[0].replace(",", ""))
++            row[x] = row[x].split()[0].replace(",", "")
+         return row
+ 
+     data = list()
+@@ -337,15 +565,12 @@ def get_zika():
+ 
+     return data
+ 
+-def get_population(state=None, county=None):
++def get_population(state, county=None):
++
+     result = dict(error=None,
+                   state_pop=None,
+                   county_pop=None)
+ 
+-    if state is None:
+-        result['error'] = "No population data available."
+-        return result
+-
+     kwargs = dict(key=census_api_key)
+     state_param = "?get=NAME,B01001_001E&for=state:*&key={key}".format(**kwargs)
+     state_url = census_url + state_param
+@@ -359,10 +584,7 @@ def get_population(state=None, county=None):
+     state_number = None
+     for row in state_data[1:]:
+         if row[name_index].lower() == state.lower():
+-            if county is None:
+             result['state_pop'] = row[pop_index]
+-                return result
+-            else:
+             state_number = row[number_index]
+             break
+ 
+@@ -382,7 +604,23 @@ def get_population(state=None, county=None):
+         for row in county_data[1:]:
+             if row[c_name_index].lower().startswith(county.lower()):
+                 result['county_pop'] = row[c_pop_index]
+-                return result
++                break
++
++    errors = list()
++    # Cast populations to integer
++    if result['state_pop'] is not None:
++        try:
++            result['state_pop'] = int(result['state_pop'])
++        except ValueError:
++            errors.append("Incorrectly formatted state population")
++    if result['county_pop'] is not None:
++        try:
++            result['county_pop'] = int(result['county_pop'])
++        except ValueError:
++            errors.append("Incorrectly formatted county population")
++
++    if errors:
++        result['error'] = errors
+ 
+     return result
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/static/ajax-loader.gif b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/static/ajax-loader.gif
+new file mode 100644
+index 0000000..b3b2582
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/static/ajax-loader.gif differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/static/style.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/static/style.css
+index 1c44111..3a6965b 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-lennax/static/style.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-lennax/static/style.css
+@@ -28,3 +28,39 @@ body {
+ .disabled {
+   opacity: 0.2;
+ }
++
++.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
++
++.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
++
++.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
++
++.tg td.unknown {
++  background-color:#ccc;
++}
++
++.tg td.same {
++    background-color:#fffeed;
++}
++
++.tg td.worse {
++    background-color:#ffbaba;
++}
++
++.tg td.better {
++    background-color:#bfffba;
++}
++
++.spinner {
++    display:    none;
++}
++
++.spinner img {
++  display: block;
++  margin-left: auto;
++  margin-right: auto;
++}
++
++body.loading .spinner {
++    display: block;
++}

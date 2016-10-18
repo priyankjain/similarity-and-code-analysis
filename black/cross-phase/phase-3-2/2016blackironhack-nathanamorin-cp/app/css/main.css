@@ -1,0 +1,6 @@
+ body {
+   webkit-tap-highlight-color: #222222;
+ }
+
+
+#map_canvas { width: 90%; height: 800px; }

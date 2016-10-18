@@ -1,0 +1,489 @@
+Processing phase 1
+https://github.com/RCODI/blackironhack-phase1-public.git
+Removing directory blackironhack-phase1-public
+Removed directory blackironhack-phase1-public
+Skipping app.js since it is already in the project root folder
+Moving home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moved home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moving main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moved main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moving jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Skipping home.html since it is already in the project root folder
+Moving comments-data.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moved comments-data.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moving jquery-comments.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moved jquery-comments.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moving jquery-comments.min.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moved jquery-comments.min.js from 2016blackironhack-sauravn/data to 2016blackironhack-sauravn
+Moving gulpfile.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved gulpfile.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving raphael-2.1.4.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved raphael-2.1.4.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving tutorial.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved tutorial.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving bullet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved bullet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.rating.pack.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.rating.pack.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving scripts.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved scripts.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving JSON_template.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved JSON_template.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving flipclock.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved flipclock.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving script.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved script.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving modernizr.custom.79639.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved modernizr.custom.79639.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving justgage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved justgage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery-1.7.1.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery-1.7.1.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving search.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved search.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.rating.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.rating.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving RadarChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved RadarChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving rbox.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved rbox.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving walmart_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved walmart_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving script_recipe.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved script_recipe.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.MetaData.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.MetaData.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving star-rating.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved star-rating.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving html5shiv.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved html5shiv.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Skipping hack.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved tutorial.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moving script.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved script.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moving RadarChart.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved RadarChart.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Skipping brunch-config.js since it is already in the project root folder
+Moving reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Moved index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Skipping index.html since it is already in the project root folder
+Moving script.js from 2016blackironhack-lennax/js to 2016blackironhack-lennax
+Moved script.js from 2016blackironhack-lennax/js to 2016blackironhack-lennax
+Moving index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+templates
+Moved templates-index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+Skipping index.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Skipping map.js since it is already in the project root folder
+Skipping index2.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Skipping home.html since it is already in the project root folder
+Moving index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moved index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moving index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moved index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moving jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Processing phase 2
+https://github.com/RCODI/blackironhack-phase2-public.git
+Removing directory blackironhack-phase2-public
+Removed directory blackironhack-phase2-public
+Skipping app.js since it is already in the project root folder
+Moving home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moved home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moving main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moved main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moving jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Skipping home.html since it is already in the project root folder
+Moving datasheet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved datasheet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving main.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved main.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving maplace.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved maplace.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.easing.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.easing.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving barGraph.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved barGraph.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving decisiontree.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved decisiontree.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving veggies.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved veggies.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving AsterChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved AsterChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.fullPage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.fullPage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Skipping hack.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved tutorial.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moving script.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved script.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moving RadarChart.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Moved RadarChart.js from 2016blackironhack-saul97/js to 2016blackironhack-saul97
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Skipping content.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Skipping brunch-config.js since it is already in the project root folder
+Moving reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Moved index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Moving index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+Moved index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+Moving script.js from 2016blackironhack-lennax/static to 2016blackironhack-lennax
+Moved script.js from 2016blackironhack-lennax/static to 2016blackironhack-lennax
+Skipping index.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Skipping map.js since it is already in the project root folder
+Skipping index2.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Skipping google-maps-api-testing.html since it is already in the project root folder
+Skipping index.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved tutorial.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving map-maker.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved map-maker.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving script.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved script.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving get_lat_lng.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved get_lat_lng.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving RadarChart.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved RadarChart.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving report.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved report.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving get_states.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved get_states.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving google-maps-api-testing.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved google-maps-api-testing.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Skipping home.html since it is already in the project root folder
+Moving index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moved index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moving index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moved index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moving jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Processing phase 3
+https://github.com/RCODI/blackironhack-phase3-public.git
+Removing directory blackironhack-phase3-public
+Removed directory blackironhack-phase3-public
+Skipping app.js since it is already in the project root folder
+Moving home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moved home.js from 2016blackironhack-danzheng/controllers to 2016blackironhack-danzheng
+Moving main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moved main.js from 2016blackironhack-danzheng/public/js to 2016blackironhack-danzheng
+Moving c3-0.4.11.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved c3-0.4.11.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved jquery-2.2.0.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving d3-3.5.17.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved d3-3.5.17.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving jquery-ui.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved jquery-ui.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving moment.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved moment.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved bootstrap.min.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moving jquery.fullPage.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Moved jquery.fullPage.js from 2016blackironhack-danzheng/public/js/lib to 2016blackironhack-danzheng
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved tutorial.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved script.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moving RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Moved RadarChart.js from 2016blackironhack-thesoupgirl/js to 2016blackironhack-thesoupgirl
+Skipping home.html since it is already in the project root folder
+Moving datasheet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved datasheet.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved map.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved gauge.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving main.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved main.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving maplace.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved maplace.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.easing.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.easing.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving barGraph.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved barGraph.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved script_api.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving decisiontree.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved decisiontree.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving veggies.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved veggies.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved bootstrap.min.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving AsterChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved AsterChart.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving jquery.fullPage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved jquery.fullPage.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moving main_maps.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Moved main_maps.js from 2016blackironhack-sauravn/js to 2016blackironhack-sauravn
+Skipping overView.js since it is already in the project root folder
+Skipping RadarChart.js since it is already in the project root folder
+Skipping mostWork.js since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Skipping main.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved tutorial.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved script.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moving RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Moved RadarChart.js from 2016blackironhack-drewatk/js to 2016blackironhack-drewatk
+Skipping content.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved tutorial.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved script.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved main.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moved RadarChart.js from 2016blackironhack-emmyzhang/js to 2016blackironhack-emmyzhang
+Moving bootstrap-datepicker.js from 2016blackironhack-emmyzhang/datepicker/js to 2016blackironhack-emmyzhang
+Moved bootstrap-datepicker.js from 2016blackironhack-emmyzhang/datepicker/js to 2016blackironhack-emmyzhang
+Skipping brunch-config.js since it is already in the project root folder
+Moving reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved reducers.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moved initialize.js from 2016blackironhack-cg505/app to 2016blackironhack-cg505
+Moving index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Moved index.html from 2016blackironhack-cg505/app/assets to 2016blackironhack-cg505
+Moving index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+Moved index.html from 2016blackironhack-lennax/templates to 2016blackironhack-lennax
+Moving script.js from 2016blackironhack-lennax/static to 2016blackironhack-lennax
+Moved script.js from 2016blackironhack-lennax/static to 2016blackironhack-lennax
+Skipping index.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved tutorial.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved script.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving travel.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved travel.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moving RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Moved RadarChart.js from 2016blackironhack-kathy789/js to 2016blackironhack-kathy789
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved tutorial.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved script.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moving RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Moved RadarChart.js from 2016blackironhack-rkp7/js to 2016blackironhack-rkp7
+Skipping map.js since it is already in the project root folder
+Skipping index2.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved tutorial.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved script.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moving RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Moved RadarChart.js from 2016blackironhack-analyst1001/js to 2016blackironhack-analyst1001
+Skipping google-maps-api-testing.html since it is already in the project root folder
+Skipping index.html since it is already in the project root folder
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved tutorial.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving map-maker.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved map-maker.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving script.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved script.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving get_lat_lng.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved get_lat_lng.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving RadarChart.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved RadarChart.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving report.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved report.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving get_states.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved get_states.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving google-maps-api-testing.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved google-maps-api-testing.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moving circles.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Moved circles.js from 2016blackironhack-chriscoraggio/js to 2016blackironhack-chriscoraggio
+Skipping home.html since it is already in the project root folder
+Moving index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moved index.html from 2016blackironhack-nathanamorin/app to 2016blackironhack-nathanamorin
+Moving index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moved index.js from 2016blackironhack-nathanamorin/app/js to 2016blackironhack-nathanamorin
+Moving geoxml3.js from 2016blackironhack-nathanamorin/app/packages to 2016blackironhack-nathanamorin
+Moved geoxml3.js from 2016blackironhack-nathanamorin/app/packages to 2016blackironhack-nathanamorin
+Moving infobox_packed.js from 2016blackironhack-nathanamorin/app/packages to 2016blackironhack-nathanamorin
+Moved infobox_packed.js from 2016blackironhack-nathanamorin/app/packages to 2016blackironhack-nathanamorin
+Moving jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moved jquery.min.js from 2016blackironhack-nathanamorin/app/packages/jquery to 2016blackironhack-nathanamorin
+Moving bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moved bootstrap.min.js from 2016blackironhack-nathanamorin/app/packages/bootstrap/js to 2016blackironhack-nathanamorin
+Moving tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved tutorial.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved script.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moving RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Moved RadarChart.js from 2016blackironhack-nathanamorin/js to 2016blackironhack-nathanamorin
+Skipping home.html since it is already in the project root folder
+Moving tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved tutorial.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved script.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moving RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx
+Moved RadarChart.js from 2016blackironhack-pptx/js to 2016blackironhack-pptx

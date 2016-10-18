@@ -1,0 +1,25 @@
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+  /*  reset box sizing for bootstrap 
+  http://getbootstrap.com/getting-started/#third-box-sizing */
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+#gauge {
+  min-width: 310px;
+  max-width: 400px;
+  height: 300px;
+  margin: 0 auto
+}
+
+.references p {
+  padding-left: 22px;
+  text-indent: -22px;
+}
+
+.disabled {
+  opacity: 0.2;
+ }

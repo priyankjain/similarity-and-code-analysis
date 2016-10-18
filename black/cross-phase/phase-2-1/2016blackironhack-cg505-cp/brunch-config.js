@@ -1,0 +1,7 @@
+ 
+ 	plugins: {
+ 		babel: {
+			presets: [['es2015', {"loose": true}], 'react'],
+ 			plugins: ['transform-class-properties']
+ 		}
+ 	}

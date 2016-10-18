@@ -1,0 +1,145 @@
+@import "themes/modern/variables";
+
+@import "lib/bootstrap/bootstrap";
+@import "lib/bootstrap-social";
+@import "lib/font-awesome/font-awesome";
+
+@import "themes/modern/modern";
+
+// Scaffolding
+// -------------------------
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#floating-panel {
+    position: absolute;
+    top: 70px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #e7ebf3;
+    background-color: #fff;
+    color: #96a3b6;
+
+    .container {
+        padding-top: 14px;
+        padding-right: 14px;
+        vertical-align: middle;
+    }
+}
+
+.black {
+    color: #111;
+}
+
+// Input Fields
+// -------------------------
+
+textarea {
+    resize: vertical;
+}
+
+// Navbar
+// -------------------------
+.navbar-default {
+    height: $navbar-height;
+    background-color: #fff;
+    .container {
+        height: inherit;
+    }
+    .navbar-header {
+        height: inherit !important;
+    }
+    .navbar-brand {
+        position: absolute;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: #5c4b92;
+        font-family: $navbar-brand-font-family;
+        font-weight: bold;
+        font-size: $navbar-default-brand-size;
+        height: $navbar-height;
+        white-space: nowrap;
+        overflow: hidden;
+        // Brand logo
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-right: 12px;
+        }
+        .fa {
+            float: left;
+            display: inline-block;
+            vertical-align: middle;
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+        // Brand title
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: $navbar-default-brand-size;
+            padding-top: 20px;
+            padding-bottom: 16px;
+        }
+    }
+    .navbar-nav {
+        > li > a {
+            color: #444;
+        }
+        // Avatar
+        img {
+            height: 30px;
+            width: 30px;
+            margin: -15px 15px -15px;
+        }
+    }
+    .navbar-collapse {
+        background-color: #fff;
+    }
+    .navbar-toggle {
+        z-index: 1;
+    }
+}
+
+// Alerts
+// -------------------------
+
+.alert {
+    margin-top: 20px;
+}
+
+// Thumbnails
+// -------------------------
+
+.thumbnail {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: 0 0 5px #ccc, inset 0 0 0 #000;
+}
+
+// Font Icons
+// -------------------------
+
+.fa {
+    margin-right: 6px;
+}

@@ -1,0 +1,807 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/app/components/App.jsx b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/App.jsx
+index cde4b4a..e9229ce 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/app/components/App.jsx
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/App.jsx
+@@ -1,6 +1,9 @@
+ import React, {Component} from 'react';
+ import {Navbar} from 'react-bootstrap';
+ import Counter from './Counter';
++import Map from './Map';
++import NewMap from './NewMap';
++import LabelsExample from './labelsexample';
+ 
+ export default class App extends Component {
+ 	render() {
+@@ -15,6 +18,9 @@ export default class App extends Component {
+ 				</Navbar>
+ 				<div className="container">
+ 					<Counter />
++					{/* <Map /> */}
++					{/* <LabelsExample /> */}
++					<NewMap />
+ 				</div>
+ 			</div>
+ 		);
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/Map.jsx b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/Map.jsx
+new file mode 100644
+index 0000000..06de9cd
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/Map.jsx
+@@ -0,0 +1,231 @@
++import React, {Component} from 'react';
++import Datamap from 'react-datamaps';
++
++export default class Map extends Component {
++
++	render() {
++		return (
++			<Datamap
++				scope="usa"
++				geographyConfig={{
++					highlightBorderColor: '#bada55',
++					popupTemplate: (geography, data) =>
++						`<div class='hoverinfo'>${geography.properties.name}\nElectoral Votes: ${data.electoralVotes}`,
++					highlightBorderWidth: 3
++				}}
++				fills={{
++					'Republican': '#cc4731',
++					'Democrat': '#306596',
++					'Heavy Democrat': '#667faf',
++					'Light Democrat': '#a9c0de',
++					'Heavy Republican': '#ca5e5b',
++					'Light Republican': '#eaa9a8',
++					'defaultFill': '#eddc4e'
++				}}
++				data={{
++					AZ: {
++						fillKey: 'Republican',
++						electoralVotes: 5
++					},
++					CO: {
++						fillKey: 'Light Democrat',
++						electoralVotes: 5
++					},
++					DE: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					FL: {
++						fillKey: 'UNDECIDED',
++						electoralVotes: 29
++					},
++					GA: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					HI: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					ID: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					IL: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					IN: {
++						fillKey: 'Republican',
++						electoralVotes: 11
++					},
++					IA: {
++						fillKey: 'Light Democrat',
++						electoralVotes: 11
++					},
++					KS: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					KY: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					LA: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					MD: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					ME: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					MA: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					MN: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					MI: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					MS: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					MO: {
++						fillKey: 'Republican',
++						electoralVotes: 13
++					},
++					MT: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					NC: {
++						fillKey: 'Light Republican',
++						electoralVotes: 32
++					},
++					NE: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					NV: {
++						fillKey: 'Heavy Democrat',
++						electoralVotes: 32
++					},
++					NH: {
++						fillKey: 'Light Democrat',
++						electoralVotes: 32
++					},
++					NJ: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					NY: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					ND: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					NM: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					OH: {
++						fillKey: 'UNDECIDED',
++						electoralVotes: 32
++					},
++					OK: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					OR: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					PA: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					RI: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					SC: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					SD: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					TN: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					TX: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					UT: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					WI: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					VA: {
++						fillKey: 'Light Democrat',
++						electoralVotes: 32
++					},
++					VT: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					WA: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					WV: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					WY: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					CA: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					CT: {
++						fillKey: 'Democrat',
++						electoralVotes: 32
++					},
++					AK: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					AR: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					},
++					AL: {
++						fillKey: 'Republican',
++						electoralVotes: 32
++					}
++				}}
++				labels
++			/>
++		);
++	}
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/NewMap.jsx b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/NewMap.jsx
+new file mode 100644
+index 0000000..30b1b0e
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/NewMap.jsx
+@@ -0,0 +1,239 @@
++import React, {Component} from 'react';
++import Datamap from 'datamaps';
++
++export default class NewMap extends Component {
++	componentDidMount() {
++		var election = new Datamap({
++			scope: 'usa',
++			element: document.getElementById('map_election'),
++			geographyConfig: {
++				highlightBorderColor: '#bada55',
++				popupTemplate: function(geography, data) {
++					return '<div class="hoverinfo">' + geography.properties.name + '\nElectoral Votes:' +  data.electoralVotes + ' '
++				},
++				highlightBorderWidth: 3
++			},
++
++			fills: {
++				'Republican': '#CC4731',
++				'Democrat': '#306596',
++				'Heavy Democrat': '#667FAF',
++				'Light Democrat': '#A9C0DE',
++				'Heavy Republican': '#CA5E5B',
++				'Light Republican': '#EAA9A8',
++				defaultFill: '#EDDC4E'
++			},
++			data:{
++				"AZ": {
++					"fillKey": "Republican",
++					"electoralVotes": 5
++				},
++				"CO": {
++					"fillKey": "Light Democrat",
++					"electoralVotes": 5
++				},
++				"DE": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"FL": {
++					"fillKey": "UNDECIDED",
++					"electoralVotes": 29
++				},
++				"GA": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"HI": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"ID": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"IL": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"IN": {
++					"fillKey": "Republican",
++					"electoralVotes": 11
++				},
++				"IA": {
++					"fillKey": "Light Democrat",
++					"electoralVotes": 11
++				},
++				"KS": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"KY": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"LA": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"MD": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"ME": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"MA": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"MN": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"MI": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"MS": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"MO": {
++					"fillKey": "Republican",
++					"electoralVotes": 13
++				},
++				"MT": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"NC": {
++					"fillKey": "Light Republican",
++					"electoralVotes": 32
++				},
++				"NE": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"NV": {
++					"fillKey": "Heavy Democrat",
++					"electoralVotes": 32
++				},
++				"NH": {
++					"fillKey": "Light Democrat",
++					"electoralVotes": 32
++				},
++				"NJ": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"NY": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"ND": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"NM": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"OH": {
++					"fillKey": "UNDECIDED",
++					"electoralVotes": 32
++				},
++				"OK": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"OR": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"PA": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"RI": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"SC": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"SD": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"TN": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"TX": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"UT": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"WI": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"VA": {
++					"fillKey": "Light Democrat",
++					"electoralVotes": 32
++				},
++				"VT": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"WA": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"WV": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"WY": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"CA": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"CT": {
++					"fillKey": "Democrat",
++					"electoralVotes": 32
++				},
++				"AK": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"AR": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				},
++				"AL": {
++					"fillKey": "Republican",
++					"electoralVotes": 32
++				}
++			}
++		});
++		election.labels();
++	}
++
++	render() {
++		return (
++			<div id="map_election">
++			</div>
++		);
++	}
++
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/labelsexample.jsx b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/labelsexample.jsx
+new file mode 100644
+index 0000000..4b78a25
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/app/components/labelsexample.jsx
+@@ -0,0 +1,233 @@
++import React from 'react';
++
++import Datamap from 'react-datamaps';
++
++export default class LabelsExample extends React.Component {
++
++	render() {
++		return (
++            <Datamap
++					scope="usa"
++					geographyConfig={{
++						highlightBorderColor: '#bada55',
++						popupTemplate: (geography, data) =>
++							`<div class='hoverinfo'>${geography.properties.name}\nElectoral Votes: ${data.electoralVotes}`,
++						highlightBorderWidth: 3
++					}}
++					fills={{
++						'Republican': '#cc4731',
++						'Democrat': '#306596',
++						'Heavy Democrat': '#667faf',
++						'Light Democrat': '#a9c0de',
++						'Heavy Republican': '#ca5e5b',
++						'Light Republican': '#eaa9a8',
++						'defaultFill': '#eddc4e'
++					}}
++					data={{
++						AZ: {
++							fillKey: 'Republican',
++							electoralVotes: 5
++						},
++						CO: {
++							fillKey: 'Light Democrat',
++							electoralVotes: 5
++						},
++						DE: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						FL: {
++							fillKey: 'UNDECIDED',
++							electoralVotes: 29
++						},
++						GA: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						HI: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						ID: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						IL: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						IN: {
++							fillKey: 'Republican',
++							electoralVotes: 11
++						},
++						IA: {
++							fillKey: 'Light Democrat',
++							electoralVotes: 11
++						},
++						KS: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						KY: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						LA: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						MD: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						ME: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						MA: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						MN: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						MI: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						MS: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						MO: {
++							fillKey: 'Republican',
++							electoralVotes: 13
++						},
++						MT: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						NC: {
++							fillKey: 'Light Republican',
++							electoralVotes: 32
++						},
++						NE: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						NV: {
++							fillKey: 'Heavy Democrat',
++							electoralVotes: 32
++						},
++						NH: {
++							fillKey: 'Light Democrat',
++							electoralVotes: 32
++						},
++						NJ: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						NY: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						ND: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						NM: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						OH: {
++							fillKey: 'UNDECIDED',
++							electoralVotes: 32
++						},
++						OK: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						OR: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						PA: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						RI: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						SC: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						SD: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						TN: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						TX: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						UT: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						WI: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						VA: {
++							fillKey: 'Light Democrat',
++							electoralVotes: 32
++						},
++						VT: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						WA: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						WV: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						WY: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						CA: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						CT: {
++							fillKey: 'Democrat',
++							electoralVotes: 32
++						},
++						AK: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						AR: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						},
++						AL: {
++							fillKey: 'Republican',
++							electoralVotes: 32
++						}
++					}}
++					labels
++			/>
++		);
++	}
++
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/brunch-config.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/brunch-config.js
+index 08d0706..0b3f24d 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/brunch-config.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/brunch-config.js
+@@ -8,7 +8,7 @@ exports.config = {
+ 
+ 	plugins: {
+ 		babel: {
+-		presets: ['es2015', 'react'],
++			presets: [['es2015', {"loose": true}], 'react'],
+ 			plugins: ['transform-class-properties']
+ 		}
+ 	}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/index.html
+index 4816039..bfa9579 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/index.html
+@@ -6,7 +6,7 @@
+   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+   <title>Brunch with Redux</title>
+-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
++  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="/app.css">
+   <script src="/app.js"></script>
+   <script>require('initialize');</script>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/initialize.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/initialize.js
+index 96fb4b0..9fb77df 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/initialize.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/initialize.js
+@@ -5,7 +5,9 @@ import { createStore } from 'redux';
+ import counterApp from './reducers';
+ import App from 'components/App';
+ 
+-const store = createStore(counterApp, module.hot && module.hot.data && module.hot.data.counter || 0);
++const store = createStore(counterApp,
++                          module.hot && module.hot.data && module.hot.data.counter || 0,
++                          window.devToolsExtension && window.devToolsExtension());
+ 
+ if (module.hot) {
+   module.hot.accept('./reducers', () => {
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/package.json b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/package.json
+index ccb2cf9..01c1afa 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-cg505/package.json
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-cg505/package.json
+@@ -12,6 +12,7 @@
+     "prod": "brunch build --production"
+   },
+   "dependencies": {
++    "datamaps": "^0.5.7",
+     "react": "~0.14.7",
+     "react-bootstrap": "~0.30.3",
+     "react-dom": "~0.14.7",
+@@ -22,7 +23,7 @@
+     "auto-reload-brunch": "~2.7.0",
+     "babel-brunch": "~6.0.0",
+     "babel-plugin-transform-class-properties": "~6.11.5",
+-    "babel-preset-es2015": "~6.3.13",
++    "babel-preset-es2015": "~6.16.0",
+     "babel-preset-react": "~6.3.13",
+     "brunch": "~2.8.0",
+     "clean-css-brunch": "~2.0.0",

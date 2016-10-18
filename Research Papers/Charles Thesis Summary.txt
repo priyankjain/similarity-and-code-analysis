@@ -1,0 +1,15 @@
+Mashups=> Open Data => Transparency => Make code public => Learn => Reuse
+
+Three kinds of reuse activities:
+	1. Greenfield projects: No reuse, therefore truly novel
+	2. Cloned projects: Simply copy others code
+	3. Augmented projects: Develop novel ideas based on the reuse of other's code 
+
+Reuse in transparent context makes finding unique solutions difficult. Plagiarism detection is therefore required.
+
+Similarity at different levels:
+	- Code Similarity
+	- Functional Similarity
+	- Visual Similarity
+Thesis focuses on functional similarity and visual similarity
+

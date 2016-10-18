@@ -1,0 +1,27 @@
+     <link rel="stylesheet" href="css/main.css">
+ 
+     <!-- JAVASCRIPT -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD0m-WfFYXMz1wAPCdJGI7LzuzhaFcOxI&libraries=places&callback=initialize"
+      async defer>
+    </script>
+     <script src="js/main.js"></script>
+ </head>
+ 
+                 <ul class="nav navbar-nav navbar-right">
+                     <li><a href="#about">ABOUT</a></li>
+                     <li><a href="#services">SERVICES</a></li>
+    <div class="content">
+     <!-- Jumbotron -->
+     <div class="jumbotron text-center">
+         <h1>SickNo</h1>
+         <p>Track sickness, viruses, diseases wherever you go.</p>
+        <form id="locationSearchForm" class="form-inline">
+          <!-- <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> -->
+            <input id="pac-input" type="location" class="controls form-control" size="50" placeholder="Enter location and press enter">
+            <!-- <button id="locationSearch" type="button" class="btn btn-danger">Search</button> -->
+         </form>
+        <p>You searched for: <span id="searchResultText"> </span></p>
+     </div>
+    <div id="map"></div>
+     <!-- Google Maps -->

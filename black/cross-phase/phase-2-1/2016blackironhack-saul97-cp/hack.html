@@ -1,0 +1,39 @@
+  </head>
+   <body>
+     <h3>Purdue Ironhacks Tutorial Project</h3>
+    
+  
+     <div id="map"></div>
+     <div id="weather"></div>
+     <div id="marker"></div>
+    <div id="info"></div>
+     <script type = "text/javascript">
+     function getData() {
+         var theUrl = "http://www.ncdc.noaa.gov/cdo-web/api/v2/datacategories/DD";
+	 var theToken = "SAVsgmJIqPnXmRXQndKXsKeHbHQjBnwu";
+         //curl -H theToken theUrl;
+	 $.ajax({
+           url: theUrl,
+	   data: {data},
+           headers: {token:theToken},
+	   success: function(data) {
+               var response = data;
+	       alert(data);
+	       document.getElementById("weather").innerHTML = response;
+	   }	   
+	   });
+	 
+	 }   
+            
+	    
+	     	   
+	 
+	 
+       
+	 
+	 
+	    
+       
+  </script>
+      <script async defer 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4lO1PjOC9xzRaOK86FJoht6VBFYcsB8&callback=initMap">

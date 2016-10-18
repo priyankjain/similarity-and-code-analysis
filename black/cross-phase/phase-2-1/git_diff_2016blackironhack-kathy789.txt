@@ -1,0 +1,35 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-kathy789/index.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-kathy789/index.html
+index 6f80862..4da140a 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-kathy789/index.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-kathy789/index.html
+@@ -12,6 +12,8 @@
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+     -->
+ 	<link rel="stylesheet" href="travelSafe.css" type="text/css"/>
++    <script src= "js/travel.js" type="text/javascript"></script>
++
+ 	<style type="text/css">
+ 		#map {
+ 			width: 100%;
+@@ -51,17 +53,17 @@
+      <h3>Travel Safe Map </h3>
+      <div class="row">
+ 
+-          <div id="side-menu" class=col-md-5>
++          <div id="side-menu" class="col-md-5" >
+               <div>
+-                   <p> Purdue University </p>
++                   <p> Olando </p>
+               </div>
+-              <div>hellow</div>
++              <div id=temperature></div>
+               <div>world</div>
+               <div>iii</div>
+               <div>aaaa</div>
+ 
+           </div>
+-          <div id="map" class=col-md-3></div>
++          <div id="map" class="col-md-3"></div>
+           
+      </div>     
+      <script async defer

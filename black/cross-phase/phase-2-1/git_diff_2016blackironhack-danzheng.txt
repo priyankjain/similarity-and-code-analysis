@@ -1,0 +1,316 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/README.md b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/README.md
+index 69bf086..d6956cc 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/README.md
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/README.md
+@@ -1,23 +1,28 @@
+ # [Virus Tracker](http://ironhack-danzheng.herokuapp.com)
+ 
+-*Note: this project is in progress. More updates are on the way!*
++_Note: this project is in progress. More updates are on the way!_
+ 
+ ## Description
++
+ This is a web app that helps people make informed travel decisions and focuses on reducing risk of viral infections.
+ 
+ Users input a starting location, a destination, and possible modes of travel. The app then performs calculations based on the datasets and compares the risks of viral infection of the various modes of travel. The user can then decide if it is safe enough to travel, and if so, what method of travel is most safe.
+ 
+ ## Datasets
++
+ - Global Climate Network: [GHCN Daily Summaries for West Lafayette](http://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/locations/CITY:US180006/detail)
+ 
+-*more to be determined*
++_more to be determined_
+ 
+ ## Requirements
++
+ - Node
+ - NPM
+ 
+ ## Installation
++
+ To install packages and start the app, run:
++
+ ```bash
+ npm install # install packages
+ node app.js # start app on 'http://localhost:3000'
+@@ -26,7 +31,9 @@ node app.js # start app on 'http://localhost:3000'
+ I run my app using Google Chrome, but it should be compatible with most browsers. The app is not currently mobile friendly.
+ 
+ ## Technologies
++
+ Google Maps, d3.js, Node.js
+ 
+ ## Keywords
++
+ disease, transportation, travel, safety, health
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/main.js
+index 7868ba9..bc86896 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/main.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/main.js
+@@ -1,36 +1,104 @@
+ $(document).ready(function() {
+     var height = $(window).height() - $(".navbar").height() - $("footer").height();
+     $("#map").height(height);
+-    $("#map").css("padding-top", $(".navbar").height());
++    $("#map").css("margin-top", $(".navbar").height());
+ });
+ 
+ $(window).on('resize', function() {
+-    var height = $(window).height() - $(".navbar").height() * 2 - $("footer").height();
++    var height = $(window).height() - $(".navbar").height() - $("footer").height();
+     $("#map").height(height);
+-    $("#map").css("padding-top", $(".navbar").height());
++    $("#map").css("margin-top", $(".navbar").height());
+ });
+ 
+ function initMap() {
+-    var directionsService = new google.maps.DirectionsService;
+-    var directionsDisplay = new google.maps.DirectionsRenderer;
++	var origin_place_id = null;
++	var destination_place_id = null;
++	var travel_mode = 'WALKING';
+     var map = new google.maps.Map(document.getElementById('map'), {
+         zoom: 14,
+-        center: {lat: 40.4237095, lng: -86.9233833}
++        center: {
++            lat: 40.4237095,
++            lng: -86.9233833
++        }
+     });
++	var directionsService = new google.maps.DirectionsService;
++	var directionsDisplay = new google.maps.DirectionsRenderer;
+ 	directionsDisplay.setMap(map);
+ 
+-    var onChangeHandler = function() {
+-        calculateAndDisplayRoute(directionsService, directionsDisplay);
+-    };
+-    document.getElementById('start').addEventListener('change', onChangeHandler);
+-    document.getElementById('end').addEventListener('change', onChangeHandler);
++	var origin_input = document.getElementById('origin-input');
++	var destination_input = document.getElementById('destination-input');
++	var modes = document.getElementById('mode-selector');
++
++	map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
++	map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
++	map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
++
++	var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
++	origin_autocomplete.bindTo('bounds', map);
++	var destination_autocomplete =
++		new google.maps.places.Autocomplete(destination_input);
++	destination_autocomplete.bindTo('bounds', map);
++
++	// Sets a listener on a radio button to change the filter type on Places
++	// Autocomplete.
++	function setupClickListener(id, mode) {
++		var radioButton = document.getElementById(id);
++		radioButton.addEventListener('click', function() {
++			travel_mode = mode;
++		});
++	}
++	setupClickListener('changemode-walking', 'WALKING');
++	setupClickListener('changemode-transit', 'TRANSIT');
++	setupClickListener('changemode-driving', 'DRIVING');
++
++	function expandViewportToFitPlace(map, place) {
++		if (place.geometry.viewport) {
++			map.fitBounds(place.geometry.viewport);
++		} else {
++			map.setCenter(place.geometry.location);
++			map.setZoom(17);
++		}
++	}
++
++	origin_autocomplete.addListener('place_changed', function() {
++		var place = origin_autocomplete.getPlace();
++		if (!place.geometry) {
++			window.alert("Autocomplete's returned place contains no geometry");
++			return;
++		}
++		expandViewportToFitPlace(map, place);
++
++		// If the place has a geometry, store its place ID and route if we have
++		// the other place ID
++		origin_place_id = place.place_id;
++		route(origin_place_id, destination_place_id, travel_mode,
++			directionsService, directionsDisplay);
++	});
++
++	destination_autocomplete.addListener('place_changed', function() {
++		var place = destination_autocomplete.getPlace();
++		if (!place.geometry) {
++			window.alert("Autocomplete's returned place contains no geometry");
++			return;
+ 		}
++		expandViewportToFitPlace(map, place);
++
++		// If the place has a geometry, store its place ID and route if we have
++		// the other place ID
++		destination_place_id = place.place_id;
++		route(origin_place_id, destination_place_id, travel_mode,
++			directionsService, directionsDisplay);
++	});
+ 
+-  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
++	function route(origin_place_id, destination_place_id, travel_mode,
++		directionsService, directionsDisplay) {
++			if (!origin_place_id || !destination_place_id) {
++				return;
++			}
+ 			directionsService.route({
+-        origin: document.getElementById('start').value,
+-        destination: document.getElementById('end').value,
+-        travelMode: 'DRIVING'
++				origin: {'placeId': origin_place_id},
++				destination: {'placeId': destination_place_id},
++				travelMode: travel_mode
+ 			}, function(response, status) {
+ 				if (status === 'OK') {
+ 					directionsDisplay.setDirections(response);
+@@ -39,3 +107,4 @@ function initMap() {
+ 				}
+ 			});
+ 		}
++}
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/public/css/main.scss b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/public/css/main.scss
+index 873ba96..9dc1f06 100755
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/public/css/main.scss
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/public/css/main.scss
+@@ -9,25 +9,51 @@
+ // Scaffolding
+ // -------------------------
+ 
+-
+ html, body {
+ 	height: 100%;
+ 	margin: 0;
+ 	padding: 0;
+ }
+ 
+-#floating-panel {
+-    position: absolute;
+-    top: 70px;
+-    left: 25%;
+-    z-index: 5;
++.controls {
++    margin-top: 10px;
++    border: 1px solid transparent;
++    border-radius: 2px 0 0 2px;
++    box-sizing: border-box;
++    -moz-box-sizing: border-box;
++    height: 32px;
++    outline: none;
++    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
++}
++
++#origin-input, #destination-input {
+ 	background-color: #fff;
+-    padding: 5px;
+-    border: 1px solid #999;
+-    text-align: center;
+-    font-family: 'Roboto','sans-serif';
+-    line-height: 30px;
+-    padding-left: 10px;
++	font-family: Roboto;
++	font-size: 15px;
++	font-weight: 300;
++	margin-left: 12px;
++	padding: 0 11px 0 13px;
++	text-overflow: ellipsis;
++	width: 200px;
++}
++
++#origin-input:focus,
++#destination-input:focus {
++	border-color: #4d90fe;
++}
++
++#mode-selector {
++	color: #fff;
++	background-color: #4d90fe;
++	margin-left: 12px;
++	padding: 5px 11px 0px 11px;
++}
++
++#mode-selector label {
++    border: 0;
++	font-family: Roboto;
++	font-size: 13px;
++	font-weight: 300;
+ }
+ 
+ footer {
+@@ -49,6 +75,10 @@ footer {
+ 	color: #111;
+ }
+ 
++.black {
++    color: #111;
++}
++
+ // Input Fields
+ // -------------------------
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/home.jade b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/home.jade
+index ef05f17..f6f11fa 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/home.jade
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/home.jade
+@@ -1,34 +1,16 @@
+ extends layout
+ 
+ block content
+-    div#floating-panel
+-        b Start: 
+-        select#start
+-            option(value='west lafayette, in') West Lafayette
+-            option(value='st louis, mo') St Louis
+-            option(value='joplin, mo') Joplin, MO
+-            option(value='oklahoma city, ok') Oklahoma City
+-            option(value='amarillo, tx') Amarillo
+-            option(value='gallup, nm') Gallup, NM
+-            option(value='flagstaff, az') Flagstaff, AZ
+-            option(value='winona, az') Winona
+-            option(value='kingman, az') Kingman
+-            option(value='barstow, ca') Barstow
+-            option(value='san bernardino, ca') San Bernardino
+-            option(value='los angeles, ca') Los Angeles
+-        b End: 
+-        select#end
+-            option(value='chicago, il') Chicago
+-            option(value='st louis, mo') St Louis
+-            option(value='joplin, mo') Joplin, MO
+-            option(value='oklahoma city, ok') Oklahoma City
+-            option(value='amarillo, tx') Amarillo
+-            option(value='gallup, nm') Gallup, NM
+-            option(value='flagstaff, az') Flagstaff, AZ
+-            option(value='winona, az') Winona
+-            option(value='kingman, az') Kingman
+-            option(value='barstow, ca') Barstow
+-            option(value='san bernardino, ca') San Bernardino
+-            option(value='los angeles, ca') Los Angeles
++    input#origin-input.controls(type='text', placeholder='Enter an origin')
++    input#destination-input.controls(type='text', placeholder='Enter a destination')
++
++    div#mode-selector.controls
++        input#changemode-walking(type='radio', name='type', checked='checked')
++        label(for='changemode-walking') Walking
++        input#changemode-transit(type='radio', name='type')
++        label(for='changemode-transit') Transit
++        input#changemode-driving(type='radio', name='type')
++        label(for='changemode-driving') Driving
++
+     div#map
+             
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/layout.jade b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/layout.jade
+index e9c9b66..16db7c2 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-danzheng/views/layout.jade
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-danzheng/views/layout.jade
+@@ -18,7 +18,7 @@ html
+         script(src='/js/lib/jquery-2.2.0.min.js')
+         script(src='/js/lib/bootstrap.min.js') 
+         script(src='/js/main.js')
+-        script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB25869j0yLHkbkcxHeWU4njUz_l4Z5fYU&callback=initMap")
++        script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB25869j0yLHkbkcxHeWU4njUz_l4Z5fYU&libraries=places&callback=initMap")
+     else
+         body
+             include partials/header

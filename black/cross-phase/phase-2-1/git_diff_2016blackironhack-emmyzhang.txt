@@ -1,0 +1,414 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/content.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/content.html
+new file mode 100644
+index 0000000..8639a8c
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/content.html
+@@ -0,0 +1,96 @@
++<!-- Container (About Section) -->
++<div id="about" class="container-fluid">
++    <div class="row">
++        <div class="col-sm-8">
++            <h2>About SickNo</h2>
++            <h4>An Ironhack app</h4>
++            <p>This webapp provides location and data services to users who want to know virus/disease
++            incidences at traveling destination. This is useful to help keep travelers safe from
++            locations with high incidences of deathly viruses.</p>
++            <button class="btn btn-default btn-lg">Get in Touch</button>
++        </div>
++        <div class="col-sm-4">
++            <span class="glyphicon glyphicon-signal logo"></span>
++        </div>
++    </div>
++</div>
++
++<div class="container-fluid bg-grey">
++    <div class="row">
++        <div class="col-sm-4">
++            <span class="glyphicon glyphicon-globe logo"></span>
++        </div>
++        <div class="col-sm-8">
++            <h2>Our Values</h2>
++            <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>
++            <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
++        </div>
++    </div>
++</div>
++
++<!-- Container (Services Section) -->
++<div id="services" class="container-fluid text-center">
++    <h2>SERVICES</h2>
++    <h4>What we offer</h4>
++    <br>
++    <div class="row">
++        <div class="col-sm-4">
++            <span class="glyphicon glyphicon-plus logo-small"></span>
++            <h4>HEALTH</h4>
++            <p>Lorem ipsum dolor sit amet..</p>
++        </div>
++        <div class="col-sm-4">
++            <span class="glyphicon glyphicon-heart logo-small"></span>
++            <h4>LOVE</h4>
++            <p>Lorem ipsum dolor sit amet..</p>
++        </div>
++        <div class="col-sm-4">
++            <span class="glyphicon logo-small"><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
++            <h4>DATA</h4>
++            <p>Lorem ipsum dolor sit amet..</p>
++        </div>
++    </div>
++    <br>
++</div>
++
++
++
++<!-- Container (Contact Section) -->
++<div id="contact" class="container-fluid bg-grey">
++    <h2 class="text-center">CONTACT</h2>
++    <div class="row">
++        <div class="col-sm-5">
++            <p>Contact us and we'll get back to you within 24 hours.</p>
++            <p><span class="glyphicon glyphicon-map-marker"></span> West lafayette, Indiana, US</p>
++            <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
++            <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
++        </div>
++        <div class="col-sm-7">
++            <div class="row">
++                <div class="col-sm-6 form-group">
++                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
++                </div>
++                <div class="col-sm-6 form-group">
++                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
++                </div>
++            </div>
++            <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
++            <br>
++            <div class="row">
++                <div class="col-sm-12 form-group">
++                    <button class="btn btn-default pull-right" type="submit">Send</button>
++                </div>
++            </div>
++        </div>
++    </div>
++</div>
++
++
++<!-- Footer -->
++<footer class="container-fluid text-center">
++    <a href="#myPage" title="To Top">
++        <span class="glyphicon glyphicon-chevron-up"></span>
++    </a>
++    <p>SickNo Made By <a target="emmyzhang" href="http://emmyzhang.herokuapp.com/" title="Emmy Zhang">Emmy Zhang</a> for
++      <a target="Ironhack" href="https://www.purdue.edu/opendigital/purdue-ironhacks/">IronHack</a></p>
++</footer>
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/css/main.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/css/main.css
+index d6ce991..003e180 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/css/main.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/css/main.css
+@@ -27,12 +27,29 @@ h4 {
+     font-weight: 400;
+     margin-bottom: 30px;
+ }
+-
++.content {
++  display: flex;
++  flex-flow: wrap;
++}
+ .jumbotron {
+-    background-color: #f4511e;
+-    color: #fff;
++    background-color: #fff;
++    color: #f4511e;
+     padding: 100px 25px;
++    margin: 0;
++    height: 100vh;
++    width: 50%;
+ }
++#map {
++  width: 50%;
++  height: 100vh;
++  float: right;
++  align-self: flex-end;
++}
++
++#locationSearchForm {
++  margin: 0 0 15px 0;
++}
++
+ .bg-grey {
+     background-color: #f6f6f6;
+ }
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/home.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/home.html
+index c23f148..1ab52de 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/home.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/home.html
+@@ -16,7 +16,10 @@
+     <link rel="stylesheet" href="css/main.css">
+ 
+     <!-- JAVASCRIPT -->
+-    <script src="http://maps.googleapis.com/maps/api/js"></script>
++    <script
++      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD0m-WfFYXMz1wAPCdJGI7LzuzhaFcOxI&libraries=places&callback=initialize"
++      async defer>
++    </script>
+     <script src="js/main.js"></script>
+ </head>
+ 
+@@ -37,121 +40,30 @@
+                 <ul class="nav navbar-nav navbar-right">
+                     <li><a href="#about">ABOUT</a></li>
+                     <li><a href="#services">SERVICES</a></li>
+-                    <li><a href="#portfolio">PORTFOLIO</a></li>
+-                    <li><a href="#pricing">PRICING</a></li>
+                     <li><a href="#contact">CONTACT</a></li>
+                 </ul>
+             </div>
+         </div>
+     </nav>
+ 
++    <div class="content">
+     <!-- Jumbotron -->
+     <div class="jumbotron text-center">
+         <h1>SickNo</h1>
+         <p>Track sickness, viruses, diseases wherever you go.</p>
+-        <form class="form-inline">
+-            <input type="email" class="form-control" size="50" placeholder="Email Address">
+-            <button type="button" class="btn btn-danger">Subscribe</button>
++        <form id="locationSearchForm" class="form-inline">
++          <!-- <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> -->
++            <input id="pac-input" type="location" class="controls form-control" size="50" placeholder="Enter location and press enter">
++            <!-- <button id="locationSearch" type="button" class="btn btn-danger">Search</button> -->
+         </form>
++        <p>You searched for: <span id="searchResultText"> </span></p>
+     </div>
+-
+-    <!-- Container (About Section) -->
+-    <div id="about" class="container-fluid">
+-        <div class="row">
+-            <div class="col-sm-8">
+-                <h2>About SickNo</h2>
+-                <h4>An Ironhack app</h4>
+-                <p>This webapp provides location and data services to users who want to know virus/disease
+-                incidences at traveling destination. This is useful to help keep travelers safe from
+-                locations with high incidences of deathly viruses.</p>
+-                <button class="btn btn-default btn-lg">Get in Touch</button>
+-            </div>
+-            <div class="col-sm-4">
+-                <span class="glyphicon glyphicon-signal logo"></span>
+-            </div>
+-        </div>
+-    </div>
+-
+-    <div class="container-fluid bg-grey">
+-        <div class="row">
+-            <div class="col-sm-4">
+-                <span class="glyphicon glyphicon-globe logo"></span>
+-            </div>
+-            <div class="col-sm-8">
+-                <h2>Our Values</h2>
+-                <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>
+-                <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
+-            </div>
+-        </div>
+-    </div>
+-
+-    <!-- Container (Services Section) -->
+-    <div id="services" class="container-fluid text-center">
+-        <h2>SERVICES</h2>
+-        <h4>What we offer</h4>
+-        <br>
+-        <div class="row">
+-            <div class="col-sm-4">
+-                <span class="glyphicon glyphicon-plus logo-small"></span>
+-                <h4>HEALTH</h4>
+-                <p>Lorem ipsum dolor sit amet..</p>
+-            </div>
+-            <div class="col-sm-4">
+-                <span class="glyphicon glyphicon-heart logo-small"></span>
+-                <h4>LOVE</h4>
+-                <p>Lorem ipsum dolor sit amet..</p>
+-            </div>
+-            <div class="col-sm-4">
+-                <span class="glyphicon logo-small"><i class="fa fa-bar-chart" aria-hidden="true"></i></span>
+-                <h4>DATA</h4>
+-                <p>Lorem ipsum dolor sit amet..</p>
+-            </div>
+-        </div>
+-        <br>
+-    </div>
+-
++    <div id="map"></div>
+     <!-- Google Maps -->
+-    <div id="googleMap" style="height:400px;width:100%;"></div>
+ 
+-    <!-- Container (Contact Section) -->
+-    <div id="contact" class="container-fluid bg-grey">
+-        <h2 class="text-center">CONTACT</h2>
+-        <div class="row">
+-            <div class="col-sm-5">
+-                <p>Contact us and we'll get back to you within 24 hours.</p>
+-                <p><span class="glyphicon glyphicon-map-marker"></span> West lafayette, Indiana, US</p>
+-                <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+-                <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+-            </div>
+-            <div class="col-sm-7">
+-                <div class="row">
+-                    <div class="col-sm-6 form-group">
+-                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+-                    </div>
+-                    <div class="col-sm-6 form-group">
+-                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+-                    </div>
+-                </div>
+-                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+-                <br>
+-                <div class="row">
+-                    <div class="col-sm-12 form-group">
+-                        <button class="btn btn-default pull-right" type="submit">Send</button>
+-                    </div>
+-                </div>
+-            </div>
+-        </div>
+   </div>
+ 
+ 
+-    <!-- Footer -->
+-    <footer class="container-fluid text-center">
+-        <a href="#myPage" title="To Top">
+-            <span class="glyphicon glyphicon-chevron-up"></span>
+-        </a>
+-        <p>SickNo Made By <a target="emmyzhang" href="http://emmyzhang.herokuapp.com/" title="Emmy Zhang">Emmy Zhang</a> for
+-          <a target="Ironhack" href="https://www.purdue.edu/opendigital/purdue-ironhacks/">IronHack</a></p>
+-    </footer>
+ 
+ </body>
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/main.js
+index 3eb1ca2..f9dd987 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase1-public/2016blackironhack-emmyzhang/main.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/main.js
+@@ -1,51 +1,91 @@
++$(document).ready(function(){
++  /* make map height from bottom of nav to bottom of page */
++  var windowHeight = $( window ).height();
++  var navHeight = $(".navbar").height();
++  $("#map").css( "height", windowHeight - navHeight);
++
++  /* Print location search from input */
++  var printSearchInput = function () {
++    var value = $("#pac-input").val();
++    $("#searchResultText").html(value);
++  };
++
++  $("#locationSearch").click(printSearchInput);
++
++  $("#locationSearchForm").keypress(function(event) {
++    if (event.keyCode == 13) {
++           printSearchInput();
++    }
++  });
++
++})
++
++
+ /* Google Maps */
+-var myCenter = new google.maps.LatLng(40.425057, -86.911447);
++
+ 
+ function initialize() {
+-    var mapProp = {
+-        center: myCenter,
++
++    var map = new google.maps.Map(document.getElementById('map'), {
++          center: {lat: 40.425057, lng: -86.911447},
+           zoom: 12,
+           scrollwheel: false,
+           draggable: true,
+           mapTypeId: google.maps.MapTypeId.ROADMAP
+-    };
++        });
++        var input = /** @type {!HTMLInputElement} */(
++            document.getElementById('pac-input'));
+ 
+-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
++        var types = document.getElementById('type-selector');
++        // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
++        // map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+ 
++        var autocomplete = new google.maps.places.Autocomplete(input);
++        autocomplete.bindTo('bounds', map);
++
++        var infowindow = new google.maps.InfoWindow();
+         var marker = new google.maps.Marker({
+-        position: myCenter,
++          map: map,
++          anchorPoint: new google.maps.Point(0, -29)
+         });
+ 
+-    marker.setMap(map);
++        autocomplete.addListener('place_changed', function() {
++          infowindow.close();
++          marker.setVisible(false);
++          var place = autocomplete.getPlace();
++          if (!place.geometry) {
++            window.alert("Autocomplete's returned place contains no geometry");
++            return;
+           }
+ 
+-google.maps.event.addDomListener(window, 'load', initialize);
+-
+-
+-/* Smooth Scrolling */
+-
+-$(document).ready(function(){
+-  // Add smooth scrolling to all links in navbar + footer link
+-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+-
+-   // Make sure this.hash has a value before overriding default behavior
+-  if (this.hash !== "") {
+-
+-    // Prevent default anchor click behavior
+-    event.preventDefault();
+-
+-    // Store hash
+-    var hash = this.hash;
++          // If the place has a geometry, then present it on a map.
++          if (place.geometry.viewport) {
++            map.fitBounds(place.geometry.viewport);
++          } else {
++            map.setCenter(place.geometry.location);
++            map.setZoom(17);  // Why 17? Because it looks good.
++          }
++          marker.setIcon(/** @type {google.maps.Icon} */({
++            url: place.icon,
++            size: new google.maps.Size(71, 71),
++            origin: new google.maps.Point(0, 0),
++            anchor: new google.maps.Point(17, 34),
++            scaledSize: new google.maps.Size(35, 35)
++          }));
++          marker.setPosition(place.geometry.location);
++          marker.setVisible(true);
+ 
+-    // Using jQuery's animate() method to add smooth page scroll
+-    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+-    $('html, body').animate({
+-      scrollTop: $(hash).offset().top
+-    }, 900, function(){
++          var address = '';
++          if (place.address_components) {
++            address = [
++              (place.address_components[0] && place.address_components[0].short_name || ''),
++              (place.address_components[1] && place.address_components[1].short_name || ''),
++              (place.address_components[2] && place.address_components[2].short_name || '')
++            ].join(' ');
++          }
+ 
+-      // Add hash (#) to URL when done scrolling (default click behavior)
+-      window.location.hash = hash;
+-      });
+-    } // End if
++          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
++          infowindow.open(map, marker);
+         });
+-})
++
++}

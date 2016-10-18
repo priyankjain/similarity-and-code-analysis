@@ -1,0 +1,2 @@
+http://stackoverflow.com/questions/24435268/extract-one-object-from-bunch-of-objects-and-detect-edges
+http://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html

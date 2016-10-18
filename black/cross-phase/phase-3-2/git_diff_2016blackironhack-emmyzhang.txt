@@ -1,0 +1,1242 @@
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/.DS_Store b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/.DS_Store
+new file mode 100644
+index 0000000..5008ddf
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/.DS_Store differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/RadarChart.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/RadarChart.js
+index 8759099..d1693fd 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/RadarChart.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/RadarChart.js
+@@ -1,41 +1,21 @@
+-/**
+-2015-09-07 by Charles Song
+-This is the javascript file for the radar chart.
+-It will create the basic template for the rader chart. All the numbers/information will be set in the script.js file.
+-**/
+-
+-// basic parameters for a radar chart template
+-var cfg = {
+-	 radius: 5,
+-	 w: 500,
+-	 h: 500,
+-	 factor: 1,
+-	 factortitle: .85,
+-	 levels: 3,
+-	 maxValue: 0,
+-	 radians: 2 * Math.PI,
+-	 opacityArea: 0.5,
+-	 ToRight: 5,
+-	 TranslateX: 80,
+-	 TranslateY: 30,
+-	 ExtraWidthX: 100,
+-	 ExtraWidthY: 100,
+-	 color: d3.scale.category10()
+-	};
++//Practically all this code comes from https://github.com/alangrafu/radar-chart-d3
++//I only made some additions and aesthetic adjustments to make the chart look better
++//(of course, that is only my point of view)
++//Such as a better placement of the titles at each line end,
++//adding numbers that reflect what each circular level stands for
++//Not placing the last level and slight differences in color
++//
++//For a bit of extra information check the blog about it:
++//http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
+ 
+ var RadarChart = {
+-	//id is the ID for the chart in HTML
+-	//d is the data stored for presenting
+-	//options a potential styles for the chart
+-
+   draw: function(id, d, options){
+-  
+   var cfg = {
+ 	 radius: 5,
+-	 w: 500,
+-	 h: 500,
++	 w: 600,
++	 h: 600,
+ 	 factor: 1,
+-	 factortitle: .85,
++	 factorLegend: .85,
+ 	 levels: 3,
+ 	 maxValue: 0,
+ 	 radians: 2 * Math.PI,
+@@ -48,7 +28,6 @@ var RadarChart = {
+ 	 color: d3.scale.category10()
+ 	};
+ 
+-	//if there is no definition for the style of the chart, we will use the first model by default
+ 	if('undefined' !== typeof options){
+ 	  for(var i in options){
+ 		if('undefined' !== typeof options[i]){
+@@ -56,17 +35,13 @@ var RadarChart = {
+ 		}
+ 	  }
+ 	}
+-
+-	//get the max value for showing in percentage
+ 	cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+-	//get all the axis and lines for the chart template
+ 	var allAxis = (d[0].map(function(i, j){return i.axis}));
+ 	var total = allAxis.length;
+ 	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+ 	var Format = d3.format('%');
+ 	d3.select(id).select("svg").remove();
+ 
+-	//set the final position information for the chart area
+ 	var g = d3.select(id)
+ 			.append("svg")
+ 			.attr("width", cfg.w+cfg.ExtraWidthX)
+@@ -74,7 +49,7 @@ var RadarChart = {
+ 			.append("g")
+ 			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+ 			;
+-	//variable for showing tips while mouse moving on
++
+ 	var tooltip;
+ 
+ 	//Circular segments
+@@ -104,9 +79,9 @@ var RadarChart = {
+ 	   .append("svg:text")
+ 	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
+ 	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
+-	   .attr("class", "title")
++	   .attr("class", "legend")
+ 	   .style("font-family", "sans-serif")
+-	   .style("font-size", "12px")
++	   .style("font-size", "10px")
+ 	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
+ 	   .attr("fill", "#737373")
+ 	   .text(Format((j+1)*cfg.maxValue/cfg.levels));
+@@ -114,14 +89,12 @@ var RadarChart = {
+ 
+ 	series = 0;
+ 
+-	//define all the axis in the chart as class "axis"
+ 	var axis = g.selectAll(".axis")
+ 			.data(allAxis)
+ 			.enter()
+ 			.append("g")
+ 			.attr("class", "axis");
+ 
+-	//define all the lines in the chart as class "line"
+ 	axis.append("line")
+ 		.attr("x1", cfg.w/2)
+ 		.attr("y1", cfg.h/2)
+@@ -131,19 +104,18 @@ var RadarChart = {
+ 		.style("stroke", "grey")
+ 		.style("stroke-width", "1px");
+ 
+-	//define all the title in the chart as class "title"
+ 	axis.append("text")
+-		.attr("class", "title")
++		.attr("class", "legend")
+ 		.text(function(d){return d})
+ 		.style("font-family", "sans-serif")
+-		.style("font-size", "12px")
++		.style("font-size", "11px")
+ 		.attr("text-anchor", "middle")
+ 		.attr("dy", "1.5em")
+ 		.attr("transform", function(d, i){return "translate(0, -10)"})
+-		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factortitle*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
++		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
+ 		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
+ 
+- 	//create nodes for each point for scores
++
+ 	d.forEach(function(y, x){
+ 	  dataValues = [];
+ 	  g.selectAll(".nodes")
+@@ -247,4 +219,3 @@ var RadarChart = {
+ 			   .style('font-size', '13px');
+   }
+ };
+-
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/bootstrap-datepicker.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/bootstrap-datepicker.js
+new file mode 100755
+index 0000000..bf3a56d
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/bootstrap-datepicker.js
+@@ -0,0 +1,474 @@
++/* =========================================================
++ * bootstrap-datepicker.js 
++ * http://www.eyecon.ro/bootstrap-datepicker
++ * =========================================================
++ * Copyright 2012 Stefan Petre
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ * ========================================================= */
++ 
++!function( $ ) {
++	
++	// Picker object
++	
++	var Datepicker = function(element, options){
++		this.element = $(element);
++		this.format = DPGlobal.parseFormat(options.format||this.element.data('date-format')||'mm/dd/yyyy');
++		this.picker = $(DPGlobal.template)
++							.appendTo('body')
++							.on({
++								click: $.proxy(this.click, this)//,
++								//mousedown: $.proxy(this.mousedown, this)
++							});
++		this.isInput = this.element.is('input');
++		this.component = this.element.is('.date') ? this.element.find('.add-on') : false;
++		
++		if (this.isInput) {
++			this.element.on({
++				focus: $.proxy(this.show, this),
++				//blur: $.proxy(this.hide, this),
++				keyup: $.proxy(this.update, this)
++			});
++		} else {
++			if (this.component){
++				this.component.on('click', $.proxy(this.show, this));
++			} else {
++				this.element.on('click', $.proxy(this.show, this));
++			}
++		}
++	
++		this.minViewMode = options.minViewMode||this.element.data('date-minviewmode')||0;
++		if (typeof this.minViewMode === 'string') {
++			switch (this.minViewMode) {
++				case 'months':
++					this.minViewMode = 1;
++					break;
++				case 'years':
++					this.minViewMode = 2;
++					break;
++				default:
++					this.minViewMode = 0;
++					break;
++			}
++		}
++		this.viewMode = options.viewMode||this.element.data('date-viewmode')||0;
++		if (typeof this.viewMode === 'string') {
++			switch (this.viewMode) {
++				case 'months':
++					this.viewMode = 1;
++					break;
++				case 'years':
++					this.viewMode = 2;
++					break;
++				default:
++					this.viewMode = 0;
++					break;
++			}
++		}
++		this.startViewMode = this.viewMode;
++		this.weekStart = options.weekStart||this.element.data('date-weekstart')||0;
++		this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
++		this.onRender = options.onRender;
++		this.fillDow();
++		this.fillMonths();
++		this.update();
++		this.showMode();
++	};
++	
++	Datepicker.prototype = {
++		constructor: Datepicker,
++		
++		show: function(e) {
++			this.picker.show();
++			this.height = this.component ? this.component.outerHeight() : this.element.outerHeight();
++			this.place();
++			$(window).on('resize', $.proxy(this.place, this));
++			if (e ) {
++				e.stopPropagation();
++				e.preventDefault();
++			}
++			if (!this.isInput) {
++			}
++			var that = this;
++			$(document).on('mousedown', function(ev){
++				if ($(ev.target).closest('.datepicker').length == 0) {
++					that.hide();
++				}
++			});
++			this.element.trigger({
++				type: 'show',
++				date: this.date
++			});
++		},
++		
++		hide: function(){
++			this.picker.hide();
++			$(window).off('resize', this.place);
++			this.viewMode = this.startViewMode;
++			this.showMode();
++			if (!this.isInput) {
++				$(document).off('mousedown', this.hide);
++			}
++			//this.set();
++			this.element.trigger({
++				type: 'hide',
++				date: this.date
++			});
++		},
++		
++		set: function() {
++			var formated = DPGlobal.formatDate(this.date, this.format);
++			if (!this.isInput) {
++				if (this.component){
++					this.element.find('input').prop('value', formated);
++				}
++				this.element.data('date', formated);
++			} else {
++				this.element.prop('value', formated);
++			}
++		},
++		
++		setValue: function(newDate) {
++			if (typeof newDate === 'string') {
++				this.date = DPGlobal.parseDate(newDate, this.format);
++			} else {
++				this.date = new Date(newDate);
++			}
++			this.set();
++			this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
++			this.fill();
++		},
++		
++		place: function(){
++			var offset = this.component ? this.component.offset() : this.element.offset();
++			this.picker.css({
++				top: offset.top + this.height,
++				left: offset.left
++			});
++		},
++		
++		update: function(newDate){
++			this.date = DPGlobal.parseDate(
++				typeof newDate === 'string' ? newDate : (this.isInput ? this.element.prop('value') : this.element.data('date')),
++				this.format
++			);
++			this.viewDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0, 0);
++			this.fill();
++		},
++		
++		fillDow: function(){
++			var dowCnt = this.weekStart;
++			var html = '<tr>';
++			while (dowCnt < this.weekStart + 7) {
++				html += '<th class="dow">'+DPGlobal.dates.daysMin[(dowCnt++)%7]+'</th>';
++			}
++			html += '</tr>';
++			this.picker.find('.datepicker-days thead').append(html);
++		},
++		
++		fillMonths: function(){
++			var html = '';
++			var i = 0
++			while (i < 12) {
++				html += '<span class="month">'+DPGlobal.dates.monthsShort[i++]+'</span>';
++			}
++			this.picker.find('.datepicker-months td').append(html);
++		},
++		
++		fill: function() {
++			var d = new Date(this.viewDate),
++				year = d.getFullYear(),
++				month = d.getMonth(),
++				currentDate = this.date.valueOf();
++			this.picker.find('.datepicker-days th:eq(1)')
++						.text(DPGlobal.dates.months[month]+' '+year);
++			var prevMonth = new Date(year, month-1, 28,0,0,0,0),
++				day = DPGlobal.getDaysInMonth(prevMonth.getFullYear(), prevMonth.getMonth());
++			prevMonth.setDate(day);
++			prevMonth.setDate(day - (prevMonth.getDay() - this.weekStart + 7)%7);
++			var nextMonth = new Date(prevMonth);
++			nextMonth.setDate(nextMonth.getDate() + 42);
++			nextMonth = nextMonth.valueOf();
++			var html = [];
++			var clsName,
++				prevY,
++				prevM;
++			while(prevMonth.valueOf() < nextMonth) {
++				if (prevMonth.getDay() === this.weekStart) {
++					html.push('<tr>');
++				}
++				clsName = this.onRender(prevMonth);
++				prevY = prevMonth.getFullYear();
++				prevM = prevMonth.getMonth();
++				if ((prevM < month &&  prevY === year) ||  prevY < year) {
++					clsName += ' old';
++				} else if ((prevM > month && prevY === year) || prevY > year) {
++					clsName += ' new';
++				}
++				if (prevMonth.valueOf() === currentDate) {
++					clsName += ' active';
++				}
++				html.push('<td class="day '+clsName+'">'+prevMonth.getDate() + '</td>');
++				if (prevMonth.getDay() === this.weekEnd) {
++					html.push('</tr>');
++				}
++				prevMonth.setDate(prevMonth.getDate()+1);
++			}
++			this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
++			var currentYear = this.date.getFullYear();
++			
++			var months = this.picker.find('.datepicker-months')
++						.find('th:eq(1)')
++							.text(year)
++							.end()
++						.find('span').removeClass('active');
++			if (currentYear === year) {
++				months.eq(this.date.getMonth()).addClass('active');
++			}
++			
++			html = '';
++			year = parseInt(year/10, 10) * 10;
++			var yearCont = this.picker.find('.datepicker-years')
++								.find('th:eq(1)')
++									.text(year + '-' + (year + 9))
++									.end()
++								.find('td');
++			year -= 1;
++			for (var i = -1; i < 11; i++) {
++				html += '<span class="year'+(i === -1 || i === 10 ? ' old' : '')+(currentYear === year ? ' active' : '')+'">'+year+'</span>';
++				year += 1;
++			}
++			yearCont.html(html);
++		},
++		
++		click: function(e) {
++			e.stopPropagation();
++			e.preventDefault();
++			var target = $(e.target).closest('span, td, th');
++			if (target.length === 1) {
++				switch(target[0].nodeName.toLowerCase()) {
++					case 'th':
++						switch(target[0].className) {
++							case 'switch':
++								this.showMode(1);
++								break;
++							case 'prev':
++							case 'next':
++								this.viewDate['set'+DPGlobal.modes[this.viewMode].navFnc].call(
++									this.viewDate,
++									this.viewDate['get'+DPGlobal.modes[this.viewMode].navFnc].call(this.viewDate) + 
++									DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1)
++								);
++								this.fill();
++								this.set();
++								break;
++						}
++						break;
++					case 'span':
++						if (target.is('.month')) {
++							var month = target.parent().find('span').index(target);
++							this.viewDate.setMonth(month);
++						} else {
++							var year = parseInt(target.text(), 10)||0;
++							this.viewDate.setFullYear(year);
++						}
++						if (this.viewMode !== 0) {
++							this.date = new Date(this.viewDate);
++							this.element.trigger({
++								type: 'changeDate',
++								date: this.date,
++								viewMode: DPGlobal.modes[this.viewMode].clsName
++							});
++						}
++						this.showMode(-1);
++						this.fill();
++						this.set();
++						break;
++					case 'td':
++						if (target.is('.day') && !target.is('.disabled')){
++							var day = parseInt(target.text(), 10)||1;
++							var month = this.viewDate.getMonth();
++							if (target.is('.old')) {
++								month -= 1;
++							} else if (target.is('.new')) {
++								month += 1;
++							}
++							var year = this.viewDate.getFullYear();
++							this.date = new Date(year, month, day,0,0,0,0);
++							this.viewDate = new Date(year, month, Math.min(28, day),0,0,0,0);
++							this.fill();
++							this.set();
++							this.element.trigger({
++								type: 'changeDate',
++								date: this.date,
++								viewMode: DPGlobal.modes[this.viewMode].clsName
++							});
++						}
++						break;
++				}
++			}
++		},
++		
++		mousedown: function(e){
++			e.stopPropagation();
++			e.preventDefault();
++		},
++		
++		showMode: function(dir) {
++			if (dir) {
++				this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
++			}
++			this.picker.find('>div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
++		}
++	};
++	
++	$.fn.datepicker = function ( option, val ) {
++		return this.each(function () {
++			var $this = $(this),
++				data = $this.data('datepicker'),
++				options = typeof option === 'object' && option;
++			if (!data) {
++				$this.data('datepicker', (data = new Datepicker(this, $.extend({}, $.fn.datepicker.defaults,options))));
++			}
++			if (typeof option === 'string') data[option](val);
++		});
++	};
++
++	$.fn.datepicker.defaults = {
++		onRender: function(date) {
++			return '';
++		}
++	};
++	$.fn.datepicker.Constructor = Datepicker;
++	
++	var DPGlobal = {
++		modes: [
++			{
++				clsName: 'days',
++				navFnc: 'Month',
++				navStep: 1
++			},
++			{
++				clsName: 'months',
++				navFnc: 'FullYear',
++				navStep: 1
++			},
++			{
++				clsName: 'years',
++				navFnc: 'FullYear',
++				navStep: 10
++		}],
++		dates:{
++			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
++			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
++			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
++			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
++			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
++		},
++		isLeapYear: function (year) {
++			return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0))
++		},
++		getDaysInMonth: function (year, month) {
++			return [31, (DPGlobal.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
++		},
++		parseFormat: function(format){
++			var separator = format.match(/[.\/\-\s].*?/),
++				parts = format.split(/\W+/);
++			if (!separator || !parts || parts.length === 0){
++				throw new Error("Invalid date format.");
++			}
++			return {separator: separator, parts: parts};
++		},
++		parseDate: function(date, format) {
++			var parts = date.split(format.separator),
++				date = new Date(),
++				val;
++			date.setHours(0);
++			date.setMinutes(0);
++			date.setSeconds(0);
++			date.setMilliseconds(0);
++			if (parts.length === format.parts.length) {
++				var year = date.getFullYear(), day = date.getDate(), month = date.getMonth();
++				for (var i=0, cnt = format.parts.length; i < cnt; i++) {
++					val = parseInt(parts[i], 10)||1;
++					switch(format.parts[i]) {
++						case 'dd':
++						case 'd':
++							day = val;
++							date.setDate(val);
++							break;
++						case 'mm':
++						case 'm':
++							month = val - 1;
++							date.setMonth(val - 1);
++							break;
++						case 'yy':
++							year = 2000 + val;
++							date.setFullYear(2000 + val);
++							break;
++						case 'yyyy':
++							year = val;
++							date.setFullYear(val);
++							break;
++					}
++				}
++				date = new Date(year, month, day, 0 ,0 ,0);
++			}
++			return date;
++		},
++		formatDate: function(date, format){
++			var val = {
++				d: date.getDate(),
++				m: date.getMonth() + 1,
++				yy: date.getFullYear().toString().substring(2),
++				yyyy: date.getFullYear()
++			};
++			val.dd = (val.d < 10 ? '0' : '') + val.d;
++			val.mm = (val.m < 10 ? '0' : '') + val.m;
++			var date = [];
++			for (var i=0, cnt = format.parts.length; i < cnt; i++) {
++				date.push(val[format.parts[i]]);
++			}
++			return date.join(format.separator);
++		},
++		headTemplate: '<thead>'+
++							'<tr>'+
++								'<th class="prev">&lsaquo;</th>'+
++								'<th colspan="5" class="switch"></th>'+
++								'<th class="next">&rsaquo;</th>'+
++							'</tr>'+
++						'</thead>',
++		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>'
++	};
++	DPGlobal.template = '<div class="datepicker dropdown-menu">'+
++							'<div class="datepicker-days">'+
++								'<table class=" table-condensed">'+
++									DPGlobal.headTemplate+
++									'<tbody></tbody>'+
++								'</table>'+
++							'</div>'+
++							'<div class="datepicker-months">'+
++								'<table class="table-condensed">'+
++									DPGlobal.headTemplate+
++									DPGlobal.contTemplate+
++								'</table>'+
++							'</div>'+
++							'<div class="datepicker-years">'+
++								'<table class="table-condensed">'+
++									DPGlobal.headTemplate+
++									DPGlobal.contTemplate+
++								'</table>'+
++							'</div>'+
++						'</div>';
++
++}( window.jQuery );
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/css/main.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/css/main.css
+index 003e180..8592bc8 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/css/main.css
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/css/main.css
+@@ -11,7 +11,12 @@ body {
+ .navbar {
+     font-family: Montserrat, sans-serif;
+ }
+-
++#date {
++  color: #555;
++}
++#datachart {
++  width: 100%;
++}
+ h2 {
+     font-size: 24px;
+     text-transform: uppercase;
+@@ -100,7 +105,12 @@ h4 {
+     border-color: transparent;
+     color: #fff !important;
+ }
+-
++button.navbar-toggle {
++  color: #fff;
++}
++span.icon-bar {
++  color: #fff;
++}
+ /* Footer */
+ 
+ footer .glyphicon {
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/.DS_Store b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/.DS_Store
+new file mode 100644
+index 0000000..837405e
+Binary files /dev/null and b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/.DS_Store differ
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/css/datepicker.css b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/css/datepicker.css
+new file mode 100755
+index 0000000..b7065b7
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/css/datepicker.css
+@@ -0,0 +1,182 @@
++/*!
++ * Datepicker for Bootstrap
++ *
++ * Copyright 2012 Stefan Petre
++ * Licensed under the Apache License v2.0
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ */
++.datepicker {
++  top: 0;
++  left: 0;
++  padding: 4px;
++  margin-top: 1px;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  /*.dow {
++    border-top: 1px solid #ddd !important;
++  }*/
++
++}
++.datepicker:before {
++  content: '';
++  display: inline-block;
++  border-left: 7px solid transparent;
++  border-right: 7px solid transparent;
++  border-bottom: 7px solid #ccc;
++  border-bottom-color: rgba(0, 0, 0, 0.2);
++  position: absolute;
++  top: -7px;
++  left: 6px;
++}
++.datepicker:after {
++  content: '';
++  display: inline-block;
++  border-left: 6px solid transparent;
++  border-right: 6px solid transparent;
++  border-bottom: 6px solid #ffffff;
++  position: absolute;
++  top: -6px;
++  left: 7px;
++}
++.datepicker > div {
++  display: none;
++}
++.datepicker table {
++  width: 100%;
++  margin: 0;
++}
++.datepicker td,
++.datepicker th {
++  text-align: center;
++  width: 20px;
++  height: 20px;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++}
++.datepicker td.day:hover {
++  background: #eeeeee;
++  cursor: pointer;
++}
++.datepicker td.day.disabled {
++  color: #eeeeee;
++}
++.datepicker td.old,
++.datepicker td.new {
++  color: #999999;
++}
++.datepicker td.active,
++.datepicker td.active:hover {
++  color: #ffffff;
++  background-color: #006dcc;
++  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
++  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
++  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
++  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
++  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
++  background-repeat: repeat-x;
++  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
++  border-color: #0044cc #0044cc #002a80;
++  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
++  *background-color: #0044cc;
++  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
++
++  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
++  color: #fff;
++  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
++}
++.datepicker td.active:hover,
++.datepicker td.active:hover:hover,
++.datepicker td.active:focus,
++.datepicker td.active:hover:focus,
++.datepicker td.active:active,
++.datepicker td.active:hover:active,
++.datepicker td.active.active,
++.datepicker td.active:hover.active,
++.datepicker td.active.disabled,
++.datepicker td.active:hover.disabled,
++.datepicker td.active[disabled],
++.datepicker td.active:hover[disabled] {
++  color: #ffffff;
++  background-color: #0044cc;
++  *background-color: #003bb3;
++}
++.datepicker td.active:active,
++.datepicker td.active:hover:active,
++.datepicker td.active.active,
++.datepicker td.active:hover.active {
++  background-color: #003399 \9;
++}
++.datepicker td span {
++  display: block;
++  width: 47px;
++  height: 54px;
++  line-height: 54px;
++  float: left;
++  margin: 2px;
++  cursor: pointer;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++}
++.datepicker td span:hover {
++  background: #eeeeee;
++}
++.datepicker td span.active {
++  color: #ffffff;
++  background-color: #006dcc;
++  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
++  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
++  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
++  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
++  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
++  background-repeat: repeat-x;
++  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
++  border-color: #0044cc #0044cc #002a80;
++  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
++  *background-color: #0044cc;
++  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
++
++  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
++  color: #fff;
++  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
++}
++.datepicker td span.active:hover,
++.datepicker td span.active:focus,
++.datepicker td span.active:active,
++.datepicker td span.active.active,
++.datepicker td span.active.disabled,
++.datepicker td span.active[disabled] {
++  color: #ffffff;
++  background-color: #0044cc;
++  *background-color: #003bb3;
++}
++.datepicker td span.active:active,
++.datepicker td span.active.active {
++  background-color: #003399 \9;
++}
++.datepicker td span.old {
++  color: #999999;
++}
++.datepicker th.switch {
++  width: 145px;
++}
++.datepicker th.next,
++.datepicker th.prev {
++  font-size: 21px;
++}
++.datepicker thead tr:first-child th {
++  cursor: pointer;
++}
++.datepicker thead tr:first-child th:hover {
++  background: #eeeeee;
++}
++.input-append.date .add-on i,
++.input-prepend.date .add-on i {
++  display: block;
++  cursor: pointer;
++  width: 16px;
++  height: 16px;
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/less/datepicker.less b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/less/datepicker.less
+new file mode 100755
+index 0000000..c3f34be
+--- /dev/null
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/datepicker/less/datepicker.less
+@@ -0,0 +1,122 @@
++/*!
++ * Datepicker for Bootstrap
++ *
++ * Copyright 2012 Stefan Petre
++ * Licensed under the Apache License v2.0
++ * http://www.apache.org/licenses/LICENSE-2.0
++ *
++ */
++ 
++.datepicker {
++	top: 0;
++	left: 0;
++	padding: 4px;
++	margin-top: 1px;
++	.border-radius(4px);
++	&:before {
++		content: '';
++		display: inline-block;
++		border-left:   7px solid transparent;
++		border-right:  7px solid transparent;
++		border-bottom: 7px solid #ccc;
++		border-bottom-color: rgba(0,0,0,.2);
++		position: absolute;
++		top: -7px;
++		left: 6px;
++	}
++	&:after {
++		content: '';
++		display: inline-block;
++		border-left:   6px solid transparent;
++		border-right:  6px solid transparent;
++		border-bottom: 6px solid @white;
++		position: absolute;
++		top: -6px;
++		left: 7px;
++	}
++	>div {
++		display: none;
++	}
++	table{
++		width: 100%;
++		margin: 0;
++	}
++	td,
++	th{
++		text-align: center;
++		width: 20px;
++		height: 20px;
++		.border-radius(4px);
++	}
++	td {
++		&.day:hover {
++			background: @grayLighter;
++			cursor: pointer;
++		}
++		&.day.disabled {
++			color: @grayLighter;
++		}
++		&.old,
++		&.new {
++			color: @grayLight;
++		}
++		&.active,
++		&.active:hover {
++			.buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
++			color: #fff;
++			text-shadow: 0 -1px 0 rgba(0,0,0,.25);
++		}
++		span {
++			display: block;
++			width: 47px;
++			height: 54px;
++			line-height: 54px;
++			float: left;
++			margin: 2px;
++			cursor: pointer;
++			.border-radius(4px);
++			&:hover {
++				background: @grayLighter;
++			}
++			&.active {
++				.buttonBackground(@btnPrimaryBackground, spin(@btnPrimaryBackground, 20));
++				color: #fff;
++				text-shadow: 0 -1px 0 rgba(0,0,0,.25);
++			}
++			&.old {
++				color: @grayLight;
++			}
++		}
++	}
++	
++	th {
++		&.switch {
++			width: 145px;
++		}
++		&.next,
++		&.prev {
++			font-size: @baseFontSize * 1.5;
++		}
++	}
++	
++	thead tr:first-child th {
++		cursor: pointer;
++		&:hover{
++			background: @grayLighter;
++		}
++	}
++	/*.dow {
++		border-top: 1px solid #ddd !important;
++	}*/
++}
++.input-append,
++.input-prepend {
++	&.date {
++		.add-on i {
++			display: block;
++			cursor: pointer;
++			width: 16px;
++			height: 16px;
++		}
++	}
++}
+\ No newline at end of file
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/home.html b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/home.html
+index 1ab52de..7a7b7cd 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/home.html
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/home.html
+@@ -12,7 +12,10 @@
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
++    <!--  jQuery -->
++    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+     <!-- CUSTOM CSS -->
++    <link rel="stylesheet" href="datepicker/css/datepicker.css">
+     <link rel="stylesheet" href="css/main.css">
+ 
+     <!-- JAVASCRIPT -->
+@@ -21,6 +24,10 @@
+       async defer>
+     </script>
+     <script src="js/main.js"></script>
++    <script src="datepicker/js/bootstrap-datepicker.js"></script>
++    <script src="http://d3js.org/d3.v3.min.js"></script>
++	   <script src="js/RadarChart.js"></script>
++
+ </head>
+ 
+ <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+@@ -39,7 +46,6 @@
+             <div class="collapse navbar-collapse" id="myNavbar">
+                 <ul class="nav navbar-nav navbar-right">
+                     <li><a href="#about">ABOUT</a></li>
+-                    <li><a href="#services">SERVICES</a></li>
+                     <li><a href="#contact">CONTACT</a></li>
+                 </ul>
+             </div>
+@@ -53,17 +59,22 @@
+       <p>Track sickness, viruses, diseases wherever you go.</p>
+       <form id="locationSearchForm" class="form-inline">
+         <!-- <input id="pac-input" class="controls" type="text" placeholder="Enter a location"> -->
+-            <input id="pac-input" type="location" class="controls form-control" size="50" placeholder="Enter location and press enter">
++          <input id="pac-input" type="location" class="controls form-control" size="50" placeholder="Enter traveling destination">
+           <!-- <button id="locationSearch" type="button" class="btn btn-danger">Search</button> -->
+       </form>
+-        <p>You searched for: <span id="searchResultText"> </span></p>
++      <!-- date picker -->
++      <input type="date" id="date" size="10" name="date" title="Date" pattern="^\d{2}/\d{2}/\d{4}$" placeholder="MM/DD/YYYY">
++      <!-- data -->
++      <div class="dataChart">
++        <div id="chart"></div>
++      </div>
+     </div>
+     <div id="map"></div>
+     <!-- Google Maps -->
+ 
+   </div>
+ 
+-
++<script type="text/javascript" src="js/script.js"></script>
+ 
+ </body>
+ 
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/main.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/main.js
+index f9dd987..8e11aff 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/main.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/main.js
+@@ -1,13 +1,20 @@
+ $(document).ready(function(){
+   /* make map height from bottom of nav to bottom of page */
+-  var windowHeight = $( window ).height();
+-  var navHeight = $(".navbar").height();
+-  $("#map").css( "height", windowHeight - navHeight);
++  // var windowHeight = $( window ).height();
++  // var navHeight = $(".navbar").height();
++  // $("#map").css( "height", windowHeight - navHeight);
+ 
+   /* Print location search from input */
++  function handleKeyPress(e){
++    if(e.keyCode === 13){
++        e.preventDefault(); // Ensure it is only this code that rusn
++
++        alert("Enter was pressed was presses");
++    }
++  }
+   var printSearchInput = function () {
+     var value = $("#pac-input").val();
+-    $("#searchResultText").html(value);
++    $("#searchResultText").bindTo(value);
+   };
+ 
+   $("#locationSearch").click(printSearchInput);
+@@ -18,12 +25,12 @@ $(document).ready(function(){
+     }
+   });
+ 
++  // datapicker
++  $('#datepicker').datepicker();
+ })
+ 
+ 
+ /* Google Maps */
+-
+-
+ function initialize() {
+ 
+     var map = new google.maps.Map(document.getElementById('map'), {
+diff --git a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/script.js b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/script.js
+index aaec0fa..85a998d 100644
+--- a/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase2-public/2016blackironhack-emmyzhang/script.js
++++ b/home/priyank/Desktop/Dropbox/RCODI/similarity-and-code-analysis/black/blackironhack-phase3-public/2016blackironhack-emmyzhang/script.js
+@@ -1,99 +1,81 @@
+-/**
+-2015-09-07 by Charles Song
+-This is the javascript file for the radar chart。 We can define the content of the chart here. We can also defind the numbers by accessing external links and resources such as JSON files.
+-**/
++var w = 300,
++	h = 300;
+ 
++var colorscale = d3.scale.category10();
+ 
+-//create a new httprequest for this session
+-var xmlhttp = new XMLHttpRequest();
+-//json format data resource url 
+-var url = "http://api.openweathermap.org/data/2.5/weather?q=chicago&appid=6aa0bdb1f586c5630d60b6237dfce45c";
+-xmlhttp.open("GET", url, true);
+-xmlhttp.send();
++//Legend titles
++var LegendOptions = ['Smartphone','Tablet'];
++
++//Data
++var d = [
++		  [
++      {axis:"zika cases", value: 0.10},
++      {axis:"mosquitos", value: 0.10}
++		  ],[
++			{axis:"rain",value:0.48},
++
++		  ]
++		];
++
++//Options for the Radar chart, other than default
++var mycfg = {
++  w: w,
++  h: h,
++  maxValue: 0.6,
++  levels: 6,
++  ExtraWidthX: 300
++}
+ 
+-//once the request is accepted, process the fowllowing function to get data and complete the app information
+-xmlhttp.onreadystatechange = function() {
+-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+-        var myArr = xmlhttp.responseText;
+-        var text = myArr;
+-        var json = JSON.parse(text);
+-        //alert(JSON.parse(text).coord.lon);
+-        //document.getElementById("id01").innerHTML = myArr;
++//Call function to draw the Radar chart
++//Will expect that data is in %'s
++RadarChart.draw("#chart", d, mycfg);
+ 
+-        document.getElementById("weather").innerHTML = "Today the weather is <em><b>" + json.weather[0].main + "</b></em>";
+-		//
+-		//variables for the title
+-		//
++////////////////////////////////////////////
++/////////// Initiate legend ////////////////
++////////////////////////////////////////////
+ 
+-		//initiate the title
+ var svg = d3.select('#body')
+ 	.selectAll('svg')
+ 	.append('svg')
+-			.attr("width", cfg.w+300)
+-			.attr("height", cfg.h)
+-
+-
+-		//variables for creating colour squares
+-		var colorscale = d3.scale.category10();
++	.attr("width", w+300)
++	.attr("height", h)
+ 
+-		//titles
+-		var titleOptions = ['Final Scores'];
++//Create the title for the legend
+ var text = svg.append("text")
+ 	.attr("class", "title")
+ 	.attr('transform', 'translate(90,0)')
+-			.attr("x", cfg.w-70)
++	.attr("x", w - 70)
+ 	.attr("y", 10)
+ 	.attr("font-size", "12px")
+ 	.attr("fill", "#404040")
+-			.text("Find your best place to get food!");
++	.text("What % of owners use a specific service in a week");
+ 
+-		//Initiate title	
+-		var title = svg.append("g")
+-			.attr("class", "title")
++//Initiate Legend
++var legend = svg.append("g")
++	.attr("class", "legend")
+ 	.attr("height", 100)
+ 	.attr("width", 200)
+ 	.attr('transform', 'translate(90,20)')
+ 	;
+ 	//Create colour squares
+-			title.selectAll('rect')
+-			  .data(titleOptions)
++	legend.selectAll('rect')
++	  .data(LegendOptions)
+ 	  .enter()
+ 	  .append("rect")
+-			  .attr("x", cfg.w - 65)
++	  .attr("x", w - 65)
+ 	  .attr("y", function(d, i){ return i * 20;})
+ 	  .attr("width", 10)
+ 	  .attr("height", 10)
+ 	  .style("fill", function(d, i){ return colorscale(i);})
+ 	  ;
+ 	//Create text next to squares
+-			title.selectAll('text')
+-			  .data(titleOptions)
++	legend.selectAll('text')
++	  .data(LegendOptions)
+ 	  .enter()
+ 	  .append("text")
+-			  .attr("x", cfg.w - 52)
++	  .attr("x", w - 52)
+ 	  .attr("y", function(d, i){ return i * 20 + 9;})
+-			  .attr("font-size", "13px")
++	  .attr("font-size", "11px")
+ 	  .attr("fill", "#737373")
+ 	  .text(function(d) { return d; })
+ 	  ;
+-
+-		// those are functions for calculating scores for each store
+-
+-
+-    }
+-};
+-
+-//show the request function in the text format
+-function myRequestFunction(arr) {
+-    var out = "";
+-    var i;
+-    for(i = 0; i < arr.length; i++) {
+-        out += '<a href="' + arr[i].url + '">' + 
+-        arr[i].display + '</a><br>';
+-    }
+-    document.getElementById("id01").innerHTML = out;
+-}
+-
+-
+-
+-

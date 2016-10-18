@@ -1,0 +1,244 @@
+ @import "themes/modern/variables";
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+.purple {
+    background: linear-gradient(to bottom, rgba(255, 201, 221, 0.1), rgba(255, 201, 221, 0)), linear-gradient(to right, #79589F, #6e5da8);
+    background-image: linear-gradient(rgba(255, 201, 221, 0.0980392), rgba(255, 201, 221, 0)), linear-gradient(to right, rgb(121, 88, 159), rgb(110, 93, 168));
+    background-position-x: initial, initial;
+    background-position-y: initial, initial;
+    background-size: initial, initial;
+    background-repeat-x: initial, initial;
+    background-repeat-y: initial, initial;
+    background-attachment: initial, initial;
+    background-origin: initial, initial;
+    background-clip: initial, initial;
+    background-color: initial;
+}
+
+.unauth {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2);
+
+    h1 {
+        text-align: center;
+        font-family: $title-font-family;
+        font-weight: bold;
+        padding: $title-font-size * 0.5 * 0.3 0;
+        font-size: $title-font-size * 0.3;
+        @media (min-width: $screen-xs-min) {
+            font-size: $title-font-size * 0.5;
+            padding: $title-font-size * 0.5 * 0.5 0;
+        }
+        @media (min-width: $screen-sm-min) {
+            font-size: $title-font-size * 0.7;
+            padding: $title-font-size * 0.5 * 0.7 0;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: $title-font-size * 0.85;
+            padding: $title-font-size * 0.5 * 0.85 0;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: $title-font-size;
+            padding: $title-font-size * 0.5 0;
+        }
+
+        .emph {
+            font-style: italic;
+        }
+    }
+
+    p {
+        text-align: center;
+        font-family: $subtitle-font-family;
+        font-weight: lighter;
+        padding: $subtitle-font-size * 0.5 * 0.6 0;
+        font-size: $subtitle-font-size * 0.6;
+        @media (min-width: $screen-sm-min) {
+            font-size: $subtitle-font-size * 0.7;
+            padding: $subtitle-font-size * 0.5 * 0.7 0;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: $subtitle-font-size;
+            padding: $subtitle-font-size * 0.5 0;
+        }
+
+        .emph {
+            font-style: italic;
+        }
+    }
+
+    .btn {
+        font-family: "Roboto";
+        font-size: 20px;
+        font-weight: 300;
+        width: 240px;
+        display: block;
+        margin: 30px auto;
+    }
+}
+
+#map {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#data {
+    background-color: #eee;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: rgba(255, 255, 255, .7);
+    height: inherit;
+}
+
+#data {
+    h1 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+#route {
+
+}
+
+#route-info {
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 6px;
+    padding-left: 6px;
+    float: left;
+    width: inherit;
+     height: 100%;
+    position: static;
+    overflow: auto;
+    text-align: left;
+}
+
+#route-info input,
+#route-info select {
+    font-size: 15px;
+}
+
+#route-info select {
+    width: 100%;
+}
+
+#route-info i {
+    font-size: 12px;
+}
+
+.adp-warnbox {
+    display: none;
+}
+
+#data-tabs {
+    margin-bottom: 10px;
+    font-weight: 700;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    font-size: 15px;
+
+    *:focus {
+        outline: none;
+        border: none;
+    }
+    li a {
+        overflow: hidden;
+        border-bottom-width: 0;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+
+#chart .c3-chart-line {
+    stroke-width: 3px;
+ }
+ 
+ .controls {
+     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+ }
+ 
+#dest-input,
+#orig-input {
+    display: block;
+     background-color: #fff;
+     font-family: Roboto;
+     font-size: 15px;
+     width: 200px;
+ }
+ 
+#dest-input:focus,
+#orig-input:focus {
+     border-color: #4d90fe;
+ }
+ 
+ #mode-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+     font-family: Roboto;
+    font-size: 15px;
+     font-weight: 300;
+    margin-left: 11px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+ }
+ 
+ footer {
+ .black {
+     color: #111;
+ }
+
+ .navbar-default {
+     height: $navbar-height;
+     background-color: #fff;
+
+     .container {
+         height: inherit;
+     }
+
+     .navbar-header {
+         height: inherit !important;
+     }
+
+     .navbar-brand {
+         position: absolute;
+        padding-top: 0;
+        padding-bottom: 0;
+         color: #5c4b92;
+         font-family: $navbar-brand-font-family;
+         font-weight: bold;
+             padding-bottom: 12px;
+             padding-right: 12px;
+         }
+
+         .fa {
+             float: left;
+             display: inline-block;
+             padding-bottom: 16px;
+         }
+     }
+
+     .navbar-nav {
+         > li > a {
+             color: #444;
+         img {
+             height: 30px;
+             width: 30px;
+            margin: -15px 15px;
+         }
+     }
+
+     .navbar-collapse {
+         background-color: #fff;
+     }
+
+     .navbar-toggle {
+         z-index: 1;
+     }
+ }
